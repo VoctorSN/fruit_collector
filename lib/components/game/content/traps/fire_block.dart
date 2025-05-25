@@ -77,6 +77,13 @@ class FireBlock extends PositionComponent with HasGameReference<PixelAdventure>,
     async.Future.delayed(Duration(seconds: startIn), _startPeriodicToggle);
   }
 
+  @override
+  void onRemove() {
+    print("health block removed");
+    timer.cancel();
+    super.onRemove();
+  }
+
   void rotate() {
     Vector2 collisionPosition = position;
     Vector2 hitboxPosition = Vector2.zero();

@@ -346,11 +346,10 @@ class PixelAdventure extends FlameGame
   }
 
   void completeLevel() async {
-    level.stopLevelTimer();
 
+    level.stopLevelTimer();
     updateGlobalStats();
 
-    removeAudios();
     if (gameData != null) {
       final int currentLevel = gameData!.currentLevel + 1;
       GameLevel currentGameLevel =
@@ -379,23 +378,10 @@ class PixelAdventure extends FlameGame
     await level.saveLevel();
   }
 
-  void removeAudios() {
-    try {
-      for (final component in level.children) {
-        if (component is FireBlock) {
-          component.removeSound();
-        }
-      }
-    } catch (e) {
-      /// When the leves isn't initialized we dont remove sound
-    }
-  }
-
   void _loadActualLevel() async {
     soundManager.resumeAll();
     final service = await GameService.getInstance();
     service.saveGameBySpace(game: gameData);
-    removeAudios();
     removeWhere((component) => component is Level);
     if (settings.isMusicActive) {
       soundManager.startDefaultBGM(settings.gameVolume);

@@ -152,7 +152,6 @@ class Level extends World with HasGameReference<PixelAdventure> {
   }
 
   void respawnObjects() {
-    game.removeAudios();
 
     removeWhere(
       (component) => spawnPointClasses.contains(component.runtimeType),
