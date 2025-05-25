@@ -96,7 +96,9 @@ INSERT INTO `Levels` (`name`, `difficulty`) VALUES
                                                 ('level-06', 6),
                                                 ('level-07', 7),
                                                 ('level-08', 8),
+                                                ('level-98', 10);
                                                 ('level-99', 10);
+                                                ('level-100', 10);
 
 DELIMITER $$
 
