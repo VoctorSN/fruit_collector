@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:io';
-
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
@@ -17,7 +16,6 @@ import 'package:fruit_collector/components/bbdd/services/settings_service.dart';
 import 'package:fruit_collector/components/game/level/screens/death_screen.dart';
 import 'package:fruit_collector/components/game/level/sound_manager.dart';
 import 'package:window_size/window_size.dart';
-
 import 'components/HUD/buttons_game/achievements_button.dart';
 import 'components/HUD/buttons_game/change_player_skin_button.dart';
 import 'components/HUD/buttons_game/jump_button.dart';
@@ -249,6 +247,7 @@ class PixelAdventure extends FlameGame
             onContinue: () {
               overlays.remove('level_summary');
               changeLevelScreen.startExpand();
+              achievementManager.evaluate();
             },
           ),
     );
@@ -377,7 +376,6 @@ class PixelAdventure extends FlameGame
         await creditsScreen.show();
       }
     }
-
     await level.saveLevel();
   }
 
@@ -400,7 +398,6 @@ class PixelAdventure extends FlameGame
     removeAudios();
     removeWhere((component) => component is Level);
     if (settings.isMusicActive) {
-      /// TODO: check this audio
       soundManager.startDefaultBGM(settings.gameVolume);
       print('Playing music with volume: ${settings}');
     } else {
@@ -417,10 +414,6 @@ class PixelAdventure extends FlameGame
     addAll([cam, level]);
   }
 
-  void evaluateAchievements() {
-    achievementManager.evaluate();
-  }
-
   void addJoystick() {
     if (!isJoystickAdded) {
       isJoystickAdded = true;
@@ -431,28 +424,6 @@ class PixelAdventure extends FlameGame
       );
       add(customJoystick);
     }
-  }
-
-  void selectedCharacterIndex(int index) {
-    if (gameData == null) return;
-    gameData!.currentCharacter = index;
-    player.updateCharacter(characters[index]);
-  }
-
-
-
-  void pauseGame() {
-    overlays.add(PauseMenu.id);
-    pauseEngine();
-  }
-
-  void switchHUDPosition() {
-    if (!settings.showControls) return;
-    reloadAllButtons();
-  }
-
-  removeBlackScreen() {
-    deathScreen.removeBlackScreen();
   }
 
   addBlackScreen() {
@@ -498,41 +469,12 @@ class PixelAdventure extends FlameGame
     settingsService ??= await SettingsService.getInstance();
   }
 
-  void lockWindowResize() {
-    if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-      final double width = size.x;
-      final double height = size.y;
-      final Size fixedSize = Size(width, height);
-      setWindowMinSize(fixedSize);
-      setWindowMaxSize(fixedSize);
-    }
-  }
-
-  void unlockWindowResize() {
-    if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-      setWindowMinSize(const Size(800, 600));
-      setWindowMaxSize(Size.infinite);
-    }
-  }
-
   void toggleBlockButtons(bool isLocked) {
     changeSkinButton?.isAvaliable = isLocked;
     levelSelectionButton?.isAvaliable = isLocked;
     achievementsButton?.isAvaliable = isLocked;
     menuButton?.isAvaliable = isLocked;
   }
-
-  Future<void> spawnConfetti(Vector2 atPosition) async {
-
-    final confetti = ConfettiEmitterComponent(
-      origin: atPosition,
-      count: 40,
-    );
-
-    level.add(confetti);
-  }
-
-
 
   void toggleBlockWindowResize(bool isLocked) {
     if ((Platform.isWindows || Platform.isLinux || Platform.isMacOS) && !isLocked) {
@@ -546,5 +488,4 @@ class PixelAdventure extends FlameGame
       setWindowMaxSize(Size.infinite);
     }
   }
-
 }

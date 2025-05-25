@@ -13,6 +13,7 @@ import '../../content/blocks/collision_block.dart';
 import '../../util/custom_hitbox.dart';
 import '../../util/utils.dart';
 import '../levelBasics/player.dart';
+import '../levelExtras/confetti.dart';
 
 enum SnailState { idle, walk, hit, shellWallHit, shellIdle }
 
@@ -40,7 +41,7 @@ class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGa
   late final Player player;
   double fixedDeltaTime = 1 / 60;
   double accumulatedTime = 0;
-  int hp = 5;
+  int hp = 1;
   final double _gravity = 9.8;
   final double _jumpForce = 320;
   final double _maximunVelocity = 1000;
@@ -278,7 +279,7 @@ class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGa
       hp--;
       if (hp <= 0) {
         gotStomped = true;
-        game.spawnConfetti(position);
+        spawnConfetti(position);
         game.level.openDoor(doorId);
         game.soundManager.stopBGM();
         game.soundManager.startDefaultBGM(game.settings.gameVolume);
@@ -292,5 +293,13 @@ class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGa
 
   bool isSnail() {
     return [SnailState.walk, SnailState.idle, SnailState.hit].contains(current);
+  }
+
+  Future<void> spawnConfetti(Vector2 atPosition) async {
+    final confetti = ConfettiEmitterComponent(
+      origin: atPosition,
+      count: 40,
+    );
+    game.level.add(confetti);
   }
 }

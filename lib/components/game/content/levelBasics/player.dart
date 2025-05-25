@@ -362,11 +362,15 @@ class Player extends SpriteAnimationGroupComponent
     _updatePlayerState();
 
     Future.delayed(const Duration(milliseconds: 2000 ), () => gotHit = false);
-    await game.removeBlackScreen();
+    await removeBlackScreen();
 
     _jumpForce = 260;
     moveSpeed = 100;
     isRespawning = false;
+  }
+
+  removeBlackScreen() {
+    game.deathScreen.removeBlackScreen();
   }
 
   Future<void> _animationRespawn() async {
