@@ -15,10 +15,10 @@ enum GhostState { appearing, moving, disappearing }
 
 class Ghost extends SpriteAnimationGroupComponent
     with CollisionCallbacks, HasGameReference<PixelAdventure> {
+
   // Constructor and attributes
   final int spawnIn;
   final Vector2 initialPosition;
-
   Ghost({super.position, super.size, this.spawnIn = 0})
     : initialPosition = position!.clone();
 
@@ -29,9 +29,6 @@ class Ghost extends SpriteAnimationGroupComponent
   static final Vector2 spriteSize = Vector2(44, 30);
   static const double stepTime = 0.1;
 
-  double fixedDeltaTime = 1 / 60;
-  double accumulatedTime = 0;
-
   // Particles
   late final List<Sprite> trailSprites;
   double _timeSinceLastParticle = 0.0;
@@ -41,6 +38,11 @@ class Ghost extends SpriteAnimationGroupComponent
   late final Player player = game.player;
   final double speed = 0.5;
   bool isLookingRight = false;
+  double fixedDeltaTime = 1 / 60;
+  double accumulatedTime = 0;
+
+  // Sound
+  bool _isActive = true;
 
   SpriteAnimation _spriteAnimation(String state, int amount) {
     return SpriteAnimation.fromFrameData(
@@ -63,6 +65,12 @@ class Ghost extends SpriteAnimationGroupComponent
     return super.onLoad();
   }
 
+  @override
+  void onRemove() {
+    _isActive = false;
+    super.onRemove();
+  }
+
   Future<void> _loadTrailSprites() async {
     final image = game.images.fromCache(
       'Enemies/Ghost/Gost Particles (48x16).png',
@@ -78,22 +86,31 @@ class Ghost extends SpriteAnimationGroupComponent
   }
 
   void _spawn() async {
+    if (!_isActive) return;
+
     if (game.settings.isSoundEnabled) {
       SoundManager().playAppearGhost(game.settings.gameVolume);
     }
     current = GhostState.appearing;
     await animationTicker?.completed;
+    if (!_isActive) return;
     current = GhostState.moving;
   }
 
   void respawn() async {
+    if (!_isActive) return;
+
     if (game.settings.isSoundEnabled) {
       SoundManager().playDisappearGhost(game.settings.gameVolume);
     }
     current = GhostState.disappearing;
     await animationTicker?.completed;
+    if (!_isActive) return;
     position = initialPosition;
-    async.Future.delayed(const Duration(seconds: 2), _spawn);
+
+    async.Future.delayed(const Duration(seconds: 2), () {
+      if (_isActive) _spawn();
+    });
   }
 
   void _loadAllAnimations() {
