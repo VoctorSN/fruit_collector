@@ -76,7 +76,7 @@ class SpikeHead extends SpriteAnimationGroupComponent with HasGameReference<Pixe
   @override
   void onCollisionStart(Set<Vector2> intersectionPoints, PositionComponent other) {
     if (other is Player) other.collidedWithEnemy();
-    if (other is CollisionBlock) comeBack();
+    if (other is CollisionBlock && !other.isPlatform) comeBack();
     super.onCollisionStart(intersectionPoints, other);
   }
 

@@ -79,7 +79,6 @@ class FireBlock extends PositionComponent with HasGameReference<PixelAdventure>,
 
   @override
   void onRemove() {
-    print("health block removed");
     timer.cancel();
     super.onRemove();
   }

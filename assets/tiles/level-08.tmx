@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="533">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="537">
  <tileset firstgid="1" name="Pixel Adventure" tilewidth="16" tileheight="16" tilecount="242" columns="22">
   <image source="../images/Terrain/Terrain (16x16).png" width="352" height="176"/>
  </tileset>
@@ -19,8 +19,8 @@
 113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,280,0,0,0,0,0,0,111,
 113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,280,0,0,0,0,0,0,111,
 113,0,0,0,0,0,0,299,0,0,0,0,0,0,0,0,0,0,0,299,0,0,0,0,0,0,0,0,299,0,0,0,280,0,0,0,0,0,0,111,
-113,282,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,284,280,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,280,0,0,0,0,0,0,111,
+113,282,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,284,280,307,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,280,329,0,0,0,0,0,111,
 113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,280,0,0,0,0,0,0,111,
 113,0,0,299,0,0,0,0,0,0,0,0,0,299,0,0,0,0,0,0,0,0,0,0,0,299,0,0,0,0,0,0,280,0,0,0,0,0,0,111,
 113,282,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,283,284,280,0,0,0,0,0,0,111,
@@ -81,6 +81,17 @@
     <property name="isLastLevel" type="bool" value="false"/>
    </properties>
   </object>
+  <object id="533" name="lootBox" type="lootBox" x="288" y="224" width="28" height="28" rotation="180">
+   <properties>
+    <property name="objectInside" value="1"/>
+   </properties>
+  </object>
+  <object id="534" name="lootBox" type="lootBox" x="160" y="96" width="28" height="28" rotation="180">
+   <properties>
+    <property name="objectInside" value="1"/>
+   </properties>
+  </object>
+  <object id="536" name="KeyUnlocker" type="KeyUnlocker" x="528" y="160" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="2" name="Collisions">
   <object id="10" x="624" y="16" width="16" height="352"/>

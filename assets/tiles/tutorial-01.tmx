@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="422">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="423">
  <tileset firstgid="1" name="Pixel Adventure" tilewidth="16" tileheight="16" tilecount="242" columns="22">
   <image source="../images/Terrain/Terrain (16x16).png" width="352" height="176"/>
  </tileset>
@@ -46,12 +46,6 @@
   <object id="343" type="GameText" x="208" y="128" width="160" height="64">
    <text fontfamily="ArcadeClassic" wrap="1" color="#ffffff" halign="center">GET   ALL   FRUITS   TO   PASS   THE   LEVEL    🤫</text>
   </object>
-  <object id="389" name="Fire" type="FireBlock" x="16" y="160" width="16" height="32">
-   <properties>
-    <property name="fireDirection" value="Up"/>
-    <property name="startIn" type="int" value="1"/>
-   </properties>
-  </object>
   <object id="392" name="KeyUnlocker" type="KeyUnlocker" x="64" y="272" width="16" height="16"/>
   <object id="393" name="KeyUnlocker" type="KeyUnlocker" x="368" y="208" width="16" height="16"/>
   <object id="394" name="KeyUnlocker" type="KeyUnlocker" x="400" y="288" width="16" height="16"/>
@@ -61,30 +55,6 @@
    </properties>
   </object>
   <object id="396" name="Player" type="Player" x="64" y="112" width="32" height="32"/>
-  <object id="397" name="Fire" type="FireBlock" x="96" y="144" width="16" height="32">
-   <properties>
-    <property name="fireDirection" value="Up"/>
-    <property name="startIn" type="int" value="2"/>
-   </properties>
-  </object>
-  <object id="399" name="Fire" type="FireBlock" x="16" y="80" width="16" height="32">
-   <properties>
-    <property name="fireDirection" value="Up"/>
-    <property name="startIn" type="int" value="2"/>
-   </properties>
-  </object>
-  <object id="400" name="Fire" type="FireBlock" x="48" y="80" width="16" height="32">
-   <properties>
-    <property name="fireDirection" value="Up"/>
-    <property name="startIn" type="int" value="2"/>
-   </properties>
-  </object>
-  <object id="401" name="Fire" type="FireBlock" x="80" y="80" width="16" height="32">
-   <properties>
-    <property name="fireDirection" value="Up"/>
-    <property name="startIn" type="int" value="2"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="2" name="Collisions">
   <object id="6" x="0" y="192" width="160" height="80"/>
@@ -93,12 +63,14 @@
   <object id="10" x="624" y="16" width="16" height="352"/>
   <object id="11" x="0" y="0" width="640" height="16"/>
   <object id="12" x="0" y="16" width="16" height="176"/>
-  <object id="13" type="Platform" x="336" y="240" width="80" height="16">
-   <properties>
-    <property name="falls" type="bool" value="false"/>
-   </properties>
-  </object>
   <object id="420" x="0" y="304" width="160" height="64"/>
   <object id="421" x="0" y="272" width="48" height="32"/>
+  <object id="422" type="Platform" x="336" y="240" width="80" height="16">
+   <properties>
+    <property name="fallingDurationMillSec" type="int" value="0"/>
+    <property name="falls" type="bool" value="false"/>
+    <property name="isSideSensible" type="bool" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

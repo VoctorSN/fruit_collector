@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="70">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="105">
  <tileset firstgid="1" source="Pixel Adventure.tsx"/>
  <layer id="1" name="Background" width="40" height="23">
   <properties>
@@ -8,16 +8,16 @@
   <data encoding="csv">
 135,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,133,
 113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,96,96,97,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,117,118,118,119,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,166,145,118,170,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,197,167,169,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,219,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,241,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,60,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
 113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
 113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,96,96,96,96,96,96,96,96,96,96,97,111,
 113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,117,118,118,118,118,118,118,118,118,118,118,119,111,
@@ -94,16 +94,6 @@
     <property name="isRed" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="21" type="alterningBlock" x="464" y="176" width="16" height="16">
-   <properties>
-    <property name="isRed" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="22" type="alterningBlock" x="464" y="192" width="16" height="16">
-   <properties>
-    <property name="isRed" type="bool" value="false"/>
-   </properties>
-  </object>
   <object id="23" type="alterningBlock" x="464" y="160" width="16" height="16">
    <properties>
     <property name="isRed" type="bool" value="false"/>
@@ -156,6 +146,10 @@
   </object>
   <object id="62" x="352" y="272" width="16" height="32"/>
   <object id="63" x="288" y="272" width="16" height="32"/>
+  <object id="81" x="432" y="48" width="64" height="48"/>
+  <object id="82" x="448" y="96" width="32" height="16"/>
+  <object id="83" x="432" y="96" width="16" height="48"/>
+  <object id="104" x="144" y="32" width="16" height="160"/>
  </objectgroup>
  <objectgroup id="3" name="SpawnPoints">
   <object id="32" name="Player" type="Player" x="80" y="256" width="30.3304" height="29.7471"/>
@@ -168,5 +162,151 @@
     <property name="isLastLevel" type="bool" value="false"/>
    </properties>
   </object>
+  <object id="70" name="Fire" type="FireBlock" x="144" y="192" width="16" height="32">
+   <properties>
+    <property name="fireDirection" value="Down"/>
+    <property name="startIn" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="71" name="Fire" type="FireBlock" x="128" y="192" width="16" height="32">
+   <properties>
+    <property name="fireDirection" value="Down"/>
+    <property name="startIn" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="72" name="Fire" type="FireBlock" x="112" y="192" width="16" height="32">
+   <properties>
+    <property name="fireDirection" value="Down"/>
+    <property name="startIn" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="74" name="Fire" type="FireBlock" x="432" y="144" width="16" height="32">
+   <properties>
+    <property name="fireDirection" value="Down"/>
+    <property name="startIn" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="75" name="Fire" type="FireBlock" x="448" y="144" width="16" height="32">
+   <properties>
+    <property name="fireDirection" value="Down"/>
+    <property name="startIn" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="77" name="Fire" type="FireBlock" x="480" y="144" width="16" height="32">
+   <properties>
+    <property name="fireDirection" value="Down"/>
+    <property name="startIn" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="78" name="Fire" type="FireBlock" x="480" y="176" width="16" height="32">
+   <properties>
+    <property name="fireDirection" value="Up"/>
+    <property name="startIn" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="79" name="Fire" type="FireBlock" x="432" y="176" width="16" height="32">
+   <properties>
+    <property name="fireDirection" value="Up"/>
+    <property name="startIn" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="80" name="Fire" type="FireBlock" x="448" y="176" width="16" height="32">
+   <properties>
+    <property name="fireDirection" value="Up"/>
+    <property name="startIn" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="85" name="Radish" type="Radish" x="544" y="16" width="30" height="38">
+   <properties>
+    <property name="offNeg" type="float" value="0"/>
+    <property name="offPos" type="float" value="10"/>
+   </properties>
+  </object>
+  <object id="86" name="Radish" type="Radish" x="368" y="16" width="30" height="38">
+   <properties>
+    <property name="offNeg" type="float" value="10"/>
+    <property name="offPos" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="87" name="Radish" type="Radish" x="208" y="176" width="30" height="38">
+   <properties>
+    <property name="offNeg" type="float" value="4"/>
+    <property name="offPos" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="88" name="Radish" type="Radish" x="320" y="128" width="30" height="38">
+   <properties>
+    <property name="offNeg" type="float" value="5"/>
+    <property name="offPos" type="float" value="3"/>
+   </properties>
+  </object>
+  <object id="84" name="Trampoline" type="Trampoline" x="512" y="176" width="32" height="32">
+   <properties>
+    <property name="powerBounce" type="float" value="350"/>
+   </properties>
+  </object>
+  <object id="90" name="Fire" type="FireBlock" x="112" y="176" width="32" height="16">
+   <properties>
+    <property name="fireDirection" value="Left"/>
+    <property name="startIn" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="92" name="Fire" type="FireBlock" x="112" y="160" width="32" height="16">
+   <properties>
+    <property name="fireDirection" value="Left"/>
+    <property name="startIn" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="93" name="Fire" type="FireBlock" x="112" y="144" width="32" height="16">
+   <properties>
+    <property name="fireDirection" value="Left"/>
+    <property name="startIn" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="94" name="Fire" type="FireBlock" x="112" y="128" width="32" height="16">
+   <properties>
+    <property name="fireDirection" value="Left"/>
+    <property name="startIn" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="95" name="Fire" type="FireBlock" x="112" y="112" width="32" height="16">
+   <properties>
+    <property name="fireDirection" value="Left"/>
+    <property name="startIn" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="96" name="Fire" type="FireBlock" x="80" y="112" width="32" height="16">
+   <properties>
+    <property name="fireDirection" value="Right"/>
+    <property name="startIn" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="97" name="Fire" type="FireBlock" x="80" y="128" width="32" height="16">
+   <properties>
+    <property name="fireDirection" value="Right"/>
+    <property name="startIn" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="98" name="Fire" type="FireBlock" x="80" y="144" width="32" height="16">
+   <properties>
+    <property name="fireDirection" value="Right"/>
+    <property name="startIn" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="99" name="Fire" type="FireBlock" x="80" y="160" width="32" height="16">
+   <properties>
+    <property name="fireDirection" value="Right"/>
+    <property name="startIn" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="100" name="Fire" type="FireBlock" x="80" y="176" width="32" height="16">
+   <properties>
+    <property name="fireDirection" value="Right"/>
+    <property name="startIn" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="101" name="KeyUnlocker" type="KeyUnlocker" x="112" y="96" width="16" height="16"/>
+  <object id="102" name="KeyUnlocker" type="KeyUnlocker" x="448" y="32" width="16" height="16"/>
+  <object id="103" name="KeyUnlocker" type="KeyUnlocker" x="416" y="288" width="16" height="16"/>
  </objectgroup>
 </map>

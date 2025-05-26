@@ -42,8 +42,8 @@ class Radish extends SpriteAnimationGroupComponent with CollisionCallbacks, HasG
 
   // Movement logic (on air)
   static const tileSize = 16;
-  late final rangeNeg = spawnPosition.x - offNeg * tileSize;
-  late final rangePos = spawnPosition.x + 32 + offPos * tileSize;
+  late final rangePos = spawnPosition.x - offPos * tileSize;
+  late final rangeNeg = spawnPosition.x + 32 + offNeg * tileSize;
   double moveDirection = -1;
   static const flySpeed = 45;
   double sineTime = 0;
@@ -134,8 +134,8 @@ class Radish extends SpriteAnimationGroupComponent with CollisionCallbacks, HasG
   void _fly(double dt) async {
     const slowdownMargin = 48.0;
 
-    final distanceToLeft = (position.x - rangeNeg).clamp(0.5, slowdownMargin);
-    final distanceToRight = (rangePos - position.x).clamp(0.5, slowdownMargin);
+    final distanceToLeft = (position.x - rangePos).clamp(0.5, slowdownMargin);
+    final distanceToRight = (rangeNeg - position.x).clamp(0.5, slowdownMargin);
 
     final proximity = min(distanceToLeft, distanceToRight);
     final speedFactor = (proximity / slowdownMargin).clamp(0.5, 4.5);
@@ -152,9 +152,9 @@ class Radish extends SpriteAnimationGroupComponent with CollisionCallbacks, HasG
     position.y = spawnPosition.y + amplitude * sin(sineTime * frequency);
 
     await Future.delayed(const Duration(milliseconds: 400));
-    if (position.x < rangeNeg) {
+    if (position.x < rangePos) {
       turnBack(1);
-    } else if (position.x > rangePos) {
+    } else if (position.x > rangeNeg) {
       turnBack(-1);
     }
   }

@@ -1,6 +1,5 @@
 import 'dart:io' show Platform, exit;
 
-import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -117,7 +116,6 @@ class _MainMenuState extends State<MainMenu> with SingleTickerProviderStateMixin
                           _menuButton('QUIT', Icons.exit_to_app, () {
                             widget.game.soundManager.stopBGM();
                             if (Platform.isWindows) {
-                              /// TODO: FIX THIS
                               exit(0);
                             } else {
                               SystemNavigator.pop();

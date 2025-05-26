@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="158">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="174">
  <tileset firstgid="1" source="Pixel Adventure.tsx"/>
  <layer id="1" name="Background" width="40" height="23">
   <properties>
@@ -11,19 +11,19 @@
 113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
 113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
 113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,63,63,63,63,63,63,63,63,63,63,63,63,64,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,63,63,64,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,95,96,96,96,96,96,96,96,96,96,96,97,111,
-113,0,0,0,0,0,0,0,0,16,0,0,0,0,0,0,0,0,0,0,0,0,60,0,0,0,0,117,118,118,118,118,118,118,118,118,118,118,119,111,
-113,0,0,0,0,0,0,0,0,38,0,0,0,0,0,13,15,0,0,0,0,0,0,0,0,0,0,117,118,118,118,118,118,118,118,118,118,118,119,111,
-113,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,117,118,118,118,118,118,118,118,118,118,118,119,111,
-113,0,0,0,0,0,0,0,0,60,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,117,118,118,118,118,118,118,118,118,118,118,119,111,
+113,0,0,0,0,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,63,63,64,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,0,0,0,0,95,96,96,96,96,96,96,96,96,96,96,97,111,
+113,0,0,0,0,38,0,0,0,16,0,0,0,0,0,0,0,0,0,0,0,0,60,0,0,0,0,117,118,118,118,118,118,118,118,118,118,118,119,111,
+113,0,0,0,0,38,0,0,0,38,0,0,0,0,0,13,15,0,0,0,0,0,0,0,0,0,0,117,118,118,118,118,118,118,118,118,118,118,119,111,
+113,0,0,0,0,38,0,0,0,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,117,118,118,118,118,118,118,118,118,118,118,119,111,
+113,0,0,0,0,60,0,0,0,60,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,117,118,118,118,118,118,118,118,118,118,118,119,111,
 113,95,96,96,96,96,96,96,96,96,97,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,117,118,118,118,118,118,118,118,118,118,118,119,111,
 113,117,118,118,118,118,118,118,118,118,120,96,96,96,96,96,96,96,96,96,96,96,96,96,96,96,96,121,118,118,118,118,118,118,118,118,118,118,119,111,
 113,117,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,119,111,
@@ -39,18 +39,58 @@
   <object id="12" x="0" y="0" width="640" height="16"/>
   <object id="13" x="0" y="16" width="16" height="352"/>
   <object id="85" x="352" y="16" width="16" height="224"/>
-  <object id="99" type="Platform" x="368" y="112" width="48" height="16">
-   <properties>
-    <property name="falls" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="100" type="Platform" x="368" y="64" width="208" height="16">
-   <properties>
-    <property name="falls" type="bool" value="false"/>
-   </properties>
-  </object>
   <object id="138" x="144" y="224" width="16" height="64"/>
   <object id="147" x="240" y="240" width="32" height="16"/>
+  <object id="163" x="80" y="80" width="16" height="208"/>
+  <object id="164" type="Platform" x="368" y="112" width="48" height="16">
+   <properties>
+    <property name="fallingDurationMillSec" type="int" value="0"/>
+    <property name="falls" type="bool" value="false"/>
+    <property name="isSideSensible" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="165" type="Platform" x="368" y="64" width="208" height="16">
+   <properties>
+    <property name="fallingDurationMillSec" type="int" value="0"/>
+    <property name="falls" type="bool" value="false"/>
+    <property name="isSideSensible" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="166" type="Platform" x="112" y="128" width="32" height="16">
+   <properties>
+    <property name="fallingDurationMillSec" type="int" value="5000"/>
+    <property name="falls" type="bool" value="true"/>
+    <property name="isSideSensible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="167" type="Platform" x="112" y="192" width="32" height="16">
+   <properties>
+    <property name="fallingDurationMillSec" type="int" value="5000"/>
+    <property name="falls" type="bool" value="true"/>
+    <property name="isSideSensible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="168" type="Platform" x="32" y="96" width="32" height="16">
+   <properties>
+    <property name="fallingDurationMillSec" type="int" value="5000"/>
+    <property name="falls" type="bool" value="true"/>
+    <property name="isSideSensible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="169" type="Platform" x="32" y="160" width="32" height="16">
+   <properties>
+    <property name="fallingDurationMillSec" type="int" value="5000"/>
+    <property name="falls" type="bool" value="true"/>
+    <property name="isSideSensible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="170" type="Platform" x="32" y="224" width="32" height="16">
+   <properties>
+    <property name="fallingDurationMillSec" type="int" value="5000"/>
+    <property name="falls" type="bool" value="true"/>
+    <property name="isSideSensible" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="3" name="SpawnPoints">
   <object id="22" name="Player" type="Player" x="176" y="272" width="30.3304" height="29.7471"/>
@@ -73,11 +113,6 @@
     <property name="objectInside" value="1"/>
    </properties>
   </object>
-  <object id="127" name="lootBox" type="lootBox" x="624" y="208" width="28" height="28" rotation="180">
-   <properties>
-    <property name="objectInside" value="1"/>
-   </properties>
-  </object>
   <object id="128" name="lootBox" type="lootBox" x="400" y="304" width="28" height="28" rotation="180">
    <properties>
     <property name="objectInside" value="1"/>
@@ -93,64 +128,49 @@
     <property name="powerBounce" type="float" value="350"/>
    </properties>
   </object>
-  <object id="144" type="Spike" x="16" y="48" width="16" height="96">
-   <properties>
-    <property name="position" value="LeftWall"/>
-   </properties>
-  </object>
-  <object id="145" type="Spike" x="336" y="16" width="16" height="96">
-   <properties>
-    <property name="position" value="RightWall"/>
-   </properties>
-  </object>
-  <object id="143" type="Spike" x="16" y="16" width="80" height="16">
-   <properties>
-    <property name="position" value="TopWall"/>
-   </properties>
-  </object>
-  <object id="146" type="Spike" x="256" y="288" width="64" height="16">
+  <object id="146" type="Spike" x="288" y="288" width="64" height="16">
    <properties>
     <property name="position" value="BottomWall"/>
-   </properties>
-  </object>
-  <object id="148" type="Spike" x="336" y="208" width="16" height="32">
-   <properties>
-    <property name="position" value="RightWall"/>
-   </properties>
-  </object>
-  <object id="151" type="Spike" x="16" y="160" width="16" height="32">
-   <properties>
-    <property name="position" value="LeftWall"/>
-   </properties>
-  </object>
-  <object id="152" type="Spike" x="16" y="208" width="16" height="16">
-   <properties>
-    <property name="position" value="LeftWall"/>
-   </properties>
-  </object>
-  <object id="153" type="Spike" x="336" y="128" width="16" height="32">
-   <properties>
-    <property name="position" value="RightWall"/>
-   </properties>
-  </object>
-  <object id="154" type="Spike" x="336" y="176" width="16" height="16">
-   <properties>
-    <property name="position" value="RightWall"/>
-   </properties>
-  </object>
-  <object id="155" type="Spike" x="112" y="16" width="32" height="16">
-   <properties>
-    <property name="position" value="TopWall"/>
-   </properties>
-  </object>
-  <object id="156" type="Spike" x="160" y="16" width="16" height="16">
-   <properties>
-    <property name="position" value="TopWall"/>
    </properties>
   </object>
   <object id="157" type="Checkpoint" x="528" y="144" width="64" height="64">
    <properties>
     <property name="isLastLevel" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="158" type="GameText" x="416" y="64" width="80" height="48">
+   <text fontfamily="ArcadeClassic" wrap="1" color="#ffffff" halign="center">SIUUUUUU 7 🐐</text>
+  </object>
+  <object id="159" type="Spike" x="16" y="80" width="16" height="208">
+   <properties>
+    <property name="position" value="LeftWall"/>
+   </properties>
+  </object>
+  <object id="160" type="Spike" x="64" y="80" width="16" height="208">
+   <properties>
+    <property name="position" value="RightWall"/>
+   </properties>
+  </object>
+  <object id="161" name="Fan" type="Fan" x="336" y="80" width="16" height="32">
+   <properties>
+    <property name="directionRight" type="bool" value="false"/>
+    <property name="fanDistance" type="float" value="20"/>
+   </properties>
+  </object>
+  <object id="162" name="Fan" type="Fan" x="336" y="192" width="16" height="32">
+   <properties>
+    <property name="directionRight" type="bool" value="false"/>
+    <property name="fanDistance" type="float" value="20"/>
+   </properties>
+  </object>
+  <object id="172" name="lootBox" type="lootBox" x="64" y="288" width="28" height="28" rotation="180">
+   <properties>
+    <property name="objectInside" value="1"/>
+   </properties>
+  </object>
+  <object id="173" type="Spike" x="96" y="272" width="48" height="16">
+   <properties>
+    <property name="position" value="BottomWall"/>
    </properties>
   </object>
  </objectgroup>

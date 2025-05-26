@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="59">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="75">
  <tileset firstgid="1" source="Pixel Adventure.tsx"/>
  <layer id="1" name="Background" width="40" height="23">
   <properties>
@@ -7,25 +7,25 @@
   </properties>
   <data encoding="csv">
 135,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,133,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,79,8,8,8,8,8,8,8,80,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,73,30,30,30,56,30,77,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,78,30,30,77,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,74,75,76,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,197,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,219,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,241,18,19,19,19,19,19,19,20,197,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,197,0,0,0,219,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,219,0,0,0,219,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,219,0,0,0,219,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,0,0,0,0,79,8,8,8,8,8,8,8,80,0,0,0,0,219,0,0,0,219,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,0,0,0,0,0,73,30,30,30,56,30,77,0,0,0,0,0,219,0,0,0,219,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,78,30,30,77,0,0,0,0,0,0,219,0,0,0,219,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,74,75,76,0,0,0,0,0,0,0,219,0,0,0,219,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,219,0,0,0,219,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,219,0,0,0,219,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,241,0,0,0,241,0,0,0,0,0,0,0,0,111,
 113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
 113,0,136,137,123,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,157,0,159,159,0,0,0,0,0,0,0,111,
 113,95,96,96,96,96,96,96,96,97,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,96,96,96,96,97,0,0,0,0,0,0,0,111,
 113,117,118,118,118,118,118,118,118,119,43,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,117,118,118,118,118,119,0,0,0,0,0,0,0,111,
 113,117,118,118,144,118,118,118,118,119,0,0,0,0,155,156,0,0,0,0,0,0,158,0,0,0,117,118,118,145,118,120,96,96,96,96,96,96,97,111,
-113,117,118,118,118,118,118,118,118,120,96,96,96,96,96,96,96,96,96,96,96,96,96,96,96,96,121,118,118,118,118,118,118,118,118,118,118,118,119,111,
+113,117,118,198,118,118,118,118,118,120,96,96,96,96,96,96,96,96,96,96,96,96,96,96,96,96,121,118,118,118,118,118,118,118,118,118,118,118,119,111,
 113,117,118,118,118,118,145,118,118,118,118,118,118,118,118,118,118,118,144,118,118,118,145,118,118,118,118,118,118,118,118,118,118,118,144,118,118,118,119,111,
 113,139,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,141,111,
 91,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,89
@@ -42,10 +42,29 @@
     <property name="isLastLevel" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="56" name="Rock" type="Rock" x="256" y="256" width="38" height="34">
+  <object id="56" name="Rock" type="Rock" x="208" y="256" width="38" height="34">
    <properties>
-    <property name="offNeg" type="float" value="5.9"/>
-    <property name="offPos" type="float" value="7.8"/>
+    <property name="offNeg" type="float" value="2.8"/>
+    <property name="offPos" type="float" value="10.8"/>
+   </properties>
+  </object>
+  <object id="64" name="Rock" type="Rock" x="352" y="272" width="38" height="34">
+   <properties>
+    <property name="offNeg" type="float" value="11.8"/>
+    <property name="offPos" type="float" value="1.8"/>
+   </properties>
+  </object>
+  <object id="61" name="KeyUnlocker" type="KeyUnlocker" x="48" y="304" width="16" height="16"/>
+  <object id="62" name="KeyUnlocker" type="KeyUnlocker" x="272" y="64" width="16" height="16"/>
+  <object id="63" name="KeyUnlocker" type="KeyUnlocker" x="336" y="272" width="16" height="16"/>
+  <object id="73" type="Spike" x="464" y="64" width="16" height="160">
+   <properties>
+    <property name="position" value="RightWall"/>
+   </properties>
+  </object>
+  <object id="74" type="Spike" x="432" y="64" width="16" height="160">
+   <properties>
+    <property name="position" value="LeftWall"/>
    </properties>
   </object>
  </objectgroup>
@@ -55,12 +74,52 @@
   <object id="9" x="624" y="16" width="16" height="336"/>
   <object id="10" x="16" y="352" width="624" height="16"/>
   <object id="11" x="64" y="240" width="16" height="16"/>
-  <object id="12" x="16" y="256" width="144" height="96"/>
+  <object id="12" x="16" y="256" width="32" height="96"/>
   <object id="15" x="416" y="256" width="96" height="96"/>
   <object id="33" x="512" y="288" width="112" height="64"/>
   <object id="47" x="160" y="304" width="256" height="48"/>
   <object id="53" x="208" y="112" width="144" height="16"/>
   <object id="54" x="240" y="144" width="80" height="16"/>
   <object id="55" x="256" y="160" width="48" height="16"/>
+  <object id="59" x="64" y="256" width="96" height="96"/>
+  <object id="60" x="48" y="320" width="16" height="32"/>
+  <object id="70" x="336" y="16" width="16" height="48"/>
+  <object id="71" x="480" y="48" width="16" height="176"/>
+  <object id="72" x="416" y="64" width="16" height="160"/>
+  <object id="65" type="Platform" x="416" y="208" width="32" height="16">
+   <properties>
+    <property name="fallingDurationMillSec" type="int" value="5000"/>
+    <property name="falls" type="bool" value="true"/>
+    <property name="isSideSensible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="66" type="Platform" x="464" y="176" width="32" height="16">
+   <properties>
+    <property name="fallingDurationMillSec" type="int" value="5000"/>
+    <property name="falls" type="bool" value="true"/>
+    <property name="isSideSensible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="67" type="Platform" x="416" y="144" width="32" height="16">
+   <properties>
+    <property name="fallingDurationMillSec" type="int" value="5000"/>
+    <property name="falls" type="bool" value="true"/>
+    <property name="isSideSensible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="68" type="Platform" x="464" y="112" width="32" height="16">
+   <properties>
+    <property name="fallingDurationMillSec" type="int" value="5000"/>
+    <property name="falls" type="bool" value="true"/>
+    <property name="isSideSensible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="69" type="Platform" x="352" y="48" width="128" height="16">
+   <properties>
+    <property name="fallingDurationMillSec" type="int" value="0"/>
+    <property name="falls" type="bool" value="false"/>
+    <property name="isSideSensible" type="bool" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
