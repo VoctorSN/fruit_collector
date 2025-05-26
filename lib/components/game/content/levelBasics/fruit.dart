@@ -19,6 +19,7 @@ class Fruit extends SpriteAnimationComponent with HasGameReference<PixelAdventur
 
   @override
   FutureOr<void> onLoad() async {
+    priority = -2;
     add(
       RectangleHitbox(
         position: Vector2(hitbox.offsetX, hitbox.offsetY),

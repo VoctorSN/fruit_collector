@@ -171,7 +171,7 @@
                 3
             ],
             "scale": 1.5,
-            "selectedLayer": 2,
+            "selectedLayer": 1,
             "viewCenter": {
                 "x": 322.6666666666667,
                 "y": 163.66666666666663
@@ -198,7 +198,7 @@
                 3
             ],
             "scale": 1.5,
-            "selectedLayer": 2,
+            "selectedLayer": 0,
             "viewCenter": {
                 "x": 296,
                 "y": 164.33333333333337
@@ -209,11 +209,11 @@
                 2,
                 3
             ],
-            "scale": 1.66,
+            "scale": 1.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 320.4819277108434,
-                "y": 184.03614457831327
+                "x": 318.6666666666667,
+                "y": 215.66666666666663
             }
         },
         "level-05.tmx": {
@@ -335,7 +335,7 @@
                 2
             ],
             "scale": 1.5,
-            "selectedLayer": 1,
+            "selectedLayer": 0,
             "viewCenter": {
                 "x": 323.33333333333326,
                 "y": 184.33333333333337
@@ -419,18 +419,18 @@
     "project": "Pixel Adventure.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "bluePrint.tmx",
-        "level-03.tmx",
-        "level-07.tmx",
-        "level-08.tmx",
-        "level-09.tmx",
+        "level-01.tmx",
+        "tutorial-01.tmx",
         "level-98.tmx",
-        "level-100.tmx",
-        "level-06.tmx",
+        "tutorial-05.tmx",
+        "tutorial-04.tmx",
+        "tutorial-03.tmx",
+        "tutorial-02.tmx",
         "level-05.tmx",
-        "level-04.tmx",
+        "level-03.tmx",
         "level-02.tmx",
-        "level-01.tmx"
+        "level-100.tmx",
+        "level-99.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

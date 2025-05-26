@@ -48,6 +48,8 @@ class FireBlock extends PositionComponent with HasGameReference<PixelAdventure>,
 
     _loadAnimations();
 
+    priority = -1;
+
     // Extract the sprite to apply him the angle later
     fireSprite = SpriteAnimationGroupComponent<FireBlockState>(
       animations: {FireBlockState.on: onAnimation, FireBlockState.off: offAnimation},

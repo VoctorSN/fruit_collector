@@ -1,6 +1,7 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/particles.dart';
+import 'package:fruit_collector/components/game/content/blocks/collision_block.dart';
 import 'package:fruit_collector/components/game/content/enemies/bee.dart';
 import 'package:fruit_collector/pixel_adventure.dart';
 
@@ -44,8 +45,12 @@ class BeeProjectile extends SpriteComponent
     }
     if (other is Player) {
       other.collidedWithEnemy();
-    }
       destroyWithParticles();
+    }
+
+    if(other is CollisionBlock){
+      destroyWithParticles();
+    }
     super.onCollision(intersectionPoints, other);
   }
 

@@ -42,6 +42,7 @@ class LootBox extends SpriteAnimationGroupComponent with HasGameReference<PixelA
 
   @override
   FutureOr<void> onLoad() {
+    priority = -1;
     position.y = position.y + 12;
     player = game.player;
     add(RectangleHitbox(position: Vector2.zero(), size: size));
