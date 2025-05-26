@@ -32,6 +32,7 @@ class Trampoline extends SpriteAnimationGroupComponent with HasGameReference<Pix
   FutureOr<void> onLoad() {
     position.y = position.y + 6;
     player = game.player;
+    priority = -1;
     add(RectangleHitbox(position: Vector2.zero(), size: Vector2.all(tileSize + 0.0)));
     _loadAllAnimations();
     collisionBlock = CollisionBlock(
