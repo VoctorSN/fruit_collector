@@ -4,8 +4,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
 import 'package:fruit_collector/components/game/content/blocks/loot_box.dart';
-import 'package:fruit_collector/components/game/content/enemies/bee.dart';
-import 'package:fruit_collector/components/game/content/enemies/radish.dart';
+import 'package:fruit_collector/components/game/content/enemies/player_collidable.dart';
 import 'package:fruit_collector/components/game/level/loadingBanana.dart';
 import 'package:fruit_collector/components/game/level/sound_manager.dart';
 import 'package:fruit_collector/components/game/util/custom_hitbox.dart';
@@ -17,9 +16,6 @@ import '../../content/blocks/falling_block.dart';
 import '../../content/blocks/trampoline.dart';
 import '../../level/level.dart';
 import '../../util/utils.dart';
-import '../enemies/chicken.dart';
-import '../enemies/rock.dart';
-import '../enemies/snail.dart';
 import '../levelExtras/stars.dart';
 import '../traps/fan.dart';
 import '../traps/saw.dart';
@@ -138,14 +134,10 @@ class Player extends SpriteAnimationGroupComponent
       if (other is Fruit) other.collidedWithPlayer();
       if (other is Saw) _respawn();
       if (other is Checkpoint && !hasReached) _reachedCheckpoint(other);
-      if (other is Chicken) other.collidedWithPlayer();
-      if (other is Rock) other.collidedWithPlayer();
+      if (other is PlayerCollidable) other.collidedWithPlayer();
       if (other is Trampoline) other.collidedWithPlayer();
       if (other is LootBox) other.collidedWithPlayer();
       if (other is Stars) other.collidedWithPlayer();
-      if (other is Bee) other.collidedWithPlayer();
-      if (other is Snail) other.collidedWithPlayer();
-      if (other is Radish) other.collidedWithPlayer();
     }
     super.onCollisionStart(intersectionPoints, other);
   }

@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:fruit_collector/components/game/content/enemies/player_collidable.dart';
 import 'package:fruit_collector/components/game/level/sound_manager.dart';
 import 'package:fruit_collector/pixel_adventure.dart';
 
@@ -12,7 +13,7 @@ import '../levelBasics/player.dart';
 
 enum ChickenState { idle, run, hit }
 
-class Chicken extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<PixelAdventure> {
+class Chicken extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<PixelAdventure>, PlayerCollidable {
   // Constructor and attributes
   final double offNeg;
   final double offPos;
@@ -31,6 +32,7 @@ class Chicken extends SpriteAnimationGroupComponent with CollisionCallbacks, Has
   double moveDirection = 1;
   double targetDirection = 1;
   bool gotStomped = false;
+  @override
   late final Player player;
   double fixedDeltaTime = 1 / 60;
   double accumulatedTime = 0;
@@ -134,6 +136,7 @@ class Chicken extends SpriteAnimationGroupComponent with CollisionCallbacks, Has
     }
   }
 
+  @override
   void collidedWithPlayer() async {
     if (player.velocity.y > 0 && player.y + player.height > position.y) {
       if (game.settings.isSoundEnabled) SoundManager().playBounce(game.settings.gameVolume);

@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:fruit_collector/components/game/content/enemies/player_collidable.dart';
 import 'package:fruit_collector/components/game/content/enemies/projectiles/bee_projectile.dart';
 import 'package:fruit_collector/components/game/level/sound_manager.dart';
 import 'package:fruit_collector/pixel_adventure.dart';
@@ -14,7 +15,7 @@ import '../levelBasics/player.dart';
 enum BeeState { idle, attack, hit }
 
 class Bee extends SpriteAnimationGroupComponent
-    with CollisionCallbacks, HasGameReference<PixelAdventure> {
+    with CollisionCallbacks, HasGameReference<PixelAdventure>, PlayerCollidable {
   
   // Constructor and attributes
   final double offNeg;
@@ -41,6 +42,7 @@ class Bee extends SpriteAnimationGroupComponent
   double moveDirection = 1;
   double targetDirection = 1;
   bool gotStomped = false;
+  @override
   late final Player player;
   double fixedDeltaTime = 1 / 60;
   double accumulatedTime = 0;
@@ -194,6 +196,7 @@ class Bee extends SpriteAnimationGroupComponent
         player.y + player.height > position.y;
   }
 
+  @override
   void collidedWithPlayer() async {
     if (player.velocity.y > 0 && player.y + player.height > position.y) {
       if (game.settings.isSoundEnabled) SoundManager().playBounce(game.settings.gameVolume);

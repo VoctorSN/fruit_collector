@@ -1,23 +1,22 @@
-import 'dart:async';
 import 'dart:async' as async;
+import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
 
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flutter/material.dart';
+import 'package:fruit_collector/components/game/content/enemies/player_collidable.dart';
 import 'package:fruit_collector/components/game/level/sound_manager.dart';
 import 'package:fruit_collector/pixel_adventure.dart';
 
 import '../../content/blocks/collision_block.dart';
-import '../../util/custom_hitbox.dart';
-import '../../util/utils.dart';
+import '../../util/collisionable_with_hitbox.dart';
 import '../levelBasics/player.dart';
 import '../levelExtras/confetti.dart';
 
 enum SnailState { idle, walk, hit, shellWallHit, shellIdle }
 
-class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<PixelAdventure> {
+class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<PixelAdventure>, PlayerCollidable, CollisionableWithHitbox {
   // Constructor and attributes
   final double offNeg;
   final double offPos;
@@ -38,6 +37,7 @@ class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGa
   double moveDirection = 1;
   double targetDirection = 1;
   bool gotStomped = false;
+  @override
   late final Player player;
   double fixedDeltaTime = 1 / 60;
   double accumulatedTime = 0;
@@ -55,6 +55,7 @@ class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGa
   late async.Timer transformShellTimer;
   late async.Timer jumpTimer;
 
+  @override
   RectangleHitbox hitbox = RectangleHitbox(position: Vector2.zero(), size: Vector2(48, 48));
 
   // Animations logic
@@ -126,7 +127,7 @@ class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGa
   void _checkVerticalCollisions() {
     for (final block in collisionBlocks) {
       if (block.isPlatform) {
-        if (checkCollisionSnail(this, block)) {
+        if (super.checkCollision(block)) {
           if (velocity.y > 0) {
             isOnGround = true;
             velocity.y = 0;
@@ -136,7 +137,7 @@ class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGa
           }
         }
       } else {
-        if (checkCollisionSnail(this, block)) {
+        if (super.checkCollision(block)) {
           if (velocity.y > 0) {
             velocity.y = 0;
             position.y = block.y - hitbox.height;
@@ -157,7 +158,7 @@ class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGa
   void _checkHorizontalCollisions() {
     for (final block in collisionBlocks) {
       if (!block.isPlatform) {
-        if (checkCollisionSnail(this, block)) {
+        if (super.checkCollision(block)) {
           if (velocity.x > 0) {
             position.x = block.x - width - (scale.x.clamp(-1, 0) * width);
           }
@@ -270,6 +271,7 @@ class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGa
         player.x + playerOffset <= rangePos;
   }
 
+  @override
   void collidedWithPlayer() async {
     if (player.velocity.y > 0 && player.y + player.height > position.y && isSnail()) {
       if (game.settings.isSoundEnabled) SoundManager().playBounce(game.settings.gameVolume);
