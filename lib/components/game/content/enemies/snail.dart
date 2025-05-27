@@ -70,7 +70,7 @@ class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGa
   @override
   FutureOr<void> onLoad() {
     game.soundManager.stopBGM();
-    if (game.settings.isMusicActive) game.soundManager.startBossBGM(game.settings.gameVolume);
+    game.soundManager.startBossBGM(game.settings);
 
     player = game.player;
     add(hitbox);
@@ -283,8 +283,7 @@ class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGa
         gotStomped = true;
         spawnConfetti(position);
         game.level.openDoor(doorId);
-        game.soundManager.stopBGM();
-        game.soundManager.startDefaultBGM(game.settings.gameVolume);
+        game.soundManager.startDefaultBGM(game.settings);
         removeFromParent();
       }
       _transformShell();
