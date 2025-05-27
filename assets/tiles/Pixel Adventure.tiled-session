@@ -171,7 +171,7 @@
                 2
             ],
             "scale": 1.5,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
                 "x": 322.6666666666667,
                 "y": 163.66666666666663
@@ -210,7 +210,7 @@
                 2
             ],
             "scale": 1.5,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
                 "x": 322.6666666666667,
                 "y": 192.99999999999997
@@ -222,7 +222,7 @@
                 2
             ],
             "scale": 1.5,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
                 "x": 320.6666666666667,
                 "y": 162.99999999999997
@@ -418,16 +418,16 @@
     "project": "Pixel Adventure.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "level-03.tmx",
         "level-02.tmx",
         "level-01.tmx",
+        "level-05.tmx",
+        "level-04.tmx",
+        "level-03.tmx",
         "tutorial-05.tmx",
         "tutorial-04.tmx",
         "tutorial-03.tmx",
         "tutorial-01.tmx",
         "tutorial-02.tmx",
-        "level-05.tmx",
-        "level-04.tmx",
         "bluePrint.tmx",
         "level-98.tmx"
     ],
