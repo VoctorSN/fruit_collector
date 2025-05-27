@@ -81,7 +81,7 @@ class Player extends SpriteAnimationGroupComponent
 
   @override
   FutureOr<void> onLoad() {
-    priority = 0;
+    priority = -1;
     _loadAllAnimations();
     // debugMode = true;
     statringPosition = Vector2(position.x, position.y);

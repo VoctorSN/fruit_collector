@@ -234,16 +234,16 @@
                 2
             ],
             "scale": 1.5,
-            "selectedLayer": 2,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 303.33333333333326,
-                "y": 198.33333333333337
+                "x": 319.33333333333326,
+                "y": 153.66666666666663
             }
         },
         "level-07.tmx": {
             "expandedObjectLayers": [
-                2,
-                3
+                3,
+                2
             ],
             "scale": 1.5,
             "selectedLayer": 2,
@@ -395,7 +395,7 @@
                 4
             ],
             "scale": 1.5,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
                 "x": 320.6666666666667,
                 "y": 185.66666666666663
@@ -417,18 +417,18 @@
     "project": "Pixel Adventure.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "bluePrint.tmx",
+        "level-07.tmx",
+        "level-06.tmx",
+        "tutorial-05.tmx",
         "level-05.tmx",
         "level-04.tmx",
         "level-03.tmx",
         "level-02.tmx",
         "level-01.tmx",
-        "tutorial-05.tmx",
         "tutorial-04.tmx",
         "tutorial-03.tmx",
-        "tutorial-02.tmx",
-        "tutorial-01.tmx",
-        "bluePrint.tmx",
-        "level-98.tmx"
+        "tutorial-02.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

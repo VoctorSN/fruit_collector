@@ -46,7 +46,7 @@
   <object id="79" name="Kiwi" type="Fruit" x="32" y="176" width="32" height="32"/>
   <object id="80" name="Orange" type="Fruit" x="32" y="128" width="32" height="32"/>
   <object id="81" name="Bananas" type="Fruit" x="80" y="128" width="32" height="32"/>
-  <object id="82" name="Cherriess" type="Fruit" x="128" y="128" width="32" height="32"/>
+  <object id="82" name="Cherries" type="Fruit" x="128" y="128" width="32" height="32"/>
   <object id="83" name="Melon" type="Fruit" x="80" y="80" width="32" height="32"/>
   <object id="84" name="Pineapple" type="Fruit" x="32" y="80" width="32" height="32"/>
   <object id="85" name="Strawberry" type="Fruit" x="128" y="80" width="32" height="32"/>
@@ -203,9 +203,9 @@
     <property name="startIn" type="int" value="0"/>
    </properties>
   </object>
-  <object id="118" name="SawV" type="Saw" x="368" y="144" width="32" height="32">
+  <object id="118" name="SawH" type="Saw" x="368" y="144" width="32" height="32">
    <properties>
-    <property name="isVertical" type="bool" value="true"/>
+    <property name="isVertical" type="bool" value="false"/>
     <property name="offNeg" type="float" value="1"/>
     <property name="offPos" type="float" value="4"/>
    </properties>

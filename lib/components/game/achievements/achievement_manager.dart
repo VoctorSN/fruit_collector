@@ -60,6 +60,7 @@ class AchievementManager {
     final unlockedAchievements = await achievementService.getUnlockedAchievementsForGame(game.gameData!.id);
     print('unlockedAchievements $unlockedAchievements');
     allAchievements.addAll(achievementData);
+    print('stats ${game.gameData}');
     print('stats ${game.levels}');
 
     for (final achievementData in allAchievements) {
