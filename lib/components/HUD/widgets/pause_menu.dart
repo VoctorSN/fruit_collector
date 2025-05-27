@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_collector/components/HUD/widgets/settings/settings_menu.dart';
 
@@ -64,11 +63,9 @@ class PauseMenu extends StatelessWidget {
                 onPressed: () {
                   game.overlays.remove(PauseMenu.id);
                   game.resumeEngine();
+                  game.soundManager.startDefaultBGM(game.settings);
                   if (game.settings.isMusicActive) {
-                    game.soundManager.startDefaultBGM(game.settings.musicVolume);
                     game.soundManager.resumeAll();
-                  } else {
-                    game.soundManager.stopBGM();
                   }
                 },
                 icon: Icon(Icons.play_arrow, color: textColor),

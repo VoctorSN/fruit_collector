@@ -1,10 +1,15 @@
 import 'dart:async';
+
 import 'package:flame_audio/flame_audio.dart' as flame;
 import 'package:just_audio/just_audio.dart';
 
+import '../../bbdd/models/settings.dart';
+
 class SoundManager {
   static final SoundManager _instance = SoundManager._internal();
+
   factory SoundManager() => _instance;
+
   SoundManager._internal();
 
   final Map<String, AudioPlayer> _players = {};
@@ -48,14 +53,23 @@ class SoundManager {
   }
 
   void playCollectFruit(double volume) => play('collect_fruit', volume * mutedVolume);
+
   void playHit(double volume) => play('hit', volume * mutedVolume);
+
   void playBounce(double volume) => play('bounce', volume * mutedVolume);
+
   void playDisappear(double volume) => play('disappear', volume * mutedVolume);
+
   void playSmash(double volume) => play('smash', volume * mutedVolume);
+
   void playRockheadAttacking(double volume) => play('rockhead', volume * mutedVolume);
+
   void playAppearGhost(double volume) => play('appearGhost', volume * mutedVolume);
+
   void playDisappearGhost(double volume) => play('disappearGhost', volume * mutedVolume);
+
   void playFire(double volume) => play('fire', volume * mutedVolume);
+
   void playGlitch(double volume) => play('glitch', volume * mutedVolume);
 
   void playJump(double volume) {
@@ -88,16 +102,28 @@ class SoundManager {
     _initialized = false;
   }
 
-  void startDefaultBGM(double volumeToPlay) {
-    flame.FlameAudio.bgm.play('bgm_default.mp3', volume: volumeToPlay);
+  void startDefaultBGM(Settings settings) {
+    if (settings.isMusicActive) {
+      flame.FlameAudio.bgm.play('bgm_default.mp3', volume: settings.musicVolume);
+    } else {
+      stopBGM();
+    }
   }
 
-  void startBossBGM(double volumeToPlay) {
-    flame.FlameAudio.bgm.play('bgm_boss.mp3', volume: volumeToPlay);
+  void startBossBGM(Settings settings) {
+    if (settings.isMusicActive) {
+      flame.FlameAudio.bgm.play('bgm_boss.mp3', volume: settings.musicVolume);
+    } else {
+      stopBGM();
+    }
   }
 
-  void startCreditsBGM(double volumeToPlay) {
-    flame.FlameAudio.bgm.play('bgm_credits.mp3', volume: volumeToPlay);
+  void startCreditsBGM(Settings settings) {
+    if (settings.isMusicActive) {
+      flame.FlameAudio.bgm.play('bgm_credits.mp3', volume: settings.musicVolume);
+    } else {
+      stopBGM();
+    }
   }
 
   void stopBGM() {
