@@ -337,6 +337,7 @@ class Player extends SpriteAnimationGroupComponent
     if (isRespawning) return;
 
     game.level.registerDeath();
+    game.level.starsCollected = 0;
     isRespawning = true;
 
     if (game.settings.isSoundEnabled) SoundManager().playHit(game.settings.gameVolume);

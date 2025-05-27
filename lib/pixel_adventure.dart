@@ -304,22 +304,22 @@ class PixelAdventure extends FlameGame
     updateGlobalStats();
 
     if (gameData != null) {
-      final int currentLevel = gameData!.currentLevel + 1;
-      GameLevel currentGameLevel = levels[currentLevel - 1]['gameLevel'] as GameLevel;
+      final int currentLevel = gameData!.currentLevel;
+      GameLevel currentGameLevel = levels[currentLevel]['gameLevel'] as GameLevel;
 
-      levels[currentLevel - 1]['gameLevel'].stars = level.starsCollected;
+      levels[currentLevel]['gameLevel'].stars = level.getStars();
 
       // Marcar el nivel como completado
       currentGameLevel.completed = true;
       currentGameLevel.time = level.levelTime;
       currentGameLevel.deaths = level.deathCount;
-      print('Level $currentLevel marked as completed!');
+      print('Level ${currentLevel + 1} marked as completed!');
 
       // Unlock the next level if exists
-      if (currentLevel < levels.length) {
-        GameLevel nextGameLevel = levels[currentLevel]['gameLevel'] as GameLevel;
+      if (currentLevel + 1 < levels.length) {
+        GameLevel nextGameLevel = levels[currentLevel + 1]['gameLevel'] as GameLevel;
         nextGameLevel.unlocked = true;
-        print('Level ${currentLevel + 1} unlocked!');
+        print('Level ${currentLevel + 2} unlocked!');
         addLevelSummaryScreen();
       } else {
         soundManager.stopBGM();
