@@ -10,13 +10,13 @@ import 'package:fruit_collector/components/game/level/sound_manager.dart';
 import 'package:fruit_collector/pixel_adventure.dart';
 
 import '../../content/blocks/collision_block.dart';
-import '../../util/utils.dart';
+import '../../util/collisionable_with_hitbox.dart';
 import '../levelBasics/player.dart';
 import '../levelExtras/confetti.dart';
 
 enum SnailState { idle, walk, hit, shellWallHit, shellIdle }
 
-class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<PixelAdventure>, PlayerCollidable {
+class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<PixelAdventure>, PlayerCollidable, CollisionableWithHitbox {
   // Constructor and attributes
   final double offNeg;
   final double offPos;
@@ -55,6 +55,7 @@ class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGa
   late async.Timer transformShellTimer;
   late async.Timer jumpTimer;
 
+  @override
   RectangleHitbox hitbox = RectangleHitbox(position: Vector2.zero(), size: Vector2(48, 48));
 
   // Animations logic
@@ -126,7 +127,7 @@ class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGa
   void _checkVerticalCollisions() {
     for (final block in collisionBlocks) {
       if (block.isPlatform) {
-        if (checkCollisionSnail(this, block)) {
+        if (super.checkCollision(block)) {
           if (velocity.y > 0) {
             isOnGround = true;
             velocity.y = 0;
@@ -136,7 +137,7 @@ class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGa
           }
         }
       } else {
-        if (checkCollisionSnail(this, block)) {
+        if (super.checkCollision(block)) {
           if (velocity.y > 0) {
             velocity.y = 0;
             position.y = block.y - hitbox.height;
@@ -157,7 +158,7 @@ class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGa
   void _checkHorizontalCollisions() {
     for (final block in collisionBlocks) {
       if (!block.isPlatform) {
-        if (checkCollisionSnail(this, block)) {
+        if (super.checkCollision(block)) {
           if (velocity.x > 0) {
             position.x = block.x - width - (scale.x.clamp(-1, 0) * width);
           }
