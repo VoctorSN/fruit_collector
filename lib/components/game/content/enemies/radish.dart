@@ -5,17 +5,18 @@ import 'dart:ui';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/particles.dart';
+import 'package:fruit_collector/components/game/content/enemies/player_collidable.dart';
 import 'package:fruit_collector/components/game/level/sound_manager.dart';
 import 'package:fruit_collector/pixel_adventure.dart';
 
 import '../../content/blocks/collision_block.dart';
-import '../../util/utils.dart';
+import '../../util/collisionable_with_hitbox.dart';
 import '../levelBasics/player.dart';
 
 enum RadishState { flying, idle, run, hit }
 
 /// TODO : add leafs animation
-class Radish extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<PixelAdventure> {
+class Radish extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<PixelAdventure>, PlayerCollidable, CollisionableWithHitbox {
   // Constructor and attributes
   final double offNeg;
   final double offPos;
@@ -38,6 +39,7 @@ class Radish extends SpriteAnimationGroupComponent with CollisionCallbacks, HasG
   late final SpriteAnimation _hitAnimation;
   static const stepTime = 0.05;
   static final textureSize = Vector2(30, 38);
+  @override
   late RectangleHitbox hitbox = RectangleHitbox(position: Vector2.zero(), size: Vector2(30, 38));
 
   // Movement logic (on air)
@@ -58,6 +60,7 @@ class Radish extends SpriteAnimationGroupComponent with CollisionCallbacks, HasG
 
   // Death logic
   static const _bounceHeight = 260.0;
+  @override
   late final Player player;
   bool gotStomped = false;
 
@@ -117,7 +120,7 @@ class Radish extends SpriteAnimationGroupComponent with CollisionCallbacks, HasG
 
   void _checkVerticalCollisions() {
     for (final block in collisionBlocks) {
-      if (checkCollisionRadish(this, block)) {
+      if (super.checkCollision(block)) {
         if (velocity.y > 0) {
           final radishBottom = position.y + size.y;
           final blockTop = block.y;
@@ -181,7 +184,7 @@ class Radish extends SpriteAnimationGroupComponent with CollisionCallbacks, HasG
 
   void _checkHorizontalCollisions() {
     for (final block in collisionBlocks) {
-      if (!block.isPlatform && checkCollisionRadish(this, block)) {
+      if (!block.isPlatform && super.checkCollision(block)) {
         if (velocity.x > 0) {
           position.x = block.x;
           turnBack(-1);
@@ -212,6 +215,7 @@ class Radish extends SpriteAnimationGroupComponent with CollisionCallbacks, HasG
     position.y += velocity.y * dt;
   }
 
+  @override
   void collidedWithPlayer() async {
     if (player.velocity.y > 0 && player.y + player.height > position.y) {
       if (game.settings.isSoundEnabled) SoundManager().playBounce(game.settings.gameVolume);

@@ -1,21 +1,20 @@
 import 'dart:async';
-import 'dart:ui';
 
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:fruit_collector/components/game/content/enemies/player_collidable.dart';
 import 'package:fruit_collector/components/game/level/sound_manager.dart';
 import 'package:fruit_collector/pixel_adventure.dart';
 
 import '../../content/blocks/collision_block.dart';
-import '../../util/custom_hitbox.dart';
-import '../../util/utils.dart';
+import '../../util/collisionable_with_hitbox.dart';
 import '../levelBasics/player.dart';
 
 enum RockState { idle, run, hit }
 
 enum RockType { big, medium, mini }
 
-class Rock extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<PixelAdventure> {
+class Rock extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<PixelAdventure>, PlayerCollidable, CollisionableWithHitbox {
 
   // Constructor and attributes
   final List<CollisionBlock> collisionBlocks;
@@ -58,9 +57,11 @@ class Rock extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGam
   final double _maximunVelocity = 1000;
   final double _terminalVelocity = 300;
 
+  @override
   RectangleHitbox hitbox = RectangleHitbox();
 
   // Division logic
+  @override
   late final Player player = game.player;
   static const _bounceHeight = 260.0;
   bool gotStomped = false;
@@ -140,7 +141,7 @@ class Rock extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGam
 
   void _checkVerticalCollisions() {
     for (final block in collisionBlocks) {
-      if (checkCollisionRock(this, block)) {
+      if (super.checkCollision(block)) {
         if (velocity.y > 0) {
           velocity.y = 0;
           position.y = block.y - hitbox.height;
@@ -219,6 +220,7 @@ class Rock extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGam
     }
   }
 
+  @override
   void collidedWithPlayer() async {
     if (player.velocity.y > 0 && player.y + player.height > position.y) {
       /// TODO: arreglar offsets
