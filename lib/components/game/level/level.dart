@@ -24,6 +24,7 @@ import '../content/blocks/door.dart';
 import '../content/blocks/falling_block.dart';
 import '../content/blocks/trampoline.dart';
 import '../content/enemies/ghost.dart';
+import '../content/enemies/pee_shooter.dart';
 import '../content/enemies/radish.dart';
 import '../content/enemies/rock.dart';
 import '../content/enemies/snail.dart';
@@ -70,6 +71,7 @@ class Level extends World with HasGameReference<PixelAdventure> {
     SpikeHead,
     Snail,
     Rock,
+    PeeShooter,
     Radish,
     Door,
   ];
@@ -246,6 +248,17 @@ class Level extends World with HasGameReference<PixelAdventure> {
               addSpawnPoint: addSpawnPoint,
             );
             add(bee);
+            break;
+          case 'PeeShooter':
+            final peeShooter = PeeShooter(
+              position: Vector2(spawnPoint.x, spawnPoint.y+6),
+              size: Vector2(spawnPoint.width, spawnPoint.height),
+              range: spawnPoint.properties.getValue('range'),
+              collisionBlocks: collisionBlocks,
+              addSpawnPoint: addSpawnPoint,
+              lookDirection: spawnPoint.properties.getValue('lookDirection'),
+            );
+            add(peeShooter);
             break;
           case 'Snail':
             final snail = Snail(
