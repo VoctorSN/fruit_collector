@@ -5,6 +5,7 @@ import 'dart:ui';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/particles.dart';
+import 'package:fruit_collector/components/game/content/enemies/player_collidable.dart';
 import 'package:fruit_collector/components/game/level/sound_manager.dart';
 import 'package:fruit_collector/pixel_adventure.dart';
 
@@ -15,7 +16,7 @@ import '../levelBasics/player.dart';
 enum RadishState { flying, idle, run, hit }
 
 /// TODO : add leafs animation
-class Radish extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<PixelAdventure> {
+class Radish extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<PixelAdventure>, PlayerCollidable {
   // Constructor and attributes
   final double offNeg;
   final double offPos;
@@ -58,6 +59,7 @@ class Radish extends SpriteAnimationGroupComponent with CollisionCallbacks, HasG
 
   // Death logic
   static const _bounceHeight = 260.0;
+  @override
   late final Player player;
   bool gotStomped = false;
 
@@ -212,6 +214,7 @@ class Radish extends SpriteAnimationGroupComponent with CollisionCallbacks, HasG
     position.y += velocity.y * dt;
   }
 
+  @override
   void collidedWithPlayer() async {
     if (player.velocity.y > 0 && player.y + player.height > position.y) {
       if (game.settings.isSoundEnabled) SoundManager().playBounce(game.settings.gameVolume);
