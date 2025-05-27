@@ -56,9 +56,6 @@
   <object id="55" type="GameText" x="24.1029" y="151.29" width="112" height="80">
    <text fontfamily="ArcadeClassic" wrap="1" color="#ffffff" halign="center">USE   THE   TRAMPOLINE   TO   JUMP   HIGHER   💯</text>
   </object>
-  <object id="56" type="GameText" x="320" y="32" width="183.897" height="48">
-   <text fontfamily="ArcadeClassic" wrap="1" color="#ffffff" halign="center">JUMP   FAST   AND   DONT   FALL   😱</text>
-  </object>
   <object id="57" name="Fan" type="Fan" x="560" y="240" width="16" height="32">
    <properties>
     <property name="directionRight" type="bool" value="false"/>

@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "tutorial-04.tmx",
+    "activeFile": "level-04.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -155,8 +155,8 @@
         },
         "bluePrint.tmx": {
             "expandedObjectLayers": [
-                2,
-                3
+                3,
+                2
             ],
             "scale": 1.5007031249999998,
             "selectedLayer": 1,
@@ -206,14 +206,14 @@
         },
         "level-04.tmx": {
             "expandedObjectLayers": [
-                2,
-                3
+                3,
+                2
             ],
             "scale": 1.5,
-            "selectedLayer": 2,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 318.6666666666667,
-                "y": 215.66666666666663
+                "x": 313.33333333333326,
+                "y": 210.33333333333337
             }
         },
         "level-05.tmx": {
@@ -365,7 +365,7 @@
                 2
             ],
             "scale": 1.5,
-            "selectedLayer": 2,
+            "selectedLayer": 1,
             "viewCenter": {
                 "x": 319.33333333333326,
                 "y": 183.66666666666663
@@ -412,25 +412,24 @@
     "map.tileWidth": 16,
     "map.width": 40,
     "openFiles": [
-        "level-99.tmx",
-        "level-100.tmx",
-        "tutorial-04.tmx"
+        "bluePrint.tmx",
+        "level-04.tmx"
     ],
     "project": "Pixel Adventure.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "level-01.tmx",
-        "tutorial-01.tmx",
-        "level-98.tmx",
-        "tutorial-05.tmx",
         "tutorial-04.tmx",
+        "tutorial-05.tmx",
         "tutorial-03.tmx",
         "tutorial-02.tmx",
+        "tutorial-01.tmx",
+        "bluePrint.tmx",
+        "level-04.tmx",
+        "level-01.tmx",
+        "level-98.tmx",
         "level-05.tmx",
         "level-03.tmx",
-        "level-02.tmx",
-        "level-100.tmx",
-        "level-99.tmx"
+        "level-02.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

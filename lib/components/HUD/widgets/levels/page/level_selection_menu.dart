@@ -16,12 +16,7 @@ class LevelSelectionMenu extends StatelessWidget {
   final void Function(int) onLevelSelected;
   final PixelAdventure game;
 
-  const LevelSelectionMenu({
-    super.key,
-    required this.game,
-    required this.totalLevels,
-    required this.onLevelSelected,
-  });
+  const LevelSelectionMenu({super.key, required this.game, required this.totalLevels, required this.onLevelSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -32,15 +27,16 @@ class LevelSelectionMenu extends StatelessWidget {
         const Color cardColor = Color(0xFF3A3750);
         const Color borderColor = Color(0xFF5A5672);
         const Color textColor = Color(0xFFE1E0F5);
-   const double cardSpacing = 12;
-   const double minCardSize = 90;
-   const double minCardsPerRow = 3;
-  void onBack() {
-    game.soundManager.resumeAll();
-    game.overlays.remove(LevelSelectionMenu.id);
-    game.resumeEngine();
-  }
-  final ScrollController scrollController = ScrollController();
+        const double cardSpacing = 12;
+        const double minCardSize = 90;
+        const double minCardsPerRow = 3;
+        void onBack() {
+          game.soundManager.resumeAll();
+          game.overlays.remove(LevelSelectionMenu.id);
+          game.resumeEngine();
+        }
+
+        final ScrollController scrollController = ScrollController();
 
         final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
           backgroundColor: cardColor,
@@ -53,160 +49,161 @@ class LevelSelectionMenu extends StatelessWidget {
           elevation: 6,
         );
 
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: Center(
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              final double maxWidth = (constraints.maxWidth * 0.8).clamp(0.0, 800.0);
-              final double maxHeight = (constraints.maxHeight * 0.8).clamp(0.0, 600.0);
-              final double availableWidth = maxWidth - 96;
-              final double calculatedCardsPerRow = (availableWidth / (minCardSize + cardSpacing)).floorToDouble();
-              final double cardsPerRow = calculatedCardsPerRow.clamp(minCardsPerRow, double.infinity);
-              final double cardSize = (availableWidth - (cardSpacing * (cardsPerRow - 1))) / cardsPerRow;
+        return Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Center(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  final double maxWidth = (constraints.maxWidth * 0.8).clamp(0.0, 800.0);
+                  final double maxHeight = (constraints.maxHeight * 0.8).clamp(0.0, 600.0);
+                  final double availableWidth = maxWidth - 96;
+                  final double calculatedCardsPerRow = (availableWidth / (minCardSize + cardSpacing)).floorToDouble();
+                  final double cardsPerRow = calculatedCardsPerRow.clamp(minCardsPerRow, double.infinity);
+                  final double cardSize = (availableWidth - (cardSpacing * (cardsPerRow - 1))) / cardsPerRow;
 
-  void scrollByRow({required bool forward, required double rowSize}) {
-    final double rowHeight = rowSize + cardSpacing;
-    final double currentOffset = scrollController.offset;
-    final int currentRow = (currentOffset / rowHeight).round();
+                  void scrollByRow({required bool forward, required double rowSize}) {
+                    final double rowHeight = rowSize + cardSpacing;
+                    final double currentOffset = scrollController.offset;
+                    final int currentRow = (currentOffset / rowHeight).round();
 
-    final int targetRow = forward ? currentRow + 1 : (currentRow - 1).clamp(0, double.infinity).toInt();
-    final double targetOffset = targetRow * rowHeight;
+                    final int targetRow = forward ? currentRow + 1 : (currentRow - 1).clamp(0, double.infinity).toInt();
+                    final double targetOffset = targetRow * rowHeight;
 
-    scrollController.animateTo(
-      targetOffset,
-      duration: const Duration(milliseconds: 250),
-      curve: Curves.easeOut,
-    );
-  }
+                    scrollController.animateTo(
+                      targetOffset,
+                      duration: const Duration(milliseconds: 250),
+                      curve: Curves.easeOut,
+                    );
+                  }
 
-              return Container(
-                width: maxWidth,
-                height: maxHeight,
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: baseColor.withOpacity(0.95),
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: borderColor, width: 2),
-                ),
-                child: Column(
-                  children: [
-                    Text(
-                      'Select Level',
-                      style: TextStyleSingleton().style.copyWith(
-                        fontSize: 28,
-                        color: textColor,
-                        shadows: const [
-                          Shadow(
-                            color: Colors.black,
-                            offset: Offset(2, 2),
-                            blurRadius: 1,
-                          ),
-                        ],
-                      ),
+                  return Container(
+                    width: maxWidth,
+                    height: maxHeight,
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: baseColor.withOpacity(0.95),
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: borderColor, width: 2),
                     ),
-                    const SizedBox(height: 16),
-                    Expanded(
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: SingleChildScrollView(
-                              controller: scrollController,
-                              child: Wrap(
-                                spacing: cardSpacing,
-                                runSpacing: cardSpacing,
-                                alignment: WrapAlignment.center,
-                                children: List.generate(totalLevels, (index) {
-                                  final int level = index;
-                                  final bool isUnlocked = game.unlockedLevelIndices.contains(level);
-                                  final bool isCompleted = game.completedLevelIndices.contains(level);
-
-                                  return SizedBox(
-                                    height: cardSize,
-                                    width: cardSize,
-                                    child: LevelCard(
-                                      levelNumber: level,
-                                      onTap: isUnlocked ? () => onLevelSelected(level) : null,
-                                      cardColor: cardColor,
-                                      stars: game.starsPerLevel[index] ?? 0,
-                                      textColor: textColor,
-                                      isLocked: !isUnlocked,
-                                      isCompleted: isCompleted,
-                                      difficulty: game.levels[index]['level'].difficulty ?? 0,
-                                      deaths: game.levels[index]['gameLevel'].deaths ?? 0,
-                                      duration: game.levels[index]['gameLevel'].time ?? 0,
-                                    ),
-                                  );
-                                }),
-                              ),
-                            ),
+                    child: Column(
+                      children: [
+                        Text(
+                          'Select Level',
+                          style: TextStyleSingleton().style.copyWith(
+                            fontSize: 28,
+                            color: textColor,
+                            shadows: const [Shadow(color: Colors.black, offset: Offset(2, 2), blurRadius: 1)],
                           ),
-                          const SizedBox(width: 12),
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
+                        ),
+                        const SizedBox(height: 16),
+                        Expanded(
+                          child: Row(
                             children: [
-                              _buildScrollButton(
-                                icon: Icons.keyboard_arrow_up,
-                                onPressed: () => scrollByRow(forward: false, rowSize: cardSize),
-                                color: cardColor,
-                                iconColor: textColor,
-                                borderColor: borderColor,
+                              Expanded(
+                                child: SingleChildScrollView(
+                                  controller: scrollController,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: 6),
+                                    child: Wrap(
+                                      spacing: cardSpacing,
+                                      runSpacing: cardSpacing,
+                                      alignment: WrapAlignment.center,
+                                      children: List.generate(totalLevels, (index) {
+                                        final int level = index;
+                                        final bool isUnlocked = game.unlockedLevelIndices.contains(level);
+                                        final bool isCompleted = game.completedLevelIndices.contains(level);
+
+                                        return SizedBox(
+                                          height: cardSize,
+                                          width: cardSize,
+                                          child: LevelCard(
+                                            isCurrentLevel: (game.gameData?.currentLevel ?? -1) == index,
+                                            levelNumber: level,
+                                            onTap: isUnlocked ? () => onLevelSelected(level) : null,
+                                            cardColor: cardColor,
+                                            stars: game.starsPerLevel[index] ?? 0,
+                                            textColor: textColor,
+                                            isLocked: !isUnlocked,
+                                            isCompleted: isCompleted,
+                                            difficulty: game.levels[index]['level'].difficulty ?? 0,
+                                            deaths: game.levels[index]['gameLevel'].deaths ?? 0,
+                                            duration: game.levels[index]['gameLevel'].time ?? 0,
+                                          ),
+                                        );
+                                      }),
+                                    ),
+                                  ),
+                                ),
                               ),
-                              const SizedBox(height: 8),
-                              _buildScrollButton(
-                                icon: Icons.keyboard_arrow_down,
-                                onPressed: () => scrollByRow(forward: true, rowSize: cardSize),
-                                color: cardColor,
-                                iconColor: textColor,
-                                borderColor: borderColor,
+                              const SizedBox(width: 12),
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  _buildScrollButton(
+                                    icon: Icons.keyboard_arrow_up,
+                                    onPressed: () => scrollByRow(forward: false, rowSize: cardSize),
+                                    color: cardColor,
+                                    iconColor: textColor,
+                                    borderColor: borderColor,
+                                  ),
+                                  const SizedBox(height: 8),
+                                  _buildScrollButton(
+                                    icon: Icons.keyboard_arrow_down,
+                                    onPressed: () => scrollByRow(forward: true, rowSize: cardSize),
+                                    color: cardColor,
+                                    iconColor: textColor,
+                                    borderColor: borderColor,
+                                  ),
+                                ],
                               ),
                             ],
                           ),
-                        ],
-                      ),
+                        ),
+                        const SizedBox(height: 16),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                const Icon(FontAwesomeIcons.skull, size: 12, color: Colors.white),
+                                const SizedBox(width: 6),
+                                Text(
+                                  '${game.gameData?.totalDeaths ?? 0}',
+                                  style: TextStyleSingleton().style.copyWith(fontSize: 14, color: textColor),
+                                ),
+                              ],
+                            ),
+                            ElevatedButton.icon(
+                              style: buttonStyle,
+                              onPressed: onBack,
+                              icon: const Icon(Icons.arrow_back, color: textColor),
+                              label: Text(
+                                'BACK',
+                                style: TextStyleSingleton().style.copyWith(fontSize: 14, color: textColor),
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  '${game.gameData?.totalTime ?? 0}',
+                                  style: TextStyleSingleton().style.copyWith(fontSize: 14, color: textColor),
+                                ),
+                                const SizedBox(width: 6),
+                                const Icon(Icons.access_time, size: 18, color: textColor),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          const Icon(FontAwesomeIcons.skull, size: 12, color: Colors.white),
-                          const SizedBox(width: 6),
-                          Text(
-                            '${game.gameData?.totalDeaths ?? 0}',
-                            style: TextStyleSingleton().style.copyWith(fontSize: 14, color: textColor),
-                          ),
-                        ],
-                      ),
-                      ElevatedButton.icon(
-                        style: buttonStyle,
-                        onPressed: onBack,
-                        icon: const Icon(Icons.arrow_back, color: textColor),
-                        label: Text('BACK', style: TextStyleSingleton().style.copyWith(fontSize: 14, color: textColor)),
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            '${game.gameData?.totalTime ?? 0}',
-                            style: TextStyleSingleton().style.copyWith(fontSize: 14, color: textColor,),
-                          ),
-                          const SizedBox(width: 6),
-                          const Icon(Icons.access_time, size: 18, color: textColor),
-                        ],
-                      ),
-                    ],
-                  ),
-                  ],
-                ),
-              );
-            },
+                  );
+                },
+              ),
+            ),
           ),
-        ),
-      ),
-    );
+        );
       },
     );
   }

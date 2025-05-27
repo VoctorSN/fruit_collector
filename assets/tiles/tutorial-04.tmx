@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="514">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="516">
  <tileset firstgid="1" name="Pixel Adventure" tilewidth="16" tileheight="16" tilecount="242" columns="22">
   <image source="../images/Terrain/Terrain (16x16).png" width="352" height="176"/>
  </tileset>
@@ -63,6 +63,9 @@
    <properties>
     <property name="objectInside" value="1"/>
    </properties>
+  </object>
+  <object id="515" type="GameText" x="96" y="144" width="96" height="48">
+   <text fontfamily="ArcadeClassic" wrap="1" color="#ffffff" halign="center">move and jump freely  🤾</text>
   </object>
  </objectgroup>
  <objectgroup id="2" name="Collisions">
@@ -141,5 +144,12 @@
   </object>
   <object id="512" x="400" y="96" width="16" height="144"/>
   <object id="513" x="416" y="96" width="208" height="16"/>
+  <object id="514" type="Platform" x="208" y="96" width="96" height="16">
+   <properties>
+    <property name="fallingDurationMillSec" type="int" value="0"/>
+    <property name="falls" type="bool" value="false"/>
+    <property name="isSideSensible" type="bool" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
