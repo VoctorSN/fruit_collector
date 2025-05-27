@@ -71,6 +71,7 @@ flutter:
     - assets/images/Enemies/Bee/
     - assets/images/Enemies/Ghost/
     - assets/images/Enemies/Snail/
+    - assets/images/Enemies/Plant/
     - assets/images/Traps/Trampoline/
     - assets/images/Traps/Fan/
     - assets/images/Traps/Fire/

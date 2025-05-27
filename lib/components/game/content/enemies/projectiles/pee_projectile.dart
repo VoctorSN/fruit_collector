@@ -29,7 +29,7 @@ class PeeProjectile extends SpriteComponent
     await super.onLoad();
     sprite = await game.loadSprite('Enemies/Plant/Bullet.png');
     priority = 5;
-    add(RectangleHitbox());
+    add(RectangleHitbox(size: Vector2(8, 8), position: Vector2(4, 4)));
   }
 
   @override
@@ -65,7 +65,7 @@ class PeeProjectile extends SpriteComponent
               speed: Vector2(0,5),
               child: SpriteParticle(
                 sprite: sprite,
-                size: particleSize, // Tamaño de cada fragmento
+                size: particleSize,
               ),
             ),
       ),

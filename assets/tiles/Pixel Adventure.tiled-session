@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "level-04.tmx",
+    "activeFile": "tutorial-01.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -170,11 +170,11 @@
                 3,
                 2
             ],
-            "scale": 1.5,
-            "selectedLayer": 1,
+            "scale": 1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 322.6666666666667,
-                "y": 163.66666666666663
+                "x": 213,
+                "y": 312.5
             }
         },
         "level-01.tmx#Pixel Adventure": {
@@ -186,10 +186,10 @@
                 2
             ],
             "scale": 1.5,
-            "selectedLayer": 1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 319.33333333333326,
-                "y": 179.66666666666663
+                "x": 340.6666666666667,
+                "y": 203.66666666666663
             }
         },
         "level-03.tmx": {
@@ -210,7 +210,7 @@
                 2
             ],
             "scale": 1.5,
-            "selectedLayer": 1,
+            "selectedLayer": 3,
             "viewCenter": {
                 "x": 322.6666666666667,
                 "y": 192.99999999999997
@@ -222,22 +222,22 @@
                 2
             ],
             "scale": 1.5,
-            "selectedLayer": 1,
+            "selectedLayer": 2,
             "viewCenter": {
                 "x": 320.6666666666667,
-                "y": 162.99999999999997
+                "y": 165.66666666666663
             }
         },
         "level-06.tmx": {
             "expandedObjectLayers": [
-                2,
-                3
+                3,
+                2
             ],
             "scale": 1.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 319.33333333333326,
-                "y": 183.66666666666663
+                "x": 303.33333333333326,
+                "y": 198.33333333333337
             }
         },
         "level-07.tmx": {
@@ -331,14 +331,14 @@
         },
         "tutorial-01.tmx": {
             "expandedObjectLayers": [
-                4,
-                2
+                2,
+                4
             ],
             "scale": 1.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 323.33333333333326,
-                "y": 184.33333333333337
+                "x": 291.33333333333326,
+                "y": 214.99999999999997
             }
         },
         "tutorial-01.tmx#Pixel Adventure": {
@@ -346,8 +346,8 @@
         },
         "tutorial-02.tmx": {
             "expandedObjectLayers": [
-                4,
-                2
+                2,
+                4
             ],
             "scale": 1.5,
             "selectedLayer": 1,
@@ -361,14 +361,14 @@
         },
         "tutorial-03.tmx": {
             "expandedObjectLayers": [
-                4,
-                2
+                2,
+                4
             ],
             "scale": 1.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 319.33333333333326,
-                "y": 183.66666666666663
+                "x": 346.6666666666667,
+                "y": 188.33333333333337
             }
         },
         "tutorial-03.tmx#Pixel Adventure": {
@@ -376,8 +376,8 @@
         },
         "tutorial-04.tmx": {
             "expandedObjectLayers": [
-                4,
-                2
+                2,
+                4
             ],
             "scale": 1.5,
             "selectedLayer": 0,
@@ -391,8 +391,8 @@
         },
         "tutorial-05.tmx": {
             "expandedObjectLayers": [
-                4,
-                2
+                2,
+                4
             ],
             "scale": 1.5,
             "selectedLayer": 0,
@@ -412,22 +412,21 @@
     "map.tileWidth": 16,
     "map.width": 40,
     "openFiles": [
-        "bluePrint.tmx",
-        "level-04.tmx"
+        "tutorial-01.tmx"
     ],
     "project": "Pixel Adventure.tiled-project",
     "property.type": "int",
     "recentFiles": [
-        "level-02.tmx",
-        "level-01.tmx",
         "level-05.tmx",
         "level-04.tmx",
         "level-03.tmx",
+        "level-02.tmx",
+        "level-01.tmx",
         "tutorial-05.tmx",
         "tutorial-04.tmx",
         "tutorial-03.tmx",
-        "tutorial-01.tmx",
         "tutorial-02.tmx",
+        "tutorial-01.tmx",
         "bluePrint.tmx",
         "level-98.tmx"
     ],

@@ -60,7 +60,6 @@ class PeeShooter extends SpriteAnimationGroupComponent
 
   @override
   FutureOr<void> onLoad() {
-    debugMode = true;
     player = game.player;
     if (lookDirection == 1) {
       flipHorizontallyAroundCenter();
