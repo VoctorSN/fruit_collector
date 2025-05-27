@@ -34,7 +34,7 @@ class AchievementRepository {
   }
 
   Future<List<Achievement>> getAllAchievements() async {
-    final List<Map<String, Object?>> result = await _db.query('Achievements');
+    final List<Map<String, Object?>> result = await _db.query('Achievements', orderBy: 'difficulty');
 
     return result.map((map) => Achievement.fromMap(map)).toList();
   }

@@ -17,24 +17,35 @@ class AchievementManager {
 
   late final Map<String, Function> achievementConditions = {
     'It Begins': (PixelAdventure game) => (game.levels[0]['gameLevel'] as GameLevel).completed,
+    'The Chosen One':
+        (PixelAdventure game) => (game.levels.every((level) => (level['gameLevel'] as GameLevel).completed)),
+    'Level 4: Reloaded': (PixelAdventure game) => (game.levels[3]['gameLevel'] as GameLevel).completed,
+    'Untouchable':
+        (PixelAdventure game) =>
+            (game.levels.every((level) => (level['gameLevel'] as GameLevel).completed) &&
+                game.gameData!.totalDeaths == 0),
+    'Gotta Go Fast!':
+        (PixelAdventure game) =>
+            (game.levels.every((level) => (level['gameLevel'] as GameLevel).completed) &&
+                game.gameData!.totalTime <= 300),
+    'Shiny Hunter': (PixelAdventure game) => (game.levels[4]['gameLevel'] as GameLevel).stars == 3,
     'No Hit Run: Level 2':
         (PixelAdventure game) =>
-            (game.levels[1]['gameLevel'] as GameLevel).completed && (game.levels[1]['gameLevel'] as GameLevel).deaths == 0,
-    'Flashpoint': (PixelAdventure game) => (game.levels[5]['gameLevel'] as GameLevel).time != null && (game.levels[5]['gameLevel'] as GameLevel).time! <= 15,
-    'Level 4: Reloaded': (PixelAdventure game) => (game.levels[3]['gameLevel'] as GameLevel).completed,
-    'Shiny Hunter': (PixelAdventure game) => (game.levels[4]['gameLevel'] as GameLevel).stars == 3,
-    // 'Nivel 6 en 5 seg':
-    //     (PixelAdventure game) => stats.levelTimes[5] != null && stats.levelTimes[5]! < 5,
-    // 'Completa todos los niveles':
-    //     (PixelAdventure game) => stats.completedLevels.length >= game.levels.length,
-    // 'Speedrunner':
-    //     (PixelAdventure game) =>
-    //         stats.totalTime < 300 &&
-    //         stats.completedLevels.length == game.levels.length,
-    // 'Sin morir':
-    //     (PixelAdventure game) =>
-    //         stats.totalDeaths == 0 &&
-    //         stats.completedLevels.length == game.levels.length,
+            (game.levels[1]['gameLevel'] as GameLevel).completed &&
+            (game.levels[1]['gameLevel'] as GameLevel).deaths == 0,
+    'Flashpoint':
+        (PixelAdventure game) =>
+            (game.levels[5]['gameLevel'] as GameLevel).time != null &&
+            (game.levels[5]['gameLevel'] as GameLevel).time! <= 15,
+    'Completionist':
+        (PixelAdventure game) => game.achievements.every((a) => (a['gameAchievement'] as GameAchievement).achieved),
+    'Star Collector':
+        (PixelAdventure game) => game.levels.every((level) => (level['gameLevel'] as GameLevel).stars == 3),
+    'Death Defier': (PixelAdventure game) => game.levels.any((level) => (level['gameLevel'] as GameLevel).deaths >= 20),
+    'Flawless Victory':
+        (PixelAdventure game) =>
+            game.levels.every((level) => (level['gameLevel'] as GameLevel).stars == 3) &&
+            game.gameData!.totalDeaths == 0,
   };
 
   // Logic to show achievements
@@ -45,12 +56,8 @@ class AchievementManager {
     final achievementService = await AchievementService.getInstance();
     allAchievements.clear();
     if (game.gameData == null) return;
-    final achievementData = await achievementService.getAchievementsForGame(
-      game.gameData!.id,
-    );
-    final unlockedAchievements = await achievementService.getUnlockedAchievementsForGame(
-      game.gameData!.id,
-    );
+    final achievementData = await achievementService.getAchievementsForGame(game.gameData!.id);
+    final unlockedAchievements = await achievementService.getUnlockedAchievementsForGame(game.gameData!.id);
     print('unlockedAchievements $unlockedAchievements');
     allAchievements.addAll(achievementData);
     print('stats ${game.levels}');
@@ -67,10 +74,7 @@ class AchievementManager {
           game.achievements.where((ga) => ga['gameAchievement'].id == gameAchievement.id).forEach((gameAchievement) {
             gameAchievement['gameAchievement'].achieved = true;
           });
-          achievementService.unlockAchievement(
-            game.gameData!.id,
-            gameAchievement.achievementId,
-          );
+          achievementService.unlockAchievement(game.gameData!.id, gameAchievement.achievementId);
         }
       }
     }

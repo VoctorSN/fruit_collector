@@ -144,63 +144,84 @@ class DatabaseManager {
       'title': 'It Begins',
       'description':
           'Complete your first level. Every journey starts with a single step, even if that step lands directly on a spike trap. Unlock this achievement by finishing level 1 for the very first time.',
-      'difficulty': 10,
+      'difficulty': 1,
     });
-
     await db.insert('Achievements', {
       'id': 1002,
-      'title': 'The Chosen One',
-      'description':
-          'Conquer every single level in the game. You’ve crossed valleys, jumped through jungles, and survived countless bugs. Complete all available levels to earn this ultimate badge of honor.',
-      'difficulty': 3,
-    });
-
-    await db.insert('Achievements', {
-      'id': 1003,
       'title': 'Level 4: Reloaded',
       'description':
           'Overcome the chaos of level 4. You’ve witnessed fire traps, vanishing platforms, and physics-defying fruit. Survive all the hazards of level 4 and make it to the exit to unlock this.',
       'difficulty': 2,
     });
-
     await db.insert('Achievements', {
-      'id': 1004,
-      'title': 'Gotta Go Fast!',
-      'description':
-          'Finish the entire game in under 300 seconds. Speed through every level with lightning reflexes, memorized routes, and zero hesitation. Only true speedrunners will claim this.',
-      'difficulty': 8,
-    });
-
-    await db.insert('Achievements', {
-      'id': 1005,
-      'title': 'Untouchable',
-      'description':
-          'Complete the full game without dying a single time. From start to finish, no deaths, no second chances. This requires absolute precision and deep knowledge of every level.',
-      'difficulty': 5,
-    });
-
-    await db.insert('Achievements', {
-      'id': 1006,
+      'id': 1003,
       'title': 'Shiny Hunter',
       'description':
           'Find every hidden star in level 5. Some are visible, others are hidden behind fake walls or require risky jumps. Explore thoroughly and leave no tile unturned.',
       'difficulty': 3,
     });
-
     await db.insert('Achievements', {
-      'id': 1007,
+      'id': 1004,
       'title': 'No Hit Run: Level 2',
       'description':
           'Complete level 2 without taking any damage or dying. Avoid every trap, enemy, and hazard flawlessly. Timing, positioning, and nerves of steel are required.',
-      'difficulty': 6,
+      'difficulty': 3,
     });
-
     await db.insert('Achievements', {
-      'id': 1008,
+      'id': 1005,
       'title': 'Flashpoint',
       'description':
           'Clear level 6 in less than 15 seconds. Use perfect movement and any shortcuts you can find to defy space and time. This one demands absolute mastery.',
+      'difficulty': 4,
+    });
+    await db.insert('Achievements', {
+      'id': 1006,
+      'title': 'Death Defier',
+      'description':
+          'Die 20 or more times in a single level. Some call it persistence, others call it madness. Either way, you earned this badge the hard way.',
       'difficulty': 5,
+    });
+    await db.insert('Achievements', {
+      'id': 1007,
+      'title': 'The Chosen One',
+      'description':
+          'Conquer every single level in the game. You’ve crossed valleys, jumped through jungles, and survived countless bugs. Complete all available levels to earn this ultimate badge of honor.',
+      'difficulty': 6,
+    });
+    await db.insert('Achievements', {
+      'id': 1008,
+      'title': 'Star Collector',
+      'description':
+          'Collect all stars in every level. No secret was too hidden, no jump too far. The stars aligned for your perfect run, and you seized them all.',
+      'difficulty': 7,
+    });
+    await db.insert('Achievements', {
+      'id': 1009,
+      'title': 'Gotta Go Fast!',
+      'description':
+          'Finish the entire game in under 300 seconds. Speed through every level with lightning reflexes, memorized routes, and zero hesitation. Only true speedrunners will claim this.',
+      'difficulty': 8,
+    });
+    await db.insert('Achievements', {
+      'id': 1010,
+      'title': 'Untouchable',
+      'description':
+          'Complete the full game without dying a single time. From start to finish, no deaths, no second chances. This requires absolute precision and deep knowledge of every level.',
+      'difficulty': 8,
+    });
+    await db.insert('Achievements', {
+      'id': 1011,
+      'title': 'Flawless Victory',
+      'description':
+          'Earn every single star in the game without dying once. Not a single slip, not a single failure. This is the ultimate display of perfection and mastery.',
+      'difficulty': 9,
+    });
+    await db.insert('Achievements', {
+      'id': 1012,
+      'title': 'Completionist',
+      'description':
+          'Unlock every other achievement in the game. If you’re reading this, you’ve done it all: every challenge, every deathless run, every speedrun. There’s nothing left to prove.',
+      'difficulty': 10,
     });
 
     // INSERT INTO Levels
