@@ -8,6 +8,7 @@ import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_collector/components/HUD/buttons_game/custom_joystick.dart';
 import 'package:fruit_collector/components/HUD/widgets/achievements/page/achievement_details.dart';
+import 'package:fruit_collector/components/HUD/widgets/characters/page/character_toast.dart';
 import 'package:fruit_collector/components/HUD/widgets/main_menu/main_menu.dart';
 import 'package:fruit_collector/components/bbdd/models/game_achievement.dart';
 import 'package:fruit_collector/components/bbdd/models/game_level.dart';
@@ -129,7 +130,10 @@ class PixelAdventure extends FlameGame
   // Logic to manage achievements
   late final AchievementManager achievementManager = AchievementManager(game: this);
   late final CharacterManager characterManager = CharacterManager(game: this);
+  bool isShowingToast = false;
+  Map<String, List<dynamic>> pendingToasts = {'achievements': [], 'characters': []};
   Achievement? currentShowedAchievement;
+  Character? currentShowedCharacter;
   Achievement? currentAchievement;
   GameAchievement? currentGameAchievement;
   Map<int, int> levelTimes = {};
@@ -216,11 +220,11 @@ class PixelAdventure extends FlameGame
       'level_summary',
       (context, game) => LevelSummaryOverlay(
         game: this,
-        onContinue: () {
+        onContinue: ()async {
           overlays.remove('level_summary');
           changeLevelScreen.startExpand();
-          achievementManager.evaluate();
-          characterManager.evaluate();
+          await achievementManager.evaluate();
+          await characterManager.evaluate();
         },
       ),
     );
@@ -235,6 +239,15 @@ class PixelAdventure extends FlameGame
           : AchievementToast(
             achievement: pixelAdventure.currentShowedAchievement!,
             onDismiss: () => overlays.remove(AchievementToast.id),
+          );
+    });
+    overlays.addEntry(CharacterToast.id, (context, game) {
+      final pixelAdventure = game as PixelAdventure;
+      return pixelAdventure.currentShowedCharacter == null
+          ? const SizedBox.shrink()
+          : CharacterToast(
+            character: pixelAdventure.currentShowedCharacter!,
+            onDismiss: () => overlays.remove(CharacterToast.id),
           );
     });
     overlays.addEntry(
@@ -435,12 +448,10 @@ class PixelAdventure extends FlameGame
   }
 
   void updateCharacter() {
-
     characterService!.equipCharacter(gameData!.id, character.id);
-  player.character = character.name;
+    player.character = character.name;
 
     // Reload animations of the player
     player.loadNewCharacterAnimations();
-
   }
 }
