@@ -4,7 +4,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:fruit_collector/components/game/content/blocks/collision_block.dart';
 
-import '../../../../pixel_adventure.dart';
+import '../../../../fruit_collector.dart';
 import '../../level/sound_manager.dart';
 import '../../util/custom_hitbox.dart';
 import '../levelBasics/player.dart';

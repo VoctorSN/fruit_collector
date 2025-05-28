@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_collector/components/HUD/style/text_style_singleton.dart';
 
-import '../../../../pixel_adventure.dart';
+import '../../../../fruit_collector.dart';
 import '../../../bbdd/models/game.dart';
 import '../../../bbdd/services/game_service.dart';
 import 'background_gif.dart';

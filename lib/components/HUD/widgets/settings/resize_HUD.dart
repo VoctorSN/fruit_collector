@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../../../../pixel_adventure.dart';
+import '../../../../fruit_collector.dart';
 import '../../style/text_style_singleton.dart';
 import '../utils/number_slider.dart';
 

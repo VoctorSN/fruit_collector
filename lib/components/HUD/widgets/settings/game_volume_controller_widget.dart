@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_collector/components/HUD/style/text_style_singleton.dart';
 
-import '../../../../pixel_adventure.dart';
+import '../../../../fruit_collector.dart';
 import '../utils/number_slider.dart';
 
 // Constantes para definir el tamaño y la posición

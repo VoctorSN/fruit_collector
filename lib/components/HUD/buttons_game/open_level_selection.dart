@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 
-import '../../../pixel_adventure.dart';
+import '../../../fruit_collector.dart';
 import '../widgets/levels/page/level_selection_menu.dart';
 
 class LevelSelection extends SpriteComponent with HasGameReference<PixelAdventure>, TapCallbacks {

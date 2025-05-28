@@ -4,7 +4,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:fruit_collector/components/game/content/levelBasics/player.dart';
 
-import '../../../../pixel_adventure.dart';
+import '../../../../fruit_collector.dart';
 
 class Spike extends PositionComponent with HasGameReference<PixelAdventure>, CollisionCallbacks {
   // Constructor

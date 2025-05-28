@@ -2,7 +2,7 @@ import 'dart:async' as async;
 
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:fruit_collector/pixel_adventure.dart';
+import 'package:fruit_collector/fruit_collector.dart';
 
 import '../../util/utils.dart';
 import '../levelBasics/player.dart';

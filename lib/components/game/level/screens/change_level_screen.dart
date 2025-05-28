@@ -2,7 +2,7 @@ import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
-import '../../../../pixel_adventure.dart';
+import '../../../../fruit_collector.dart';
 import '../../../bbdd/models/levelModel.dart';
 
 enum TransitionPhase { contracting, expanding, idle }

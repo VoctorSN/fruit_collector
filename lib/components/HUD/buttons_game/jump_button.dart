@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 
-import '../../../pixel_adventure.dart';
+import '../../../fruit_collector.dart';
 
 class JumpButton extends PositionComponent
     with HasGameReference<PixelAdventure>, TapCallbacks {

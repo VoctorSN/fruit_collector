@@ -4,7 +4,7 @@ import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:fruit_collector/pixel_adventure.dart';
+import 'package:fruit_collector/fruit_collector.dart';
 import 'package:window_size/window_size.dart';
 
 void main() async{

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 
-import '../../../pixel_adventure.dart';
+import '../../../fruit_collector.dart';
 import '../widgets/character_selection.dart';
 
 class ChangePlayerSkinButton extends SpriteComponent with HasGameReference<PixelAdventure>, TapCallbacks {

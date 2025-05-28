@@ -5,7 +5,7 @@ import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_collector/components/game/level/sound_manager.dart';
 
-import '../../../../pixel_adventure.dart';
+import '../../../../fruit_collector.dart';
 
 class DeathScreen extends RectangleComponent {
   final Function gameAdd;

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
-import '../../../../pixel_adventure.dart';
+import '../../../../fruit_collector.dart';
 
 class Saw extends SpriteAnimationComponent with HasGameReference<PixelAdventure>, CollisionCallbacks {
   // Constructor

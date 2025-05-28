@@ -4,7 +4,7 @@ import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_collector/components/HUD/widgets/main_menu/main_menu.dart';
 
-import '../../../../pixel_adventure.dart';
+import '../../../../fruit_collector.dart';
 
 class CreditsScreen extends Component {
   final Function gameAdd;

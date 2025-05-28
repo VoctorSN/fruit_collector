@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:fruit_collector/components/game/content/levelBasics/player.dart';
-import 'package:fruit_collector/pixel_adventure.dart';
+import 'package:fruit_collector/fruit_collector.dart';
 
 import '../../level/level.dart';
 

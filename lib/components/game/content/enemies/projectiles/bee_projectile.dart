@@ -3,7 +3,7 @@ import 'package:flame/components.dart';
 import 'package:flame/particles.dart';
 import 'package:fruit_collector/components/game/content/blocks/collision_block.dart';
 import 'package:fruit_collector/components/game/content/enemies/bee.dart';
-import 'package:fruit_collector/pixel_adventure.dart';
+import 'package:fruit_collector/fruit_collector.dart';
 
 import '../../levelBasics/player.dart';
 

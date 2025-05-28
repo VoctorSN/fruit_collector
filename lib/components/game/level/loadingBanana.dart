@@ -1,5 +1,5 @@
 import 'package:flame/components.dart';
-import 'package:fruit_collector/pixel_adventure.dart';
+import 'package:fruit_collector/fruit_collector.dart';
 
 class LoadingBanana extends SpriteAnimationComponent
     with HasGameReference<PixelAdventure> {

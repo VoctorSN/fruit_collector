@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_collector/components/HUD/style/text_style_singleton.dart';
-import 'package:fruit_collector/pixel_adventure.dart';
+import 'package:fruit_collector/fruit_collector.dart';
 
 import '../../base_widget.dart';
 import '../vm/level_selection_menu_vm.dart';

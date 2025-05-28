@@ -5,7 +5,7 @@ import 'dart:math' as math;
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/particles.dart';
-import 'package:fruit_collector/pixel_adventure.dart';
+import 'package:fruit_collector/fruit_collector.dart';
 
 import '../../level/sound_manager.dart';
 import '../../util/utils.dart';

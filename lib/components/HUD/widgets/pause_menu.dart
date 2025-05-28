@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:fruit_collector/components/HUD/widgets/settings/settings_menu.dart';
 
-import '../../../pixel_adventure.dart';
+import '../../../fruit_collector.dart';
 import '../style/text_style_singleton.dart';
 import 'main_menu/main_menu.dart';
 

@@ -15,7 +15,7 @@ import 'package:fruit_collector/components/game/content/levelBasics/player.dart'
 import 'package:fruit_collector/components/game/content/levelExtras/game_text.dart';
 import 'package:fruit_collector/components/game/content/traps/fire_block.dart';
 import 'package:fruit_collector/components/game/content/traps/saw.dart';
-import 'package:fruit_collector/pixel_adventure.dart';
+import 'package:fruit_collector/fruit_collector.dart';
 
 import '../../bbdd/models/game_level.dart';
 import '../content/blocks/alterning_block.dart';

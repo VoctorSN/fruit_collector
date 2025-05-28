@@ -7,7 +7,7 @@ import 'package:fruit_collector/components/game/content/levelBasics/player.dart'
 import 'package:fruit_collector/components/game/content/levelExtras/stars.dart';
 import 'package:fruit_collector/components/game/level/sound_manager.dart';
 
-import '../../../../pixel_adventure.dart';
+import '../../../../fruit_collector.dart';
 
 enum LootBoxState { idle, hit }
 

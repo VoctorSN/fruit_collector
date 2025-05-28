@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:fruit_collector/components/HUD/style/text_style_singleton.dart';
 
-import '../../../pixel_adventure.dart';
+import '../../../fruit_collector.dart';
 
 class CharacterSelection extends StatefulWidget {
   static const String id = 'character_selection';

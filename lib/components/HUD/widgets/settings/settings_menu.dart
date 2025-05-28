@@ -7,7 +7,7 @@ import 'package:fruit_collector/components/HUD/widgets/settings/music_controller
 import 'package:fruit_collector/components/HUD/widgets/settings/resize_HUD.dart';
 import 'package:fruit_collector/components/HUD/widgets/settings/resize_controls.dart';
 
-import '../../../../pixel_adventure.dart';
+import '../../../../fruit_collector.dart';
 import '../../style/text_style_singleton.dart';
 
 class SettingsMenu extends StatelessWidget {

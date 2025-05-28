@@ -2,7 +2,7 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flutter/material.dart';
 
-import '../../../pixel_adventure.dart';
+import '../../../fruit_collector.dart';
 import '../../game/content/levelBasics/player.dart';
 
 class CustomJoystick extends PositionComponent
