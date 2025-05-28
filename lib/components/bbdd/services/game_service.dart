@@ -1,5 +1,6 @@
 import '../models/game.dart';
 import '../repositories/game_achievement_repository.dart';
+import '../repositories/game_character_repository.dart';
 import '../repositories/game_level_repository.dart';
 import '../repositories/game_repository.dart';
 import '../repositories/settings_repository.dart';
@@ -10,6 +11,7 @@ class GameService {
   late final SettingsRepository _settingsRepository;
   late final GameLevelRepository _gameLevelRepository;
   late final GameAchievementRepository _gameAchievementRepository;
+  late final GameCharacterRepository _gameCharacterRepository;
 
   GameService._internal();
 
@@ -20,6 +22,7 @@ class GameService {
       service._settingsRepository = await SettingsRepository.getInstance();
       service._gameLevelRepository = await GameLevelRepository.getInstance();
       service._gameAchievementRepository = await GameAchievementRepository.getInstance();
+      service._gameCharacterRepository = await GameCharacterRepository.getInstance();
       _instance = service;
     }
     return _instance!;
@@ -40,22 +43,22 @@ class GameService {
 
     final DateTime epoch = DateTime.parse('1970-01-01 00:00:00');
 
-    // Filtrar juegos válidos con last_time_played real
-    final List<Game> validGames = games.whereType<Game>().where((g) => g.lastTimePlayed.isAfter(epoch)).toList();
+    final List<Game> validGames = games
+        .whereType<Game>()
+        .where((g) => g.lastTimePlayed.isAfter(epoch))
+        .toList();
 
     if (validGames.isNotEmpty) {
       validGames.sort((a, b) => b.lastTimePlayed.compareTo(a.lastTimePlayed));
       return validGames.first;
     }
 
-    // Buscar el primer espacio libre
     for (int space = 1; space <= 3; space++) {
       if (games[space - 1] == null) {
         return await getOrCreateGameBySpace(space: space);
       }
     }
 
-    // Todos los slots existen pero sin partida real: sobrescribe el primero
     return await getOrCreateGameBySpace(space: 1);
   }
 
@@ -68,6 +71,7 @@ class GameService {
     await _settingsRepository.insertDefaultsForGame(gameId: newGameId);
     await _gameLevelRepository.insertLevelsForGame(gameId: newGameId);
     await _gameAchievementRepository.insertAchievementsForGame(gameId: newGameId);
+    await _gameCharacterRepository.insertCharactersForGame(gameId: newGameId);
 
     final Game newGame = await _gameRepository.getGameBySpace(space: space) as Game;
     return newGame;
@@ -76,6 +80,7 @@ class GameService {
   Future<Game?> getGameBySpace({required int space}) {
     return _gameRepository.getGameBySpace(space: space);
   }
+
   Future<void> deleteGameBySpace({required int space}) async {
     final Game? game = await _gameRepository.getGameBySpace(space: space);
     if (game == null) {
@@ -86,6 +91,6 @@ class GameService {
     await _gameRepository.deleteGameBySpace(space: space);
     await _gameLevelRepository.deleteGameLevelByGameId(gameId: game.id);
     await _gameAchievementRepository.deleteGameAchievementByGameId(gameId: game.id);
-
+    await _gameCharacterRepository.deleteGameCharactersByGameId(gameId: game.id);
   }
 }

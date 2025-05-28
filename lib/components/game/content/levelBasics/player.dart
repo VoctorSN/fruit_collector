@@ -29,7 +29,7 @@ class Player extends SpriteAnimationGroupComponent
 
   // Constructor and atributes
   String character;
-  Player({super.position, this.character = 'Ninja Frog'});
+  Player({super.position, this.character = 'Mask Dude'});
 
   // Animations config
   late SpriteAnimation idleAnimation;
@@ -156,8 +156,8 @@ class Player extends SpriteAnimationGroupComponent
     jumpingAnimation = _spriteAnimation('Jump', 1);
     fallingAnimation = _spriteAnimation('Fall', 1);
     hitAnimation = _spriteAnimation('Hit', 7)..loop = false;
-    appearingAnimation = _specialspriteAnimation('Appearing', 7);
-    disappearingAnimation = _specialspriteAnimation('Desappearing', 7);
+    appearingAnimation = _specialSpriteAnimation('Appearing', 7);
+    disappearingAnimation = _specialSpriteAnimation('Desappearing', 7);
     doubleJumpingAnimation = _spriteAnimation('Double Jump', 6, stepTime: 0.03);
     wallSlideAnimation = _spriteAnimation('Wall Jump', 5);
 
@@ -185,7 +185,7 @@ class Player extends SpriteAnimationGroupComponent
     );
   }
 
-  SpriteAnimation _specialspriteAnimation(String state, int amount) {
+  SpriteAnimation _specialSpriteAnimation(String state, int amount) {
     return SpriteAnimation.fromFrameData(
       game.images.fromCache('Main Characters/$state (96x96).png'),
       SpriteAnimationData.sequenced(amount: amount, stepTime: stepTime, textureSize: Vector2.all(96), loop: false),
@@ -409,10 +409,15 @@ class Player extends SpriteAnimationGroupComponent
     _respawn();
   }
 
-  void updateCharacter(String newCharacter) {
-    character = newCharacter;
+  void updateCharacter() {
+
+    game.characterService!.equipCharacter(game.gameData!.id, game.character.id);
 
     // Reload animations of the player
+    _loadAllAnimations();
+  }
+
+  void loadNewCharacterAnimations() {
     _loadAllAnimations();
   }
 }

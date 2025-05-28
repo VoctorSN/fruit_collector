@@ -138,6 +138,70 @@ class DatabaseManager {
         );
       ''');
 
+    await db.execute('''
+  CREATE TABLE Characters (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL UNIQUE,
+    description TEXT NOT NULL,
+    required_stars INTEGER NOT NULL DEFAULT 0
+  );
+''');
+
+    await db.execute('''
+  CREATE TABLE GameCharacter (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    game_id INTEGER NOT NULL,
+    character_id INTEGER NOT NULL,
+    unlocked INTEGER NOT NULL DEFAULT 0,
+    equipped INTEGER NOT NULL DEFAULT 0,
+    date_unlocked TEXT NOT NULL DEFAULT '1970-01-01 00:00:00',
+    FOREIGN KEY (game_id) REFERENCES Games(id) ON DELETE CASCADE,
+    FOREIGN KEY (character_id) REFERENCES Characters(id)
+  );
+''');
+
+    final List<Map<String, Object>> characters = [
+      {
+        'name': 'Mask Dude',
+        'description': 'Mysterious and bold, hides his identity behind a powerful mask',
+        'required_stars': 0,
+      },
+      {
+        'name': 'Astronaut',
+        'description': 'Trained for zero gravity, always ready to launch into the unknown',
+        'required_stars': 10,
+      },
+      {
+        'name': 'Virtual Guy',
+        'description': 'Born in the digital world, he’s glitchy, fast, and full of surprises',
+        'required_stars': 20,
+      },
+      {
+        'name': 'Fox',
+        'description': 'A cunning and agile character, quick on their feet and smarter than most',
+        'required_stars': 30,
+      },
+      {
+        'name': 'Pink Man',
+        'description': 'He’s pink, he’s unpredictable, and he’s always full of energy',
+        'required_stars': 40,
+      },
+      {
+        'name': 'Ninja Frog',
+        'description': 'Silent and fast, trained in the secret arts of swamp combat',
+        'required_stars': 45,
+      },
+      {
+        'name': 'Executive',
+        'description': 'A sharp-suited leader who gets things done with style and discipline',
+        'required_stars': 51,
+      },
+    ];
+
+    for (final character in characters) {
+      await db.insert('Characters', character);
+    }
+
     // INSERT INTO Achievements
     await db.insert('Achievements', {
       'id': 1001,

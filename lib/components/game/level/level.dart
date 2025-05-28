@@ -180,6 +180,7 @@ class Level extends World with HasGameReference<PixelAdventure> {
             player.statringPosition = Vector2(spawnPoint.x, spawnPoint.y);
             player.scale.x = 1;
             add(player);
+            game.updateCharacter();
             break;
           case 'Fruit':
             final fruit = Fruit(
