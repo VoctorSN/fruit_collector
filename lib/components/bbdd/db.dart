@@ -167,6 +167,11 @@ class DatabaseManager {
         'required_stars': 0,
       },
       {
+        'name': 'Stick',
+        'description': 'It’s a stick. But with colors. That’s it. Don’t expect magic—just mild visual excitement. Honestly, you should probably pick a more interesting character… but hey, your choice.',
+        'required_stars': 5,
+      },
+      {
         'name': 'Astronaut',
         'description': 'Trained for zero gravity, always ready to launch into the unknown',
         'required_stars': 10,
