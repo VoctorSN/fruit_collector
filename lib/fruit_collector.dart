@@ -15,6 +15,7 @@ import 'package:fruit_collector/components/bbdd/services/achievement_service.dar
 import 'package:fruit_collector/components/bbdd/services/character_service.dart';
 import 'package:fruit_collector/components/bbdd/services/level_service.dart';
 import 'package:fruit_collector/components/bbdd/services/settings_service.dart';
+import 'package:fruit_collector/components/game/characters/character_manager.dart';
 import 'package:fruit_collector/components/game/level/screens/death_screen.dart';
 import 'package:fruit_collector/components/game/level/sound_manager.dart';
 import 'package:window_size/window_size.dart';
@@ -127,6 +128,7 @@ class PixelAdventure extends FlameGame
 
   // Logic to manage achievements
   late final AchievementManager achievementManager = AchievementManager(game: this);
+  late final CharacterManager characterManager = CharacterManager(game: this);
   Achievement? currentShowedAchievement;
   Achievement? currentAchievement;
   GameAchievement? currentGameAchievement;
@@ -218,6 +220,7 @@ class PixelAdventure extends FlameGame
           overlays.remove('level_summary');
           changeLevelScreen.startExpand();
           achievementManager.evaluate();
+          characterManager.evaluate();
         },
       ),
     );

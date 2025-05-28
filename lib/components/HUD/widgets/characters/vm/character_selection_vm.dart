@@ -41,7 +41,8 @@ class CharacterSelectionVM extends ChangeNotifier {
 
   /// Whether the current character is locked based on star requirements
   bool get isCurrentCharacterLocked {
-    return currentCharacter.requiredStars > userStars;
+    print('Checking if character ${currentCharacter.name} is locked $currentGameCharacter');
+    return !currentGameCharacter.unlocked;
   }
 
   /// Get current game character linked to selected character

@@ -177,7 +177,6 @@ class CharacterSelection extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  if (vm.isCurrentCharacterLocked)
                                     Positioned(
                                       right: 0,
                                       child: Row(
