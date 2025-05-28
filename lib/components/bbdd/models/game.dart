@@ -6,7 +6,6 @@ class Game {
   int currentLevel;
   int totalDeaths;
   int totalTime;
-  int currentCharacter;
 
   Game({
     required this.id,
@@ -16,7 +15,6 @@ class Game {
     required this.currentLevel,
     required this.totalDeaths,
     required this.totalTime,
-    required this.currentCharacter,
   });
 
   Map<String, Object?> toMap() {
@@ -28,7 +26,6 @@ class Game {
       'current_level': currentLevel,
       'total_deaths': totalDeaths,
       'total_time': totalTime,
-      'current_character': currentCharacter,
     };
   }
 
@@ -41,7 +38,6 @@ class Game {
       currentLevel: map['current_level'] as int,
       totalDeaths: map['total_deaths'] as int,
       totalTime: map['total_time'] as int,
-      currentCharacter: map['current_character'] as int,
     );
   }
 

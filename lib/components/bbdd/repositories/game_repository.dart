@@ -48,7 +48,6 @@ class GameRepository {
         'current_level': game.currentLevel,
         'total_deaths': game.totalDeaths,
         'total_time': game.totalTime,
-        'current_character': game.currentCharacter,
       },
       where: 'space = ?',
       whereArgs: [game.space],
@@ -67,7 +66,6 @@ class GameRepository {
       'current_level': 0,
       'total_deaths': 0,
       'total_time': 0,
-      'current_character': 0,
     });
     return gameId;
   }

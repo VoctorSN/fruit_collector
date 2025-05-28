@@ -8,12 +8,15 @@ import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_collector/components/HUD/buttons_game/custom_joystick.dart';
 import 'package:fruit_collector/components/HUD/widgets/achievements/page/achievement_details.dart';
+import 'package:fruit_collector/components/HUD/widgets/characters/page/character_toast.dart';
 import 'package:fruit_collector/components/HUD/widgets/main_menu/main_menu.dart';
 import 'package:fruit_collector/components/bbdd/models/game_achievement.dart';
 import 'package:fruit_collector/components/bbdd/models/game_level.dart';
 import 'package:fruit_collector/components/bbdd/services/achievement_service.dart';
+import 'package:fruit_collector/components/bbdd/services/character_service.dart';
 import 'package:fruit_collector/components/bbdd/services/level_service.dart';
 import 'package:fruit_collector/components/bbdd/services/settings_service.dart';
+import 'package:fruit_collector/components/game/characters/character_manager.dart';
 import 'package:fruit_collector/components/game/level/screens/death_screen.dart';
 import 'package:fruit_collector/components/game/level/sound_manager.dart';
 import 'package:window_size/window_size.dart';
@@ -25,12 +28,13 @@ import 'components/HUD/buttons_game/open_level_selection.dart';
 import 'components/HUD/buttons_game/open_menu_button.dart';
 import 'components/HUD/widgets/achievements/page/achievement_toast.dart';
 import 'components/HUD/widgets/achievements/page/achievements_menu.dart';
-import 'components/HUD/widgets/character_selection.dart';
+import 'components/HUD/widgets/characters/page/character_selection.dart';
 import 'components/HUD/widgets/levels/page/level_selection_menu.dart';
 import 'components/HUD/widgets/main_menu/game_selector.dart';
 import 'components/HUD/widgets/pause_menu.dart';
 import 'components/HUD/widgets/settings/settings_menu.dart';
 import 'components/bbdd/models/achievement.dart';
+import 'components/bbdd/models/character.dart';
 import 'components/bbdd/models/game.dart' as models;
 import 'components/bbdd/models/settings.dart';
 import 'components/bbdd/services/game_service.dart';
@@ -52,15 +56,17 @@ class PixelAdventure extends FlameGame
   LevelService? levelService;
   SettingsService? settingsService;
   AchievementService? achievementService;
+  CharacterService? characterService;
 
-  final List<String> characters = ['1', '2', '3', 'Mask Dude', 'Ninja Frog', 'Pink Man', 'Virtual Guy'];
   late Player player;
   late Level level;
+  late Character character;
 
   late Settings settings;
 
   List<Map<String, dynamic>> levels = [];
   List<Map<String, dynamic>> achievements = [];
+  List<Map<String, dynamic>> characters = [];
 
   List<int> get unlockedLevelIndices =>
       levels
@@ -123,7 +129,11 @@ class PixelAdventure extends FlameGame
 
   // Logic to manage achievements
   late final AchievementManager achievementManager = AchievementManager(game: this);
+  late final CharacterManager characterManager = CharacterManager(game: this);
+  bool isShowingToast = false;
+  Map<String, List<dynamic>> pendingToasts = {'achievements': [], 'characters': []};
   Achievement? currentShowedAchievement;
+  Character? currentShowedCharacter;
   Achievement? currentAchievement;
   GameAchievement? currentGameAchievement;
   Map<int, int> levelTimes = {};
@@ -136,13 +146,17 @@ class PixelAdventure extends FlameGame
     await getLevelService();
     await getSettingsService();
     await getAchievementService();
+    await getCharacterService();
     gameData = await gameService!.getOrCreateGameBySpace(space: slot);
     levels = await levelService!.getLevelsForGame(gameData!.id);
     settings = await settingsService!.getSettingsForGame(gameData!.id) as Settings;
     achievements = await achievementService!.getAchievementsForGame(gameData!.id);
+    characters = await characterService!.getCharactersForGame(gameData!.id);
+    character = await characterService!.getEquippedCharacter(gameData!.id);
     print('change settings  : $settings');
     print('Levels  : $levels');
     print('Current Level  : ${gameData?.currentLevel}');
+    print('Current Character  : ${player.character}');
 
     loadButtonsAndHud();
 
@@ -161,7 +175,7 @@ class PixelAdventure extends FlameGame
     await SoundManager().init();
 
     // Load the player skin
-    player = Player(character: characters[gameData?.currentCharacter ?? 0]);
+    player = Player(character: "Mask Dude");
 
     addOverlays();
 
@@ -206,10 +220,11 @@ class PixelAdventure extends FlameGame
       'level_summary',
       (context, game) => LevelSummaryOverlay(
         game: this,
-        onContinue: () {
+        onContinue: ()async {
           overlays.remove('level_summary');
           changeLevelScreen.startExpand();
-          achievementManager.evaluate();
+          await achievementManager.evaluate();
+          await characterManager.evaluate();
         },
       ),
     );
@@ -224,6 +239,15 @@ class PixelAdventure extends FlameGame
           : AchievementToast(
             achievement: pixelAdventure.currentShowedAchievement!,
             onDismiss: () => overlays.remove(AchievementToast.id),
+          );
+    });
+    overlays.addEntry(CharacterToast.id, (context, game) {
+      final pixelAdventure = game as PixelAdventure;
+      return pixelAdventure.currentShowedCharacter == null
+          ? const SizedBox.shrink()
+          : CharacterToast(
+            character: pixelAdventure.currentShowedCharacter!,
+            onDismiss: () => overlays.remove(CharacterToast.id),
           );
     });
     overlays.addEntry(
@@ -395,6 +419,10 @@ class PixelAdventure extends FlameGame
     achievementService ??= await AchievementService.getInstance();
   }
 
+  Future<void> getCharacterService() async {
+    characterService ??= await CharacterService.getInstance();
+  }
+
   Future<void> getSettingsService() async {
     settingsService ??= await SettingsService.getInstance();
   }
@@ -417,5 +445,13 @@ class PixelAdventure extends FlameGame
       setWindowMinSize(const Size(800, 600));
       setWindowMaxSize(Size.infinite);
     }
+  }
+
+  void updateCharacter() {
+    characterService!.equipCharacter(gameData!.id, character.id);
+    player.character = character.name;
+
+    // Reload animations of the player
+    player.loadNewCharacterAnimations();
   }
 }

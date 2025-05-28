@@ -48,11 +48,8 @@ class AchievementManager {
             game.gameData!.totalDeaths == 0,
   };
 
-  // Logic to show achievements
-  final List<Achievement> _pendingToasts = [];
-  bool _isShowingToast = false;
-
-  void evaluate() async {
+  Future<void> evaluate() async {
+    print("Starting achievement evaluation");
     final achievementService = await AchievementService.getInstance();
     allAchievements.clear();
     if (game.gameData == null) return;
@@ -82,15 +79,15 @@ class AchievementManager {
   }
 
   void _showAchievementUnlocked(Achievement achievement) {
-    _pendingToasts.add(achievement);
+    game.pendingToasts['achievements']!.add(achievement);
     _tryShowNextToast();
   }
 
   void _tryShowNextToast() {
-    if (_isShowingToast || _pendingToasts.isEmpty) return;
+    if (game.isShowingToast || game.pendingToasts['achievements']!.isEmpty) return;
 
-    _isShowingToast = true;
-    final nextAchievement = _pendingToasts.removeAt(0);
+    game.isShowingToast = true;
+    final nextAchievement = game.pendingToasts['achievements']!.removeAt(0);
 
     game.currentShowedAchievement = nextAchievement;
     game.overlays.add(AchievementToast.id);
@@ -98,7 +95,7 @@ class AchievementManager {
     Future.delayed(const Duration(seconds: 3), () {
       game.overlays.remove(AchievementToast.id);
       game.currentShowedAchievement = null;
-      _isShowingToast = false;
+      game.isShowingToast = false;
       _tryShowNextToast();
     });
   }
