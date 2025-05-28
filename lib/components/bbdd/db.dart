@@ -184,16 +184,21 @@ class DatabaseManager {
       {
         'name': 'Pink Man',
         'description': 'He’s pink, he’s unpredictable, and he’s always full of energy',
-        'required_stars': 40,
+        'required_stars': 35,
       },
       {
         'name': 'Ninja Frog',
         'description': 'Silent and fast, trained in the secret arts of swamp combat',
-        'required_stars': 45,
+        'required_stars': 40,
       },
       {
         'name': 'Executive',
         'description': 'A sharp-suited leader who gets things done with style and discipline',
+        'required_stars': 45,
+      },
+      {
+        'name': 'Messi',
+        'description': 'The best, the GOAT, the one and only. He’s here to score goals and collect stars',
         'required_stars': 51,
       },
     ];
