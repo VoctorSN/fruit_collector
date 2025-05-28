@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="124">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="141">
  <tileset firstgid="1" source="Pixel Adventure.tsx"/>
  <layer id="1" name="Background" width="40" height="23">
   <properties>
@@ -32,7 +32,7 @@
 </data>
  </layer>
  <objectgroup id="2" name="SpawnPoints">
-  <object id="38" name="Player" type="Player" x="330.118" y="113.307" width="27" height="30"/>
+  <object id="38" name="Player" type="Player" x="563.451" y="271.307" width="27" height="30"/>
   <object id="48" type="deathZone" x="-48" y="368" width="736" height="48"/>
   <object id="49" type="deathZone" x="-48" y="-48" width="736" height="48"/>
   <object id="50" type="deathZone" x="-48" y="0" width="48" height="368"/>
@@ -44,7 +44,7 @@
   </object>
   <object id="62" name="KU" type="KeyUnlocker" x="24.8105" y="101.908" width="16" height="16"/>
   <object id="78" name="KU" type="KeyUnlocker" x="592" y="64" width="16" height="16"/>
-  <object id="79" name="KU" type="KeyUnlocker" x="24.0784" y="219.216" width="16" height="16"/>
+  <object id="79" name="KU" type="KeyUnlocker" x="23.4117" y="190.549" width="16" height="16"/>
   <object id="85" name="SpkUp" type="Spike" x="224" y="128" width="80" height="16">
    <properties>
     <property name="position" value="BottomWall"/>
@@ -146,21 +146,61 @@
   <object id="120" type="GameText" x="436.523" y="41.4641" width="108.444" height="43.4248">
    <text fontfamily="ArcadeClassic" wrap="1" color="#ffffff" halign="center">Try to double jump!</text>
   </object>
-  <object id="121" type="alterningBlock" x="320" y="208" width="16" height="16">
+  <object id="124" name="spikeHead" type="spikeHead" x="192" y="176" width="48" height="48">
    <properties>
-    <property name="isRed" type="bool" value="false"/>
+    <property name="isReversed" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="122" type="alterningBlock" x="336" y="208" width="16" height="16">
+  <object id="125" name="Rock" type="Rock" x="192" y="272" width="38" height="34">
    <properties>
-    <property name="isRed" type="bool" value="false"/>
+    <property name="offNeg" type="float" value="1.9"/>
+    <property name="offPos" type="float" value="7"/>
    </properties>
   </object>
-  <object id="123" type="alterningBlock" x="352" y="208" width="16" height="16">
+  <object id="126" name="Rock" type="Rock" x="320" y="272" width="38" height="34">
    <properties>
-    <property name="isRed" type="bool" value="false"/>
+    <property name="offNeg" type="float" value="7"/>
+    <property name="offPos" type="float" value="2"/>
    </properties>
   </object>
+  <object id="127" name="Chicken" type="Chicken" x="432" y="224" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="5"/>
+   </properties>
+  </object>
+  <object id="129" name="PeeShooter" type="PeeShooter" x="18" y="219.333" width="32" height="32">
+   <properties>
+    <property name="lookDirection" type="int" value="1"/>
+    <property name="range" type="float" value="15"/>
+   </properties>
+  </object>
+  <object id="130" name="Radish" type="Radish" x="272" y="208" width="30" height="38">
+   <properties>
+    <property name="offNeg" type="float" value="2"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="131" name="Bee" type="Bee" x="64" y="176" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="132" name="Bee" type="Bee" x="112" y="176" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="133" name="Strawberry" type="Fruit" x="464" y="208" width="32" height="32"/>
+  <object id="134" name="Melon" type="Fruit" x="327.333" y="96" width="32" height="32"/>
+  <object id="135" name="Pineapple" type="Fruit" x="327.333" y="34" width="32" height="32"/>
+  <object id="136" name="Apple" type="Fruit" x="89.3333" y="220.667" width="32" height="32"/>
+  <object id="137" name="Kiwi" type="Fruit" x="199.333" y="273.333" width="32" height="32"/>
+  <object id="138" name="Orange" type="Fruit" x="405.333" y="70.6667" width="32" height="32"/>
+  <object id="139" name="Bananas" type="Fruit" x="360.667" y="273.333" width="32" height="32"/>
+  <object id="140" name="Cherries" type="Fruit" x="328.667" y="172" width="32" height="32"/>
  </objectgroup>
  <objectgroup id="3" name="Collisions">
   <object id="7" x="0" y="16" width="16" height="352"/>
@@ -190,5 +230,20 @@
   <object id="98" x="304" y="112" width="16" height="32"/>
   <object id="99" x="368" y="16" width="16" height="48"/>
   <object id="100" x="368" y="112" width="32" height="32"/>
+  <object id="121" type="alterningBlock" x="320" y="208" width="16" height="16">
+   <properties>
+    <property name="isRed" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="122" type="alterningBlock" x="336" y="208" width="16" height="16">
+   <properties>
+    <property name="isRed" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="123" type="alterningBlock" x="352" y="208" width="16" height="16">
+   <properties>
+    <property name="isRed" type="bool" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

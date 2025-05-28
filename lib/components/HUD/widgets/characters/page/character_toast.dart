@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_collector/components/bbdd/models/character.dart';
 
 import '../../../style/text_style_singleton.dart';
@@ -54,7 +55,7 @@ class CharacterToast extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       const Icon(
-                        Icons.checkroom,
+                        FontAwesomeIcons.shirt,
                         color: Colors.amber,
                         size: 32,
                       ),

@@ -25,6 +25,8 @@ import '../content/blocks/falling_block.dart';
 import '../content/blocks/trampoline.dart';
 import '../content/enemies/ghost.dart';
 import '../content/enemies/pee_shooter.dart';
+import '../content/enemies/projectiles/bee_projectile.dart';
+import '../content/enemies/projectiles/pee_projectile.dart';
 import '../content/enemies/radish.dart';
 import '../content/enemies/rock.dart';
 import '../content/enemies/snail.dart';
@@ -73,6 +75,8 @@ class Level extends World with HasGameReference<PixelAdventure> {
     Rock,
     PeeShooter,
     Radish,
+    PeeProjectile,
+    BeeProjectile,
     Door,
   ];
 
