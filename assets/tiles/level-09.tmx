@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="76">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="141">
  <tileset firstgid="1" source="Pixel Adventure.tsx"/>
  <layer id="1" name="Background" width="40" height="23">
   <properties>
@@ -7,124 +7,242 @@
   </properties>
   <data encoding="csv">
 135,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,134,133,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,197,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,219,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,241,18,19,19,19,19,19,19,20,197,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,197,0,0,0,219,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,219,0,0,0,219,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,219,0,0,0,219,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,79,8,8,8,8,8,8,8,80,0,0,0,0,219,0,0,0,219,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,73,30,30,30,56,30,77,0,0,0,0,0,219,0,0,0,219,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,73,78,30,30,77,0,0,0,0,0,0,219,0,0,0,219,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,74,75,76,0,0,0,0,0,0,0,219,0,0,0,219,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,219,0,0,0,219,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,219,0,0,0,219,0,0,0,0,0,0,0,0,111,
-113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,241,0,0,0,241,0,0,0,0,0,0,0,0,111,
+113,0,0,192,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,192,0,0,0,192,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,236,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,214,0,0,0,214,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,172,173,174,0,0,0,0,0,0,0,0,0,0,0,236,0,0,0,236,0,193,0,0,0,0,0,0,0,0,172,173,174,0,0,111,
+113,0,0,0,0,0,0,0,0,0,0,193,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
 113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
-113,0,136,137,123,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,157,0,159,159,0,0,0,0,0,0,0,111,
-113,95,96,96,96,96,96,96,96,97,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,95,96,96,96,96,97,0,0,0,0,0,0,0,111,
-113,117,118,118,118,118,118,118,118,119,43,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,117,118,118,118,118,119,0,0,0,0,0,0,0,111,
-113,117,118,118,144,118,118,118,118,119,0,0,0,0,155,156,0,0,0,0,0,0,158,0,0,0,117,118,118,145,118,120,96,96,96,96,96,96,97,111,
-113,117,118,198,118,118,118,118,118,120,96,96,96,96,96,96,96,96,96,96,96,96,96,96,96,96,121,118,118,118,118,118,118,118,118,118,118,118,119,111,
-113,117,118,118,118,118,145,118,118,118,118,118,118,118,118,118,118,118,144,118,118,118,145,118,118,118,118,118,118,118,118,118,118,118,144,118,118,118,119,111,
-113,139,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,141,111,
+113,0,0,192,0,0,0,0,192,0,0,0,0,192,0,0,0,0,0,21,0,0,0,22,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,214,0,0,0,0,214,0,0,0,0,214,0,0,0,0,0,192,0,0,0,212,213,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,236,0,0,0,0,236,0,0,0,0,236,0,0,0,0,0,236,0,0,0,234,235,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,184,184,184,184,184,184,184,184,184,184,184,184,184,184,184,184,184,184,238,41,41,41,237,184,184,184,184,184,184,184,184,184,184,184,184,184,184,184,111,
+113,163,163,163,163,163,163,163,163,163,163,163,163,163,163,163,163,163,164,0,0,0,0,0,162,163,163,163,163,163,163,163,163,163,163,163,163,163,163,111,
+113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,0,0,172,173,174,0,0,0,0,0,0,0,0,0,0,0,0,0,215,0,0,0,0,0,0,172,173,174,0,0,0,0,111,
+113,0,0,0,0,0,0,0,182,0,0,0,0,0,0,0,193,0,0,0,0,0,0,0,0,0,0,0,0,0,0,193,0,0,0,0,0,215,0,111,
+113,0,0,0,0,0,0,0,204,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,
+113,0,0,0,0,0,0,86,116,0,0,0,0,0,215,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,86,0,0,0,0,0,0,0,111,
+113,184,184,184,184,184,184,184,184,185,0,0,0,0,0,0,182,0,0,0,0,0,0,182,0,0,183,184,184,184,184,184,185,0,0,0,0,182,0,111,
+113,206,206,206,206,206,206,206,206,207,0,0,0,0,0,0,204,0,0,0,0,0,0,204,0,0,205,206,206,206,206,206,207,0,0,0,0,204,0,111,
+113,206,206,206,206,206,206,206,206,207,0,0,0,86,0,0,116,0,0,86,0,0,0,116,0,0,205,206,206,206,206,206,207,0,0,0,0,116,0,111,
+113,206,206,206,206,206,206,206,206,208,184,184,184,184,184,184,184,184,184,184,184,184,184,184,184,184,209,206,206,206,206,206,208,184,184,184,184,184,184,111,
+113,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,111,
+113,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206,111,
 91,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,90,89
 </data>
  </layer>
  <objectgroup id="2" name="SpawnPoints">
-  <object id="38" name="Player" type="Player" x="128" y="224" width="27" height="30"/>
+  <object id="38" name="Player" type="Player" x="563.451" y="271.307" width="27" height="30"/>
   <object id="48" type="deathZone" x="-48" y="368" width="736" height="48"/>
   <object id="49" type="deathZone" x="-48" y="-48" width="736" height="48"/>
   <object id="50" type="deathZone" x="-48" y="0" width="48" height="368"/>
   <object id="51" type="deathZone" x="640" y="0" width="48" height="368"/>
-  <object id="52" type="Checkpoint" x="528" y="224" width="64" height="64">
+  <object id="52" type="Checkpoint" x="544" y="240" width="64" height="64">
    <properties>
     <property name="isLastLevel" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="56" name="Rock" type="Rock" x="208" y="256" width="38" height="34">
+  <object id="62" name="KU" type="KeyUnlocker" x="24.8105" y="101.908" width="16" height="16"/>
+  <object id="78" name="KU" type="KeyUnlocker" x="592" y="64" width="16" height="16"/>
+  <object id="79" name="KU" type="KeyUnlocker" x="23.4117" y="190.549" width="16" height="16"/>
+  <object id="85" name="SpkUp" type="Spike" x="224" y="128" width="80" height="16">
    <properties>
-    <property name="offNeg" type="float" value="2.8"/>
-    <property name="offPos" type="float" value="10.8"/>
+    <property name="position" value="BottomWall"/>
    </properties>
   </object>
-  <object id="64" name="Rock" type="Rock" x="352" y="272" width="38" height="34">
+  <object id="86" name="SpkDown" type="Spike" x="64" y="16" width="240" height="16">
    <properties>
-    <property name="offNeg" type="float" value="11.8"/>
-    <property name="offPos" type="float" value="1.8"/>
+    <property name="position" value="TopWall"/>
    </properties>
   </object>
-  <object id="61" name="KeyUnlocker" type="KeyUnlocker" x="48" y="304" width="16" height="16"/>
-  <object id="62" name="KeyUnlocker" type="KeyUnlocker" x="272" y="64" width="16" height="16"/>
-  <object id="63" name="KeyUnlocker" type="KeyUnlocker" x="336" y="272" width="16" height="16"/>
-  <object id="73" type="Spike" x="464" y="64" width="16" height="160">
+  <object id="87" name="SpkUp" type="Spike" x="144" y="128" width="64" height="16">
    <properties>
-    <property name="position" value="RightWall"/>
+    <property name="position" value="BottomWall"/>
    </properties>
   </object>
-  <object id="74" type="Spike" x="432" y="64" width="16" height="160">
+  <object id="88" name="SpkUp" type="Spike" x="64" y="128" width="64" height="16">
    <properties>
-    <property name="position" value="LeftWall"/>
+    <property name="position" value="BottomWall"/>
    </properties>
   </object>
-  <object id="75" name="Rock" type="Rock" x="224" y="64" width="38" height="34">
+  <object id="89" name="SpkDown" type="Spike" x="16" y="16" width="32" height="16">
    <properties>
-    <property name="offNeg" type="float" value="2.8"/>
-    <property name="offPos" type="float" value="10.8"/>
+    <property name="position" value="TopWall"/>
    </properties>
   </object>
+  <object id="90" name="Trampoline" type="Trampoline" x="247.843" y="111.686" width="32" height="32">
+   <properties>
+    <property name="powerBounce" type="float" value="130"/>
+   </properties>
+  </object>
+  <object id="91" name="Trampoline" type="Trampoline" x="160" y="111.69" width="32" height="32">
+   <properties>
+    <property name="powerBounce" type="float" value="130"/>
+   </properties>
+  </object>
+  <object id="92" name="Trampoline" type="Trampoline" x="80" y="111.69" width="32" height="32">
+   <properties>
+    <property name="powerBounce" type="float" value="130"/>
+   </properties>
+  </object>
+  <object id="101" name="Trampoline" type="Trampoline" x="16" y="112" width="32" height="32">
+   <properties>
+    <property name="powerBounce" type="float" value="350"/>
+   </properties>
+  </object>
+  <object id="102" name="SpkUp" type="Spike" x="128" y="80" width="16" height="16">
+   <properties>
+    <property name="position" value="BottomWall"/>
+   </properties>
+  </object>
+  <object id="103" name="SpkUp" type="Spike" x="208" y="80" width="16" height="16">
+   <properties>
+    <property name="position" value="BottomWall"/>
+   </properties>
+  </object>
+  <object id="104" type="GameText" x="307.556" y="68.5752" width="122.484" height="16">
+   <text fontfamily="ArcadeClassic" wrap="1" color="#ffffff" halign="center">2                           1</text>
+  </object>
+  <object id="105" name="SpkDown" type="Spike" x="384" y="16" width="240" height="16">
+   <properties>
+    <property name="position" value="TopWall"/>
+   </properties>
+  </object>
+  <object id="107" name="Trampoline" type="Trampoline" x="400" y="112" width="32" height="32">
+   <properties>
+    <property name="powerBounce" type="float" value="350"/>
+   </properties>
+  </object>
+  <object id="108" name="Trampoline" type="Trampoline" x="432" y="112" width="32" height="32">
+   <properties>
+    <property name="powerBounce" type="float" value="350"/>
+   </properties>
+  </object>
+  <object id="109" name="Trampoline" type="Trampoline" x="464" y="112" width="32" height="32">
+   <properties>
+    <property name="powerBounce" type="float" value="350"/>
+   </properties>
+  </object>
+  <object id="110" name="Trampoline" type="Trampoline" x="496" y="112" width="32" height="32">
+   <properties>
+    <property name="powerBounce" type="float" value="350"/>
+   </properties>
+  </object>
+  <object id="111" name="Trampoline" type="Trampoline" x="528" y="112" width="32" height="32">
+   <properties>
+    <property name="powerBounce" type="float" value="350"/>
+   </properties>
+  </object>
+  <object id="112" name="Trampoline" type="Trampoline" x="560" y="112" width="32" height="32">
+   <properties>
+    <property name="powerBounce" type="float" value="350"/>
+   </properties>
+  </object>
+  <object id="116" name="Trampoline" type="Trampoline" x="592" y="112" width="32" height="32">
+   <properties>
+    <property name="powerBounce" type="float" value="350"/>
+   </properties>
+  </object>
+  <object id="120" type="GameText" x="436.523" y="41.4641" width="108.444" height="43.4248">
+   <text fontfamily="ArcadeClassic" wrap="1" color="#ffffff" halign="center">Try to double jump!</text>
+  </object>
+  <object id="124" name="spikeHead" type="spikeHead" x="192" y="176" width="48" height="48">
+   <properties>
+    <property name="isReversed" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="125" name="Rock" type="Rock" x="192" y="272" width="38" height="34">
+   <properties>
+    <property name="offNeg" type="float" value="1.9"/>
+    <property name="offPos" type="float" value="7"/>
+   </properties>
+  </object>
+  <object id="126" name="Rock" type="Rock" x="320" y="272" width="38" height="34">
+   <properties>
+    <property name="offNeg" type="float" value="7"/>
+    <property name="offPos" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="127" name="Chicken" type="Chicken" x="432" y="224" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="5"/>
+   </properties>
+  </object>
+  <object id="129" name="PeeShooter" type="PeeShooter" x="18" y="219.333" width="32" height="32">
+   <properties>
+    <property name="lookDirection" type="int" value="1"/>
+    <property name="range" type="float" value="15"/>
+   </properties>
+  </object>
+  <object id="130" name="Radish" type="Radish" x="272" y="208" width="30" height="38">
+   <properties>
+    <property name="offNeg" type="float" value="2"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="131" name="Bee" type="Bee" x="64" y="176" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="132" name="Bee" type="Bee" x="112" y="176" width="32" height="32">
+   <properties>
+    <property name="offNeg" type="float" value="1"/>
+    <property name="offPos" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="133" name="Strawberry" type="Fruit" x="464" y="208" width="32" height="32"/>
+  <object id="134" name="Melon" type="Fruit" x="327.333" y="96" width="32" height="32"/>
+  <object id="135" name="Pineapple" type="Fruit" x="327.333" y="34" width="32" height="32"/>
+  <object id="136" name="Apple" type="Fruit" x="89.3333" y="220.667" width="32" height="32"/>
+  <object id="137" name="Kiwi" type="Fruit" x="199.333" y="273.333" width="32" height="32"/>
+  <object id="138" name="Orange" type="Fruit" x="405.333" y="70.6667" width="32" height="32"/>
+  <object id="139" name="Bananas" type="Fruit" x="360.667" y="273.333" width="32" height="32"/>
+  <object id="140" name="Cherries" type="Fruit" x="328.667" y="172" width="32" height="32"/>
  </objectgroup>
  <objectgroup id="3" name="Collisions">
   <object id="7" x="0" y="16" width="16" height="352"/>
   <object id="8" x="0" y="0" width="640" height="17.7778"/>
   <object id="9" x="624" y="16" width="16" height="336"/>
   <object id="10" x="16" y="352" width="624" height="16"/>
-  <object id="11" x="64" y="240" width="16" height="16"/>
-  <object id="12" x="16" y="256" width="32" height="96"/>
-  <object id="15" x="416" y="256" width="96" height="96"/>
-  <object id="33" x="512" y="288" width="112" height="64"/>
+  <object id="15" x="416" y="256" width="112" height="96"/>
+  <object id="33" x="528" y="304" width="96" height="48"/>
   <object id="47" x="160" y="304" width="256" height="48"/>
-  <object id="53" x="208" y="112" width="144" height="16"/>
-  <object id="54" x="240" y="144" width="80" height="16"/>
-  <object id="55" x="256" y="160" width="48" height="16"/>
-  <object id="59" x="64" y="256" width="96" height="96"/>
-  <object id="60" x="48" y="320" width="16" height="32"/>
-  <object id="70" x="336" y="16" width="16" height="48"/>
-  <object id="71" x="480" y="48" width="16" height="176"/>
-  <object id="72" x="416" y="64" width="16" height="160"/>
-  <object id="65" type="Platform" x="416" y="208" width="32" height="16">
-   <properties>
-    <property name="fallingDurationMillSec" type="int" value="5000"/>
-    <property name="falls" type="bool" value="true"/>
-    <property name="isSideSensible" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="66" type="Platform" x="464" y="176" width="32" height="16">
-   <properties>
-    <property name="fallingDurationMillSec" type="int" value="5000"/>
-    <property name="falls" type="bool" value="true"/>
-    <property name="isSideSensible" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="67" type="Platform" x="416" y="144" width="32" height="16">
-   <properties>
-    <property name="fallingDurationMillSec" type="int" value="5000"/>
-    <property name="falls" type="bool" value="true"/>
-    <property name="isSideSensible" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="68" type="Platform" x="464" y="112" width="32" height="16">
-   <properties>
-    <property name="fallingDurationMillSec" type="int" value="5000"/>
-    <property name="falls" type="bool" value="true"/>
-    <property name="isSideSensible" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="69" type="Platform" x="352" y="48" width="128" height="16">
+  <object id="54" x="16" y="144" width="304" height="16"/>
+  <object id="55" x="16" y="160" width="288" height="16"/>
+  <object id="59" x="16" y="256" width="144" height="96"/>
+  <object id="82" x="368" y="144" width="256" height="16"/>
+  <object id="83" x="384" y="160" width="240" height="16"/>
+  <object id="84" type="Platform" x="320" y="144" width="48" height="16">
    <properties>
     <property name="fallingDurationMillSec" type="int" value="0"/>
     <property name="falls" type="bool" value="false"/>
     <property name="isSideSensible" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="93" x="304" y="16" width="16" height="48"/>
+  <object id="94" x="208" y="96" width="16" height="48"/>
+  <object id="95" x="128" y="96" width="16" height="48"/>
+  <object id="96" x="48" y="96" width="16" height="48"/>
+  <object id="97" x="48" y="16" width="16" height="32"/>
+  <object id="98" x="304" y="112" width="16" height="32"/>
+  <object id="99" x="368" y="16" width="16" height="48"/>
+  <object id="100" x="368" y="112" width="32" height="32"/>
+  <object id="121" type="alterningBlock" x="320" y="208" width="16" height="16">
+   <properties>
+    <property name="isRed" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="122" type="alterningBlock" x="336" y="208" width="16" height="16">
+   <properties>
+    <property name="isRed" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="123" type="alterningBlock" x="352" y="208" width="16" height="16">
+   <properties>
+    <property name="isRed" type="bool" value="false"/>
    </properties>
   </object>
  </objectgroup>
