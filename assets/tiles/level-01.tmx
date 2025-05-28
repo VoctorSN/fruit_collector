@@ -118,7 +118,7 @@
   </object>
  </objectgroup>
  <objectgroup id="2" name="SpawnPoints">
-  <object id="5" name="Player" type="Player" x="128" y="240" width="27" height="30"/>
+  <object id="5" name="Player" type="Player" x="68" y="126.667" width="27" height="30"/>
   <object id="34" name="Apple" type="Fruit" x="352" y="112" width="32" height="32"/>
   <object id="35" name="Apple" type="Fruit" x="352" y="96" width="32" height="32"/>
   <object id="36" name="Orange" type="Fruit" x="448" y="96" width="32" height="32"/>

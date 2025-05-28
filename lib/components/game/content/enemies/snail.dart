@@ -41,7 +41,7 @@ class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGa
   late final Player player;
   double fixedDeltaTime = 1 / 60;
   double accumulatedTime = 0;
-  int hp = 1;
+  int hp = 5;
   final double _gravity = 9.8;
   final double _jumpForce = 320;
   final double _maximunVelocity = 1000;

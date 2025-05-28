@@ -119,14 +119,7 @@
     <property name="fanDistance" type="float" value="15"/>
    </properties>
   </object>
-  <object id="100" name="PltFalling" type="Platform" x="464" y="208" width="32" height="16">
-   <properties>
-    <property name="fallingDurationMillSec" type="int" value="5000"/>
-    <property name="falls" type="bool" value="true"/>
-    <property name="isSideSensible" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="101" name="lootBox" type="lootBox" x="448" y="224" width="28" height="28" rotation="180">
+  <object id="101" name="lootBox" type="lootBox" x="451.332" y="229.331" width="28" height="28" rotation="180">
    <properties>
     <property name="objectInside" value="1"/>
    </properties>
@@ -152,18 +145,18 @@
   </object>
   <object id="106" name="deathzone" type="deathZone" x="48" y="256" width="32" height="32"/>
   <object id="107" name="Sand" type="Sand" x="560" y="128" width="32" height="32"/>
-  <object id="108" name="Floor" x="560" y="64" width="32" height="32"/>
-  <object id="109" name="ABRed" type="alterningBlock" x="560" y="192" width="32" height="32">
+  <object id="108" x="560" y="64" width="32" height="32"/>
+  <object id="109" type="alterningBlock" x="560" y="192" width="32" height="32">
    <properties>
     <property name="isRed" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="110" name="ABBlue" type="alterningBlock" x="560" y="256" width="32" height="32">
+  <object id="110" type="alterningBlock" x="560" y="256" width="32" height="32">
    <properties>
     <property name="isRed" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="111" name="Ptf" type="Platform" x="560" y="320" width="32" height="32">
+  <object id="111" type="Platform" x="560" y="320" width="32" height="32">
    <properties>
     <property name="fallingDurationMillSec" type="int" value="0"/>
     <property name="falls" type="bool" value="false"/>
@@ -228,5 +221,12 @@
   <object id="8" x="0" y="0" width="640" height="17.7778"/>
   <object id="9" x="624" y="16" width="16" height="336"/>
   <object id="10" x="16" y="352" width="624" height="16"/>
+  <object id="100" name="PltFalling" type="Platform" x="464" y="208" width="32" height="16">
+   <properties>
+    <property name="fallingDurationMillSec" type="int" value="5000"/>
+    <property name="falls" type="bool" value="true"/>
+    <property name="isSideSensible" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
