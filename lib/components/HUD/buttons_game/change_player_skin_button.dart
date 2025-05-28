@@ -4,7 +4,7 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 
 import '../../../fruit_collector.dart';
-import '../widgets/character_selection.dart';
+import '../widgets/characters/page/character_selection.dart';
 
 class ChangePlayerSkinButton extends SpriteComponent with HasGameReference<PixelAdventure>, TapCallbacks {
   final double buttonSize;

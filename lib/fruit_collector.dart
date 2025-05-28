@@ -26,7 +26,7 @@ import 'components/HUD/buttons_game/open_level_selection.dart';
 import 'components/HUD/buttons_game/open_menu_button.dart';
 import 'components/HUD/widgets/achievements/page/achievement_toast.dart';
 import 'components/HUD/widgets/achievements/page/achievements_menu.dart';
-import 'components/HUD/widgets/character_selection.dart';
+import 'components/HUD/widgets/characters/page/character_selection.dart';
 import 'components/HUD/widgets/levels/page/level_selection_menu.dart';
 import 'components/HUD/widgets/main_menu/game_selector.dart';
 import 'components/HUD/widgets/pause_menu.dart';
