@@ -25,7 +25,7 @@ class _CharacterSelectionState extends State<CharacterSelection> {
   _CharacterSelectionState({required this.game});
 
   late Character currentCharacter = game.character.copy();
-  late GameCharacter currentGameCharacter = game.characters[selectedCharacterIndex]['gameCharacter'];
+  GameCharacter get currentGameCharacter => game.characters[selectedCharacterIndex]['gameCharacter'];
   late final numCharacters = game.characters.length;
   late int selectedCharacterIndex = game.characters.indexWhere((c) => (c['character'] as Character).name == game.character.name);
   late final int userStars = game.starsPerLevel.values.reduce((a, b) => a + b);
@@ -49,7 +49,7 @@ class _CharacterSelectionState extends State<CharacterSelection> {
   }
 
   void selectCharacter() {
-    if (currentCharacter.requiredStars > userStars) return;
+    if (!currentGameCharacter.unlocked) return;
     goBack();
     selectedCharacter();
   }
@@ -142,7 +142,7 @@ class _CharacterSelectionState extends State<CharacterSelection> {
                                       borderRadius: BorderRadius.circular(8),
                                       child: ColorFiltered(
                                         colorFilter:
-                                            currentCharacter.requiredStars > userStars
+                                            !currentGameCharacter.unlocked
                                                 ? const ColorFilter.matrix(<double>[
                                                   0.2126,
                                                   0.7152,
@@ -174,7 +174,7 @@ class _CharacterSelectionState extends State<CharacterSelection> {
                                         ),
                                       ),
                                     ),
-                                    if (currentCharacter.requiredStars > userStars)
+                                    if (!currentGameCharacter.unlocked)
                                       const Icon(Icons.lock, color: Colors.white, size: 48),
                                   ],
                                 ),
@@ -209,7 +209,7 @@ class _CharacterSelectionState extends State<CharacterSelection> {
                                 child: ElevatedButton.icon(
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor:
-                                        currentCharacter.requiredStars > userStars
+                                        !currentGameCharacter.unlocked
                                             ? Colors.grey.shade700
                                             : const Color(0xFF3A3750),
                                     foregroundColor: const Color(0xFFE1E0F5),
@@ -218,7 +218,7 @@ class _CharacterSelectionState extends State<CharacterSelection> {
                                       borderRadius: BorderRadius.circular(4),
                                       side: BorderSide(
                                         color:
-                                            currentCharacter.requiredStars > userStars
+                                            !currentGameCharacter.unlocked
                                                 ? Colors.grey.shade700
                                                 : const Color(0xFF5A5672),
                                         width: 2,
@@ -237,7 +237,7 @@ class _CharacterSelectionState extends State<CharacterSelection> {
                                   ),
                                 ),
                               ),
-                              if (currentCharacter.requiredStars > userStars)
+
                                 Positioned(
                                   right: 0,
                                   child: Row(

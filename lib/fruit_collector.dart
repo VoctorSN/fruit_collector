@@ -130,7 +130,8 @@ class PixelAdventure extends FlameGame
   // Logic to manage achievements
   late final AchievementManager achievementManager = AchievementManager(game: this);
   late final CharacterManager characterManager = CharacterManager(game: this);
-  bool isShowingToast = false;
+  bool isShowingAchievementToast = false;
+  bool isShowingCharacterToast = false;
   Map<String, List<dynamic>> pendingToasts = {'achievements': [], 'characters': []};
   Achievement? currentShowedAchievement;
   Character? currentShowedCharacter;
@@ -220,7 +221,7 @@ class PixelAdventure extends FlameGame
       'level_summary',
       (context, game) => LevelSummaryOverlay(
         game: this,
-        onContinue: ()async {
+        onContinue: () async {
           overlays.remove('level_summary');
           changeLevelScreen.startExpand();
           await achievementManager.evaluate();

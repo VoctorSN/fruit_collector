@@ -41,23 +41,30 @@ class CharacterManager {
 
   void _showCharacterUnlocked(Character character) {
     game.pendingToasts['characters']!.add(character);
-    _tryShowNextToast();
+    tryShowNextToast();
   }
 
-  void _tryShowNextToast() {
-    if (game.isShowingToast || game.pendingToasts['characters']!.isEmpty) return;
+  void tryShowNextToast() {
+  // Espera a que no haya logros activos ni pendientes
+  if (game.isShowingCharacterToast ||
+      game.isShowingAchievementToast ||
+      game.pendingToasts['achievements']!.isNotEmpty ||
+      game.pendingToasts['characters']!.isEmpty) return;
 
-    game.isShowingToast = true;
-    final nextCharacter = game.pendingToasts['characters']!.removeAt(0);
+  game.isShowingCharacterToast = true;
+  final nextCharacter = game.pendingToasts['characters']!.removeAt(0);
 
-    game.currentShowedCharacter = nextCharacter;
-    game.overlays.add(CharacterToast.id);
+  game.currentShowedCharacter = nextCharacter;
+  game.overlays.add(CharacterToast.id);
 
-    Future.delayed(const Duration(seconds: 3), () {
-      game.overlays.remove(CharacterToast.id);
-      game.currentShowedCharacter = null;
-      game.isShowingToast = false;
-      _tryShowNextToast();
-    });
-  }
+  Future.delayed(const Duration(seconds: 3), () {
+    game.overlays.remove(CharacterToast.id);
+    game.currentShowedCharacter = null;
+    game.isShowingCharacterToast = false;
+
+    // Intenta mostrar el siguiente personaje
+    tryShowNextToast();
+  });
+}
+
 }

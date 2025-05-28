@@ -80,23 +80,31 @@ class AchievementManager {
 
   void _showAchievementUnlocked(Achievement achievement) {
     game.pendingToasts['achievements']!.add(achievement);
-    _tryShowNextToast();
+    tryShowNextToast();
   }
 
-  void _tryShowNextToast() {
-    if (game.isShowingToast || game.pendingToasts['achievements']!.isEmpty) return;
+  void tryShowNextToast() {
+  if (game.isShowingAchievementToast || game.pendingToasts['achievements']!.isEmpty) return;
 
-    game.isShowingToast = true;
-    final nextAchievement = game.pendingToasts['achievements']!.removeAt(0);
+  game.isShowingAchievementToast = true;
+  final nextAchievement = game.pendingToasts['achievements']!.removeAt(0);
 
-    game.currentShowedAchievement = nextAchievement;
-    game.overlays.add(AchievementToast.id);
+  game.currentShowedAchievement = nextAchievement;
+  game.overlays.add(AchievementToast.id);
 
-    Future.delayed(const Duration(seconds: 3), () {
-      game.overlays.remove(AchievementToast.id);
-      game.currentShowedAchievement = null;
-      game.isShowingToast = false;
-      _tryShowNextToast();
-    });
-  }
+  Future.delayed(const Duration(seconds: 3), () {
+    game.overlays.remove(AchievementToast.id);
+    game.currentShowedAchievement = null;
+    game.isShowingAchievementToast = false;
+
+    // Intenta mostrar el siguiente logro
+    tryShowNextToast();
+
+    // Si ya no hay logros ni se están mostrando, intenta mostrar personajes
+    if (!game.isShowingAchievementToast && game.pendingToasts['achievements']!.isEmpty) {
+      game.characterManager.tryShowNextToast();
+    }
+  });
+}
+
 }
