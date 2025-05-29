@@ -168,7 +168,7 @@ class DatabaseManager {
       },
       {
         'name': 'Stick',
-        'description': 'It’s a stick. But with colors. That’s it. Don’t expect magic—just mild visual excitement. Honestly, you should probably pick a more interesting character… but hey, your choice.',
+        'description': 'It’s a stick. But with colors. That’s it. Don’t expect magic—just mild visual excitement.',
         'required_stars': 5,
       },
       {

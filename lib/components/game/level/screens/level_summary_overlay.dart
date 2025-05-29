@@ -14,21 +14,21 @@ class LevelSummaryOverlay extends StatelessWidget {
 
   String get levelName => game.level.levelName;
   int get difficulty => game.levels[game.gameData!.currentLevel]['level'].difficulty;
-  int get deaths => game.level.minorDeaths;
+  int get deaths => game.level.deathCount;
   int get stars => game.level.starsCollected;
-  int get time => game.level.minorLevelTime;
+  int get time => game.level.levelTime;
 
   final Map<int, String> difficultyMap = {
-    1: 'Easy',
-    2: 'Medium',
-    3: 'Hard',
-    4: 'Expert',
-    5: 'Master',
-    6: 'Legendary',
-    7: 'Mythical',
-    8: 'Godlike',
-    9: 'Impossible',
-    10: 'Ultimate',
+    1: 'Super Easy',
+    2: 'Easy',
+    3: 'Medium',
+    4: 'Pretty Hard',
+    5: 'Hard',
+    6: 'Expert',
+    7: 'Master',
+    8: 'Legendary',
+    9: 'Godlike',
+    10: 'Impossible',
   };
 
   @override

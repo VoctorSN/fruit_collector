@@ -155,14 +155,14 @@
         },
         "bluePrint.tmx": {
             "expandedObjectLayers": [
-                2,
-                3
+                3,
+                2
             ],
             "scale": 1.5007031249999998,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 319.8500702795565,
-                "y": 180.24884168879169
+                "x": 319.85007027955646,
+                "y": 180.2488416887917
             }
         },
         "level-01.tmx": {
@@ -182,38 +182,38 @@
         },
         "level-02.tmx": {
             "expandedObjectLayers": [
-                2,
-                3
+                3,
+                2
             ],
             "scale": 1.5,
             "selectedLayer": 1,
             "viewCenter": {
                 "x": 320,
-                "y": 183.66666666666663
+                "y": 183.66666666666669
             }
         },
         "level-03.tmx": {
             "expandedObjectLayers": [
-                2,
-                3
-            ],
-            "scale": 1.5,
-            "selectedLayer": 0,
-            "viewCenter": {
-                "x": 320,
-                "y": 183.66666666666663
-            }
-        },
-        "level-04.tmx": {
-            "expandedObjectLayers": [
-                2,
-                3
+                3,
+                2
             ],
             "scale": 1.5,
             "selectedLayer": 1,
             "viewCenter": {
                 "x": 320,
-                "y": 183.66666666666663
+                "y": 183.66666666666669
+            }
+        },
+        "level-04.tmx": {
+            "expandedObjectLayers": [
+                3,
+                2
+            ],
+            "scale": 1.5,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 320,
+                "y": 183.66666666666669
             }
         },
         "level-05.tmx": {
@@ -416,6 +416,8 @@
     "project": "Pixel Adventure.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "level-02.tmx",
+        "level-03.tmx",
         "level-04.tmx",
         "level-05.tmx",
         "level-08.tmx",
@@ -425,9 +427,7 @@
         "tutorial-02.tmx",
         "level-99.tmx",
         "level-98.tmx",
-        "level-100.tmx",
-        "tutorial-05.tmx",
-        "level-01.tmx"
+        "level-100.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
