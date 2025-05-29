@@ -169,7 +169,7 @@ class DatabaseManager {
       {
         'name': 'Stick',
         'description': 'It’s a stick. But with colors. That’s it. Don’t expect magic—just mild visual excitement. Honestly, you should probably pick a more interesting character… but hey, your choice.',
-        'required_stars': 5,
+        'required_stars': 0,
       },
       {
         'name': 'Astronaut',
