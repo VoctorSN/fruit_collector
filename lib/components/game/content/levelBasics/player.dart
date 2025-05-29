@@ -356,18 +356,15 @@ class Player extends SpriteAnimationGroupComponent
     isOnSand = false;
     current = PlayerState.hit;
     await _animationRespawn();
-    for (final level in game.children.query<Level>()) {
-      level.respawnObjects();
-    }
     velocity = Vector2.zero();
     position = statringPosition;
     _updatePlayerState();
 
-    Future.delayed(const Duration(milliseconds: 3000), () => gotHit = false);
 
     _jumpForce = 260;
     moveSpeed = 100;
     isRespawning = false;
+    gotHit = false;
   }
 
   removeBlackScreen() {
@@ -382,8 +379,15 @@ class Player extends SpriteAnimationGroupComponent
 
     await game.addBlackScreen();
 
-
     while(game.duringBlackScreen){
+      await Future.delayed(const Duration(milliseconds: 100));
+    }
+
+    for (final level in game.children.query<Level>()) {
+      level.respawnObjects();
+    }
+
+    while(game.duringRemovingBlackScreen){
       await Future.delayed(const Duration(milliseconds: 100));
     }
     scale.x = 1;

@@ -48,6 +48,8 @@ class Level extends World with HasGameReference<PixelAdventure> {
 
   // Logic to manage the achievements
   late final Stopwatch _levelTimer;
+  int lastMinDeaths = 0;
+  int lastMinTime = 0;
   int deathCount = 0;
   int starsCollected = 0;
 
@@ -97,12 +99,7 @@ class Level extends World with HasGameReference<PixelAdventure> {
     _addGameText();
 
     final LevelService service = await LevelService.getInstance();
-    chargeLevel(
-      await service.getGameLevelByGameAndLevelName(
-        gameId: game.gameData!.id,
-        levelName: levelName,
-      ),
-    );
+    chargeLevel(await service.getGameLevelByGameAndLevelName(gameId: game.gameData!.id, levelName: levelName));
 
     return super.onLoad();
   }
@@ -110,6 +107,8 @@ class Level extends World with HasGameReference<PixelAdventure> {
   Future<void> chargeLevel(GameLevel? level) async {
     print('Charging Level: ${level?.levelId}');
     levelData = level;
+    lastMinDeaths = level?.deaths ?? 0;
+    lastMinTime = level?.time ?? 0;
   }
 
   void _startLevel() {
@@ -129,6 +128,13 @@ class Level extends World with HasGameReference<PixelAdventure> {
     }
   }
 
+  void resumeLevelTimer() {
+    if (!_timerStarted) {
+      _levelTimer.start();
+      _timerStarted = true;
+    }
+  }
+
   void _addGameText() {
     final textObjects = level.tileMap
         .getLayer<ObjectGroup>('SpawnPoints')
@@ -138,10 +144,7 @@ class Level extends World with HasGameReference<PixelAdventure> {
     if (textObjects != null) {
       for (final textObject in textObjects) {
         final text = textObject.text?.text.toString() ?? '';
-        final position = Vector2(
-          textObject.x + textObject.width / 2,
-          textObject.y + textObject.height / 2,
-        );
+        final position = Vector2(textObject.x + textObject.width / 2, textObject.y + textObject.height / 2);
 
         final gameText = GameText(
           text: text,
@@ -158,10 +161,7 @@ class Level extends World with HasGameReference<PixelAdventure> {
   }
 
   void respawnObjects() {
-
-    removeWhere(
-      (component) => spawnPointClasses.contains(component.runtimeType),
-    );
+    removeWhere((component) => spawnPointClasses.contains(component.runtimeType));
 
     for (CollisionBlock block in collisionBlocks) {
       if (block.parent != null && block.parent == this) {
@@ -256,7 +256,7 @@ class Level extends World with HasGameReference<PixelAdventure> {
             break;
           case 'PeeShooter':
             final peeShooter = PeeShooter(
-              position: Vector2(spawnPoint.x, spawnPoint.y+6),
+              position: Vector2(spawnPoint.x, spawnPoint.y + 6),
               size: Vector2(spawnPoint.width, spawnPoint.height),
               range: spawnPoint.properties.getValue('range'),
               collisionBlocks: collisionBlocks,
@@ -378,27 +378,27 @@ class Level extends World with HasGameReference<PixelAdventure> {
   }
 
   int get minorLevelTime {
-    final int lastTime = levelTime;
-    if (levelData != null) {
-      if (levelData!.time != null) {
-        if (lastTime < levelData!.time!) {
-          levelData!.time = lastTime;
-        }
-      } else {
-        levelData!.time = lastTime;
-      }
+    if (levelData == null) return lastMinTime;
+    if (levelData!.time != null && lastMinTime < levelTime) {
+      levelData!.time = lastMinTime;
+      return lastMinTime;
     }
-    return lastTime;
+    levelData!.time = levelTime;
+    lastMinTime = levelTime;
+
+    return lastMinTime;
   }
 
   int get minorDeaths {
-    final int lastDeathCount = deathCount;
-    if (levelData != null) {
-      if (lastDeathCount < levelData!.deaths) {
-        levelData!.deaths = lastDeathCount;
-      }
+    if (levelData == null) return lastMinDeaths;
+    if (levelData!.deaths != null && lastMinDeaths < deathCount) {
+      levelData!.deaths = lastMinDeaths;
+      return lastMinDeaths;
     }
-    return lastDeathCount;
+    levelData!.deaths = deathCount;
+    lastMinDeaths = deathCount;
+
+    return lastMinDeaths;
   }
 
   Future<void> saveLevel() async {

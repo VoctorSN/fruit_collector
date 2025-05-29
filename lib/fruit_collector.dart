@@ -107,6 +107,7 @@ class PixelAdventure extends FlameGame
     },
   );
   bool duringBlackScreen = false;
+  bool duringRemovingBlackScreen = false;
 
   late final creditsScreen = CreditsScreen(
     gameAdd: (component) => add(component),
@@ -337,8 +338,8 @@ class PixelAdventure extends FlameGame
 
       // Marcar el nivel como completado
       currentGameLevel.completed = true;
-      currentGameLevel.time = level.levelTime;
-      currentGameLevel.deaths = level.deathCount;
+      currentGameLevel.time = level.minorLevelTime;
+      currentGameLevel.deaths = level.minorDeaths;
       print('Level ${currentLevel + 1} marked as completed!');
 
       // Unlock the next level if exists
@@ -455,5 +456,31 @@ class PixelAdventure extends FlameGame
 
     // Reload animations of the player
     player.loadNewCharacterAnimations();
+  }
+
+  @override
+  void pauseEngine() {
+    try {
+      level.stopLevelTimer();
+    } catch (e) {
+
+        // Manejar cualquier otro error
+        print('Error inesperado: $e');
+      }
+
+    super.pauseEngine();
+  }
+
+  @override
+  void resumeEngine() {
+    try {
+      level.resumeLevelTimer();
+    } catch (e) {
+
+        // Manejar cualquier otro error
+        print('Error inesperado: $e');
+
+    }
+    super.resumeEngine();
   }
 }

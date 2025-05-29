@@ -180,6 +180,8 @@ class DeathScreen extends RectangleComponent {
         );
     }
     }
+    game.duringBlackScreen = false;
+    game.duringRemovingBlackScreen = true;
     removeBlackScreen();
   }
 
@@ -247,6 +249,6 @@ class DeathScreen extends RectangleComponent {
     gameRemove(blackScreen);
     game.toggleBlockWindowResize(true);
     game.toggleBlockButtons(true);
-    game.duringBlackScreen = false;
+    game.duringRemovingBlackScreen = false;
   }
 }

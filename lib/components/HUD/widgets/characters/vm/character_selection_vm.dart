@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:fruit_collector/components/HUD/widgets/characters/page/character_selection.dart';
 import 'package:fruit_collector/components/bbdd/models/character.dart';
 import 'package:fruit_collector/components/bbdd/models/game_character.dart';
 import 'package:fruit_collector/fruit_collector.dart';
@@ -68,6 +69,8 @@ void refreshFromGame() {
     if (!currentGameCharacter.unlocked) return;
     game.character = currentCharacter;
     game.updateCharacter();
+    game.resumeEngine();
+    game.overlays.remove(CharacterSelection.id);
   }
 
   void goBack() {
