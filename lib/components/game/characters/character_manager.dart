@@ -33,6 +33,9 @@ class CharacterManager {
         if (character.requiredStars <= userStars) {
           print('Character ${character.name} unlocked with $userStars stars');
           await characterService.unlockCharacter(game.gameData!.id, gameCharacter.characterId);
+          game.characters.where((ch) => ch['gameCharacter'].id == gameCharacter.id).forEach((gameCharacter) {
+            (gameCharacter['gameCharacter'] as GameCharacter).unlocked = true;
+          });
           _showCharacterUnlocked(character);
         }
       }
@@ -45,26 +48,26 @@ class CharacterManager {
   }
 
   void tryShowNextToast() {
-  // Espera a que no haya logros activos ni pendientes
-  if (game.isShowingCharacterToast ||
-      game.isShowingAchievementToast ||
-      game.pendingToasts['achievements']!.isNotEmpty ||
-      game.pendingToasts['characters']!.isEmpty) return;
+    // Espera a que no haya logros activos ni pendientes
+    if (game.isShowingCharacterToast ||
+        game.isShowingAchievementToast ||
+        game.pendingToasts['achievements']!.isNotEmpty ||
+        game.pendingToasts['characters']!.isEmpty)
+      return;
 
-  game.isShowingCharacterToast = true;
-  final nextCharacter = game.pendingToasts['characters']!.removeAt(0);
+    game.isShowingCharacterToast = true;
+    final nextCharacter = game.pendingToasts['characters']!.removeAt(0);
 
-  game.currentShowedCharacter = nextCharacter;
-  game.overlays.add(CharacterToast.id);
+    game.currentShowedCharacter = nextCharacter;
+    game.overlays.add(CharacterToast.id);
 
-  Future.delayed(const Duration(seconds: 3), () {
-    game.overlays.remove(CharacterToast.id);
-    game.currentShowedCharacter = null;
-    game.isShowingCharacterToast = false;
+    Future.delayed(const Duration(seconds: 3), () {
+      game.overlays.remove(CharacterToast.id);
+      game.currentShowedCharacter = null;
+      game.isShowingCharacterToast = false;
 
-    // Intenta mostrar el siguiente personaje
-    tryShowNextToast();
-  });
-}
-
+      // Intenta mostrar el siguiente personaje
+      tryShowNextToast();
+    });
+  }
 }
