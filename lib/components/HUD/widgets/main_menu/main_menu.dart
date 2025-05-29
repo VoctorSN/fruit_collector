@@ -82,6 +82,8 @@ class _MainMenuState extends State<MainMenu> with SingleTickerProviderStateMixin
 
     widget.game.soundManager.pauseAll();
 
+    widget.game.soundManager.startMenuBGM();
+
     return Stack(
       fit: StackFit.expand,
       children: [

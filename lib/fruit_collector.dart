@@ -103,7 +103,7 @@ class PixelAdventure extends FlameGame
   late var changeLevelScreen = ChangeLevelScreen(
     onExpandEnd: () {
       gameData!.currentLevel++;
-      _loadActualLevel(); // o lo que uses para cargar el siguiente
+      _loadActualLevel();
     },
   );
   bool duringBlackScreen = false;
@@ -362,6 +362,7 @@ class PixelAdventure extends FlameGame
     final service = await GameService.getInstance();
     service.saveGameBySpace(game: gameData);
     removeWhere((component) => component is Level);
+    soundManager.stopBGM();
     soundManager.startDefaultBGM(settings);
     level = Level(levelName: levels[gameData?.currentLevel ?? 0]['level'].name, player: player);
 

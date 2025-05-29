@@ -1,20 +1,54 @@
-# fruit_collector
+# 🍓 **Fruit Collector** 🍌
+*Un juego de plataformas muy guay donde recolectar frutas se vuelve una aventura*
 
-A new Flutter project with Flame.
+Diseñado por:  
+**Amán Lama Vilariño**  
+**Víctor Sánchez Nogueira**
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🎮 ¿De qué va el juego?
 
-A few resources to get you started if this is your first Flutter project:
+**Fruit Collector** es un divertido juego de plataformas donde recorrerás mundos coloridos, esquivando obstáculos y recolectando deliciosas frutas. Saltos precisos, reflejos rápidos y mucha diversión te esperan en este reto arcade.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Pon a prueba tu habilidad y ¡recolecta todas las frutas antes de que se acabe el tiempo!
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
 
+## 📲 ¡Descarga ahora!
 
+> 🚀 **¿Listo para jugar? No esperes más:**
 
-continuar con los fallingblocks
+### 👉 [**DESCARGAR APK**](./downloads/fruit_collector.apk)
+
+Instala el juego en tu dispositivo Android y empieza tu aventura frutal en segundos.  
+🔐 *Seguro, rápido y sin anuncios*
+
+---
+
+## 🧪 Características destacadas
+
+- ✅ Jugabilidad fluida y controles precisos
+- 🍉 Niveles llenos de frutas y secretos
+- 🎧 Música original envolvente
+- 🕹️ Compatible con la mayoría de dispositivos Android
+
+---
+
+## 🛠️ Tecnologías
+
+- Flutter (100% Vanilla, sin gestores externos)
+- Arquitectura MVVM con `BaseWidget` y `BaseVM`
+- Clean code profesional y mantenible
+
+---
+
+## 📂 Estructura del proyecto
+
+```bash
+/lib
+ ├── base/
+ ├── viewmodels/
+ ├── views/
+ ├── widgets/
+ └── main.dart

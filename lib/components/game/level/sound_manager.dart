@@ -126,6 +126,11 @@ class SoundManager {
     }
   }
 
+  /// TODO change the volume to a fixed value
+  void startMenuBGM() {
+    flame.FlameAudio.bgm.play('bgm_menu.mp3', volume: 0.5);
+  }
+
   void stopBGM() {
     flame.FlameAudio.bgm.stop();
   }

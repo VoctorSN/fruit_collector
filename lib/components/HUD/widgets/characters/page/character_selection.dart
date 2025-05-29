@@ -55,7 +55,7 @@ onModelReady: (vm) {
                 builder: (context, constraints) {
                   final double maxWidth = (constraints.maxWidth * 0.6).clamp(0.0, 400.0);
                   final double maxHeight = (constraints.maxHeight * 0.8).clamp(0.0, 350.0);
-                  final double avatarSize = (maxWidth).clamp(80.0, 180.0);
+                  final double avatarSize = (maxWidth).clamp(80.0, 140.0);
 
                   return Stack(
                     children: [
