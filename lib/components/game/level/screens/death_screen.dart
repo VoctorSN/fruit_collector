@@ -29,6 +29,7 @@ class DeathScreen extends RectangleComponent {
   late List<TextComponent> xComponents = []; // Store "X" components
 
   Future<void> addBlackScreen(int deaths) async {
+    game.duringBlackScreen = true;
     game.toggleBlockButtons(false);
     game.toggleBlockWindowResize(false);
     if (game.settings.isSoundEnabled) {
@@ -179,6 +180,7 @@ class DeathScreen extends RectangleComponent {
         );
     }
     }
+    removeBlackScreen();
   }
 
   Future<void> removeBlackScreen() async {
@@ -245,5 +247,6 @@ class DeathScreen extends RectangleComponent {
     gameRemove(blackScreen);
     game.toggleBlockWindowResize(true);
     game.toggleBlockButtons(true);
+    game.duringBlackScreen = false;
   }
 }

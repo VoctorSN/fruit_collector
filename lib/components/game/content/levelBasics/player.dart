@@ -363,8 +363,7 @@ class Player extends SpriteAnimationGroupComponent
     position = statringPosition;
     _updatePlayerState();
 
-    Future.delayed(const Duration(milliseconds: 2000), () => gotHit = false);
-    await removeBlackScreen();
+    Future.delayed(const Duration(milliseconds: 3000), () => gotHit = false);
 
     _jumpForce = 260;
     moveSpeed = 100;
@@ -378,12 +377,19 @@ class Player extends SpriteAnimationGroupComponent
   Future<void> _animationRespawn() async {
     await animationTicker?.completed;
     animationTicker?.reset();
+    priority = -1000;
+
+
     await game.addBlackScreen();
 
+
+    while(game.duringBlackScreen){
+      await Future.delayed(const Duration(milliseconds: 100));
+    }
     scale.x = 1;
     position = statringPosition - Vector2.all(32);
-
     current = PlayerState.appearing;
+    priority = -1;
 
     await animationTicker?.completed;
     animationTicker?.reset();

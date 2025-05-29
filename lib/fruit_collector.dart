@@ -106,6 +106,7 @@ class PixelAdventure extends FlameGame
       _loadActualLevel(); // o lo que uses para cargar el siguiente
     },
   );
+  bool duringBlackScreen = false;
 
   late final creditsScreen = CreditsScreen(
     gameAdd: (component) => add(component),
