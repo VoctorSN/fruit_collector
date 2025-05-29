@@ -26,9 +26,9 @@ enum PlayerState { idle, running, jumping, doubleJumping, falling, hit, appearin
 
 class Player extends SpriteAnimationGroupComponent
     with HasGameReference<PixelAdventure>, KeyboardHandler, CollisionCallbacks {
-
   // Constructor and atributes
   String character;
+
   Player({super.position, this.character = 'Mask Dude'});
 
   // Animations config
@@ -55,6 +55,7 @@ class Player extends SpriteAnimationGroupComponent
   Vector2 velocity = Vector2.zero();
   Vector2 windVelocity = Vector2.zero();
   bool isOnGround = false;
+  bool isOnWall = false;
   bool isOnSand = false;
   bool hasJumped = false;
   int jumpCount = 0;
@@ -209,31 +210,36 @@ class Player extends SpriteAnimationGroupComponent
     velocity.y = jumpCount == 2 ? -_jumpForce * 0.8 : -_jumpForce;
     isOnGround = false;
     hasJumped = false;
+    isOnWall = false;
   }
 
   void _updatePlayerState() {
-    PlayerState playerState = PlayerState.idle;
-
-    if (velocity.x < 0 && scale.x > 0) {
-      flipHorizontallyAroundCenter();
-    } else if (velocity.x > 0 && scale.x < 0) {
-      flipHorizontallyAroundCenter();
+    if (!isOnWall) {
+      PlayerState playerState = PlayerState.idle;
+      
+      if (velocity.x < 0 && scale.x > 0) {
+        flipHorizontallyAroundCenter();
+      } else if (velocity.x > 0 && scale.x < 0) {
+        flipHorizontallyAroundCenter();
+      }
+      
+      if (velocity.x != 0) {
+        playerState = PlayerState.running;
+      }
+      
+      if (velocity.y > 0) {
+        playerState = PlayerState.falling;
+      }
+      
+      if (velocity.y < 0 && jumpCount < 2) playerState = PlayerState.jumping;
+      
+      if (jumpCount == 2 && !isOnSand && !isRespawning) playerState = PlayerState.doubleJumping;
+      current = playerState;
     }
-
-    if (velocity.x != 0) {
-      playerState = PlayerState.running;
-    }
-
-    if (velocity.y > 0) playerState = PlayerState.falling;
-
-    if (velocity.y < 0 && jumpCount < 2) playerState = PlayerState.jumping;
-
-    if (jumpCount == 2 && !isOnSand && !isRespawning) playerState = PlayerState.doubleJumping;
-
-    current = playerState;
   }
 
   void _checkHorizontalCollisions() {
+    isOnWall = false;
     for (final block in collisionBlocks) {
       if (block is AlternatingBlock) {
         if (!block.isActive) {
@@ -261,7 +267,10 @@ class Player extends SpriteAnimationGroupComponent
     final currentWall = isOnRightWall ? 1 : -1;
     if (velocity.y >= 0 && !isOnGround) {
       velocity.y = velocity.y * 0.7;
-      current = PlayerState.wallSlide;
+      if (current != PlayerState.wallSlide) current = PlayerState.wallSlide;
+      isOnWall = true;
+    } else {
+      isOnWall = false;
     }
     if (lastWall != currentWall) {
       lastWall = currentWall;
@@ -322,7 +331,8 @@ class Player extends SpriteAnimationGroupComponent
             break;
           }
           if (velocity.y < 0) {
-            current = PlayerState.wallSlide;
+            if (current != PlayerState.wallSlide) current = PlayerState.wallSlide;
+            isOnWall = true;
             velocity.y = 0;
             position.y = block.y + block.height - hitbox.offsetY;
             break;
@@ -333,7 +343,6 @@ class Player extends SpriteAnimationGroupComponent
   }
 
   void _respawn() async {
-
     if (isRespawning) return;
 
     game.level.registerDeath();
@@ -347,14 +356,14 @@ class Player extends SpriteAnimationGroupComponent
     isOnSand = false;
     current = PlayerState.hit;
     await _animationRespawn();
-    for(final level in game.children.query<Level>()){
+    for (final level in game.children.query<Level>()) {
       level.respawnObjects();
     }
     velocity = Vector2.zero();
     position = statringPosition;
     _updatePlayerState();
 
-    Future.delayed(const Duration(milliseconds: 2000 ), () => gotHit = false);
+    Future.delayed(const Duration(milliseconds: 2000), () => gotHit = false);
     await removeBlackScreen();
 
     _jumpForce = 260;
@@ -410,7 +419,6 @@ class Player extends SpriteAnimationGroupComponent
   }
 
   void updateCharacter() {
-
     game.characterService!.equipCharacter(game.gameData!.id, game.character.id);
 
     // Reload animations of the player
