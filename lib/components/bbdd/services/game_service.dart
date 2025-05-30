@@ -62,6 +62,13 @@ class GameService {
     return await getOrCreateGameBySpace(space: 1);
   }
 
+  Future<void> unlockEverythingForGame({required int space}) async {
+    Game game = await getOrCreateGameBySpace(space: space);
+    await _gameLevelRepository.unlockAllLevelsForGame(gameId: game.id);
+    await _gameAchievementRepository.unlockAllAchievementsForGame(gameId: game.id);
+    await _gameCharacterRepository.unlockAllCharactersForGame(gameId: game.id);
+  }
+
   Future<Game> getOrCreateGameBySpace({required int space}) async {
     final Game? existing = await _gameRepository.getGameBySpace(space: space);
     if (existing != null) return existing;

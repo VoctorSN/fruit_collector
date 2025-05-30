@@ -52,4 +52,13 @@ class GameCharacterRepository {
       throw Exception('No characters found for gameId $gameId');
     }
   }
+
+  unlockAllCharactersForGame({required int gameId}) {
+    return _db.update(
+      'GameCharacter',
+      {'unlocked': 1},
+      where: 'game_id = ?',
+      whereArgs: [gameId],
+    );
+  }
 }

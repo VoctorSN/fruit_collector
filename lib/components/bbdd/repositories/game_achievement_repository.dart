@@ -40,4 +40,13 @@ class GameAchievementRepository {
       throw Exception('No achievement found for gameId $gameId');
     }
   }
+
+  unlockAllAchievementsForGame({required int gameId}) {
+    return _db.update(
+      'GameAchievement',
+      {'achieved': 1},
+      where: 'game_id = ?',
+      whereArgs: [gameId],
+    );
+  }
 }

@@ -146,13 +146,14 @@ class FruitCollector extends FlameGame
 
   models.Game? gameData;
 
-  Future<void> chargeSlot(int slot) async {
+  Future<void> chargeSlot(int space) async {
     await getGameService();
     await getLevelService();
     await getSettingsService();
     await getAchievementService();
     await getCharacterService();
-    gameData = await gameService!.getOrCreateGameBySpace(space: slot);
+    await gameService!.unlockEverythingForGame(space: space);
+    gameData = await gameService!.getOrCreateGameBySpace(space: space);
     levels = await levelService!.getLevelsForGame(gameData!.id);
     settings = await settingsService!.getSettingsForGame(gameData!.id) as Settings;
     achievements = await achievementService!.getAchievementsForGame(gameData!.id);

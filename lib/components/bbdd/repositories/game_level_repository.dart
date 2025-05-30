@@ -48,4 +48,13 @@ class GameLevelRepository {
       throw Exception('No gameLevels found for gameId $gameId');
     }
   }
+
+  unlockAllLevelsForGame({required int gameId}) {
+    return _db.update(
+      'GameLevel',
+      {'unlocked': 1},
+      where: 'game_id = ?',
+      whereArgs: [gameId],
+    );
+  }
 }

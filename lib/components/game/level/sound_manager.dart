@@ -75,7 +75,7 @@ class SoundManager {
   void playJump(double volume) {
     final now = DateTime.now();
     if (_lastJump == null || now.difference(_lastJump!) >= _jumpCooldown) {
-      play('jump', volume);
+      play('jump', volume * mutedVolume);
       _lastJump = now;
     }
   }
