@@ -260,13 +260,15 @@ class FruitCollector extends FlameGame
       (context, game) => LevelSelectionMenu(
         game: this,
         totalLevels: levels.length,
-        onLevelSelected: (level) async {
+        onLevelSelected: (levelSelected) async {
           final GameService service = await GameService.getInstance();
+          gameData!.totalTime += level.levelTime;
+          gameData!.totalDeaths += level.deathCount;
           await service.saveGameBySpace(game: gameData);
 
           overlays.remove(LevelSelectionMenu.id);
           resumeEngine();
-          gameData?.currentLevel = level;
+          gameData?.currentLevel = levelSelected;
           addLevelAnimation();
         },
       ),
