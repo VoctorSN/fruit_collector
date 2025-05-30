@@ -6,7 +6,7 @@ import 'package:fruit_collector/components/game/content/levelBasics/player.dart'
 
 import '../../../../fruit_collector.dart';
 
-class Spike extends PositionComponent with HasGameReference<PixelAdventure>, CollisionCallbacks {
+class Spike extends PositionComponent with HasGameReference<FruitCollector>, CollisionCallbacks {
   // Constructor
   final String wallPosition;
 

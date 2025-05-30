@@ -14,7 +14,7 @@ class LevelSelectionMenu extends StatelessWidget {
 
   final int totalLevels;
   final void Function(int) onLevelSelected;
-  final PixelAdventure game;
+  final FruitCollector game;
 
   const LevelSelectionMenu({super.key, required this.game, required this.totalLevels, required this.onLevelSelected});
 

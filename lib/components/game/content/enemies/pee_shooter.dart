@@ -14,7 +14,7 @@ import '../levelBasics/player.dart';
 enum PeeShooterState { idle, attack, hit }
 
 class PeeShooter extends SpriteAnimationGroupComponent
-    with CollisionCallbacks, HasGameReference<PixelAdventure>, PlayerCollidable, CollisionableWithHitbox {
+    with CollisionCallbacks, HasGameReference<FruitCollector>, PlayerCollidable, CollisionableWithHitbox {
   // Constructor and attributes
   final double range;
   final int lookDirection;

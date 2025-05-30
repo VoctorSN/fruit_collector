@@ -8,7 +8,7 @@ import 'package:fruit_collector/components/bbdd/models/game_achievement.dart';
 import 'package:fruit_collector/fruit_collector.dart';
 
 class AchievementDetails extends StatelessWidget {
-  final PixelAdventure game;
+  final FruitCollector game;
   final Achievement achievement;
   final GameAchievement gameAchievement;
 

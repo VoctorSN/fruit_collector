@@ -13,7 +13,7 @@ import 'game_selector.dart';
 
 class MainMenu extends StatefulWidget {
   static const String id = 'MainMenu';
-  final PixelAdventure game;
+  final FruitCollector game;
 
   const MainMenu(this.game, {super.key});
 

@@ -139,15 +139,16 @@
     <property name="position" value="TopWall"/>
    </properties>
   </object>
-  <object id="136" name="Pineapple" type="Fruit" x="208" y="128" width="32" height="32"/>
-  <object id="137" name="Melon" type="Fruit" x="272" y="128" width="32" height="32"/>
+  <object id="136" name="Pineapple" type="Fruit" x="240" y="128" width="32" height="32"/>
+  <object id="137" name="Melon" type="Fruit" x="240" y="64" width="32" height="32"/>
   <object id="138" name="Strawberry" type="Fruit" x="320" y="64" width="32" height="32"/>
   <object id="139" name="Orange" type="Fruit" x="359.333" y="266.667" width="32" height="32"/>
   <object id="140" name="Bananas" type="Fruit" x="112" y="144" width="32" height="32"/>
   <object id="143" name="Apple" type="Fruit" x="384" y="16" width="32" height="32"/>
-  <object id="144" name="Cherries" type="Fruit" x="128" y="256" width="32" height="32"/>
+  <object id="144" name="Cherries" type="Fruit" x="240" y="192" width="32" height="32"/>
   <object id="145" name="Bananas" type="Fruit" x="432" y="256" width="32" height="32"/>
   <object id="141" name="Cherries" type="Fruit" x="20.6667" y="77.3333" width="32" height="32"/>
+  <object id="142" name="Kiwi" type="Fruit" x="96" y="256" width="32" height="32"/>
  </objectgroup>
  <objectgroup id="2" name="Collisions">
   <object id="1" x="16" y="288" width="32" height="80"/>
@@ -288,7 +289,6 @@
    </properties>
   </object>
   <object id="135" x="16" y="32" width="128" height="16"/>
-  <object id="142" name="Kiwi" type="Fruit" x="96" y="256" width="32" height="32"/>
  </objectgroup>
  <layer id="4" name="Background" width="40" height="23">
   <properties>

@@ -12,7 +12,7 @@ import '../widget/character_card_flip.dart';
 class CharacterSelection extends StatelessWidget {
   static const String id = 'character_selection';
 
-  final PixelAdventure game;
+  final FruitCollector game;
 
   const CharacterSelection(this.game, {super.key});
 

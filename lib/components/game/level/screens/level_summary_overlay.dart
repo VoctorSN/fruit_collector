@@ -4,7 +4,7 @@ import 'package:fruit_collector/fruit_collector.dart';
 
 class LevelSummaryOverlay extends StatelessWidget {
   final VoidCallback onContinue;
-  final PixelAdventure game;
+  final FruitCollector game;
 
   LevelSummaryOverlay({
     super.key,

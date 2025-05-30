@@ -13,7 +13,7 @@ class CharacterSelectionVM extends BaseModel {
   late final Animation<double> rotation;
   bool isFront = true;
 
-  final PixelAdventure game;
+  final FruitCollector game;
 
   late int selectedCharacterIndex;
   late int numCharacters;

@@ -11,7 +11,7 @@ import '../levelBasics/player.dart';
 
 enum State { idle, atackDown, atackTop, atacking }
 
-class SpikeHead extends SpriteAnimationGroupComponent with HasGameReference<PixelAdventure>, CollisionCallbacks {
+class SpikeHead extends SpriteAnimationGroupComponent with HasGameReference<FruitCollector>, CollisionCallbacks {
   bool isReversed = false;
 
   SpikeHead({super.position, super.size, this.isReversed = false});

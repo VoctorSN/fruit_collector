@@ -7,7 +7,7 @@ import '../../../bbdd/models/levelModel.dart';
 
 enum TransitionPhase { contracting, expanding, idle }
 
-class ChangeLevelScreen extends PositionComponent with HasGameReference<PixelAdventure> {
+class ChangeLevelScreen extends PositionComponent with HasGameReference<FruitCollector> {
   final double durationMs;
   final VoidCallback onExpandEnd;
 

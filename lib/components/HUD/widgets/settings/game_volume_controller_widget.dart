@@ -12,7 +12,7 @@ const double buttonPositionX = 0.0;
 const double sliderWidth = 250.0;
 
 class ToggleGameVolumeWidget extends StatefulWidget {
-  final PixelAdventure game;
+  final FruitCollector game;
   final Function updateGameVolume;
 
   ToggleGameVolumeWidget({
@@ -31,7 +31,7 @@ class ToggleGameVolumeWidget extends StatefulWidget {
 }
 
 class _ToggleGameVolumeWidgetState extends State<ToggleGameVolumeWidget> {
-  final PixelAdventure game;
+  final FruitCollector game;
   final Function updateGameVolume;
 
   _ToggleGameVolumeWidgetState({

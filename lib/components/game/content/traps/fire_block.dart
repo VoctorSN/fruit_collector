@@ -11,7 +11,7 @@ import '../blocks/collision_block.dart';
 
 enum FireBlockState { on, off }
 
-class FireBlock extends PositionComponent with HasGameReference<PixelAdventure>, CollisionCallbacks {
+class FireBlock extends PositionComponent with HasGameReference<FruitCollector>, CollisionCallbacks {
   // Constructor and attributes
   final int startIn;
   final String fireDirection;

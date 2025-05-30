@@ -9,7 +9,7 @@ import '../../../../fruit_collector.dart';
 class CreditsScreen extends Component {
   final Function gameAdd;
   final Function gameRemove;
-  final PixelAdventure game;
+  final FruitCollector game;
 
   CreditsScreen({required this.gameAdd, required this.gameRemove, required this.game});
 

@@ -6,7 +6,7 @@ import '../../../fruit_collector.dart';
 import '../../game/content/levelBasics/player.dart';
 
 class CustomJoystick extends PositionComponent
-    with HasGameReference<PixelAdventure>, TapCallbacks {
+    with HasGameReference<FruitCollector>, TapCallbacks {
   final double controlSize;
   double leftMargin;
 

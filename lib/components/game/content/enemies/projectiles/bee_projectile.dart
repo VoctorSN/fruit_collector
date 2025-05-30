@@ -8,7 +8,7 @@ import 'package:fruit_collector/fruit_collector.dart';
 import '../../levelBasics/player.dart';
 
 class BeeProjectile extends SpriteComponent
-    with CollisionCallbacks, HasGameReference<PixelAdventure> {
+    with CollisionCallbacks, HasGameReference<FruitCollector> {
   final Vector2 velocity;
   Function(dynamic) addSpawnPoint;
 

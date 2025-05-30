@@ -12,7 +12,7 @@ const double sliderWidth = 250.0;
 const double iconSpacing = 0.0;
 
 class ResizeControls extends StatefulWidget {
-  final PixelAdventure game;
+  final FruitCollector game;
   final Function updateSizeControls;
   final Function updateIsLeftHanded;
   final Function updateShowControls;
@@ -37,7 +37,7 @@ class ResizeControls extends StatefulWidget {
 }
 
 class _ResizeControlsState extends State<ResizeControls> {
-  final PixelAdventure game;
+  final FruitCollector game;
   final Function updateSizeControls;
   final Function updateIsLeftHanded;
   final Function updateShowControls;

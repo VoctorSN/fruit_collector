@@ -119,7 +119,7 @@ class DatabaseManager {
           date_completed TEXT NOT NULL DEFAULT '1970-01-01 00:00:00',
           last_time_completed TEXT NOT NULL DEFAULT '1970-01-01 00:00:00',
           time INTEGER,
-          deaths INTEGER NOT NULL DEFAULT 0,
+          deaths INTEGER NOT NULL DEFAULT -1,
           FOREIGN KEY (level_id) REFERENCES Levels(id),
           FOREIGN KEY (game_id) REFERENCES Games(id) ON DELETE CASCADE
         );

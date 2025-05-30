@@ -13,7 +13,7 @@ import '../levelBasics/player.dart';
 
 enum ChickenState { idle, run, hit }
 
-class Chicken extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<PixelAdventure>, PlayerCollidable {
+class Chicken extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<FruitCollector>, PlayerCollidable {
   // Constructor and attributes
   final double offNeg;
   final double offPos;

@@ -10,7 +10,7 @@ import 'air_effect.dart';
 
 enum FanState { off, on }
 
-class Fan extends SpriteAnimationGroupComponent with HasGameReference<PixelAdventure>, CollisionCallbacks {
+class Fan extends SpriteAnimationGroupComponent with HasGameReference<FruitCollector>, CollisionCallbacks {
   // Constructor and attributes
   final bool directionRight;
   final double fanDistance;

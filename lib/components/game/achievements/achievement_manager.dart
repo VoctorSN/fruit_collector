@@ -8,7 +8,7 @@ import '../../bbdd/services/achievement_service.dart';
 
 class AchievementManager {
   // Constructor and attributes
-  PixelAdventure game;
+  FruitCollector game;
 
   AchievementManager({required this.game});
 
@@ -16,34 +16,34 @@ class AchievementManager {
   List<Map<String, dynamic>> allAchievements = [];
 
   late final Map<String, Function> achievementConditions = {
-    'It Begins': (PixelAdventure game) => (game.levels[0]['gameLevel'] as GameLevel).completed,
+    'It Begins': (FruitCollector game) => (game.levels[0]['gameLevel'] as GameLevel).completed,
     'The Chosen One':
-        (PixelAdventure game) => (game.levels.every((level) => (level['gameLevel'] as GameLevel).completed)),
-    'Level 4: Reloaded': (PixelAdventure game) => (game.levels[3]['gameLevel'] as GameLevel).completed,
+        (FruitCollector game) => (game.levels.every((level) => (level['gameLevel'] as GameLevel).completed)),
+    'Level 4: Reloaded': (FruitCollector game) => (game.levels[3]['gameLevel'] as GameLevel).completed,
     'Untouchable':
-        (PixelAdventure game) =>
+        (FruitCollector game) =>
             (game.levels.every((level) => (level['gameLevel'] as GameLevel).completed) &&
                 game.gameData!.totalDeaths == 0),
     'Gotta Go Fast!':
-        (PixelAdventure game) =>
+        (FruitCollector game) =>
             (game.levels.every((level) => (level['gameLevel'] as GameLevel).completed) &&
                 game.gameData!.totalTime <= 300),
-    'Shiny Hunter': (PixelAdventure game) => (game.levels[4]['gameLevel'] as GameLevel).stars == 3,
+    'Shiny Hunter': (FruitCollector game) => (game.levels[4]['gameLevel'] as GameLevel).stars == 3,
     'No Hit Run: Level 2':
-        (PixelAdventure game) =>
+        (FruitCollector game) =>
             (game.levels[1]['gameLevel'] as GameLevel).completed &&
             (game.levels[1]['gameLevel'] as GameLevel).deaths == 0,
     'Flashpoint':
-        (PixelAdventure game) =>
+        (FruitCollector game) =>
             (game.levels[5]['gameLevel'] as GameLevel).time != null &&
             (game.levels[5]['gameLevel'] as GameLevel).time! <= 15,
     'Completionist':
-        (PixelAdventure game) => game.achievements.every((a) => (a['gameAchievement'] as GameAchievement).achieved),
+        (FruitCollector game) => game.achievements.every((a) => (a['gameAchievement'] as GameAchievement).achieved),
     'Star Collector':
-        (PixelAdventure game) => game.levels.every((level) => (level['gameLevel'] as GameLevel).stars == 3),
-    'Death Defier': (PixelAdventure game) => game.levels.any((level) => (level['gameLevel'] as GameLevel).deaths >= 20),
+        (FruitCollector game) => game.levels.every((level) => (level['gameLevel'] as GameLevel).stars == 3),
+    'Death Defier': (FruitCollector game) => game.level.deathCount >= 20,
     'Flawless Victory':
-        (PixelAdventure game) =>
+        (FruitCollector game) =>
             game.levels.every((level) => (level['gameLevel'] as GameLevel).stars == 3) &&
             game.gameData!.totalDeaths == 0,
   };
@@ -97,10 +97,10 @@ class AchievementManager {
     game.currentShowedAchievement = null;
     game.isShowingAchievementToast = false;
 
-    // Intenta mostrar el siguiente logro
+    // Try to show the next achievement toast
     tryShowNextToast();
 
-    // Si ya no hay logros ni se están mostrando, intenta mostrar personajes
+    // If no more achievement toasts are showing, try to show the next character toast
     if (!game.isShowingAchievementToast && game.pendingToasts['achievements']!.isEmpty) {
       game.characterManager.tryShowNextToast();
     }

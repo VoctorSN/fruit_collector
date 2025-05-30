@@ -14,7 +14,7 @@ import '../levelBasics/player.dart';
 enum GhostState { appearing, moving, disappearing }
 
 class Ghost extends SpriteAnimationGroupComponent
-    with CollisionCallbacks, HasGameReference<PixelAdventure> {
+    with CollisionCallbacks, HasGameReference<FruitCollector> {
 
   // Constructor and attributes
   final int spawnIn;

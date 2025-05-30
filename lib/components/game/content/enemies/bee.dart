@@ -15,7 +15,7 @@ import '../levelBasics/player.dart';
 enum BeeState { idle, attack, hit }
 
 class Bee extends SpriteAnimationGroupComponent
-    with CollisionCallbacks, HasGameReference<PixelAdventure>, PlayerCollidable {
+    with CollisionCallbacks, HasGameReference<FruitCollector>, PlayerCollidable {
   
   // Constructor and attributes
   final double offNeg;

@@ -3,7 +3,7 @@ import 'package:flame/components.dart';
 import 'package:flame/particles.dart';
 import 'package:fruit_collector/fruit_collector.dart';
 
-class ConfettiEmitterComponent extends Component with HasGameReference<PixelAdventure> {
+class ConfettiEmitterComponent extends Component with HasGameReference<FruitCollector> {
   final Vector2 origin;
   final int count;
   final double lifespan;

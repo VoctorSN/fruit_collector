@@ -7,7 +7,7 @@ import '../../bbdd/services/character_service.dart';
 
 class CharacterManager {
   // Constructor and attributes
-  PixelAdventure game;
+  FruitCollector game;
 
   CharacterManager({required this.game});
 

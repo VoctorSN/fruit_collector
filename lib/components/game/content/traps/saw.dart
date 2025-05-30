@@ -5,7 +5,7 @@ import 'package:flame/components.dart';
 
 import '../../../../fruit_collector.dart';
 
-class Saw extends SpriteAnimationComponent with HasGameReference<PixelAdventure>, CollisionCallbacks {
+class Saw extends SpriteAnimationComponent with HasGameReference<FruitCollector>, CollisionCallbacks {
   // Constructor
   final bool isVertical;
   final double offNeg;

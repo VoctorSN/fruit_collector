@@ -11,7 +11,7 @@ import '../../../../fruit_collector.dart';
 
 enum LootBoxState { idle, hit }
 
-class LootBox extends SpriteAnimationGroupComponent with HasGameReference<PixelAdventure> {
+class LootBox extends SpriteAnimationGroupComponent with HasGameReference<FruitCollector> {
   // Constructor and atributes
   Function(CollisionBlock) addCollisionBlock;
   Function(CollisionBlock) removeCollisionBlock;

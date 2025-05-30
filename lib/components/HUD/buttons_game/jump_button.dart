@@ -6,7 +6,7 @@ import 'package:flame/events.dart';
 import '../../../fruit_collector.dart';
 
 class JumpButton extends PositionComponent
-    with HasGameReference<PixelAdventure>, TapCallbacks {
+    with HasGameReference<FruitCollector>, TapCallbacks {
   final double buttonSize;
   late SpriteComponent buttonSprite;
 

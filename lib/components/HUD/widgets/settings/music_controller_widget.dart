@@ -12,7 +12,7 @@ const double buttonPositionX = .0;
 const double sliderWidth = 250.0;
 
 class ToggleMusicVolumeWidget extends StatefulWidget {
-  final PixelAdventure game;
+  final FruitCollector game;
   final Function updateMusicVolume;
 
   ToggleMusicVolumeWidget({
@@ -31,7 +31,7 @@ class ToggleMusicVolumeWidget extends StatefulWidget {
 }
 
 class _ToggleMusicVolumeWidgetState extends State<ToggleMusicVolumeWidget> {
-  final PixelAdventure game;
+  final FruitCollector game;
   final Function updateMusicVolume;
 
   _ToggleMusicVolumeWidgetState({

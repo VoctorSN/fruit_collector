@@ -12,7 +12,7 @@ import '../levelBasics/player.dart';
 
 enum DoorState { close, open }
 
-class Door extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<PixelAdventure> {
+class Door extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<FruitCollector> {
 
   final int id;
   final Function(CollisionBlock) addCollisionBlock;

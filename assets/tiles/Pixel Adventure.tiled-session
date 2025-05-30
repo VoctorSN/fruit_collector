@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "level-04.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -167,14 +167,14 @@
         },
         "level-01.tmx": {
             "expandedObjectLayers": [
-                2,
-                3
+                3,
+                2
             ],
             "scale": 1.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 317.66666666666663,
-                "y": 158.66666666666663
+                "x": 317.33333333333326,
+                "y": 158.33333333333334
             }
         },
         "level-01.tmx#Pixel Adventure": {
@@ -200,8 +200,8 @@
             "scale": 1.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 320,
-                "y": 183.66666666666669
+                "x": 319.33333333333326,
+                "y": 179.66666666666669
             }
         },
         "level-04.tmx": {
@@ -209,11 +209,11 @@
                 3,
                 2
             ],
-            "scale": 1.5,
-            "selectedLayer": 3,
+            "scale": 1,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 320,
-                "y": 183.66666666666669
+                "x": 474,
+                "y": 92.5
             }
         },
         "level-05.tmx": {
@@ -376,14 +376,14 @@
         },
         "tutorial-04.tmx": {
             "expandedObjectLayers": [
-                4,
-                2
+                2,
+                4
             ],
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 320.6666666666667,
-                "y": 172.99999999999997
+                "y": 173
             }
         },
         "tutorial-04.tmx#Pixel Adventure": {
@@ -412,12 +412,17 @@
     "map.tileWidth": 16,
     "map.width": 40,
     "openFiles": [
+        "level-03.tmx",
+        "level-04.tmx",
+        "bluePrint.tmx"
     ],
     "project": "Pixel Adventure.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "level-01.tmx",
         "level-02.tmx",
         "level-03.tmx",
+        "bluePrint.tmx",
         "level-04.tmx",
         "level-05.tmx",
         "level-08.tmx",
@@ -425,9 +430,7 @@
         "level-06.tmx",
         "level-09.tmx",
         "tutorial-02.tmx",
-        "level-99.tmx",
-        "level-98.tmx",
-        "level-100.tmx"
+        "level-99.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

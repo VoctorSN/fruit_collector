@@ -10,7 +10,7 @@ import 'collision_block.dart';
 
 enum TrampolineState { idle, jump }
 
-class Trampoline extends SpriteAnimationGroupComponent with HasGameReference<PixelAdventure> {
+class Trampoline extends SpriteAnimationGroupComponent with HasGameReference<FruitCollector> {
   // Constructor and attributes
   final double powerBounce;
   Function(CollisionBlock) addCollisionBlock;

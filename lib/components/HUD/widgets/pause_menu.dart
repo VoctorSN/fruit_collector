@@ -9,7 +9,7 @@ import 'main_menu/main_menu.dart';
 
 class PauseMenu extends StatelessWidget {
   static String id = 'PauseMenu';
-  final PixelAdventure game;
+  final FruitCollector game;
 
   const PauseMenu(this.game, {super.key});
 

@@ -10,7 +10,7 @@ import 'package:fruit_collector/fruit_collector.dart';
 import 'achievement_details.dart';
 
 class AchievementMenu extends StatefulWidget {
-  final PixelAdventure game;
+  final FruitCollector game;
   final List<Map<String, dynamic>> achievements;
 
   const AchievementMenu(this.game, this.achievements, {super.key});

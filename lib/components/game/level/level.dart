@@ -35,7 +35,7 @@ import '../content/traps/fan.dart';
 import '../content/traps/spike.dart';
 import 'background_tile.dart';
 
-class Level extends World with HasGameReference<PixelAdventure> {
+class Level extends World with HasGameReference<FruitCollector> {
   // Constructor and attributes
   final Player player;
   final String levelName;
@@ -391,7 +391,7 @@ class Level extends World with HasGameReference<PixelAdventure> {
 
   int get minorDeaths {
     if (levelData == null) return lastMinDeaths;
-    if (levelData!.deaths != null && lastMinDeaths < deathCount) {
+    if (levelData!.deaths != -1 && lastMinDeaths < deathCount) {
       levelData!.deaths = lastMinDeaths;
       return lastMinDeaths;
     }

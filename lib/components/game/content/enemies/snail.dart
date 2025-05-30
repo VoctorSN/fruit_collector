@@ -16,7 +16,7 @@ import '../levelExtras/confetti.dart';
 
 enum SnailState { idle, walk, hit, shellWallHit, shellIdle }
 
-class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<PixelAdventure>, PlayerCollidable, CollisionableWithHitbox {
+class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<FruitCollector>, PlayerCollidable, CollisionableWithHitbox {
   // Constructor and attributes
   final double offNeg;
   final double offPos;

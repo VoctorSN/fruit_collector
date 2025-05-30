@@ -5,7 +5,7 @@ import 'package:flame/components.dart';
 import 'package:fruit_collector/components/game/level/sound_manager.dart';
 import 'package:fruit_collector/fruit_collector.dart';
 
-class Stars extends SpriteAnimationComponent with HasGameReference<PixelAdventure>, CollisionCallbacks {
+class Stars extends SpriteAnimationComponent with HasGameReference<FruitCollector>, CollisionCallbacks {
 
   // Constructor and attributes
   final String name;

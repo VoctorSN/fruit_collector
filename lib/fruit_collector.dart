@@ -45,7 +45,7 @@ import 'components/game/level/screens/change_level_screen.dart';
 import 'components/game/level/screens/credits_screen.dart';
 import 'components/game/level/screens/level_summary_overlay.dart';
 
-class PixelAdventure extends FlameGame
+class FruitCollector extends FlameGame
     with HasKeyboardHandlerComponents, DragCallbacks, HasCollisionDetection, TapCallbacks {
   // Logic to load the level and the player
   @override
@@ -236,7 +236,7 @@ class PixelAdventure extends FlameGame
     overlays.addEntry(MainMenu.id, (context, game) => MainMenu(this));
     overlays.addEntry(GameSelector.id, (context, game) => GameSelector(this));
     overlays.addEntry(AchievementToast.id, (context, game) {
-      final pixelAdventure = game as PixelAdventure;
+      final pixelAdventure = game as FruitCollector;
       return pixelAdventure.currentShowedAchievement == null
           ? const SizedBox.shrink()
           : AchievementToast(
@@ -245,7 +245,7 @@ class PixelAdventure extends FlameGame
           );
     });
     overlays.addEntry(CharacterToast.id, (context, game) {
-      final pixelAdventure = game as PixelAdventure;
+      final pixelAdventure = game as FruitCollector;
       return pixelAdventure.currentShowedCharacter == null
           ? const SizedBox.shrink()
           : CharacterToast(
@@ -336,7 +336,7 @@ class PixelAdventure extends FlameGame
 
       levels[currentLevel]['gameLevel'].stars = level.getStars();
 
-      // Marcar el nivel como completado
+      // Mark the level as completed
       currentGameLevel.completed = true;
       currentGameLevel.time = level.minorLevelTime;
       currentGameLevel.deaths = level.minorDeaths;
@@ -445,9 +445,6 @@ class PixelAdventure extends FlameGame
       final Size fixedSize = Size(width, height);
       setWindowMinSize(fixedSize);
       setWindowMaxSize(fixedSize);
-    } else {
-      setWindowMinSize(const Size(800, 600));
-      setWindowMaxSize(Size.infinite);
     }
   }
 
@@ -464,8 +461,6 @@ class PixelAdventure extends FlameGame
     try {
       level.stopLevelTimer();
     } catch (e) {
-
-        // Manejar cualquier otro error
         print('Error inesperado: $e');
       }
 
@@ -477,10 +472,7 @@ class PixelAdventure extends FlameGame
     try {
       level.resumeLevelTimer();
     } catch (e) {
-
-        // Manejar cualquier otro error
         print('Error inesperado: $e');
-
     }
     super.resumeEngine();
   }

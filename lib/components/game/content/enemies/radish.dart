@@ -16,7 +16,7 @@ import '../levelBasics/player.dart';
 enum RadishState { flying, idle, run, hit }
 
 /// TODO : add leafs animation
-class Radish extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<PixelAdventure>, PlayerCollidable, CollisionableWithHitbox {
+class Radish extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<FruitCollector>, PlayerCollidable, CollisionableWithHitbox {
   // Constructor and attributes
   final double offNeg;
   final double offPos;

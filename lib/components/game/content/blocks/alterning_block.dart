@@ -8,7 +8,7 @@ import '../../util/utils.dart';
 import '../levelBasics/player.dart';
 import 'collision_block.dart';
 
-class AlternatingBlock extends CollisionBlock with HasGameReference<PixelAdventure> {
+class AlternatingBlock extends CollisionBlock with HasGameReference<FruitCollector> {
   // Constructor
   AlternatingBlock({required this.isRed, super.position, super.size});
 

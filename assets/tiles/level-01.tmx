@@ -165,10 +165,10 @@
   </object>
   <object id="91" name="KeyUnlocker" type="KeyUnlocker" x="224" y="256" width="16" height="16"/>
   <object id="93" name="KeyUnlocker" type="KeyUnlocker" x="208" y="48" width="16" height="16"/>
-  <object id="92" name="KeyUnlocker" type="KeyUnlocker" x="592" y="48" width="16" height="16"/>
+  <object id="92" name="KeyUnlocker" type="KeyUnlocker" x="608" y="16" width="16" height="16"/>
   <object id="97" name="Trampoline" type="Trampoline" x="584" y="240" width="32" height="32">
    <properties>
-    <property name="powerBounce" type="float" value="400"/>
+    <property name="powerBounce" type="float" value="450"/>
    </properties>
   </object>
  </objectgroup>

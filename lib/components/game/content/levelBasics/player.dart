@@ -25,7 +25,7 @@ import 'fruit.dart';
 enum PlayerState { idle, running, jumping, doubleJumping, falling, hit, appearing, disappearing, wallSlide }
 
 class Player extends SpriteAnimationGroupComponent
-    with HasGameReference<PixelAdventure>, KeyboardHandler, CollisionCallbacks {
+    with HasGameReference<FruitCollector>, KeyboardHandler, CollisionCallbacks {
   // Constructor and atributes
   String character;
 

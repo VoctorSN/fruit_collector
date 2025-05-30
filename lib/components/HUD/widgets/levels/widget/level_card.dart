@@ -54,7 +54,7 @@ class LevelCard extends StatelessWidget {
             : [BoxShadow(color: Colors.black.withOpacity(0.6), blurRadius: 4, offset: const Offset(2, 4))];
 
     final String timeText = isCompleted ? '$duration' : '?';
-    final String deathsText = isCompleted ? '$deaths' : '?';
+    final String deathsText = deaths != -1 ? '$deaths' : '?';
 
     final Color backgroundColor = isLocked
         ? disabledColor

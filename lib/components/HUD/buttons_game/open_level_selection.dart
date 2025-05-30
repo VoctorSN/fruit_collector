@@ -6,7 +6,7 @@ import 'package:flame/events.dart';
 import '../../../fruit_collector.dart';
 import '../widgets/levels/page/level_selection_menu.dart';
 
-class LevelSelection extends SpriteComponent with HasGameReference<PixelAdventure>, TapCallbacks {
+class LevelSelection extends SpriteComponent with HasGameReference<FruitCollector>, TapCallbacks {
   final double buttonSize;
 
   LevelSelection({required this.buttonSize});

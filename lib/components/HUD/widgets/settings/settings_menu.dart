@@ -13,7 +13,7 @@ import '../../style/text_style_singleton.dart';
 class SettingsMenu extends StatelessWidget {
   static const String id = 'settings_menu';
 
-  final PixelAdventure game;
+  final FruitCollector game;
 
   SettingsMenu(this.game, {super.key});
 

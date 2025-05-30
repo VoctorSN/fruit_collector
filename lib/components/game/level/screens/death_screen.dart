@@ -10,7 +10,7 @@ import '../../../../fruit_collector.dart';
 class DeathScreen extends RectangleComponent {
   final Function gameAdd;
   final Function gameRemove;
-  final PixelAdventure game;
+  final FruitCollector game;
 
   DeathScreen({
     required this.gameAdd,

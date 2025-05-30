@@ -2,9 +2,9 @@ import 'package:flame/components.dart';
 import 'package:fruit_collector/fruit_collector.dart';
 
 class LoadingBanana extends SpriteAnimationComponent
-    with HasGameReference<PixelAdventure> {
+    with HasGameReference<FruitCollector> {
 
-  final PixelAdventure game;
+  final FruitCollector game;
   LoadingBanana(this.game) : super(priority: 10);
 
   late final buttonSize = game.settings.hudSize;

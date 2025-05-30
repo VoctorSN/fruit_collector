@@ -4,7 +4,7 @@ import 'package:syncfusion_flutter_sliders/sliders.dart';
 import '../../../../fruit_collector.dart';
 
 class NumberSlider extends StatefulWidget {
-  final PixelAdventure game;
+  final FruitCollector game;
   final double value;
   final minValue;
   final Function(dynamic) onChanged;
@@ -19,7 +19,7 @@ class NumberSlider extends StatefulWidget {
 }
 
 class _NumberSliderState extends State<NumberSlider> {
-  final PixelAdventure game;
+  final FruitCollector game;
   double value;
   Function(dynamic) onChanged;
   bool isActive;

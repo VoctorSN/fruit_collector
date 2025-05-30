@@ -7,7 +7,7 @@ import 'package:fruit_collector/components/game/level/sound_manager.dart';
 import 'package:fruit_collector/components/game/util/custom_hitbox.dart';
 import 'package:fruit_collector/fruit_collector.dart';
 
-class Fruit extends SpriteAnimationComponent with HasGameReference<PixelAdventure>, CollisionCallbacks {
+class Fruit extends SpriteAnimationComponent with HasGameReference<FruitCollector>, CollisionCallbacks {
   final String fruit;
 
   Fruit({this.fruit = 'Apple', super.position, super.size});

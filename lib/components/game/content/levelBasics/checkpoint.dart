@@ -8,7 +8,7 @@ import 'package:fruit_collector/fruit_collector.dart';
 import '../../level/level.dart';
 
 class Checkpoint extends SpriteAnimationComponent
-    with HasGameReference<PixelAdventure>, CollisionCallbacks {
+    with HasGameReference<FruitCollector>, CollisionCallbacks {
   final bool isLastLevel;
 
   Checkpoint({super.position, super.size, required this.isLastLevel});

@@ -12,18 +12,19 @@ void main() async{
 
   if (!kIsWeb && (Platform.isWindows || Platform.isLinux || Platform.isMacOS)) {
     setWindowTitle('Fruit Collector');
-    setWindowMinSize(const Size(800, 600));
+    //setWindowMinSize(const Size(800, 600));
+    setWindowMinSize(const Size(400, 400));
   }
 
   debugDefaultTargetPlatformOverride = TargetPlatform.android;
   await Flame.device.fullScreen();
   await Flame.device.setLandscape();
 
-  PixelAdventure game = PixelAdventure();
+  FruitCollector game = FruitCollector();
   runApp(
       GameWidget(
         game:kDebugMode
-            ? PixelAdventure()
+            ? FruitCollector()
             : game,
 
   ));

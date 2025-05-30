@@ -12,7 +12,7 @@ const double sliderPositionX = 17.5;
 const double sliderWidth = 250.0;
 
 class ResizeHUD extends StatefulWidget {
-  final PixelAdventure game;
+  final FruitCollector game;
   final Function updateSizeHUD;
 
   ResizeHUD({
@@ -31,7 +31,7 @@ class ResizeHUD extends StatefulWidget {
 }
 
 class _ResizeHUDState extends State<ResizeHUD> {
-  final PixelAdventure game;
+  final FruitCollector game;
   final Function updateSizeHUD;
 
   _ResizeHUDState({

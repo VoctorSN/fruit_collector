@@ -28,12 +28,12 @@ class GameLevelRepository {
         'game_id': gameId,
         'level_id': level['id'],
         'completed': 0,
-        'unlocked': i < defaultUnlockedLevels ? 1 : 0, // Desbloquear los primeros 5 niveles
+        'unlocked': i < defaultUnlockedLevels ? 1 : 0, // Unlock the first five levels
         'stars': 0,
         'date_completed': '1970-01-01 00:00:00',
         'last_time_completed': '1970-01-01 00:00:00',
         'time': null,
-        'deaths': 0,
+        'deaths': -1,
       });
     }
   }

@@ -7,7 +7,7 @@ import 'package:fruit_collector/fruit_collector.dart';
 import '../../util/utils.dart';
 import 'collision_block.dart';
 
-class FallingBlock extends CollisionBlock with HasGameReference<PixelAdventure> {
+class FallingBlock extends CollisionBlock with HasGameReference<FruitCollector> {
   // Constructor and atributes
   int fallingDuration;
   final Vector2 initialPosition;
