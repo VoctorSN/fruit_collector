@@ -223,12 +223,10 @@ class DeathScreen extends RectangleComponent {
 
       // Update "X" text opacity
       for (var xComponent in xComponents) {
-        if (xComponent != null) {
-          final xTextColor = const Color.fromARGB(255, 224, 119, 119).withAlpha((255 * t).round().clamp(0, 255));
-          xComponent.textRenderer = TextPaint(
-            style: TextStyle(color: xTextColor, fontSize: 32, fontWeight: FontWeight.bold, fontFamily: 'ArcadeClassic'),
-          );
-        }
+        final xTextColor = const Color.fromARGB(255, 224, 119, 119).withAlpha((255 * t).round().clamp(0, 255));
+        xComponent.textRenderer = TextPaint(
+          style: TextStyle(color: xTextColor, fontSize: 32, fontWeight: FontWeight.bold, fontFamily: 'ArcadeClassic'),
+        );
       }
 
       await Future.delayed(const Duration(milliseconds: 50));
@@ -239,9 +237,9 @@ class DeathScreen extends RectangleComponent {
     if (defeatedTextShadow != null) defeatedTextShadow!.removeFromParent();
 
     for (var xComponent in xComponents) {
-      if (xComponent != null) xComponent.removeFromParent();
+      xComponent.removeFromParent();
     }
-    if (blackScreen != null) blackScreen.removeFromParent();
+    blackScreen.removeFromParent();
     defeatedTextComponent = null;
     defeatedTextShadow = null;
 

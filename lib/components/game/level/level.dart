@@ -36,6 +36,7 @@ import '../content/traps/spike.dart';
 import 'background_tile.dart';
 
 class Level extends World with HasGameReference<FruitCollector> {
+
   // Constructor and attributes
   final Player player;
   final String levelName;
@@ -53,8 +54,9 @@ class Level extends World with HasGameReference<FruitCollector> {
   int deathCount = 0;
   int starsCollected = 0;
 
-  int get levelTime => _levelTimer.elapsed.inSeconds;
-  bool _timerStarted = false;
+  // Logic to manage the level time
+  int get levelTime => _levelTimer.elapsed.inSeconds - (_deathDuration.inSeconds * deathCount);
+  final Duration _deathDuration = const Duration(seconds: 4);
 
   static const spawnPointClasses = [
     Fruit,
@@ -113,8 +115,8 @@ class Level extends World with HasGameReference<FruitCollector> {
 
   void _startLevel() {
     _levelTimer = Stopwatch()..start();
-    _timerStarted = false;
     deathCount = 0;
+    print("=========== start timer : ${_levelTimer.elapsed.inSeconds} =============");
   }
 
   void registerDeath() {
@@ -122,17 +124,14 @@ class Level extends World with HasGameReference<FruitCollector> {
   }
 
   void stopLevelTimer() {
-    if (!_timerStarted) {
-      _levelTimer.stop();
-      _timerStarted = true;
-    }
+    _levelTimer.stop();
+    print("=========== stop timer : ${_levelTimer.elapsed.inSeconds} =============");
   }
 
   void resumeLevelTimer() {
-    if (!_timerStarted) {
-      _levelTimer.start();
-      _timerStarted = true;
-    }
+    _levelTimer.start();
+    print("=========== resume timer : ${_levelTimer.elapsed.inSeconds} =============");
+
   }
 
   void _addGameText() {

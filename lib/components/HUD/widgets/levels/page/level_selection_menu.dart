@@ -34,6 +34,7 @@ class LevelSelectionMenu extends StatelessWidget {
           game.soundManager.resumeAll();
           game.overlays.remove(LevelSelectionMenu.id);
           game.resumeEngine();
+          print('Back to game');
         }
 
         final ScrollController scrollController = ScrollController();
