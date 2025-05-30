@@ -31,9 +31,14 @@ class _MainMenuState extends State<MainMenu> with SingleTickerProviderStateMixin
 
   late final ButtonStyle buttonStyle;
 
+  bool _isSoundOn = true;
+
+  late GameService service;
+  late Game game;
+
   bool get isMobile {
     if (kIsWeb) {
-      return MediaQuery.of(context).size.width < 600; // Typical mobile width threshold
+      return MediaQuery.of(context).size.width < 600;
     }
     return Platform.isAndroid || Platform.isIOS;
   }
@@ -59,6 +64,8 @@ class _MainMenuState extends State<MainMenu> with SingleTickerProviderStateMixin
       ),
       elevation: 8,
     );
+
+    loadLastGame();
   }
 
   @override
@@ -78,16 +85,28 @@ class _MainMenuState extends State<MainMenu> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
+
     final double topPadding = MediaQuery.of(context).padding.top + 18;
-
-    widget.game.soundManager.pauseAll();
-
-    widget.game.soundManager.startMenuBGM();
 
     return Stack(
       fit: StackFit.expand,
       children: [
         const BackgroundWidget(),
+
+        Positioned(
+          top: 16,
+          right: 16,
+          child: IconButton(
+            style: IconButton.styleFrom(
+              backgroundColor: buttonColor,
+              shape: const CircleBorder(side: BorderSide(color: Color(0xFF5A5672), width: 2)),
+            ),
+            onPressed: _onVolumeToggle,
+            icon: Icon(_isSoundOn ? Icons.volume_up : Icons.volume_off, color: Colors.white, size: 22),
+          ),
+        ),
+
+        // Menú principal
         Padding(
           padding: EdgeInsets.only(top: topPadding),
           child:
@@ -170,14 +189,35 @@ class _MainMenuState extends State<MainMenu> with SingleTickerProviderStateMixin
     );
   }
 
-  void _onContinuePressed() async {
-    final GameService service = await GameService.getInstance();
-    final Game game = await service.getLastPlayedOrCreate();
-    print('Continuing game...$game');
+  void loadLastGame() async {
+    service = await GameService.getInstance();
+    game = await service.getLastPlayedOrCreate();
+    widget.game.isOnMenu = true;
     widget.game.chargeSlot(game.space);
+    _isSoundOn = widget.game.settings.isMusicActive;
+    if (_isSoundOn) {
+      widget.game.soundManager.startMenuBGM(widget.game.settings);
+    } else {
+      widget.game.soundManager.stopBGM();
+    }
+  }
 
+  // TODO actualizar las settings del juego
+  void _onVolumeToggle() async {
+    setState(() {
+      _isSoundOn = !_isSoundOn;
+      if (_isSoundOn) {
+        widget.game.soundManager.startMenuBGM(widget.game.settings);
+      } else {
+        widget.game.soundManager.stopBGM();
+      }
+    });
+  }
+
+  void _onContinuePressed() async {
     widget.game.overlays.remove(MainMenu.id);
     widget.game.resumeEngine();
+    widget.game.isOnMenu = false;
   }
 
   void _onLoadGamePressed() {

@@ -12,8 +12,7 @@ void main() async{
 
   if (!kIsWeb && (Platform.isWindows || Platform.isLinux || Platform.isMacOS)) {
     setWindowTitle('Fruit Collector');
-    //setWindowMinSize(const Size(800, 600));
-    setWindowMinSize(const Size(400, 400));
+    setWindowMinSize(const Size(800, 600));
   }
 
   debugDefaultTargetPlatformOverride = TargetPlatform.android;

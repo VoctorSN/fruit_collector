@@ -1,54 +1,71 @@
 # 🍓 **Fruit Collector** 🍌
-*Un juego de plataformas muy guay donde recolectar frutas se vuelve una aventura*
+*Una aventura de plataformas retro donde recolectar fruta es cuestión de reflejos... y paciencia*
 
-Diseñado por:  
-**Amán Lama Vilariño**  
-**Víctor Sánchez Nogueira**
-
----
-
-## 🎮 ¿De qué va el juego?
-
-**Fruit Collector** es un divertido juego de plataformas donde recorrerás mundos coloridos, esquivando obstáculos y recolectando deliciosas frutas. Saltos precisos, reflejos rápidos y mucha diversión te esperan en este reto arcade.
-
-Pon a prueba tu habilidad y ¡recolecta todas las frutas antes de que se acabe el tiempo!
+Diseñado con mimo por  
+**Amán Lama Vilariño** & **Víctor Sánchez Nogueira**
 
 ---
 
-## 📲 ¡Descarga ahora!
+## 🎮 ¿Qué es Fruit Collector?
 
-> 🚀 **¿Listo para jugar? No esperes más:**
+**Fruit Collector** es un juego de plataformas en 2D que combina saltos precisos, niveles desafiantes y estética retro. Cada pantalla es un nuevo reto:  
+🍊 esquiva trampas  
+🍒 recolecta fruta  
+🌟 encuentra estrellas ocultas  
+🏁 y llega hasta la meta sin perder la calma
+
+¡Pero cuidado! Morirás muchas veces... y te encantará volver a intentarlo.
+
+---
+
+## 📱 ¿Dónde puedo jugar?
+
+Descárgalo gratis en Android con este enlace:
 
 ### 👉 [**DESCARGAR APK**](./downloads/fruit_collector.apk)
 
-Instala el juego en tu dispositivo Android y empieza tu aventura frutal en segundos.  
-🔐 *Seguro, rápido y sin anuncios*
+- Sin anuncios
+- Sin registros
+- Solo diversión arcade en estado puro
 
 ---
 
-## 🧪 Características destacadas
+## 🕹️ Características del juego
 
-- ✅ Jugabilidad fluida y controles precisos
-- 🍉 Niveles llenos de frutas y secretos
-- 🎧 Música original envolvente
-- 🕹️ Compatible con la mayoría de dispositivos Android
-
----
-
-## 🛠️ Tecnologías
-
-- Flutter (100% Vanilla, sin gestores externos)
-- Arquitectura MVVM con `BaseWidget` y `BaseVM`
-- Clean code profesional y mantenible
+- ✅ Controles simples, jugabilidad exigente
+- 🎮 Niveles cortos, pero intensos (¡y algunos muy traicioneros!)
+- 🌈 Estética pixel art y música retro
+- 🌟 3 estrellas por nivel que añaden un extra de dificultad
+- 🎯 Ideal para jugadores con ganas de superar su propio récord
 
 ---
 
-## 📂 Estructura del proyecto
+## 👥 ¿Quién lo ha hecho?
 
-```bash
-/lib
- ├── base/
- ├── viewmodels/
- ├── views/
- ├── widgets/
- └── main.dart
+Dos desarrolladores que querían crear un juego como los de antes:
+- Uno se encargó del diseño visual y todos los botones que pulsas
+- El otro dio vida a los niveles, trampas y enemigos
+
+Hemos jugado, testeado, discutido y perfeccionado cada parte para que cada segundo cuente.
+
+---
+
+## 🔮 ¿Qué viene después?
+
+- Ranking online para comparar tu tiempo y muertes con otros jugadores
+- Más niveles, más enemigos, más fruta
+- Música y efectos renovados
+- Y sí... **más maneras de morir de forma divertida**
+
+---
+
+## 🤝 Comparte el juego
+
+¿Te gustó el reto?  
+Compártelo con tus amigos y compite por ser el mejor recolector de frutas del mundo 🍍
+
+---
+
+*Gracias por jugar*  
+🍓 *Fruit Collector*  
+🕹️ *Pixel-perfect precision, retro soul*

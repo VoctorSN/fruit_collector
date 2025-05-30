@@ -15,7 +15,6 @@ import '../levelBasics/player.dart';
 
 enum RadishState { flying, idle, run, hit }
 
-/// TODO : add leafs animation
 class Radish extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<FruitCollector>, PlayerCollidable, CollisionableWithHitbox {
   // Constructor and attributes
   final double offNeg;
@@ -146,9 +145,6 @@ class Radish extends SpriteAnimationGroupComponent with CollisionCallbacks, HasG
     velocity.x = moveDirection * flySpeed * speedFactor;
     position.x += velocity.x * dt;
 
-    /// TODO: investigate this
-    //_spawnFlightParticle();
-
     sineTime += dt;
     const amplitude = 8.0;
     const frequency = 2.0;
@@ -160,26 +156,6 @@ class Radish extends SpriteAnimationGroupComponent with CollisionCallbacks, HasG
     } else if (position.x > rangeNeg) {
       turnBack(-1);
     }
-  }
-
-  void _spawnFlightParticle() {
-    final double radius = Random().nextDouble() * 2 + 2;
-    final particle = ParticleSystemComponent(
-      position: position + Vector2(size.x / 2, size.y - 2),
-      particle: Particle.generate(
-        count: 1,
-        lifespan: 0.4,
-        generator:
-            (i) => ComputedParticle(
-              renderer: (canvas, particle) {
-                final paint = Paint()..color = const Color(0xFFFFFFFF).withOpacity(1 - particle.progress); // desvanece
-                canvas.drawCircle(Offset.zero, radius, paint);
-              },
-            ),
-      ),
-    );
-
-    add(particle);
   }
 
   void _checkHorizontalCollisions() {

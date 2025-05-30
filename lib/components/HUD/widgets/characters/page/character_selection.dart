@@ -19,13 +19,10 @@ class CharacterSelection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseWidget<CharacterSelectionVM>(
-      model: CharacterSelectionVM(
-        game: game,
-        vsync: TickerProviderStub(),
-      ),
-onModelReady: (vm) {
-  vm.refreshFromGame();
-},
+      model: CharacterSelectionVM(game: game, vsync: TickerProviderStub()),
+      onModelReady: (vm) {
+        vm.refreshFromGame();
+      },
 
       builder: (context, vm, _) {
         // Colors
@@ -33,18 +30,6 @@ onModelReady: (vm) {
         const Color cardColor = Color(0xFF3A3750);
         const Color borderColor = Color(0xFF5A5672);
         const Color textColor = Color(0xFFE1E0F5);
-
-        // Button style
-        final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
-          backgroundColor: cardColor,
-          foregroundColor: textColor,
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4),
-            side: const BorderSide(color: borderColor, width: 2),
-          ),
-          elevation: 6,
-        );
 
         return Scaffold(
           backgroundColor: Colors.transparent,
@@ -78,9 +63,7 @@ onModelReady: (vm) {
                               style: TextStyleSingleton().style.copyWith(
                                 fontSize: 28,
                                 color: textColor,
-                                shadows: const [
-                                  Shadow(color: Colors.black, offset: Offset(2, 2), blurRadius: 1),
-                                ],
+                                shadows: const [Shadow(color: Colors.black, offset: Offset(2, 2), blurRadius: 1)],
                               ),
                             ),
 
@@ -126,17 +109,15 @@ onModelReady: (vm) {
                                     alignment: Alignment.center,
                                     child: ElevatedButton.icon(
                                       style: ElevatedButton.styleFrom(
-                                        backgroundColor: !vm.currentGameCharacter.unlocked
-                                            ? Colors.grey.shade700
-                                            : cardColor,
+                                        backgroundColor:
+                                            !vm.currentGameCharacter.unlocked ? Colors.grey.shade700 : cardColor,
                                         foregroundColor: textColor,
                                         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(4),
                                           side: BorderSide(
-                                            color: !vm.currentGameCharacter.unlocked
-                                                ? Colors.grey.shade700
-                                                : borderColor,
+                                            color:
+                                                !vm.currentGameCharacter.unlocked ? Colors.grey.shade700 : borderColor,
                                             width: 2,
                                           ),
                                         ),
@@ -146,10 +127,7 @@ onModelReady: (vm) {
                                       icon: const Icon(Icons.check_circle_outline, color: textColor),
                                       label: Text(
                                         'SELECT',
-                                        style: TextStyleSingleton().style.copyWith(
-                                          fontSize: 14,
-                                          color: textColor,
-                                        ),
+                                        style: TextStyleSingleton().style.copyWith(fontSize: 14, color: textColor),
                                       ),
                                     ),
                                   ),
@@ -159,7 +137,9 @@ onModelReady: (vm) {
                                     child: Row(
                                       children: [
                                         Text(
-                                          '${vm.userStars} / ${vm.currentCharacter.requiredStars}',
+                                          vm.currentGameCharacter.unlocked
+                                              ? '${vm.userStars}'
+                                              : '${vm.userStars} / ${vm.currentCharacter.requiredStars}',
                                           style: TextStyleSingleton().style.copyWith(
                                             fontSize: 14,
                                             color: textColor,
@@ -185,10 +165,7 @@ onModelReady: (vm) {
                       Positioned(
                         top: 6,
                         left: 6,
-                        child: IconButton(
-                          icon: const Icon(Icons.close, color: Colors.white),
-                          onPressed: vm.goBack,
-                        ),
+                        child: IconButton(icon: const Icon(Icons.close, color: Colors.white), onPressed: vm.goBack),
                       ),
                     ],
                   );

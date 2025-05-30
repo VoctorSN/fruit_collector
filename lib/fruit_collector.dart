@@ -47,6 +47,7 @@ import 'components/game/level/screens/level_summary_overlay.dart';
 
 class FruitCollector extends FlameGame
     with HasKeyboardHandlerComponents, DragCallbacks, HasCollisionDetection, TapCallbacks {
+
   // Logic to load the level and the player
   @override
   Color backgroundColor() => const Color(0xFF211F30);
@@ -63,6 +64,7 @@ class FruitCollector extends FlameGame
   late Character character;
 
   late Settings settings;
+  bool isOnMenu = false;
 
   List<Map<String, dynamic>> levels = [];
   List<Map<String, dynamic>> achievements = [];
@@ -161,10 +163,10 @@ class FruitCollector extends FlameGame
     print('Current Level  : ${gameData?.currentLevel}');
     print('Current Character  : ${player.character}');
 
-    loadButtonsAndHud();
-
-    ///load first level with data
-    _loadActualLevel();
+    if (!isOnMenu) {
+      loadButtonsAndHud();
+      _loadActualLevel();
+    }
   }
 
   final soundManager = SoundManager();
@@ -445,6 +447,9 @@ class FruitCollector extends FlameGame
       final Size fixedSize = Size(width, height);
       setWindowMinSize(fixedSize);
       setWindowMaxSize(fixedSize);
+    } else if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+      setWindowMinSize(const Size(640, 368));
+      setWindowMaxSize(Size.infinite);
     }
   }
 

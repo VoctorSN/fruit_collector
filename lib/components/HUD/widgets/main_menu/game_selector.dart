@@ -282,6 +282,7 @@ class _GameSelectorState extends State<GameSelector> {
   }
 
   void _loadSlot(int slot, BuildContext context) async {
+    widget.game.isOnMenu = false;
     await widget.game.chargeSlot(slot);
     widget.game.overlays.remove(GameSelector.id);
     widget.game.resumeEngine();
