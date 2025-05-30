@@ -47,7 +47,6 @@ import 'components/game/level/screens/level_summary_overlay.dart';
 
 class FruitCollector extends FlameGame
     with HasKeyboardHandlerComponents, DragCallbacks, HasCollisionDetection, TapCallbacks {
-
   // Logic to load the level and the player
   @override
   Color backgroundColor() => const Color(0xFF211F30);
@@ -160,9 +159,6 @@ class FruitCollector extends FlameGame
     characters = await characterService!.getCharactersForGame(gameData!.id);
     character = await characterService!.getEquippedCharacter(gameData!.id);
 
-
-
-
     if (!isOnMenu) {
       loadButtonsAndHud();
       _loadActualLevel();
@@ -192,7 +188,6 @@ class FruitCollector extends FlameGame
   }
 
   void loadButtonsAndHud() {
-
     initializateButtons();
 
     addAllButtons();

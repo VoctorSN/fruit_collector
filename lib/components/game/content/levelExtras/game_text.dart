@@ -35,7 +35,10 @@ class GameText extends TextComponent with HasGameReference {
   @override
   void render(Canvas canvas) {
     final textPainter = TextPainter(
-      text: TextSpan(text: text, style: const TextStyle(fontSize: 16, fontFamily: 'ArcadeClassic', color: Colors.black)),
+      text: TextSpan(
+        text: text,
+        style: const TextStyle(fontSize: 16, fontFamily: 'ArcadeClassic', color: Colors.black),
+      ),
       textDirection: TextDirection.ltr,
       textAlign: TextAlign.center,
     );

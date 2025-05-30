@@ -16,7 +16,7 @@ import '../../content/blocks/falling_block.dart';
 import '../../content/blocks/trampoline.dart';
 import '../../level/level.dart';
 import '../../util/utils.dart';
-import '../levelExtras/stars.dart';
+import 'stars.dart';
 import '../traps/fan.dart';
 import '../traps/saw.dart';
 import 'checkpoint.dart';
@@ -26,7 +26,7 @@ enum PlayerState { idle, running, jumping, doubleJumping, falling, hit, appearin
 
 class Player extends SpriteAnimationGroupComponent
     with HasGameReference<FruitCollector>, KeyboardHandler, CollisionCallbacks {
-  // Constructor and atributes
+  // Constructor and attributes
   String character;
 
   Player({super.position, this.character = 'Mask Dude'});
@@ -84,7 +84,6 @@ class Player extends SpriteAnimationGroupComponent
   FutureOr<void> onLoad() {
     priority = -1;
     _loadAllAnimations();
-    // debugMode = true;
     statringPosition = Vector2(position.x, position.y);
     add(RectangleHitbox(position: Vector2(hitbox.offsetX, hitbox.offsetY), size: Vector2(hitbox.width, hitbox.height)));
     _animationRespawn();
@@ -197,7 +196,6 @@ class Player extends SpriteAnimationGroupComponent
     if (hasJumped && jumpCount < maxJumps) {
       _playerJump(dt);
     }
-    // If you dont want to jump in the air, then:
     if (velocity.y > _gravity) isOnGround = false;
     velocity.x = horizontalMovement * moveSpeed + windVelocity.x;
     position.x += velocity.x * dt;
@@ -216,23 +214,23 @@ class Player extends SpriteAnimationGroupComponent
   void _updatePlayerState() {
     if (!isOnWall) {
       PlayerState playerState = PlayerState.idle;
-      
+
       if (velocity.x < 0 && scale.x > 0) {
         flipHorizontallyAroundCenter();
       } else if (velocity.x > 0 && scale.x < 0) {
         flipHorizontallyAroundCenter();
       }
-      
+
       if (velocity.x != 0) {
         playerState = PlayerState.running;
       }
-      
+
       if (velocity.y > 0) {
         playerState = PlayerState.falling;
       }
-      
+
       if (velocity.y < 0 && jumpCount < 2) playerState = PlayerState.jumping;
-      
+
       if (jumpCount == 2 && !isOnSand && !isRespawning) playerState = PlayerState.doubleJumping;
       current = playerState;
     }
@@ -351,7 +349,7 @@ class Player extends SpriteAnimationGroupComponent
 
     if (game.settings.isSoundEnabled) SoundManager().playHit(game.settings.gameVolume);
 
-    // Realizar el respawn
+    // Reset player state and respawn
     gotHit = true;
     isOnSand = false;
     current = PlayerState.hit;
@@ -359,7 +357,6 @@ class Player extends SpriteAnimationGroupComponent
     velocity = Vector2.zero();
     position = statringPosition;
     _updatePlayerState();
-
 
     _jumpForce = 260;
     moveSpeed = 100;
@@ -376,10 +373,9 @@ class Player extends SpriteAnimationGroupComponent
     animationTicker?.reset();
     priority = -1000;
 
-
     await game.addBlackScreen();
 
-    while(game.duringBlackScreen){
+    while (game.duringBlackScreen) {
       await Future.delayed(const Duration(milliseconds: 100));
     }
 
@@ -387,7 +383,7 @@ class Player extends SpriteAnimationGroupComponent
       level.respawnObjects();
     }
 
-    while(game.duringRemovingBlackScreen){
+    while (game.duringRemovingBlackScreen) {
       await Future.delayed(const Duration(milliseconds: 100));
     }
     scale.x = 1;
@@ -400,7 +396,7 @@ class Player extends SpriteAnimationGroupComponent
   }
 
   void _reachedCheckpoint(Checkpoint other) async {
-    if (!other.isAbled) {
+    if (!other.isAble) {
       return;
     }
     if (game.settings.isSoundEnabled) SoundManager().playDisappear(game.settings.gameVolume);

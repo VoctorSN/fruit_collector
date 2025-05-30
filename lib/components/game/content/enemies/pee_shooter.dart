@@ -128,8 +128,8 @@ class PeeShooter extends SpriteAnimationGroupComponent
   }
 
   void shootProjectile() {
-    final Vector2 projectilePosition = position + Vector2(lookDirection == 1 ? -projectileSize.x : 0 , height / 3);
-    final Vector2 projectileFixedVelocity = Vector2(projectileVelocity.x * lookDirection,0);
+    final Vector2 projectilePosition = position + Vector2(lookDirection == 1 ? -projectileSize.x : 0, height / 3);
+    final Vector2 projectileFixedVelocity = Vector2(projectileVelocity.x * lookDirection, 0);
 
     final projectile = PeeProjectile(
       position: projectilePosition,

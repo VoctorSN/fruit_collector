@@ -124,6 +124,7 @@ bool checkPlayerOnBlock(Player player, RectangleHitbox blockHitbox) {
   return isVerticalAlign && isPlayerOnPlatform;
 }
 
+// Returns the X position of the player adjusted for the direction they are facing
 double getPlayerXPosition(Player player) {
   final hitbox = player.hitbox;
   final playerX = player.position.x + hitbox.offsetX;

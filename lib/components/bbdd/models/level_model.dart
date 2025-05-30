@@ -3,26 +3,14 @@ class Level {
   final String name;
   final int difficulty;
 
-  Level({
-    required this.id,
-    required this.name,
-    required this.difficulty,
-  });
+  Level({required this.id, required this.name, required this.difficulty});
 
   Map<String, Object?> toMap() {
-    return {
-      'id': id,
-      'name': name,
-      'difficulty': difficulty,
-    };
+    return {'id': id, 'name': name, 'difficulty': difficulty};
   }
 
   static Level fromMap(Map<String, Object?> map) {
-    return Level(
-      id: map['id'] as int,
-      name: map['name'] as String,
-      difficulty: map['difficulty'] as int,
-    );
+    return Level(id: map['id'] as int, name: map['name'] as String, difficulty: map['difficulty'] as int);
   }
 
   @override

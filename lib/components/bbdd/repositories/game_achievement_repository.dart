@@ -31,22 +31,13 @@ class GameAchievementRepository {
   }
 
   deleteGameAchievementByGameId({required int gameId}) async {
-    final rowsAffected = await _db.delete(
-      'GameAchievement',
-      where: 'game_id = ?',
-      whereArgs: [gameId],
-    );
+    final rowsAffected = await _db.delete('GameAchievement', where: 'game_id = ?', whereArgs: [gameId]);
     if (rowsAffected == 0) {
       throw Exception('No achievement found for gameId $gameId');
     }
   }
 
   unlockAllAchievementsForGame({required int gameId}) {
-    return _db.update(
-      'GameAchievement',
-      {'achieved': 1},
-      where: 'game_id = ?',
-      whereArgs: [gameId],
-    );
+    return _db.update('GameAchievement', {'achieved': 1}, where: 'game_id = ?', whereArgs: [gameId]);
   }
 }

@@ -4,29 +4,14 @@ class Character {
   final String description;
   final int requiredStars;
 
-  Character({
-    required this.id,
-    required this.name,
-    required this.description,
-    required this.requiredStars,
-  });
+  Character({required this.id, required this.name, required this.description, required this.requiredStars});
 
   Map<String, Object?> toMap() {
-    return {
-      'id': id,
-      'name': name,
-      'description': description,
-      'required_stars': requiredStars,
-    };
+    return {'id': id, 'name': name, 'description': description, 'required_stars': requiredStars};
   }
 
   Character copy() {
-    return Character(
-      id: id,
-      name: name,
-      description: description,
-      requiredStars: requiredStars,
-    );
+    return Character(id: id, name: name, description: description, requiredStars: requiredStars);
   }
 
   static Character fromMap(Map<String, Object?> map) {

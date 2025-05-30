@@ -1,4 +1,3 @@
-
 class GameLevel {
   final int id;
   final int levelId;

@@ -53,28 +53,16 @@ class LevelRepository {
   }
 
   Future<List<GameLevel>> getGameLevelsForGame(int gameId) async {
-    final List<Map<String, Object?>> result = await _db.query(
-      'GameLevel',
-      where: 'game_id = ?',
-      whereArgs: [gameId],
-    );
+    final List<Map<String, Object?>> result = await _db.query('GameLevel', where: 'game_id = ?', whereArgs: [gameId]);
 
     return result.map(GameLevel.fromMap).toList();
   }
 
   Future<int> insertGameLevel(GameLevel gameLevel) async {
-    return await _db.insert(
-      'GameLevel',
-      gameLevel.toMap(),
-    );
+    return await _db.insert('GameLevel', gameLevel.toMap());
   }
 
   Future<void> updateGameLevel(GameLevel gameLevel) async {
-    await _db.update(
-      'GameLevel',
-      gameLevel.toMap(),
-      where: 'id = ?',
-      whereArgs: [gameLevel.id],
-    );
+    await _db.update('GameLevel', gameLevel.toMap(), where: 'id = ?', whereArgs: [gameLevel.id]);
   }
 }

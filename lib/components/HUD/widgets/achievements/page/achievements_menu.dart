@@ -103,9 +103,10 @@ class _AchievementMenuState extends State<AchievementMenu> {
                                 final Achievement achievement = achievementData['achievement'];
                                 final GameAchievement gameAchievement = achievementData['gameAchievement'];
 
-                                final String trophyPath = gameAchievement.achieved
-                                    ? 'assets/images/GUI/HUD/trophy_gold.png'
-                                    : 'assets/images/GUI/HUD/trophy_gray.png';
+                                final String trophyPath =
+                                    gameAchievement.achieved
+                                        ? 'assets/images/GUI/HUD/trophy_gold.png'
+                                        : 'assets/images/GUI/HUD/trophy_gray.png';
 
                                 return GestureDetector(
                                   onTap: () {

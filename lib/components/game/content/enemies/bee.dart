@@ -16,12 +16,12 @@ enum BeeState { idle, attack, hit }
 
 class Bee extends SpriteAnimationGroupComponent
     with CollisionCallbacks, HasGameReference<FruitCollector>, PlayerCollidable {
-  
   // Constructor and attributes
   final double offNeg;
   final double offPos;
   final List<CollisionBlock> collisionBlocks;
   Function(dynamic) addSpawnPoint;
+
   Bee({
     super.position,
     super.size,
@@ -62,9 +62,7 @@ class Bee extends SpriteAnimationGroupComponent
   @override
   FutureOr<void> onLoad() {
     player = game.player;
-    add(
-      RectangleHitbox(position: Vector2(4, 6), size: Vector2(24, 26)),
-    );
+    add(RectangleHitbox(position: Vector2(4, 6), size: Vector2(24, 26)));
     _loadAllAnimations();
     _calculateRange();
     return super.onLoad();
@@ -88,11 +86,7 @@ class Bee extends SpriteAnimationGroupComponent
     _attackAnimation = _spriteAnimation('Attack', 8)..loop = false;
     _hitAnimation = _spriteAnimation('Hit', 5)..loop = false;
 
-    animations = {
-      BeeState.idle: _idleAnimation,
-      BeeState.attack: _attackAnimation,
-      BeeState.hit: _hitAnimation,
-    };
+    animations = {BeeState.idle: _idleAnimation, BeeState.attack: _attackAnimation, BeeState.hit: _hitAnimation};
 
     current = BeeState.idle;
   }
@@ -116,11 +110,7 @@ class Bee extends SpriteAnimationGroupComponent
   SpriteAnimation _spriteAnimation(String state, int amount) {
     return SpriteAnimation.fromFrameData(
       game.images.fromCache('Enemies/Bee/$state (36x34).png'),
-      SpriteAnimationData.sequenced(
-        amount: amount,
-        stepTime: stepTime,
-        textureSize: textureSize,
-      ),
+      SpriteAnimationData.sequenced(amount: amount, stepTime: stepTime, textureSize: textureSize),
     );
   }
 
@@ -142,8 +132,7 @@ class Bee extends SpriteAnimationGroupComponent
         await attack();
         return;
       }
-      targetDirection =
-          (player.x + playerOffset > position.x + beeOffset) ? 1 : -1;
+      targetDirection = (player.x + playerOffset > position.x + beeOffset) ? 1 : -1;
       velocity.x = targetDirection * runSpeed;
     }
     moveDirection = lerpDouble(moveDirection, targetDirection, 0.1) ?? 1;
@@ -165,8 +154,7 @@ class Bee extends SpriteAnimationGroupComponent
   }
 
   void shootProjectile() {
-    final Vector2 projectilePosition =
-        position + (Vector2(width, height) - projectileSize) / 2;
+    final Vector2 projectilePosition = position + (Vector2(width, height) - projectileSize) / 2;
 
     final projectile = BeeProjectile(
       position: projectilePosition,
@@ -191,9 +179,7 @@ class Bee extends SpriteAnimationGroupComponent
     double midBeeX = position.x + width / 2;
 
     // player.hitbox.offsetX in second condition
-    return playerRight >= midBeeX &&
-        playerLeft <= midBeeX &&
-        player.y + player.height > position.y;
+    return playerRight >= midBeeX && playerLeft <= midBeeX && player.y + player.height > position.y;
   }
 
   @override

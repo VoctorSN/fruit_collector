@@ -9,11 +9,7 @@ class ConfettiEmitterComponent extends Component with HasGameReference<FruitColl
   final int count;
   final double lifespan;
 
-  ConfettiEmitterComponent({
-    required this.origin,
-    this.count = 30,
-    this.lifespan = 1.5,
-  });
+  ConfettiEmitterComponent({required this.origin, this.count = 30, this.lifespan = 1.5});
 
   @override
   Future<void> onLoad() async {
@@ -26,24 +22,18 @@ class ConfettiEmitterComponent extends Component with HasGameReference<FruitColl
       generator: (_) {
         final initialVelocity = Vector2(
           (random.nextDouble() - 0.5) * 200, // random horizontal velocity
-          -random.nextDouble() * 300,        // upward velocity
+          -random.nextDouble() * 300, // upward velocity
         );
 
         return AcceleratedParticle(
           acceleration: Vector2(0, 300), // gravity
           speed: initialVelocity,
-          child: SpriteParticle(
-            sprite: sprite,
-            size: Vector2.all(8),
-          ),
+          child: SpriteParticle(sprite: sprite, size: Vector2.all(8)),
         );
       },
     );
 
-    final system = ParticleSystemComponent(
-      particle: particle,
-      position: origin.clone(),
-    );
+    final system = ParticleSystemComponent(particle: particle, position: origin.clone());
 
     game.level.add(system);
   }

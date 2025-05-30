@@ -4,7 +4,7 @@ import '../../../../fruit_collector.dart';
 import '../../style/text_style_singleton.dart';
 import '../utils/number_slider.dart';
 
-// Constantes para definir el tamaño y la posición
+// Constants for layout
 const double rowWidth = 475.0;
 const double textPositionX = 50.0;
 const double sliderPositionX = 23.0;
@@ -15,18 +15,11 @@ class ToggleMusicVolumeWidget extends StatefulWidget {
   final FruitCollector game;
   final Function updateMusicVolume;
 
-  const ToggleMusicVolumeWidget({
-    super.key,
-    required this.game,
-    required this.updateMusicVolume,
-  });
+  const ToggleMusicVolumeWidget({super.key, required this.game, required this.updateMusicVolume});
 
   @override
   State<ToggleMusicVolumeWidget> createState() {
-    return _ToggleMusicVolumeWidgetState(
-      game: game,
-      updateMusicVolume: updateMusicVolume,
-    );
+    return _ToggleMusicVolumeWidgetState(game: game, updateMusicVolume: updateMusicVolume);
   }
 }
 
@@ -34,10 +27,8 @@ class _ToggleMusicVolumeWidgetState extends State<ToggleMusicVolumeWidget> {
   final FruitCollector game;
   final Function updateMusicVolume;
 
-  _ToggleMusicVolumeWidgetState({
-    required this.game,
-    required this.updateMusicVolume,
-  }) : isSliderActive = game.settings.isMusicActive;
+  _ToggleMusicVolumeWidgetState({required this.game, required this.updateMusicVolume})
+    : isSliderActive = game.settings.isMusicActive;
 
   bool isMuted = false;
   late double value;
@@ -45,14 +36,8 @@ class _ToggleMusicVolumeWidgetState extends State<ToggleMusicVolumeWidget> {
 
   Image get volumeImage {
     return game.settings.isMusicActive
-        ? Image.asset(
-      'assets/images/GUI/HUD/soundOnButton.png',
-      fit: BoxFit.cover,
-    )
-        : Image.asset(
-      'assets/images/GUI/HUD/soundOffButton.png',
-      fit: BoxFit.cover,
-    );
+        ? Image.asset('assets/images/GUI/HUD/soundOnButton.png', fit: BoxFit.cover)
+        : Image.asset('assets/images/GUI/HUD/soundOffButton.png', fit: BoxFit.cover);
   }
 
   @override
@@ -63,10 +48,7 @@ class _ToggleMusicVolumeWidgetState extends State<ToggleMusicVolumeWidget> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(width: textPositionX),
-          Text(
-            'Music',
-            style: TextStyleSingleton().style,
-          ),
+          Text('Music', style: TextStyleSingleton().style),
           const SizedBox(width: sliderPositionX),
           SizedBox(
             width: sliderWidth,
@@ -78,10 +60,7 @@ class _ToggleMusicVolumeWidgetState extends State<ToggleMusicVolumeWidget> {
             ),
           ),
           const SizedBox(width: buttonPositionX),
-          IconButton(
-            onPressed: changeState,
-            icon: volumeImage,
-          ),
+          IconButton(onPressed: changeState, icon: volumeImage),
         ],
       ),
     );

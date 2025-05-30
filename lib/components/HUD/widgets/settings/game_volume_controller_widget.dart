@@ -4,7 +4,7 @@ import 'package:fruit_collector/components/HUD/style/text_style_singleton.dart';
 import '../../../../fruit_collector.dart';
 import '../utils/number_slider.dart';
 
-// Constantes para definir el tamaño y la posición
+// Constants to define size and position
 const double rowWidth = 475.0;
 const double textPositionX = 45.0;
 const double sliderPositionX = 20.0;
@@ -15,18 +15,11 @@ class ToggleGameVolumeWidget extends StatefulWidget {
   final FruitCollector game;
   final Function updateGameVolume;
 
-  const ToggleGameVolumeWidget({
-    super.key,
-    required this.game,
-    required this.updateGameVolume,
-  });
+  const ToggleGameVolumeWidget({super.key, required this.game, required this.updateGameVolume});
 
   @override
   State<ToggleGameVolumeWidget> createState() {
-    return _ToggleGameVolumeWidgetState(
-      game: game,
-      updateGameVolume: updateGameVolume,
-    );
+    return _ToggleGameVolumeWidgetState(game: game, updateGameVolume: updateGameVolume);
   }
 }
 
@@ -34,10 +27,8 @@ class _ToggleGameVolumeWidgetState extends State<ToggleGameVolumeWidget> {
   final FruitCollector game;
   final Function updateGameVolume;
 
-  _ToggleGameVolumeWidgetState({
-    required this.game,
-    required this.updateGameVolume,
-  }) : isSliderActive = game.settings.isSoundEnabled;
+  _ToggleGameVolumeWidgetState({required this.game, required this.updateGameVolume})
+    : isSliderActive = game.settings.isSoundEnabled;
 
   bool isMuted = false;
   late double value;
@@ -45,14 +36,8 @@ class _ToggleGameVolumeWidgetState extends State<ToggleGameVolumeWidget> {
 
   Image get volumeImage {
     return game.settings.isSoundEnabled
-        ? Image.asset(
-      'assets/images/GUI/HUD/soundOnButton.png',
-      fit: BoxFit.cover,
-    )
-        : Image.asset(
-      'assets/images/GUI/HUD/soundOffButton.png',
-      fit: BoxFit.cover,
-    );
+        ? Image.asset('assets/images/GUI/HUD/soundOnButton.png', fit: BoxFit.cover)
+        : Image.asset('assets/images/GUI/HUD/soundOffButton.png', fit: BoxFit.cover);
   }
 
   @override
@@ -75,10 +60,7 @@ class _ToggleGameVolumeWidgetState extends State<ToggleGameVolumeWidget> {
             ),
           ),
           const SizedBox(width: buttonPositionX),
-          IconButton(
-            onPressed: changeState,
-            icon: volumeImage,
-          ),
+          IconButton(onPressed: changeState, icon: volumeImage),
         ],
       ),
     );

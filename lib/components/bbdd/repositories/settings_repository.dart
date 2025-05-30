@@ -35,16 +35,10 @@ class SettingsRepository {
     });
   }
 
-
   Future<void> updateSettings(Settings settings) async {
     settings.hudSize.clamp(0.25, 1.0);
     settings.controlSize.clamp(0.25, 1.0);
-    await _db.update(
-      'Settings',
-      settings.toMap(),
-      where: 'id = ?',
-      whereArgs: [settings.id],
-    );
+    await _db.update('Settings', settings.toMap(), where: 'id = ?', whereArgs: [settings.id]);
   }
 
   Future<Settings?> getSettings(int gameId) async {

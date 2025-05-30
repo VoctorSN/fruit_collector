@@ -6,16 +6,16 @@ class LevelSummaryOverlay extends StatelessWidget {
   final VoidCallback onContinue;
   final FruitCollector game;
 
-  LevelSummaryOverlay({
-    super.key,
-    required this.onContinue,
-    required this.game,
-  });
+  LevelSummaryOverlay({super.key, required this.onContinue, required this.game});
 
   String get levelName => game.level.levelName;
+
   int get difficulty => game.levels[game.gameData!.currentLevel]['level'].difficulty;
+
   int get deaths => game.level.deathCount;
+
   int get stars => game.level.starsCollected;
+
   int get time => game.level.levelTime;
 
   final Map<int, String> difficultyMap = {
@@ -33,7 +33,6 @@ class LevelSummaryOverlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     // Define max and min size constraints for the overlay
     const double minWidth = 450.0;
     const double maxWidth = 500.0;
@@ -76,23 +75,13 @@ class LevelSummaryOverlay extends StatelessWidget {
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(18),
                       border: Border.all(color: Colors.white, width: 2),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.white.withAlpha(26),
-                          blurRadius: 12,
-                          spreadRadius: 2,
-                        ),
-                      ],
+                      boxShadow: [BoxShadow(color: Colors.white.withAlpha(26), blurRadius: 12, spreadRadius: 2)],
                     ),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text(
-                            levelName.toUpperCase(),
-                            style: titleStyle,
-                            textAlign: TextAlign.center,
-                          ),
+                          Text(levelName.toUpperCase(), style: titleStyle, textAlign: TextAlign.center),
                           const SizedBox(height: 32),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -113,17 +102,9 @@ class LevelSummaryOverlay extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  _iconValue(
-                                    icon: FontAwesomeIcons.clock,
-                                    value: _formatTime(time),
-                                    style: valueStyle,
-                                  ),
+                                  _iconValue(icon: FontAwesomeIcons.clock, value: _formatTime(time), style: valueStyle),
                                   const SizedBox(height: 20),
-                                  _iconValue(
-                                    icon: FontAwesomeIcons.skull,
-                                    value: '$deaths',
-                                    style: valueStyle,
-                                  ),
+                                  _iconValue(icon: FontAwesomeIcons.skull, value: '$deaths', style: valueStyle),
                                 ],
                               ),
                             ],
@@ -135,9 +116,7 @@ class LevelSummaryOverlay extends StatelessWidget {
                               backgroundColor: Colors.white,
                               foregroundColor: Colors.black,
                               padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 14),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                             ),
                             child: const Text(
                               'CONTINUE',
@@ -162,19 +141,11 @@ class LevelSummaryOverlay extends StatelessWidget {
     );
   }
 
-  Widget _iconValue({
-    required IconData icon,
-    required String value,
-    required TextStyle style,
-  }) {
+  Widget _iconValue({required IconData icon, required String value, required TextStyle style}) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        FaIcon(icon, color: Colors.white, size: 22),
-        const SizedBox(width: 12),
-        Text(value, style: style),
-      ],
+      children: [FaIcon(icon, color: Colors.white, size: 22), const SizedBox(width: 12), Text(value, style: style)],
     );
   }
 
@@ -186,11 +157,7 @@ class LevelSummaryOverlay extends StatelessWidget {
       stars.add(
         Padding(
           padding: const EdgeInsets.only(right: 6),
-          child: FaIcon(
-            FontAwesomeIcons.solidStar,
-            color: i < count ? Colors.white : Colors.white24,
-            size: 20,
-          ),
+          child: FaIcon(FontAwesomeIcons.solidStar, color: i < count ? Colors.white : Colors.white24, size: 20),
         ),
       );
     }

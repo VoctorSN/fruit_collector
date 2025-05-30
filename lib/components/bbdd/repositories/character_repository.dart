@@ -34,10 +34,7 @@ class CharacterRepository {
   }
 
   Future<List<Character>> getAllCharacters() async {
-    final List<Map<String, Object?>> result = await _db.query(
-      'Characters',
-      orderBy: 'required_stars',
-    );
+    final List<Map<String, Object?>> result = await _db.query('Characters', orderBy: 'required_stars');
 
     return result.map(Character.fromMap).toList();
   }
@@ -58,23 +55,14 @@ class CharacterRepository {
   Future<void> resetGameCharacters(int gameId) async {
     await _db.update(
       'GameCharacter',
-      {
-        'unlocked': 0,
-        'equipped': 0,
-        'date_unlocked': '1970-01-01 00:00:00',
-      },
+      {'unlocked': 0, 'equipped': 0, 'date_unlocked': '1970-01-01 00:00:00'},
       where: 'game_id = ?',
       whereArgs: [gameId],
     );
   }
 
   Future<void> updateGameCharacter(GameCharacter gameCharacter) async {
-    await _db.update(
-      'GameCharacter',
-      gameCharacter.toMap(),
-      where: 'id = ?',
-      whereArgs: [gameCharacter.id],
-    );
+    await _db.update('GameCharacter', gameCharacter.toMap(), where: 'id = ?', whereArgs: [gameCharacter.id]);
   }
 
   Future<List<GameCharacter>> getGameCharactersForGame(int gameId) async {
@@ -88,16 +76,13 @@ class CharacterRepository {
   }
 
   Future<int> insertGameCharacter(int gameId, int characterId) async {
-    return await _db.insert(
-      'GameCharacter',
-      {
-        'game_id': gameId,
-        'character_id': characterId,
-        'unlocked': 0,
-        'equipped': 0,
-        'date_unlocked': '1970-01-01 00:00:00',
-      },
-    );
+    return await _db.insert('GameCharacter', {
+      'game_id': gameId,
+      'character_id': characterId,
+      'unlocked': 0,
+      'equipped': 0,
+      'date_unlocked': '1970-01-01 00:00:00',
+    });
   }
 
   Future<Iterable<Object?>> getUnlockedCharactersForGame(int gameId) async {

@@ -11,11 +11,7 @@ class CharacterToast extends StatelessWidget {
   final Character character;
   final VoidCallback onDismiss;
 
-  const CharacterToast({
-    super.key,
-    required this.character,
-    required this.onDismiss,
-  });
+  const CharacterToast({super.key, required this.character, required this.onDismiss});
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +39,7 @@ class CharacterToast extends StatelessWidget {
                     borderRadius: BorderRadius.circular(6),
                     border: Border.all(color: borderColor, width: 1.5),
                     boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withAlpha(102),
-                        offset: const Offset(2, 2),
-                        blurRadius: 3,
-                      ),
+                      BoxShadow(color: Colors.black.withAlpha(102), offset: const Offset(2, 2), blurRadius: 3),
                     ],
                   ),
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -56,11 +48,7 @@ class CharacterToast extends StatelessWidget {
                     children: [
                       const Padding(
                         padding: EdgeInsets.only(top: 1),
-                        child: Icon(
-                          FontAwesomeIcons.shirt,
-                          color: Colors.amber,
-                          size: 18,
-                        ),
+                        child: Icon(FontAwesomeIcons.shirt, color: Colors.amber, size: 18),
                       ),
                       const SizedBox(width: 16),
                       Column(
@@ -90,11 +78,7 @@ class CharacterToast extends StatelessWidget {
                       const SizedBox(width: 8),
                       GestureDetector(
                         onTap: onDismiss,
-                        child: const Icon(
-                          Icons.close,
-                          size: 18,
-                          color: Colors.white70,
-                        ),
+                        child: const Icon(Icons.close, size: 18, color: Colors.white70),
                       ),
                     ],
                   ),

@@ -12,16 +12,10 @@ class AchievementMenuVM extends ChangeNotifier {
   void scrollByRow({required bool forward}) {
     final double currentOffset = scrollController.offset;
     final int currentRow = (currentOffset / (rowHeight + rowSpacing)).round();
-    final int targetRow = forward
-        ? currentRow + 1
-        : (currentRow - 1).clamp(0, achievements.length - 1);
+    final int targetRow = forward ? currentRow + 1 : (currentRow - 1).clamp(0, achievements.length - 1);
     final double targetOffset = targetRow * (rowHeight + rowSpacing);
 
-    scrollController.animateTo(
-      targetOffset,
-      duration: const Duration(milliseconds: 250),
-      curve: Curves.easeOut,
-    );
+    scrollController.animateTo(targetOffset, duration: const Duration(milliseconds: 250), curve: Curves.easeOut);
   }
 
   @override

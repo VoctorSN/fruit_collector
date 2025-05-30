@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:fruit_collector/fruit_collector.dart';
 import 'package:window_size/window_size.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   if (!kIsWeb && (Platform.isWindows || Platform.isLinux || Platform.isMacOS)) {
@@ -20,11 +20,5 @@ void main() async{
   await Flame.device.setLandscape();
 
   FruitCollector game = FruitCollector();
-  runApp(
-      GameWidget(
-        game:kDebugMode
-            ? FruitCollector()
-            : game,
-
-  ));
+  runApp(GameWidget(game: kDebugMode ? FruitCollector() : game));
 }

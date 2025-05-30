@@ -10,7 +10,14 @@ class NumberSlider extends StatefulWidget {
   final Function(dynamic) onChanged;
   final bool isActive;
 
-  const NumberSlider({super.key, required this.game, required this.value, required this.onChanged, required this.isActive, this.minValue = 0.0});
+  const NumberSlider({
+    super.key,
+    required this.game,
+    required this.value,
+    required this.onChanged,
+    required this.isActive,
+    this.minValue = 0.0,
+  });
 
   @override
   _NumberSliderState createState() {

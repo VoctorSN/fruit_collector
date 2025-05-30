@@ -7,8 +7,7 @@ import 'package:fruit_collector/fruit_collector.dart';
 
 import '../../levelBasics/player.dart';
 
-class BeeProjectile extends SpriteComponent
-    with CollisionCallbacks, HasGameReference<FruitCollector> {
+class BeeProjectile extends SpriteComponent with CollisionCallbacks, HasGameReference<FruitCollector> {
   final Vector2 velocity;
   Function(dynamic) addSpawnPoint;
 
@@ -40,7 +39,7 @@ class BeeProjectile extends SpriteComponent
 
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
-    if(other is Bee){
+    if (other is Bee) {
       return;
     }
     if (other is Player) {
@@ -48,7 +47,7 @@ class BeeProjectile extends SpriteComponent
       destroyWithParticles();
     }
 
-    if(other is CollisionBlock){
+    if (other is CollisionBlock) {
       destroyWithParticles();
     }
     super.onCollision(intersectionPoints, other);
@@ -65,7 +64,7 @@ class BeeProjectile extends SpriteComponent
               speed: Vector2.random() * 20 - Vector2.all(10),
               child: SpriteParticle(
                 sprite: sprite,
-                size: particleSize, // Tamaño de cada fragmento
+                size: particleSize,
               ),
             ),
       ),

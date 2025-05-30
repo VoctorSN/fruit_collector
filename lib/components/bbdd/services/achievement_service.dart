@@ -10,21 +10,16 @@ class AchievementService {
   static Future<AchievementService> getInstance() async {
     if (_instance == null) {
       final service = AchievementService._internal();
-      service._achievementRepository =
-          await AchievementRepository.getInstance();
+      service._achievementRepository = await AchievementRepository.getInstance();
       _instance = service;
     }
     return _instance!;
   }
 
   Future<void> unlockAchievement(int gameId, int achievementId) async {
-    var gameAchievement = await _achievementRepository.getGameAchievement(
-      gameId,
-      achievementId,
-    );
+    var gameAchievement = await _achievementRepository.getGameAchievement(gameId, achievementId);
 
     if (gameAchievement == null) {
-
       throw Exception('GameAchievement not found');
     }
     // Update to mark as achieved
@@ -48,8 +43,7 @@ class AchievementService {
 
   Future<List<Map<String, dynamic>>> getAchievementsForGame(int gameId) async {
     final achievements = await _achievementRepository.getAllAchievements();
-    final gameAchievements = await _achievementRepository
-        .getGameAchievementsForGame(gameId);
+    final gameAchievements = await _achievementRepository.getGameAchievementsForGame(gameId);
 
     return achievements.map((achievement) {
       final gameAchievement = gameAchievements.firstWhere(

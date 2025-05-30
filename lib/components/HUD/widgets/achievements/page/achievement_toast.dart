@@ -10,11 +10,7 @@ class AchievementToast extends StatelessWidget {
   final Achievement achievement;
   final VoidCallback onDismiss;
 
-  const AchievementToast({
-    super.key,
-    required this.achievement,
-    required this.onDismiss,
-  });
+  const AchievementToast({super.key, required this.achievement, required this.onDismiss});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +23,7 @@ class AchievementToast extends StatelessWidget {
       child: Align(
         alignment: Alignment.topCenter,
         child: Padding(
-          padding: const EdgeInsets.only(top: 12), // Reduced top padding
+          padding: const EdgeInsets.only(top: 12),
           child: Dismissible(
             key: UniqueKey(),
             direction: DismissDirection.up,
@@ -42,23 +38,19 @@ class AchievementToast extends StatelessWidget {
                     borderRadius: BorderRadius.circular(6),
                     border: Border.all(color: borderColor, width: 1.5),
                     boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withAlpha(102),
-                        offset: const Offset(2, 2),
-                        blurRadius: 3,
-                      ),
+                      BoxShadow(color: Colors.black.withAlpha(102), offset: const Offset(2, 2), blurRadius: 3),
                     ],
                   ),
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8), // Less padding
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       const Icon(
                         Icons.emoji_events_rounded,
                         color: Colors.amber,
-                        size: 26, // Smaller icon
+                        size: 26,
                       ),
-                      const SizedBox(width: 8), // Less horizontal space
+                      const SizedBox(width: 8),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
@@ -86,11 +78,7 @@ class AchievementToast extends StatelessWidget {
                       const SizedBox(width: 8),
                       GestureDetector(
                         onTap: onDismiss,
-                        child: const Icon(
-                          Icons.close,
-                          size: 18,
-                          color: Colors.white70,
-                        ),
+                        child: const Icon(Icons.close, size: 18, color: Colors.white70),
                       ),
                     ],
                   ),

@@ -23,24 +23,22 @@ class LevelService {
     return levels.map((level) {
       final gameLevel = gameLevels.firstWhere(
         (gl) => gl.levelId == level.id,
-        orElse: () => GameLevel(
-          id: 0,
-          levelId: level.id,
-          gameId: gameId,
-          completed: false,
-          unlocked: false,
-          stars: 0,
-          dateCompleted: DateTime.parse('1970-01-01 00:00:00'),
-          lastTimeCompleted: DateTime.parse('1970-01-01 00:00:00'),
-          time: null,
-          deaths: 0,
-        ),
+        orElse:
+            () => GameLevel(
+              id: 0,
+              levelId: level.id,
+              gameId: gameId,
+              completed: false,
+              unlocked: false,
+              stars: 0,
+              dateCompleted: DateTime.parse('1970-01-01 00:00:00'),
+              lastTimeCompleted: DateTime.parse('1970-01-01 00:00:00'),
+              time: null,
+              deaths: 0,
+            ),
       );
 
-      return {
-        'level': level,
-        'gameLevel': gameLevel,
-      };
+      return {'level': level, 'gameLevel': gameLevel};
     }).toList();
   }
 
@@ -57,7 +55,8 @@ class LevelService {
     if (gameLevel == null) {
       // Create a new GameLevel if it doesn't exist
       gameLevel = GameLevel(
-        id: 0, // Will be set by AUTOINCREMENT
+        id: 0,
+        // Will be set by AUTOINCREMENT
         levelId: levelId,
         gameId: gameId,
         completed: true,
@@ -90,7 +89,8 @@ class LevelService {
         completed: true,
         unlocked: true,
         stars: stars,
-        dateCompleted: gameLevel.completed ? gameLevel.dateCompleted : now, // Keep first completion date
+        dateCompleted: gameLevel.completed ? gameLevel.dateCompleted : now,
+        // Keep first completion date
         lastTimeCompleted: now,
         time: time,
         deaths: deaths,
@@ -137,18 +137,15 @@ class LevelService {
     }
   }
 
-  Future<GameLevel?> getGameLevelByGameAndLevelName({
-  required int gameId,
-  required String levelName,
-}) async {
-  // First, get the Level by name
-  final levels = await _levelRepository.getAllLevels();
-  final level = levels.firstWhere(
-    (level) => level.name == levelName,
-    orElse: () => throw Exception('Level with name $levelName not found'),
-  );
+  Future<GameLevel?> getGameLevelByGameAndLevelName({required int gameId, required String levelName}) async {
+    // First, get the Level by name
+    final levels = await _levelRepository.getAllLevels();
+    final level = levels.firstWhere(
+      (level) => level.name == levelName,
+      orElse: () => throw Exception('Level with name $levelName not found'),
+    );
 
-  // Then, get the GameLevel using gameId and levelId
-  return await _levelRepository.getGameLevel(gameId, level.id);
-}
+    // Then, get the GameLevel using gameId and levelId
+    return await _levelRepository.getGameLevel(gameId, level.id);
+  }
 }

@@ -39,22 +39,13 @@ class GameLevelRepository {
   }
 
   Future<void> deleteGameLevelByGameId({required int gameId}) async {
-    final rowsAffected = await _db.delete(
-      'GameLevel',
-      where: 'game_id = ?',
-      whereArgs: [gameId],
-    );
+    final rowsAffected = await _db.delete('GameLevel', where: 'game_id = ?', whereArgs: [gameId]);
     if (rowsAffected == 0) {
       throw Exception('No gameLevels found for gameId $gameId');
     }
   }
 
   unlockAllLevelsForGame({required int gameId}) {
-    return _db.update(
-      'GameLevel',
-      {'unlocked': 1},
-      where: 'game_id = ?',
-      whereArgs: [gameId],
-    );
+    return _db.update('GameLevel', {'unlocked': 1}, where: 'game_id = ?', whereArgs: [gameId]);
   }
 }

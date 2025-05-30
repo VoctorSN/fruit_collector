@@ -49,7 +49,6 @@ class AchievementManager {
   };
 
   Future<void> evaluate() async {
-
     final achievementService = await AchievementService.getInstance();
     allAchievements.clear();
     if (game.gameData == null) return;
@@ -57,7 +56,6 @@ class AchievementManager {
     final unlockedAchievements = await achievementService.getUnlockedAchievementsForGame(game.gameData!.id);
 
     allAchievements.addAll(achievementData);
-
 
     for (final achievementData in allAchievements) {
       Achievement achievement = achievementData['achievement'];
@@ -83,27 +81,26 @@ class AchievementManager {
   }
 
   void tryShowNextToast() {
-  if (game.isShowingAchievementToast || game.pendingToasts['achievements']!.isEmpty) return;
+    if (game.isShowingAchievementToast || game.pendingToasts['achievements']!.isEmpty) return;
 
-  game.isShowingAchievementToast = true;
-  final nextAchievement = game.pendingToasts['achievements']!.removeAt(0);
+    game.isShowingAchievementToast = true;
+    final nextAchievement = game.pendingToasts['achievements']!.removeAt(0);
 
-  game.currentShowedAchievement = nextAchievement;
-  game.overlays.add(AchievementToast.id);
+    game.currentShowedAchievement = nextAchievement;
+    game.overlays.add(AchievementToast.id);
 
-  Future.delayed(const Duration(seconds: 3), () {
-    game.overlays.remove(AchievementToast.id);
-    game.currentShowedAchievement = null;
-    game.isShowingAchievementToast = false;
+    Future.delayed(const Duration(seconds: 3), () {
+      game.overlays.remove(AchievementToast.id);
+      game.currentShowedAchievement = null;
+      game.isShowingAchievementToast = false;
 
-    // Try to show the next achievement toast
-    tryShowNextToast();
+      // Try to show the next achievement toast
+      tryShowNextToast();
 
-    // If no more achievement toasts are showing, try to show the next character toast
-    if (!game.isShowingAchievementToast && game.pendingToasts['achievements']!.isEmpty) {
-      game.characterManager.tryShowNextToast();
-    }
-  });
-}
-
+      // If no more achievement toasts are showing, try to show the next character toast
+      if (!game.isShowingAchievementToast && game.pendingToasts['achievements']!.isEmpty) {
+        game.characterManager.tryShowNextToast();
+      }
+    });
+  }
 }

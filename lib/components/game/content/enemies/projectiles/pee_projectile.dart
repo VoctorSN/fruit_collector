@@ -7,8 +7,7 @@ import 'package:fruit_collector/fruit_collector.dart';
 
 import '../../levelBasics/player.dart';
 
-class PeeProjectile extends SpriteComponent
-    with CollisionCallbacks, HasGameReference<FruitCollector> {
+class PeeProjectile extends SpriteComponent with CollisionCallbacks, HasGameReference<FruitCollector> {
   final Vector2 velocity;
   Function(dynamic) addSpawnPoint;
 
@@ -40,7 +39,7 @@ class PeeProjectile extends SpriteComponent
 
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
-    if(other is PeeShooter){
+    if (other is PeeShooter) {
       return;
     }
     if (other is Player) {
@@ -48,7 +47,7 @@ class PeeProjectile extends SpriteComponent
       destroyWithParticles();
     }
 
-    if(other is CollisionBlock){
+    if (other is CollisionBlock) {
       destroyWithParticles();
     }
     super.onCollision(intersectionPoints, other);
@@ -62,11 +61,8 @@ class PeeProjectile extends SpriteComponent
         generator:
             (i) => AcceleratedParticle(
               position: position,
-              speed: Vector2(0,5),
-              child: SpriteParticle(
-                sprite: sprite,
-                size: particleSize,
-              ),
+              speed: Vector2(0, 5),
+              child: SpriteParticle(sprite: sprite, size: particleSize),
             ),
       ),
     );

@@ -13,14 +13,12 @@ import '../levelBasics/player.dart';
 
 enum GhostState { appearing, moving, disappearing }
 
-class Ghost extends SpriteAnimationGroupComponent
-    with CollisionCallbacks, HasGameReference<FruitCollector> {
-
+class Ghost extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<FruitCollector> {
   // Constructor and attributes
   final int spawnIn;
   final Vector2 initialPosition;
-  Ghost({super.position, super.size, this.spawnIn = 0})
-    : initialPosition = position!.clone();
+
+  Ghost({super.position, super.size, this.spawnIn = 0}) : initialPosition = position!.clone();
 
   // Animation
   late final SpriteAnimation _appearingAnimation;
@@ -47,11 +45,7 @@ class Ghost extends SpriteAnimationGroupComponent
   SpriteAnimation _spriteAnimation(String state, int amount) {
     return SpriteAnimation.fromFrameData(
       game.images.fromCache('Enemies/Ghost/$state (44x30).png'),
-      SpriteAnimationData.sequenced(
-        amount: amount,
-        stepTime: stepTime,
-        textureSize: spriteSize,
-      ),
+      SpriteAnimationData.sequenced(amount: amount, stepTime: stepTime, textureSize: spriteSize),
     );
   }
 
@@ -72,17 +66,8 @@ class Ghost extends SpriteAnimationGroupComponent
   }
 
   Future<void> _loadTrailSprites() async {
-    final image = game.images.fromCache(
-      'Enemies/Ghost/Gost Particles (48x16).png',
-    );
-    trailSprites = List.generate(
-      4,
-      (i) => Sprite(
-        image,
-        srcPosition: Vector2(16.0 * i, 0),
-        srcSize: Vector2(16, 16),
-      ),
-    );
+    final image = game.images.fromCache('Enemies/Ghost/Gost Particles (48x16).png');
+    trailSprites = List.generate(4, (i) => Sprite(image, srcPosition: Vector2(16.0 * i, 0), srcSize: Vector2(16, 16)));
   }
 
   void _spawn() async {
@@ -136,7 +121,6 @@ class Ghost extends SpriteAnimationGroupComponent
       accumulatedTime -= fixedDeltaTime;
     }
     super.update(dt);
-
   }
 
   void _emitTrailParticle(double dt) {
@@ -154,14 +138,8 @@ class Ghost extends SpriteAnimationGroupComponent
             (i) => AcceleratedParticle(
               acceleration: Vector2(0, 5),
               speed: Vector2.random() * 10 - Vector2.all(5),
-              position: Vector2(
-                isLookingRight ? -size.x : 0,
-                (math.Random().nextDouble() * 20 - 10),
-              ),
-              child: SpriteParticle(
-                sprite: trailSprites[i % trailSprites.length],
-                size: Vector2(16, 16),
-              ),
+              position: Vector2(isLookingRight ? -size.x : 0, (math.Random().nextDouble() * 20 - 10)),
+              child: SpriteParticle(sprite: trailSprites[i % trailSprites.length], size: Vector2(16, 16)),
             ),
       ),
     );
@@ -202,9 +180,7 @@ class Ghost extends SpriteAnimationGroupComponent
     if (other is Player && current == GhostState.moving) {
       other.collidedWithEnemy();
     }
-    if (other is Ghost &&
-        position.x < other.position.x &&
-        current == GhostState.moving) {
+    if (other is Ghost && position.x < other.position.x && current == GhostState.moving) {
       respawn();
     }
     super.onCollision(intersectionPoints, other);

@@ -171,10 +171,7 @@ class _GameSelectorState extends State<GameSelector> {
           Expanded(
             child: Text(
               label,
-              style: TextStyleSingleton().style.copyWith(
-                fontSize: 14,
-                color: textColor.withAlpha(isEmpty ? 102 : 255),
-              ),
+              style: TextStyleSingleton().style.copyWith(fontSize: 14, color: textColor.withAlpha(isEmpty ? 102 : 255)),
             ),
           ),
           if (showDelete && onDelete != null) _buildDeleteIcon(onDelete),
@@ -194,11 +191,7 @@ class _GameSelectorState extends State<GameSelector> {
           border: Border.all(color: redColor),
           borderRadius: BorderRadius.circular(3),
         ),
-        child: Icon(
-          Icons.delete_outline,
-          color: redColor,
-          size: 18,
-        ),
+        child: Icon(Icons.delete_outline, color: redColor, size: 18),
       ),
     );
   }

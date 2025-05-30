@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class BaseModel extends ChangeNotifier {
   bool disposed = false;
   String? errorTitle;
@@ -16,31 +15,21 @@ class BaseModel extends ChangeNotifier {
   bool isEmpty = false;
   bool hasErrors = false;
 
-  BaseModel() : super() {
-    /*eventBus.fire(BreadcrumbEvent.debug(
-      message: "$runtimeType construct"
-    ));*/
-  }
+  BaseModel() : super();
 
   @override
   void dispose() {
     if (disposed) {
-
       return;
     }
     super.dispose();
     disposed = true;
-
-    /*eventBus.fire(BreadcrumbEvent.debug(
-      message: "$runtimeType dispose"
-    ));*/
   }
 
   @override
   void notifyListeners() {
     //Avoid exception when notifying listeners when vm is disposed
     if (disposed) {
-
       return;
     }
     super.notifyListeners();
@@ -58,17 +47,9 @@ class BaseModel extends ChangeNotifier {
   }
 
   void setError({String? errorTitle, String? errorDescription}) {
-    if ((errorTitle == null && errorDescription == null)
-     || this.errorTitle != errorTitle
-     || this.errorDescription != errorDescription) {
-      /*eventBus.fire(BreadcrumbEvent.error(
-        message: "$runtimeType setError",
-        data: {
-          "title": errorTitle,
-          "description": errorDescription,
-        }
-      ));*/
-    }
+    if ((errorTitle == null && errorDescription == null) ||
+        this.errorTitle != errorTitle ||
+        this.errorDescription != errorDescription) {}
     this.errorTitle = errorTitle!;
     this.errorDescription = errorDescription!;
     hasErrors = true;

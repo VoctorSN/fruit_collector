@@ -18,9 +18,7 @@ mixin CollisionableWithHitbox on SpriteAnimationGroupComponent, CollisionCallbac
     final blockHeight = block.height;
 
     // Adjust for sprite flip (negative scale)
-    final fixedX = scale.x < 0
-        ? playerX - (hitboxOffset != null ? hitboxOffset.x * 2 : playerWidth)
-        : playerX;
+    final fixedX = scale.x < 0 ? playerX - (hitboxOffset != null ? hitboxOffset.x * 2 : playerWidth) : playerX;
 
     // Adjust Y for platform collisions
     final fixedY = block.isPlatform ? playerY + playerHeight : playerY;

@@ -5,7 +5,6 @@ import '../../../../fruit_collector.dart';
 import '../../style/text_style_singleton.dart';
 import '../utils/number_slider.dart';
 
-// Constantes para definir el tamaño y la posición
 const double rowWidth = 475.0;
 const double textPositionX = 37.5;
 const double sliderPositionX = 17.5;
@@ -15,18 +14,11 @@ class ResizeHUD extends StatefulWidget {
   final FruitCollector game;
   final Function updateSizeHUD;
 
-  const ResizeHUD({
-    super.key,
-    required this.game,
-    required this.updateSizeHUD,
-  });
+  const ResizeHUD({super.key, required this.game, required this.updateSizeHUD});
 
   @override
   State<ResizeHUD> createState() {
-    return _ResizeHUDState(
-      game: game,
-      updateSizeHUD: updateSizeHUD,
-    );
+    return _ResizeHUDState(game: game, updateSizeHUD: updateSizeHUD);
   }
 }
 
@@ -34,10 +26,7 @@ class _ResizeHUDState extends State<ResizeHUD> {
   final FruitCollector game;
   final Function updateSizeHUD;
 
-  _ResizeHUDState({
-    required this.game,
-    required this.updateSizeHUD,
-  });
+  _ResizeHUDState({required this.game, required this.updateSizeHUD});
 
   late double value;
 
@@ -51,20 +40,11 @@ class _ResizeHUDState extends State<ResizeHUD> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(width: textPositionX),
-          Text(
-            'HUD Size',
-            style: TextStyleSingleton().style,
-          ),
+          Text('HUD Size', style: TextStyleSingleton().style),
           const SizedBox(width: sliderPositionX),
           SizedBox(
             width: sliderWidth,
-            child: NumberSlider(
-              minValue: 15.0,
-              game: game,
-              value: value,
-              onChanged: onChanged,
-              isActive: true,
-            ),
+            child: NumberSlider(minValue: 15.0, game: game, value: value, onChanged: onChanged, isActive: true),
           ),
         ],
       ),

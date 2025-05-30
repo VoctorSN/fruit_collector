@@ -12,16 +12,16 @@ class DatabaseManager {
   static Future<DatabaseManager> getInstance() async {
     if (_instance == null) {
       final DatabaseManager manager = DatabaseManager._internal();
-
-      ///await manager._resetDatabase(); // ⚠️ Solo para desarrollo
+      // Uncomment the next line if you want to reset the database every time
+      // await manager._resetDatabase();
       await manager._initDatabase();
       _instance = manager;
     }
     return _instance!;
   }
 
-  ///For rebase de Database
-  ///await databaseFactory.deleteDatabase(dbPath);
+  // For rebase de Database
+  // await databaseFactory.deleteDatabase(dbPath);
   Future<void> resetDatabase() async {
     final String dbPath = join(await databaseFactory.getDatabasesPath(), 'fruit_collector.db');
     await databaseFactory.deleteDatabase(dbPath);
@@ -32,7 +32,7 @@ class DatabaseManager {
       sqfliteFfiInit();
       databaseFactory = databaseFactoryFfi;
     } else {
-      databaseFactory = databaseFactory; // móvil usa la versión normal
+      databaseFactory = databaseFactory; // In mobile it uses the normal version
     }
 
     final String dbPath = join(await databaseFactory.getDatabasesPath(), 'fruit_collector.db');

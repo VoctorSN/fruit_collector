@@ -56,11 +56,12 @@ class LevelCard extends StatelessWidget {
     final String timeText = isCompleted ? '$duration' : '?';
     final String deathsText = deaths != -1 ? '$deaths' : '?';
 
-    final Color backgroundColor = isLocked
-        ? disabledColor
-        : isCurrentLevel
-        ? _lighten(cardColor, 0.075)
-        : cardColor;
+    final Color backgroundColor =
+        isLocked
+            ? disabledColor
+            : isCurrentLevel
+            ? _lighten(cardColor, 0.075)
+            : cardColor;
 
     return GestureDetector(
       onTap: isLocked ? null : onTap,

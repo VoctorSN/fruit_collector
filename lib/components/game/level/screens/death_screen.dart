@@ -178,7 +178,7 @@ class DeathScreen extends RectangleComponent {
             fontFamily: 'ArcadeClassic',
           ),
         );
-    }
+      }
     }
     game.duringBlackScreen = false;
     game.duringRemovingBlackScreen = true;

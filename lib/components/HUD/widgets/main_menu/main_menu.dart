@@ -85,7 +85,6 @@ class _MainMenuState extends State<MainMenu> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-
     final double topPadding = MediaQuery.of(context).padding.top + 18;
 
     return Stack(
@@ -204,7 +203,6 @@ class _MainMenuState extends State<MainMenu> with SingleTickerProviderStateMixin
     }
   }
 
-  // TODO actualizar las settings del juego
   void _onVolumeToggle() async {
     setState(() {
       _isSoundOn = !_isSoundOn;
@@ -215,8 +213,7 @@ class _MainMenuState extends State<MainMenu> with SingleTickerProviderStateMixin
       }
     });
     widget.game.settings.isMusicActive = _isSoundOn;
-    widget.game.settingsService!.updateSettings(
-        widget.game.settings);
+    widget.game.settingsService!.updateSettings(widget.game.settings);
   }
 
   void _onContinuePressed() async {

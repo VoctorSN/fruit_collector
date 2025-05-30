@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:fruit_collector/components/HUD/widgets/pause_menu.dart';
 import 'package:fruit_collector/components/HUD/widgets/settings/game_volume_controller_widget.dart';
 import 'package:fruit_collector/components/HUD/widgets/settings/music_controller_widget.dart';
-import 'package:fruit_collector/components/HUD/widgets/settings/resize_hud.dart';
 import 'package:fruit_collector/components/HUD/widgets/settings/resize_controls.dart';
+import 'package:fruit_collector/components/HUD/widgets/settings/resize_hud.dart';
 
 import '../../../../fruit_collector.dart';
 import '../../style/text_style_singleton.dart';
@@ -69,8 +69,7 @@ class SettingsMenu extends StatelessWidget {
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 50, horizontal: 90),
+                  padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 90),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -78,10 +77,7 @@ class SettingsMenu extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 30),
                         child: Text(
                           'Settings',
-                          style: TextStyleSingleton().style.copyWith(
-                            fontSize: 46,
-                            color: textColor,
-                          ),
+                          style: TextStyleSingleton().style.copyWith(fontSize: 46, color: textColor),
                         ),
                       ),
                       Align(
@@ -91,19 +87,15 @@ class SettingsMenu extends StatelessWidget {
                           crossAxisAlignment: WrapCrossAlignment.start,
                           spacing: 18,
                           children: [
-                            ToggleMusicVolumeWidget(
-                              game: game,
-                              updateMusicVolume: updateMusicVolume,
-                            ),
-                            ToggleGameVolumeWidget(
-                              game: game,
-                              updateGameVolume: updateGameVolume,
-                            ),
+                            ToggleMusicVolumeWidget(game: game, updateMusicVolume: updateMusicVolume),
+                            ToggleGameVolumeWidget(game: game, updateGameVolume: updateGameVolume),
                             ResizeHUD(game: game, updateSizeHUD: updateSizeHUD),
-                            ResizeControls(game: game,
-                                updateSizeControls: updateSizeControls,
-                                updateIsLeftHanded: updateIsLeftHanded,
-                                updateShowControls: updateShowControls),
+                            ResizeControls(
+                              game: game,
+                              updateSizeControls: updateSizeControls,
+                              updateIsLeftHanded: updateIsLeftHanded,
+                              updateShowControls: updateShowControls,
+                            ),
                           ],
                         ),
                       ),
@@ -117,14 +109,10 @@ class SettingsMenu extends StatelessWidget {
                               game.overlays.remove(SettingsMenu.id);
                               game.overlays.add(PauseMenu.id);
                             },
-                            icon: const Icon(Icons.arrow_back, size: 20,
-                                color: Colors.white),
+                            icon: const Icon(Icons.arrow_back, size: 20, color: Colors.white),
                             label: Text(
                               'Back',
-                              style: TextStyleSingleton().style.copyWith(
-                                fontSize: 20,
-                                color: textColor,
-                              ),
+                              style: TextStyleSingleton().style.copyWith(fontSize: 20, color: textColor),
                             ),
                           ),
                           const SizedBox(width: 24),
@@ -140,18 +128,12 @@ class SettingsMenu extends StatelessWidget {
                               game.reloadAllButtons();
                               game.settings.gameVolume = gameVolume;
                               game.settings.musicVolume = musicVolume;
-                              game.settingsService!.updateSettings(
-                                  game.settings);
+                              game.settingsService!.updateSettings(game.settings);
                             },
-                            icon: const Icon(
-                                Icons.check_circle_outline, size: 20,
-                                color: Colors.white),
+                            icon: const Icon(Icons.check_circle_outline, size: 20, color: Colors.white),
                             label: Text(
                               'Apply',
-                              style: TextStyleSingleton().style.copyWith(
-                                fontSize: 20,
-                                color: textColor,
-                              ),
+                              style: TextStyleSingleton().style.copyWith(fontSize: 20, color: textColor),
                             ),
                           ),
                         ],

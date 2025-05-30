@@ -8,7 +8,7 @@ import '../../util/utils.dart';
 import 'collision_block.dart';
 
 class FallingBlock extends CollisionBlock with HasGameReference<FruitCollector> {
-  // Constructor and atributes
+  // Constructor and attributes
   int fallingDuration;
   final Vector2 initialPosition;
   bool isSideSensible;

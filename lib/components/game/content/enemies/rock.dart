@@ -14,8 +14,8 @@ enum RockState { idle, run, hit }
 
 enum RockType { big, medium, mini }
 
-class Rock extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<FruitCollector>, PlayerCollidable, CollisionableWithHitbox {
-
+class Rock extends SpriteAnimationGroupComponent
+    with CollisionCallbacks, HasGameReference<FruitCollector>, PlayerCollidable, CollisionableWithHitbox {
   // Constructor and attributes
   final List<CollisionBlock> collisionBlocks;
   final double offNeg;

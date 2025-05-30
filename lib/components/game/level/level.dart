@@ -30,13 +30,12 @@ import '../content/enemies/projectiles/pee_projectile.dart';
 import '../content/enemies/radish.dart';
 import '../content/enemies/rock.dart';
 import '../content/enemies/snail.dart';
-import '../content/levelExtras/stars.dart';
+import '../content/levelBasics/stars.dart';
 import '../content/traps/fan.dart';
 import '../content/traps/spike.dart';
 import 'background_tile.dart';
 
 class Level extends World with HasGameReference<FruitCollector> {
-
   // Constructor and attributes
   final Player player;
   final String levelName;
@@ -88,8 +87,6 @@ class Level extends World with HasGameReference<FruitCollector> {
 
   @override
   FutureOr<void> onLoad() async {
-
-
     level = await TiledComponent.load('$levelName.tmx', Vector2.all(16));
     add(level);
 
@@ -107,7 +104,6 @@ class Level extends World with HasGameReference<FruitCollector> {
   }
 
   Future<void> chargeLevel(GameLevel? level) async {
-
     levelData = level;
     lastMinDeaths = level?.deaths ?? 0;
     lastMinTime = level?.time ?? 0;
@@ -116,7 +112,6 @@ class Level extends World with HasGameReference<FruitCollector> {
   void _startLevel() {
     _levelTimer = Stopwatch()..start();
     deathCount = 0;
-
   }
 
   void registerDeath() {
@@ -125,12 +120,10 @@ class Level extends World with HasGameReference<FruitCollector> {
 
   void stopLevelTimer() {
     _levelTimer.stop();
-
   }
 
   void resumeLevelTimer() {
     _levelTimer.start();
-
   }
 
   void _addGameText() {

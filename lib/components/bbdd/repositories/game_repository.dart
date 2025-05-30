@@ -39,7 +39,6 @@ class GameRepository {
   }
 
   Future<void> updateGameBySpace({required Game game}) async {
-
     final int count = await _db.update(
       'Games',
       {
@@ -71,11 +70,7 @@ class GameRepository {
   }
 
   Future<void> deleteGameBySpace({required int space}) async {
-    final rowsAffected = await _db.delete(
-      'Games',
-      where: 'space = ?',
-      whereArgs: [space],
-    );
+    final rowsAffected = await _db.delete('Games', where: 'space = ?', whereArgs: [space]);
     if (rowsAffected == 0) {
       throw Exception('No game found for space $space');
     }

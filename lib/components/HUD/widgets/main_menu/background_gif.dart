@@ -11,10 +11,7 @@ class BackgroundWidget extends StatefulWidget {
 }
 
 class _BackgroundWidgetState extends State<BackgroundWidget> {
-  final List<String> gifPaths = List.generate(
-    7,
-        (i) => 'assets/gifsMainMenu/gif${i + 1}.gif',
-  );
+  final List<String> gifPaths = List.generate(7, (i) => 'assets/gifsMainMenu/gif${i + 1}.gif');
 
   int _currentGif = 0;
   late Timer _gifTimer;
@@ -39,7 +36,7 @@ class _BackgroundWidgetState extends State<BackgroundWidget> {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      fit: StackFit.expand, // Esto asegura que ocupa toda la pantalla
+      fit: StackFit.expand, // Ensures the stack fills the available space
       children: [
         Image.asset(gifPaths[_currentGif], fit: BoxFit.cover),
         BackdropFilter(

@@ -7,7 +7,6 @@ import '../../../fruit_collector.dart';
 import '../widgets/achievements/page/achievements_menu.dart';
 
 class AchievementsButton extends SpriteComponent with HasGameReference<FruitCollector>, TapCallbacks {
-
   final double buttonSize;
 
   AchievementsButton({required this.buttonSize});

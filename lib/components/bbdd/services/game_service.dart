@@ -43,10 +43,7 @@ class GameService {
 
     final DateTime epoch = DateTime.parse('1970-01-01 00:00:00');
 
-    final List<Game> validGames = games
-        .whereType<Game>()
-        .where((g) => g.lastTimePlayed.isAfter(epoch))
-        .toList();
+    final List<Game> validGames = games.whereType<Game>().where((g) => g.lastTimePlayed.isAfter(epoch)).toList();
 
     if (validGames.isNotEmpty) {
       validGames.sort((a, b) => b.lastTimePlayed.compareTo(a.lastTimePlayed));

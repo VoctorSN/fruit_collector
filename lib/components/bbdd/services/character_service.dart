@@ -79,7 +79,7 @@ class CharacterService {
 
     if (unlocked.isEmpty) return "Mask Dude";
 
-    /// If no characters unlocked, return default
+    // If no characters unlocked, return default
 
     unlocked.sort((a, b) {
       final aStars = allDefinitions.firstWhere((c) => c.id == a.characterId).requiredStars;
@@ -138,11 +138,11 @@ class CharacterService {
     final List<GameCharacter> characters = await _characterRepository.getGameCharactersForGame(gameId);
     final List<Character> allDefinitions = await _characterRepository.getAllCharacters();
 
-    // Buscar el GameCharacter que esté equipado
+    // Search for currently equipped character
     GameCharacter? equipped = characters.where((gc) => gc.equipped).cast<GameCharacter?>().firstOrNull;
 
     if (equipped == null) {
-      // Si no hay ninguno equipado, buscar el desbloqueado con menos estrellas
+      // If none equipped, find unlocked character with lowest stars
       final List<GameCharacter> unlocked = characters.where((gc) => gc.unlocked).toList();
 
       unlocked.sort((a, b) {
@@ -153,7 +153,7 @@ class CharacterService {
 
       equipped = unlocked.first;
 
-      // Equiparlo y desequipar los demás
+      // Equip this character and unequip others
       for (final gc in characters) {
         final bool isTarget = gc.id == equipped.id;
         await _characterRepository.updateGameCharacter(
@@ -168,7 +168,7 @@ class CharacterService {
         );
       }
     }
-    // Devolver el Character correspondiente
+    // Return the equipped character definition
     return allDefinitions.where((c) => c.id == equipped!.characterId).cast<Character>().first;
   }
 }

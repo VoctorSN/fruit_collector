@@ -250,12 +250,12 @@ class _ScrollingCreditLine extends TextComponent {
     required TextStyle textStyle,
     this.onRemoved,
   }) : super(
-    text: text,
-    position: startPosition.clone(),
-    anchor: Anchor.center,
-    priority: 1001,
-    textRenderer: TextPaint(style: textStyle),
-  );
+         text: text,
+         position: startPosition.clone(),
+         anchor: Anchor.center,
+         priority: 1001,
+         textRenderer: TextPaint(style: textStyle),
+       );
 
   @override
   void update(double dt) {

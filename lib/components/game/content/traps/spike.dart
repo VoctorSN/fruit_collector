@@ -65,8 +65,7 @@ class Spike extends PositionComponent with HasGameReference<FruitCollector>, Col
         break;
     }
 
-    hitbox =
-        RectangleHitbox(size: hitboxSize, position: Vector2(hitboxRotation.x, hitboxRotation.y));
+    hitbox = RectangleHitbox(size: hitboxSize, position: Vector2(hitboxRotation.x, hitboxRotation.y));
     add(hitbox);
 
     for (var row = 0; row < rows; row++) {

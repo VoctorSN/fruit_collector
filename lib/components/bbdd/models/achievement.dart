@@ -1,17 +1,10 @@
-
-
 class Achievement {
   final int id;
   final String title;
   final String description;
   final int difficulty;
 
-  Achievement({
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.difficulty,
-  });
+  Achievement({required this.id, required this.title, required this.description, required this.difficulty});
 
   Map<String, Object?> toMap() {
     return {
@@ -24,9 +17,7 @@ class Achievement {
     };
   }
 
-  static Achievement fromMap(
-    Map<String, Object?> map
-  ) {
+  static Achievement fromMap(Map<String, Object?> map) {
     return Achievement(
       id: map['id'] as int,
       title: map['title'] as String,

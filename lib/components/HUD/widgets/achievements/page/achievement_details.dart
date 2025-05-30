@@ -31,7 +31,7 @@ class AchievementDetails extends StatelessWidget {
             builder: (BuildContext context, BoxConstraints constraints) {
               final double maxWidth = (constraints.maxWidth * 0.6).clamp(320.0, 600.0);
               final double maxHeight = (constraints.maxHeight * 0.6).clamp(300.0, 500.0);
-    const Color cardColor = Color(0xFF3A3750);
+              const Color cardColor = Color(0xFF3A3750);
               final double imageSize = maxWidth * 0.15;
 
               final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
@@ -69,7 +69,7 @@ class AchievementDetails extends StatelessWidget {
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 4),
-                        child: Center (
+                        child: Center(
                           child: SingleChildScrollView(
                             child: Text(
                               achievement.description,

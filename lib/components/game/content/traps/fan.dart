@@ -73,37 +73,11 @@ class Fan extends SpriteAnimationGroupComponent with HasGameReference<FruitColle
 
   void collidedWithPlayer() {
     player.windVelocity = windVelocity;
-    // bool isAnyKeyPressed = player.isLeftKeyPressed || player.isRightKeyPressed;
-    // bool isRightKeyPressed = player.isRightKeyPressed;
-    // bool isLeftKeyPressed = player.isLeftKeyPressed;
-    //
-    // if (!isAnyKeyPressed) {
-    //   // Player isnt moving
-    //   player.moveSpeed = 100;
-    //   player.horizontalMovement = fanDirection;
-    // } else if ((isRightKeyPressed && fanDirection < 0) ||
-    //     (isLeftKeyPressed && fanDirection > 0)) {
-    //   // Player is moving against the wind
-    //   player.moveSpeed = 50;
-    //   // Apply the correct direction of the player
-    //   player.horizontalMovement = fanDirection * -1;
-    // } else {
-    //   // Player is moving with the wind
-    //   player.moveSpeed = 200;
-    //   // Apply the correct direction of the player
-    //   player.horizontalMovement = fanDirection;
-    // }
-    // // Clamp para que el jugador no exceda ±1 (input normalizado)
-    // player.horizontalMovement = player.horizontalMovement.clamp(-1.0, 1.0);
   }
 
   @override
   void onCollisionEnd(PositionComponent other) {
     player.windVelocity = Vector2.zero();
-    // if (other is Player) {
-    //   if (other.isOnGround) player.horizontalMovement = 0;
-    //   other.moveSpeed = 100;
-    // }
     super.onCollisionEnd(other);
   }
 }

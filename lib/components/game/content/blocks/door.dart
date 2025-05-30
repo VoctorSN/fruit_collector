@@ -9,11 +9,17 @@ import '../../content/blocks/collision_block.dart';
 enum DoorState { close, open }
 
 class Door extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<FruitCollector> {
-
   final int id;
   final Function(CollisionBlock) addCollisionBlock;
   final Function(CollisionBlock) removeCollisionBlock;
-  Door({super.position, super.size, required this.addCollisionBlock, required this.removeCollisionBlock, required this.id});
+
+  Door({
+    super.position,
+    super.size,
+    required this.addCollisionBlock,
+    required this.removeCollisionBlock,
+    required this.id,
+  });
 
   // Movement logic and interactions with player
   static const stepTime = 0.05;
@@ -24,7 +30,6 @@ class Door extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGam
   late final SpriteAnimation _openAnimation;
 
   CollisionBlock? collisionBlock;
-
 
   @override
   FutureOr<void> onLoad() {
@@ -38,7 +43,7 @@ class Door extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGam
     _openAnimation = _spriteAnimation('Open', 1)..loop = false;
     _closeAnimation = _spriteAnimation('Closed', 1)..loop = false;
 
-    animations = {DoorState.open: _openAnimation, DoorState.close: _closeAnimation,};
+    animations = {DoorState.open: _openAnimation, DoorState.close: _closeAnimation};
 
     current = DoorState.close;
   }
@@ -46,7 +51,7 @@ class Door extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGam
   void openDoor() {
     priority = -2;
     current = DoorState.open;
-    if(collisionBlock != null) removeCollisionBlock(collisionBlock as CollisionBlock);
+    if (collisionBlock != null) removeCollisionBlock(collisionBlock as CollisionBlock);
   }
 
   SpriteAnimation _spriteAnimation(String state, int amount) {

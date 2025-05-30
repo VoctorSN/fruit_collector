@@ -72,7 +72,7 @@ class FireBlock extends PositionComponent with HasGameReference<FruitCollector>,
 
     _fireBlockCounters[startIn] = (_fireBlockCounters[startIn] ?? 0) + 1;
 
-    while (game.paused){
+    while (game.paused) {
       await async.Future.delayed(const Duration(milliseconds: 100));
     }
 
@@ -166,7 +166,7 @@ class FireBlock extends PositionComponent with HasGameReference<FruitCollector>,
     super.onCollision(intersectionPoints, other);
   }
 
-  void removeSound(){
+  void removeSound() {
     if (timer.isActive) {
       timer.cancel();
     }

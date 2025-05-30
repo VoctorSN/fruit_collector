@@ -7,7 +7,6 @@ import '../../../fruit_collector.dart';
 import '../widgets/pause_menu.dart';
 
 class OpenMenuButton extends SpriteComponent with HasGameReference<FruitCollector>, TapCallbacks {
-
   final double buttonSize;
 
   OpenMenuButton({required this.buttonSize});

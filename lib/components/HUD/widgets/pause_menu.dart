@@ -63,9 +63,9 @@ class PauseMenu extends StatelessWidget {
                 onPressed: () {
                   game.overlays.remove(PauseMenu.id);
                   game.resumeEngine();
-                  if(game.gameData!.currentLevel == game.levels.length-1) {
+                  if (game.gameData!.currentLevel == game.levels.length - 1) {
                     game.soundManager.startBossBGM(game.settings);
-                  }else {
+                  } else {
                     game.soundManager.startDefaultBGM(game.settings);
                   }
 

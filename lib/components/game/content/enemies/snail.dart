@@ -16,14 +16,22 @@ import '../levelExtras/confetti.dart';
 
 enum SnailState { idle, walk, hit, shellWallHit, shellIdle }
 
-class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<FruitCollector>, PlayerCollidable, CollisionableWithHitbox {
+class Snail extends SpriteAnimationGroupComponent
+    with CollisionCallbacks, HasGameReference<FruitCollector>, PlayerCollidable, CollisionableWithHitbox {
   // Constructor and attributes
   final double offNeg;
   final double offPos;
   final List<CollisionBlock> collisionBlocks;
   final int doorId;
 
-  Snail({super.position, super.size, this.offPos = 0, this.offNeg = 0, required this.collisionBlocks, required this.doorId});
+  Snail({
+    super.position,
+    super.size,
+    this.offPos = 0,
+    this.offNeg = 0,
+    required this.collisionBlocks,
+    required this.doorId,
+  });
 
   static const stepTime = 0.1;
   static const tileSize = 16;
@@ -243,17 +251,18 @@ class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGa
     double playerOffset = (player.scale.x > 0) ? 0 : -player.width;
 
     if (!isSnail()) {
-      if(targetDirection == 0) targetDirection = 1;
+      if (targetDirection == 0) targetDirection = 1;
       velocity.x = targetDirection * runSpeed;
     } else if (playerInRange()) {
       targetDirection = 0;
-      /// is left
-      if(!(player.x + playerOffset > position.x + snailOffset)){
+
+      // is left
+      if (!(player.x + playerOffset > position.x + snailOffset)) {
         targetDirection = -1;
       } else
-        /// is right
-        if (player.x + playerOffset - _noFlipDifference > position.x + snailOffset){
-          targetDirection = 1;
+      // is right
+      if (player.x + playerOffset - _noFlipDifference > position.x + snailOffset) {
+        targetDirection = 1;
       }
       if ((moveDirection > 0 && scale.x > 0) || (moveDirection < 0 && scale.x < 0)) {
         flipHorizontallyAroundCenter();
@@ -267,8 +276,7 @@ class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGa
   bool playerInRange() {
     double playerOffset = (player.scale.x > 0) ? 0 : -player.width;
 
-    return player.x + playerOffset >= rangeNeg &&
-        player.x + playerOffset <= rangePos;
+    return player.x + playerOffset >= rangeNeg && player.x + playerOffset <= rangePos;
   }
 
   @override
@@ -297,10 +305,7 @@ class Snail extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGa
   }
 
   Future<void> spawnConfetti(Vector2 atPosition) async {
-    final confetti = ConfettiEmitterComponent(
-      origin: atPosition,
-      count: 40,
-    );
+    final confetti = ConfettiEmitterComponent(origin: atPosition, count: 40);
     game.level.add(confetti);
   }
 }

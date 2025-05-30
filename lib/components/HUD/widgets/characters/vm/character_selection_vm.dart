@@ -30,17 +30,17 @@ class CharacterSelectionVM extends BaseModel {
   void _notifyListeners() {
     if (!disposed) notifyListeners();
   }
-void refreshFromGame() {
 
-  selectedCharacterIndex = game.characters.indexWhere(
-    (c) => (c['character'] as Character).name == game.character.name,
-  );
+  void refreshFromGame() {
+    selectedCharacterIndex = game.characters.indexWhere(
+      (c) => (c['character'] as Character).name == game.character.name,
+    );
 
-  numCharacters = game.characters.length;
-  isFront = true;
+    numCharacters = game.characters.length;
+    isFront = true;
 
-  if (!disposed) notifyListeners();
-}
+    if (!disposed) notifyListeners();
+  }
 
   void _initializeData() {
     selectedCharacterIndex = game.characters.indexWhere(

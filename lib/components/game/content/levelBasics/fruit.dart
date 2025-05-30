@@ -30,9 +30,6 @@ class Fruit extends SpriteAnimationComponent with HasGameReference<FruitCollecto
       game.images.fromCache('Items/Fruits/$fruit.png'),
       SpriteAnimationData.sequenced(amount: 17, stepTime: stepTime, textureSize: Vector2.all(32)),
     );
-
-    //collect_fruit = await AudioPool.createFromAsset(path: 'audio/collect_fruit.wav', maxPlayers: 3);
-
     return super.onLoad();
   }
 

@@ -24,9 +24,9 @@ class Saw extends SpriteAnimationComponent with HasGameReference<FruitCollector>
   @override
   FutureOr<void> onLoad() {
     priority = -1;
-    //we make the hitbox smaller for the saw to
+    // we make the hitbox smaller for the saw to
     // not hit the player if he is on top of the ground and the saw is on the ground
-    add(CircleHitbox(position: Vector2.all(1),radius: size.x/2-1,));
+    add(CircleHitbox(position: Vector2.all(1), radius: size.x / 2 - 1));
 
     if (isVertical) {
       rangeNeg = position.y - offNeg * tileSize;

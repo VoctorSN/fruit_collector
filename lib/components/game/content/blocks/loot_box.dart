@@ -4,7 +4,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:fruit_collector/components/game/content/blocks/collision_block.dart';
 import 'package:fruit_collector/components/game/content/levelBasics/player.dart';
-import 'package:fruit_collector/components/game/content/levelExtras/stars.dart';
+import 'package:fruit_collector/components/game/content/levelBasics/stars.dart';
 import 'package:fruit_collector/components/game/level/sound_manager.dart';
 
 import '../../../../fruit_collector.dart';
@@ -12,7 +12,7 @@ import '../../../../fruit_collector.dart';
 enum LootBoxState { idle, hit }
 
 class LootBox extends SpriteAnimationGroupComponent with HasGameReference<FruitCollector> {
-  // Constructor and atributes
+  // Constructor and attributes
   Function(CollisionBlock) addCollisionBlock;
   Function(CollisionBlock) removeCollisionBlock;
   Function(dynamic) addSpawnPoint;

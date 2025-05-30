@@ -13,7 +13,8 @@ import '../levelBasics/player.dart';
 
 enum RadishState { flying, idle, run, hit }
 
-class Radish extends SpriteAnimationGroupComponent with CollisionCallbacks, HasGameReference<FruitCollector>, PlayerCollidable, CollisionableWithHitbox {
+class Radish extends SpriteAnimationGroupComponent
+    with CollisionCallbacks, HasGameReference<FruitCollector>, PlayerCollidable, CollisionableWithHitbox {
   // Constructor and attributes
   final double offNeg;
   final double offPos;

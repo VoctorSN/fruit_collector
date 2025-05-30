@@ -15,7 +15,6 @@ class CharacterManager {
   List<Map<String, dynamic>> allCharacters = [];
 
   Future<void> evaluate() async {
-
     final characterService = await CharacterService.getInstance();
     final charactersData = await characterService.getCharactersForGame(game.gameData!.id);
     final userStars = game.starsPerLevel.values.fold(0, (a, b) => a + b);
@@ -26,9 +25,7 @@ class CharacterManager {
       final alreadyUnlocked = gameCharacter.unlocked;
 
       if (!alreadyUnlocked) {
-
         if (character.requiredStars <= userStars) {
-
           await characterService.unlockCharacter(game.gameData!.id, gameCharacter.characterId);
           game.characters.where((ch) => ch['gameCharacter'].id == gameCharacter.id).forEach((gameCharacter) {
             (gameCharacter['gameCharacter'] as GameCharacter).unlocked = true;
@@ -45,7 +42,7 @@ class CharacterManager {
   }
 
   void tryShowNextToast() {
-    // Espera a que no haya logros activos ni pendientes
+    // Wait until the game is ready to show a new character toast
     if (game.isShowingCharacterToast ||
         game.isShowingAchievementToast ||
         game.pendingToasts['achievements']!.isNotEmpty ||
@@ -64,7 +61,7 @@ class CharacterManager {
       game.currentShowedCharacter = null;
       game.isShowingCharacterToast = false;
 
-      // Intenta mostrar el siguiente personaje
+      // Check if there are more characters to show then try to show the next one
       tryShowNextToast();
     });
   }

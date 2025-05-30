@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import '../../../fruit_collector.dart';
 import '../../game/content/levelBasics/player.dart';
 
-class CustomJoystick extends PositionComponent
-    with HasGameReference<FruitCollector>, TapCallbacks {
+class CustomJoystick extends PositionComponent with HasGameReference<FruitCollector>, TapCallbacks {
   final double controlSize;
   double leftMargin;
 
@@ -33,7 +32,7 @@ class CustomJoystick extends PositionComponent
 
     size = game.size;
     position = Vector2.zero();
-    priority = 100; // Asegura que reciba eventos por encima de otros
+    priority = 100; // Ensure the joystick is drawn above other components
 
     _addJoystick();
   }
@@ -42,10 +41,7 @@ class CustomJoystick extends PositionComponent
     joystick = JoystickComponent(
       priority: 15,
       anchor: Anchor.center,
-      knob: SpriteComponent(
-        sprite: Sprite(game.images.fromCache('GUI/HUD/Knob.png')),
-        size: Vector2.all(controlSize),
-      ),
+      knob: SpriteComponent(sprite: Sprite(game.images.fromCache('GUI/HUD/Knob.png')), size: Vector2.all(controlSize)),
       knobRadius: controlSize,
       background: SpriteComponent(
         sprite: Sprite(game.images.fromCache('GUI/HUD/Joystick.png')),
@@ -78,7 +74,6 @@ class CustomJoystick extends PositionComponent
     leftMargin = !game.settings.isLeftHanded ? 32 : size.x - controlSize * 2 - 32;
     joystick.position = Vector2(leftMargin + controlSize, size.y - 32 - controlSize);
   }
-
 
   void _updateJoystick() {
     switch (joystick.direction) {
@@ -117,8 +112,7 @@ class CustomJoystick extends PositionComponent
     if (!isBottomHalf) return;
 
     final bool shouldHandleTap =
-        (!game.settings.isLeftHanded && isLeftSideTap) ||
-        (game.settings.isLeftHanded && !isLeftSideTap);
+        (!game.settings.isLeftHanded && isLeftSideTap) || (game.settings.isLeftHanded && !isLeftSideTap);
 
     if (shouldHandleTap) {
       joystick.position = tapPosition;

@@ -110,7 +110,7 @@ class SpikeHead extends SpriteAnimationGroupComponent with HasGameReference<Frui
     final playerY = player.y + player.height / 2;
     final rockheadY = y + height / 2;
 
-    // Get the midle point of the player considering its direction
+    // Get the middle point of the player considering its direction
     final playerMid = player.x + (player.scale.x == -1 ? -player.width / 2 : player.width / 2);
 
     // Check if the center of the player is within the Rockhead's vision

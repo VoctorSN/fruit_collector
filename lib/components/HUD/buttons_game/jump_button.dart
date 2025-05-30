@@ -5,8 +5,7 @@ import 'package:flame/events.dart';
 
 import '../../../fruit_collector.dart';
 
-class JumpButton extends PositionComponent
-    with HasGameReference<FruitCollector>, TapCallbacks {
+class JumpButton extends PositionComponent with HasGameReference<FruitCollector>, TapCallbacks {
   final double buttonSize;
   late SpriteComponent buttonSprite;
 
@@ -22,9 +21,8 @@ class JumpButton extends PositionComponent
       sprite: Sprite(game.images.fromCache('GUI/HUD/jumpButton.png')),
       size: Vector2.all(buttonSize * 2),
       anchor: Anchor.bottomLeft,
-      position: game.settings.isLeftHanded
-          ? Vector2(32, size.y - 32)
-          : Vector2(size.x - buttonSize * 2 - 32, size.y - 32),
+      position:
+          game.settings.isLeftHanded ? Vector2(32, size.y - 32) : Vector2(size.x - buttonSize * 2 - 32, size.y - 32),
     );
 
     add(buttonSprite);
@@ -40,16 +38,16 @@ class JumpButton extends PositionComponent
 
     buttonSprite.size = Vector2.all(game.settings.controlSize * 2);
 
-    buttonSprite.position = game.settings.isLeftHanded
-        ? Vector2(32, size.y - 32)
-        : Vector2(size.x - buttonSprite.size.x - 32, size.y - 32);
+    buttonSprite.position =
+        game.settings.isLeftHanded ? Vector2(32, size.y - 32) : Vector2(size.x - buttonSprite.size.x - 32, size.y - 32);
   }
 
   void _setSizeAndPosition(Vector2 gameSize) {
     size = Vector2(gameSize.x / 2, gameSize.y / 2);
-    position = game.settings.isLeftHanded
-        ? Vector2(0, gameSize.y / 2) // inferior izquierdo
-        : Vector2(gameSize.x / 2, gameSize.y / 2); // inferior derecho
+    position =
+        game.settings.isLeftHanded
+            ? Vector2(0, gameSize.y / 2)
+            : Vector2(gameSize.x / 2, gameSize.y / 2);
   }
 
   @override

@@ -55,22 +55,14 @@ class AchievementRepository {
   Future<void> resetGameAchievements(int gameId) async {
     await _db.update(
       'GameAchievement',
-      {
-        'achieved': 0,
-        'date_achieved': '1970-01-01 00:00:00',
-      },
+      {'achieved': 0, 'date_achieved': '1970-01-01 00:00:00'},
       where: 'game_id = ?',
       whereArgs: [gameId],
     );
   }
 
   Future<void> updateGameAchievement(GameAchievement gameAchievement) async {
-    await _db.update(
-      'GameAchievement',
-      gameAchievement.toMap(),
-      where: 'id = ?',
-      whereArgs: [gameAchievement.id],
-    );
+    await _db.update('GameAchievement', gameAchievement.toMap(), where: 'id = ?', whereArgs: [gameAchievement.id]);
   }
 
   Future<List<GameAchievement>> getGameAchievementsForGame(int gameId) async {
@@ -84,23 +76,16 @@ class AchievementRepository {
   }
 
   Future<int> insertGameAchievement(int gameId, int achievementId) async {
-    return await _db.insert(
-      'GameAchievement',
-      {
-        'game_id': gameId,
-        'achievement_id': achievementId,
-        'date_achieved': '1970-01-01 00:00:00',
-        'achieved': 0,
-      },
-    );
+    return await _db.insert('GameAchievement', {
+      'game_id': gameId,
+      'achievement_id': achievementId,
+      'date_achieved': '1970-01-01 00:00:00',
+      'achieved': 0,
+    });
   }
 
   Future<Iterable<Object?>> getUnlockedAchievementsForGame(int id) {
-    return _db.query(
-      'GameAchievement',
-      where: 'game_id = ? AND achieved = 1',
-      whereArgs: [id],
-    ).then((value) {
+    return _db.query('GameAchievement', where: 'game_id = ? AND achieved = 1', whereArgs: [id]).then((value) {
       return value.map((e) => e['achievement_id']);
     });
   }

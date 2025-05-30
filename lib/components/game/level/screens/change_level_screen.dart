@@ -46,7 +46,7 @@ class ChangeLevelScreen extends PositionComponent with HasGameReference<FruitCol
 
     _elapsed += dt * 1000;
     final progress = (_elapsed / durationMs).clamp(0.0, 1.0);
-    final eased = progress * (2 - progress); // easeOutQuad
+    final eased = progress * (2 - progress);
 
     if (_phase == TransitionPhase.contracting) {
       radius = maxRadius * (1 - eased);
@@ -59,7 +59,6 @@ class ChangeLevelScreen extends PositionComponent with HasGameReference<FruitCol
       }
     } else if (_phase == TransitionPhase.expanding) {
       if (!endFunctionExecuted) {
-
         onExpandEnd();
         endFunctionExecuted = true;
       }

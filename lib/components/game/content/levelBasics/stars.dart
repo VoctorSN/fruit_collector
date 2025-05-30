@@ -6,9 +6,9 @@ import 'package:fruit_collector/components/game/level/sound_manager.dart';
 import 'package:fruit_collector/fruit_collector.dart';
 
 class Stars extends SpriteAnimationComponent with HasGameReference<FruitCollector>, CollisionCallbacks {
-
   // Constructor and attributes
   final String name;
+
   Stars({this.name = '1', super.position, super.size});
 
   // Animations logic
@@ -39,12 +39,7 @@ class Stars extends SpriteAnimationComponent with HasGameReference<FruitCollecto
 
       animation = SpriteAnimation.fromFrameData(
         game.images.fromCache('Items/Fruits/Collected.png'),
-        SpriteAnimationData.sequenced(
-          amount: 6,
-          stepTime: stepTime,
-          textureSize: Vector2.all(32),
-          loop: false,
-        ),
+        SpriteAnimationData.sequenced(amount: 6, stepTime: stepTime, textureSize: Vector2.all(32), loop: false),
       );
 
       final previousBest = game.level.getStars();
@@ -59,5 +54,4 @@ class Stars extends SpriteAnimationComponent with HasGameReference<FruitCollecto
       removeFromParent();
     }
   }
-
 }
