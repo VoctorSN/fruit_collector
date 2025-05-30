@@ -18,7 +18,7 @@ class AchievementToast extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color backgroundColor = const Color(0xFF1E1B2E).withOpacity(0.9);
+    final Color backgroundColor = const Color(0xFF1E1B2E).withAlpha(230);
     final Color borderColor = const Color(0xFFF9D342);
     final Color textColor = const Color(0xFFF2F2F2);
     final Color titleColor = const Color(0xFFFFD700);
@@ -43,7 +43,7 @@ class AchievementToast extends StatelessWidget {
                     border: Border.all(color: borderColor, width: 1.5),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.4),
+                        color: Colors.black.withAlpha(102),
                         offset: const Offset(2, 2),
                         blurRadius: 3,
                       ),

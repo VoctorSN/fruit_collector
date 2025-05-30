@@ -75,7 +75,7 @@ class _AchievementMenuState extends State<AchievementMenu> {
                 height: maxHeight,
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: baseColor.withOpacity(0.95),
+                  color: baseColor.withAlpha(242),
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(color: borderColor, width: 2),
                 ),

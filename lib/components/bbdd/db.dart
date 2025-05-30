@@ -36,7 +36,6 @@ class DatabaseManager {
     }
 
     final String dbPath = join(await databaseFactory.getDatabasesPath(), 'fruit_collector.db');
-    print('Database path: $dbPath');
 
     _database = await databaseFactory.openDatabase(
       dbPath,

@@ -31,7 +31,7 @@ class CharacterSelectionVM extends BaseModel {
     if (!disposed) notifyListeners();
   }
 void refreshFromGame() {
-    print(game.characters);
+
   selectedCharacterIndex = game.characters.indexWhere(
     (c) => (c['character'] as Character).name == game.character.name,
   );

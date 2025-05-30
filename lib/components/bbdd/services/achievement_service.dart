@@ -24,7 +24,7 @@ class AchievementService {
     );
 
     if (gameAchievement == null) {
-      print('GameAchievement not found for gameId: $gameId, achievementId: $achievementId');
+
       throw Exception('GameAchievement not found');
     }
     // Update to mark as achieved

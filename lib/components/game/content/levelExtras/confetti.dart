@@ -1,4 +1,5 @@
 import 'dart:math';
+
 import 'package:flame/components.dart';
 import 'package:flame/particles.dart';
 import 'package:fruit_collector/fruit_collector.dart';

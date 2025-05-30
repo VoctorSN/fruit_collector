@@ -5,7 +5,7 @@ import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
 import 'package:fruit_collector/components/game/content/blocks/loot_box.dart';
 import 'package:fruit_collector/components/game/content/enemies/player_collidable.dart';
-import 'package:fruit_collector/components/game/level/loadingBanana.dart';
+import 'package:fruit_collector/components/game/level/loading_banana.dart';
 import 'package:fruit_collector/components/game/level/sound_manager.dart';
 import 'package:fruit_collector/components/game/util/custom_hitbox.dart';
 import 'package:fruit_collector/fruit_collector.dart';

@@ -7,7 +7,7 @@ import 'package:fruit_collector/components/bbdd/services/level_service.dart';
 import 'package:fruit_collector/components/game/content/blocks/loot_box.dart';
 import 'package:fruit_collector/components/game/content/enemies/bee.dart';
 import 'package:fruit_collector/components/game/content/enemies/chicken.dart';
-import 'package:fruit_collector/components/game/content/enemies/spikeHead.dart';
+import 'package:fruit_collector/components/game/content/enemies/spike_head.dart';
 import 'package:fruit_collector/components/game/content/levelBasics/checkpoint.dart';
 import 'package:fruit_collector/components/game/content/levelBasics/death_zone.dart';
 import 'package:fruit_collector/components/game/content/levelBasics/fruit.dart';
@@ -88,8 +88,8 @@ class Level extends World with HasGameReference<FruitCollector> {
 
   @override
   FutureOr<void> onLoad() async {
-    print('Loading level: $levelName');
-    print('from: ${game.gameData!.id}');
+
+
     level = await TiledComponent.load('$levelName.tmx', Vector2.all(16));
     add(level);
 
@@ -107,7 +107,7 @@ class Level extends World with HasGameReference<FruitCollector> {
   }
 
   Future<void> chargeLevel(GameLevel? level) async {
-    print('Charging Level: ${level?.levelId}');
+
     levelData = level;
     lastMinDeaths = level?.deaths ?? 0;
     lastMinTime = level?.time ?? 0;
@@ -116,7 +116,7 @@ class Level extends World with HasGameReference<FruitCollector> {
   void _startLevel() {
     _levelTimer = Stopwatch()..start();
     deathCount = 0;
-    print("=========== start timer : ${_levelTimer.elapsed.inSeconds} =============");
+
   }
 
   void registerDeath() {
@@ -125,12 +125,11 @@ class Level extends World with HasGameReference<FruitCollector> {
 
   void stopLevelTimer() {
     _levelTimer.stop();
-    print("=========== stop timer : ${_levelTimer.elapsed.inSeconds} =============");
+
   }
 
   void resumeLevelTimer() {
     _levelTimer.start();
-    print("=========== resume timer : ${_levelTimer.elapsed.inSeconds} =============");
 
   }
 

@@ -1,9 +1,8 @@
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
-import 'dart:ui';
 
 import '../../../../fruit_collector.dart';
-import '../../../bbdd/models/levelModel.dart';
+import '../../../bbdd/models/level_model.dart';
 
 enum TransitionPhase { contracting, expanding, idle }
 
@@ -16,6 +15,7 @@ class ChangeLevelScreen extends PositionComponent with HasGameReference<FruitCol
   TransitionPhase _phase = TransitionPhase.idle;
 
   late final double maxRadius;
+  @override
   late final Vector2 center;
   bool endFunctionExecuted = false;
   bool showLevelSummary = true;
@@ -37,7 +37,7 @@ class ChangeLevelScreen extends PositionComponent with HasGameReference<FruitCol
     path.addOval(Rect.fromCircle(center: Offset(center.x, center.y), radius: radius));
     path.fillType = PathFillType.evenOdd;
 
-    canvas.drawPath(path, Paint()..color = Colors.black.withOpacity(0.95));
+    canvas.drawPath(path, Paint()..color = Colors.black.withAlpha(242));
   }
 
   @override
@@ -89,6 +89,5 @@ class ChangeLevelScreen extends PositionComponent with HasGameReference<FruitCol
     game.toggleBlockWindowResize(true);
   }
 
-  @override
   bool get isHud => true;
 }

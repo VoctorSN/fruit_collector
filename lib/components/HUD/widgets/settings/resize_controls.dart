@@ -1,4 +1,5 @@
 import 'dart:io' show Platform;
+
 import 'package:flutter/material.dart';
 
 import '../../../../fruit_collector.dart';
@@ -17,7 +18,7 @@ class ResizeControls extends StatefulWidget {
   final Function updateIsLeftHanded;
   final Function updateShowControls;
 
-  ResizeControls({
+  const ResizeControls({
     super.key,
     required this.game,
     required this.updateSizeControls,

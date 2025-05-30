@@ -44,7 +44,7 @@ class _BackgroundWidgetState extends State<BackgroundWidget> {
         Image.asset(gifPaths[_currentGif], fit: BoxFit.cover),
         BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-          child: Container(color: baseColor.withOpacity(0.4)),
+          child: Container(color: baseColor.withAlpha(102)),
         ),
       ],
     );

@@ -49,16 +49,15 @@ class AchievementManager {
   };
 
   Future<void> evaluate() async {
-    print("Starting achievement evaluation");
+
     final achievementService = await AchievementService.getInstance();
     allAchievements.clear();
     if (game.gameData == null) return;
     final achievementData = await achievementService.getAchievementsForGame(game.gameData!.id);
     final unlockedAchievements = await achievementService.getUnlockedAchievementsForGame(game.gameData!.id);
-    print('unlockedAchievements $unlockedAchievements');
+
     allAchievements.addAll(achievementData);
-    print('stats ${game.gameData}');
-    print('stats ${game.levels}');
+
 
     for (final achievementData in allAchievements) {
       Achievement achievement = achievementData['achievement'];

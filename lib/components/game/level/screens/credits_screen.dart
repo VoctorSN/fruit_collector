@@ -32,7 +32,7 @@ class CreditsScreen extends Component {
     _fadeOverlay = RectangleComponent(
       size: Vector2(screenSize.x, screenSize.y),
       position: Vector2.zero(),
-      paint: Paint()..color = Colors.black.withOpacity(0),
+      paint: Paint()..color = Colors.black.withAlpha(0),
       priority: 1000,
     );
 
@@ -164,16 +164,12 @@ class CreditsScreen extends Component {
 
     final double titleFontSize = 36;
 
-    bool _isFinalLine(String line) => line.trim().endsWith('!');
-    bool _isSectionTitle(String line) => line.trim().endsWith(':');
-    bool _isBigTitle(String line) => line.trim().startsWith('<') && line.trim().endsWith('>');
-
     for (int i = 0; i < lines.length; i++) {
       final String rawText = lines[i];
       final String trimmed = rawText.trim();
-      final bool isFinal = _isFinalLine(trimmed);
-      final bool isSectionTitle = _isSectionTitle(trimmed);
-      final bool isBigTitle = _isBigTitle(trimmed);
+      final bool isFinal = trimmed.trim().endsWith(':');
+      final bool isSectionTitle = trimmed.trim().endsWith(':');
+      final bool isBigTitle = trimmed.trim().startsWith('<') && trimmed.trim().endsWith('>');
       final bool isLast = i == lines.length - 1;
 
       if (isBigTitle) {

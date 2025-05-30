@@ -25,12 +25,12 @@ class BaseModel extends ChangeNotifier {
   @override
   void dispose() {
     if (disposed) {
-      print('$runtimeType dispose() called when disposed');
+
       return;
     }
     super.dispose();
     disposed = true;
-    print('$runtimeType has been disposed');
+
     /*eventBus.fire(BreadcrumbEvent.debug(
       message: "$runtimeType dispose"
     ));*/
@@ -40,7 +40,7 @@ class BaseModel extends ChangeNotifier {
   void notifyListeners() {
     //Avoid exception when notifying listeners when vm is disposed
     if (disposed) {
-      print('$runtimeType notifyListeners() called when disposed');
+
       return;
     }
     super.notifyListeners();

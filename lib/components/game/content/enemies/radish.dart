@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'dart:math';
-import 'dart:ui';
 
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flame/particles.dart';
 import 'package:fruit_collector/components/game/content/enemies/player_collidable.dart';
 import 'package:fruit_collector/components/game/level/sound_manager.dart';
 import 'package:fruit_collector/fruit_collector.dart';

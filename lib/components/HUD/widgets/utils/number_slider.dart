@@ -6,7 +6,7 @@ import '../../../../fruit_collector.dart';
 class NumberSlider extends StatefulWidget {
   final FruitCollector game;
   final double value;
-  final minValue;
+  final double minValue;
   final Function(dynamic) onChanged;
   final bool isActive;
 

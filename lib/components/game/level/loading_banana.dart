@@ -4,6 +4,7 @@ import 'package:fruit_collector/fruit_collector.dart';
 class LoadingBanana extends SpriteAnimationComponent
     with HasGameReference<FruitCollector> {
 
+  @override
   final FruitCollector game;
   LoadingBanana(this.game) : super(priority: 10);
 

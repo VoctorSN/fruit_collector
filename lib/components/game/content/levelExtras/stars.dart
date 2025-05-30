@@ -51,8 +51,6 @@ class Stars extends SpriteAnimationComponent with HasGameReference<FruitCollecto
       game.level.starCollected();
       final newStars = game.level.getActualStars();
 
-      print('Stars collected: $newStars, Previous best: $previousBest');
-
       if (newStars > previousBest && newStars <= maxStarsPerLevel) {
         game.level.levelData!.stars = newStars;
       }

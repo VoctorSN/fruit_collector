@@ -63,7 +63,7 @@ class _GameSelectorState extends State<GameSelector> {
     );
 
     final ButtonStyle backButtonStyle = ElevatedButton.styleFrom(
-      backgroundColor: baseColor.withOpacity(0.7),
+      backgroundColor: baseColor.withAlpha(178),
       foregroundColor: textColor,
       minimumSize: const Size(140, 40),
       padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -88,7 +88,7 @@ class _GameSelectorState extends State<GameSelector> {
               child: Container(
                 padding: const EdgeInsets.all(24),
                 width: 400,
-                decoration: BoxDecoration(color: baseColor.withOpacity(0.75), borderRadius: BorderRadius.circular(8)),
+                decoration: BoxDecoration(color: baseColor.withAlpha(191), borderRadius: BorderRadius.circular(8)),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -173,7 +173,7 @@ class _GameSelectorState extends State<GameSelector> {
               label,
               style: TextStyleSingleton().style.copyWith(
                 fontSize: 14,
-                color: textColor.withOpacity(isEmpty ? 0.4 : 1.0),
+                color: textColor.withAlpha(isEmpty ? 102 : 255),
               ),
             ),
           ),
@@ -190,7 +190,7 @@ class _GameSelectorState extends State<GameSelector> {
       child: Container(
         padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
-          color: Colors.red.withOpacity(0.15),
+          color: Colors.red.withAlpha(38),
           border: Border.all(color: redColor),
           borderRadius: BorderRadius.circular(3),
         ),
@@ -215,13 +215,13 @@ class _GameSelectorState extends State<GameSelector> {
     final Color textColor = const Color(0xFFE1E0F5);
 
     return Material(
-      color: Colors.black.withOpacity(0.6),
+      color: Colors.black.withAlpha(153),
       child: Center(
         child: Container(
           padding: const EdgeInsets.all(24),
           width: 360,
           decoration: BoxDecoration(
-            color: baseColor.withOpacity(0.95),
+            color: baseColor.withAlpha(242),
             borderRadius: BorderRadius.circular(8),
             border: Border.all(color: borderColor, width: 2),
           ),

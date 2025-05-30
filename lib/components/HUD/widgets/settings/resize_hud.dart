@@ -15,7 +15,7 @@ class ResizeHUD extends StatefulWidget {
   final FruitCollector game;
   final Function updateSizeHUD;
 
-  ResizeHUD({
+  const ResizeHUD({
     super.key,
     required this.game,
     required this.updateSizeHUD,

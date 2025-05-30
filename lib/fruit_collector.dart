@@ -159,10 +159,9 @@ class FruitCollector extends FlameGame
     achievements = await achievementService!.getAchievementsForGame(gameData!.id);
     characters = await characterService!.getCharactersForGame(gameData!.id);
     character = await characterService!.getEquippedCharacter(gameData!.id);
-    print('change settings  : $settings');
-    print('Levels  : $levels');
-    print('Current Level  : ${gameData?.currentLevel}');
-    print('Current Character  : ${player.character}');
+
+
+
 
     if (!isOnMenu) {
       loadButtonsAndHud();
@@ -193,16 +192,10 @@ class FruitCollector extends FlameGame
   }
 
   void loadButtonsAndHud() {
-    print('settings : $settings');
 
     initializateButtons();
 
     addAllButtons();
-  }
-
-  @override
-  void onDispose() {
-    super.onDispose();
   }
 
   void initializateButtons() {
@@ -345,13 +338,12 @@ class FruitCollector extends FlameGame
       currentGameLevel.completed = true;
       currentGameLevel.time = level.minorLevelTime;
       currentGameLevel.deaths = level.minorDeaths;
-      print('Level ${currentLevel + 1} marked as completed!');
 
       // Unlock the next level if exists
       if (currentLevel + 1 < levels.length) {
         GameLevel nextGameLevel = levels[currentLevel + 1]['gameLevel'] as GameLevel;
         nextGameLevel.unlocked = true;
-        print('Level ${currentLevel + 2} unlocked!');
+
         addLevelSummaryScreen();
       } else {
         soundManager.stopBGM();
@@ -469,8 +461,8 @@ class FruitCollector extends FlameGame
     try {
       level.stopLevelTimer();
     } catch (e) {
-        print('Error inesperado: $e');
-      }
+      // Handle any errors that may occur when stopping the timer
+    }
 
     super.pauseEngine();
   }
@@ -480,7 +472,7 @@ class FruitCollector extends FlameGame
     try {
       level.resumeLevelTimer();
     } catch (e) {
-        print('Error inesperado: $e');
+      // Handle any errors that may occur when resuming the timer
     }
     super.resumeEngine();
   }

@@ -15,7 +15,7 @@ class CharacterManager {
   List<Map<String, dynamic>> allCharacters = [];
 
   Future<void> evaluate() async {
-    print("Starting Character evaluation");
+
     final characterService = await CharacterService.getInstance();
     final charactersData = await characterService.getCharactersForGame(game.gameData!.id);
     final userStars = game.starsPerLevel.values.fold(0, (a, b) => a + b);
@@ -24,14 +24,11 @@ class CharacterManager {
       Character character = characterData['character'];
       GameCharacter gameCharacter = characterData['gameCharacter'] as GameCharacter;
       final alreadyUnlocked = gameCharacter.unlocked;
-      print(
-        'Evaluating character: ${character.name}, required stars: ${character.requiredStars}, user stars: $userStars, already unlocked: $alreadyUnlocked',
-      );
+
       if (!alreadyUnlocked) {
-        print('Character ${character.name} is not unlocked yet');
-        print('requiredStars ${character.requiredStars} userStars ${userStars}');
+
         if (character.requiredStars <= userStars) {
-          print('Character ${character.name} unlocked with $userStars stars');
+
           await characterService.unlockCharacter(game.gameData!.id, gameCharacter.characterId);
           game.characters.where((ch) => ch['gameCharacter'].id == gameCharacter.id).forEach((gameCharacter) {
             (gameCharacter['gameCharacter'] as GameCharacter).unlocked = true;
@@ -52,8 +49,9 @@ class CharacterManager {
     if (game.isShowingCharacterToast ||
         game.isShowingAchievementToast ||
         game.pendingToasts['achievements']!.isNotEmpty ||
-        game.pendingToasts['characters']!.isEmpty)
+        game.pendingToasts['characters']!.isEmpty) {
       return;
+    }
 
     game.isShowingCharacterToast = true;
     final nextCharacter = game.pendingToasts['characters']!.removeAt(0);

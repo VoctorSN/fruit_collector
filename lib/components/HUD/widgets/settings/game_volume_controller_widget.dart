@@ -15,7 +15,7 @@ class ToggleGameVolumeWidget extends StatefulWidget {
   final FruitCollector game;
   final Function updateGameVolume;
 
-  ToggleGameVolumeWidget({
+  const ToggleGameVolumeWidget({
     super.key,
     required this.game,
     required this.updateGameVolume,

@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_collector/components/HUD/style/text_style_singleton.dart';
 import 'package:fruit_collector/components/bbdd/models/achievement.dart';
 import 'package:fruit_collector/components/bbdd/models/game_achievement.dart';
@@ -21,21 +20,7 @@ class AchievementDetails extends StatelessWidget {
     // Define static UI colors
     const Color baseColor = Color(0xFF212030);
     const Color borderColor = Color(0xFF5A5672);
-    final Color buttonColor = const Color(0xFF3A3750);
     const Color textColor = Color(0xFFE1E0F5);
-
-    // Configure button style
-    final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
-      backgroundColor: buttonColor,
-      foregroundColor: textColor,
-      minimumSize: Size(MediaQuery.of(context).size.width * 0.1, MediaQuery.of(context).size.height * 0.0625),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4),
-        side: const BorderSide(color: borderColor, width: 2),
-      ),
-      elevation: 8,
-    );
-
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -65,7 +50,7 @@ class AchievementDetails extends StatelessWidget {
                 height: maxHeight,
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: baseColor.withOpacity(0.95),
+                  color: baseColor.withAlpha(242),
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(color: borderColor, width: 2),
                 ),

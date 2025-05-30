@@ -59,7 +59,7 @@ class LevelSummaryOverlay extends StatelessWidget {
       builder: (BuildContext context, BoxConstraints constraints) {
         return Stack(
           children: [
-            Container(color: Colors.black.withOpacity(0.85)),
+            Container(color: Colors.black.withAlpha(217)),
             Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(
@@ -78,7 +78,7 @@ class LevelSummaryOverlay extends StatelessWidget {
                       border: Border.all(color: Colors.white, width: 2),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.white.withOpacity(0.1),
+                          color: Colors.white.withAlpha(26),
                           blurRadius: 12,
                           spreadRadius: 2,
                         ),

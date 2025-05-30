@@ -39,7 +39,7 @@ class GameRepository {
   }
 
   Future<void> updateGameBySpace({required Game game}) async {
-    print('Updating game with space: ${game.space} and last_time_played: ${game.lastTimePlayed}');
+
     final int count = await _db.update(
       'Games',
       {

@@ -30,7 +30,7 @@ class GameService {
 
   Future<void> saveGameBySpace({required Game? game}) async {
     if (game == null) return;
-    print('Saving game with space: ${game.space}');
+
     await _gameRepository.updateGameBySpace(game: game);
   }
 
@@ -94,7 +94,6 @@ class GameService {
       throw Exception('No game found for space $space');
     }
 
-    print('Deleting game with space: $space');
     await _gameRepository.deleteGameBySpace(space: space);
     await _gameLevelRepository.deleteGameLevelByGameId(gameId: game.id);
     await _gameAchievementRepository.deleteGameAchievementByGameId(gameId: game.id);

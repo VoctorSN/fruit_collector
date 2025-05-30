@@ -1,14 +1,10 @@
 import 'dart:async';
-import 'dart:ui';
 
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:fruit_collector/components/game/level/sound_manager.dart';
 import 'package:fruit_collector/fruit_collector.dart';
 
 import '../../content/blocks/collision_block.dart';
-import '../../util/utils.dart';
-import '../levelBasics/player.dart';
 
 enum DoorState { close, open }
 

@@ -45,13 +45,13 @@ class LevelCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color disabledColor = Colors.grey.withOpacity(0.4);
+    final Color disabledColor = Colors.grey.withAlpha(102);
     final Color baseBorderColor = _calculateBorderColor();
 
     final List<BoxShadow> boxShadow =
         isCurrentLevel
-            ? [BoxShadow(color: baseBorderColor.withOpacity(0.8), blurRadius: 4, spreadRadius: 1)]
-            : [BoxShadow(color: Colors.black.withOpacity(0.6), blurRadius: 4, offset: const Offset(2, 4))];
+            ? [BoxShadow(color: baseBorderColor.withAlpha(204), blurRadius: 4, spreadRadius: 1)]
+            : [BoxShadow(color: Colors.black.withAlpha(153), blurRadius: 4, offset: const Offset(2, 4))];
 
     final String timeText = isCompleted ? '$duration' : '?';
     final String deathsText = deaths != -1 ? '$deaths' : '?';

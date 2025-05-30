@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fruit_collector/components/HUD/widgets/pause_menu.dart';
 import 'package:fruit_collector/components/HUD/widgets/settings/game_volume_controller_widget.dart';
 import 'package:fruit_collector/components/HUD/widgets/settings/music_controller_widget.dart';
-import 'package:fruit_collector/components/HUD/widgets/settings/resize_HUD.dart';
+import 'package:fruit_collector/components/HUD/widgets/settings/resize_hud.dart';
 import 'package:fruit_collector/components/HUD/widgets/settings/resize_controls.dart';
 
 import '../../../../fruit_collector.dart';
@@ -65,7 +65,7 @@ class SettingsMenu extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 side: BorderSide(color: borderColor, width: 2),
               ),
-              color: baseColor.withOpacity(0.85),
+              color: baseColor.withAlpha(217),
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Padding(
