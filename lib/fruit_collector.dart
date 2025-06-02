@@ -137,7 +137,8 @@ class FruitCollector extends FlameGame
   bool isShowingCharacterToast = false;
   Map<String, List<dynamic>> pendingToasts = {'achievements': [], 'characters': []};
   Achievement? currentShowedAchievement;
-  Character? currentShowedCharacter;
+  int? currentMenuIndexShowedCharacter;
+  Character? currentToastShowedCharacter;
   Achievement? currentAchievement;
   GameAchievement? currentGameAchievement;
   Map<int, int> levelTimes = {};
@@ -151,7 +152,7 @@ class FruitCollector extends FlameGame
     await getSettingsService();
     await getAchievementService();
     await getCharacterService();
-    await gameService!.unlockEverythingForGame(space: space);
+    //await gameService!.unlockEverythingForGame(space: space);
     gameData = await gameService!.getOrCreateGameBySpace(space: space);
     levels = await levelService!.getLevelsForGame(gameData!.id);
     settings = await settingsService!.getSettingsForGame(gameData!.id) as Settings;
@@ -231,16 +232,18 @@ class FruitCollector extends FlameGame
       return pixelAdventure.currentShowedAchievement == null
           ? const SizedBox.shrink()
           : AchievementToast(
+            game: game,
             achievement: pixelAdventure.currentShowedAchievement!,
             onDismiss: () => overlays.remove(AchievementToast.id),
           );
     });
     overlays.addEntry(CharacterToast.id, (context, game) {
       final pixelAdventure = game as FruitCollector;
-      return pixelAdventure.currentShowedCharacter == null
+      return pixelAdventure.currentToastShowedCharacter == null
           ? const SizedBox.shrink()
           : CharacterToast(
-            character: pixelAdventure.currentShowedCharacter!,
+            game: game,
+            character: pixelAdventure.currentToastShowedCharacter!,
             onDismiss: () => overlays.remove(CharacterToast.id),
           );
     });

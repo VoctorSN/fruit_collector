@@ -32,7 +32,7 @@ class CharacterSelectionVM extends BaseModel {
   }
 
   void refreshFromGame() {
-    selectedCharacterIndex = game.characters.indexWhere(
+    selectedCharacterIndex = game.currentMenuIndexShowedCharacter ?? game.characters.indexWhere(
       (c) => (c['character'] as Character).name == game.character.name,
     );
 
@@ -43,7 +43,7 @@ class CharacterSelectionVM extends BaseModel {
   }
 
   void _initializeData() {
-    selectedCharacterIndex = game.characters.indexWhere(
+    selectedCharacterIndex = game.currentMenuIndexShowedCharacter ?? game.characters.indexWhere(
       (c) => (c['character'] as Character).name == game.character.name,
     );
 
@@ -69,14 +69,14 @@ class CharacterSelectionVM extends BaseModel {
     if (!currentGameCharacter.unlocked) return;
     game.character = currentCharacter;
     game.updateCharacter();
-    game.resumeEngine();
-    game.overlays.remove(CharacterSelection.id);
+    goBack();
   }
 
   void goBack() {
     game.soundManager.resumeAll();
-    game.overlays.remove('character_selection');
+    game.overlays.remove(CharacterSelection.id);
     game.resumeEngine();
+    game.currentToastShowedCharacter = null;
   }
 
   void flipCard() {

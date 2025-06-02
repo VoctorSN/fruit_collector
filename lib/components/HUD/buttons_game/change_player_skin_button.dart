@@ -28,8 +28,8 @@ class ChangePlayerSkinButton extends SpriteComponent with HasGameReference<Fruit
       return;
     }
     game.soundManager.pauseAll();
-    game.overlays.add(CharacterSelection.id);
     game.pauseEngine();
+    game.overlays.add(CharacterSelection.id);
     super.onTapDown(event);
   }
 }

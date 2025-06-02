@@ -4,14 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_collector/components/bbdd/models/character.dart';
 
+import '../../../../../fruit_collector.dart';
 import '../../../style/text_style_singleton.dart';
+import 'character_selection.dart';
 
 class CharacterToast extends StatelessWidget {
   static const String id = 'character_toast';
   final Character character;
   final VoidCallback onDismiss;
+  final FruitCollector game;
 
-  const CharacterToast({super.key, required this.character, required this.onDismiss});
+  const CharacterToast({super.key, required this.character, required this.onDismiss, required this.game});
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +22,15 @@ class CharacterToast extends StatelessWidget {
     final Color borderColor = const Color(0xFFF9D342);
     final Color textColor = const Color(0xFFF2F2F2);
     final Color titleColor = const Color(0xFFFFD700);
+
+    void onTap() async {
+      game.currentMenuIndexShowedCharacter = game.characters.indexWhere(
+        (c) => (c['character'] as Character).name == character.name,
+      );
+      game.soundManager.pauseAll();
+      game.pauseEngine();
+      game.overlays.add(CharacterSelection.id);
+    }
 
     return SafeArea(
       child: Align(
@@ -33,54 +45,60 @@ class CharacterToast extends StatelessWidget {
               borderRadius: BorderRadius.circular(6),
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: backgroundColor,
-                    borderRadius: BorderRadius.circular(6),
-                    border: Border.all(color: borderColor, width: 1.5),
-                    boxShadow: [
-                      BoxShadow(color: Colors.black.withAlpha(102), offset: const Offset(2, 2), blurRadius: 3),
-                    ],
-                  ),
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(top: 1),
-                        child: Icon(FontAwesomeIcons.shirt, color: Colors.amber, size: 18),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: onTap,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: backgroundColor,
+                        borderRadius: BorderRadius.circular(6),
+                        border: Border.all(color: borderColor, width: 1.5),
+                        boxShadow: [
+                          BoxShadow(color: Colors.black.withAlpha(102), offset: const Offset(2, 2), blurRadius: 3),
+                        ],
                       ),
-                      const SizedBox(width: 16),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text(
-                            'Character Unlocked',
-                            style: TextStyleSingleton().style.copyWith(
-                              fontSize: 12,
-                              color: titleColor,
-                              fontWeight: FontWeight.w700,
-                              letterSpacing: 1.1,
-                            ),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 1),
+                            child: Icon(FontAwesomeIcons.shirt, color: Colors.amber, size: 18),
                           ),
-                          const SizedBox(height: 1),
-                          Text(
-                            character.name,
-                            style: TextStyleSingleton().style.copyWith(
-                              fontSize: 11.5,
-                              fontWeight: FontWeight.w600,
-                              color: textColor,
-                            ),
+                          const SizedBox(width: 16),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                'Character Unlocked',
+                                style: TextStyleSingleton().style.copyWith(
+                                  fontSize: 12,
+                                  color: titleColor,
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: 1.1,
+                                ),
+                              ),
+                              const SizedBox(height: 1),
+                              Text(
+                                character.name,
+                                style: TextStyleSingleton().style.copyWith(
+                                  fontSize: 11.5,
+                                  fontWeight: FontWeight.w600,
+                                  color: textColor,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(width: 8),
+                          GestureDetector(
+                            onTap: onDismiss,
+                            child: const Icon(Icons.close, size: 18, color: Colors.white70),
                           ),
                         ],
                       ),
-                      const SizedBox(width: 8),
-                      GestureDetector(
-                        onTap: onDismiss,
-                        child: const Icon(Icons.close, size: 18, color: Colors.white70),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),

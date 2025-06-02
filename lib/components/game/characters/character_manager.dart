@@ -53,12 +53,12 @@ class CharacterManager {
     game.isShowingCharacterToast = true;
     final nextCharacter = game.pendingToasts['characters']!.removeAt(0);
 
-    game.currentShowedCharacter = nextCharacter;
+    game.currentToastShowedCharacter = nextCharacter;
     game.overlays.add(CharacterToast.id);
 
     Future.delayed(const Duration(seconds: 3), () {
       game.overlays.remove(CharacterToast.id);
-      game.currentShowedCharacter = null;
+      game.currentToastShowedCharacter = null;
       game.isShowingCharacterToast = false;
 
       // Check if there are more characters to show then try to show the next one

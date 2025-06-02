@@ -65,4 +65,11 @@ class AchievementService {
   Future<Iterable<Object?>> getUnlockedAchievementsForGame(int id) {
     return _achievementRepository.getUnlockedAchievementsForGame(id);
   }
+
+  Future<GameAchievement?> getGameAchievementByIds({required int gameId, required int achievementId}) async {
+    if (gameId <= 0 || achievementId <= 0) {
+      throw Exception('Invalid game or achievement ID');
+    }
+    return _achievementRepository.getGameAchievement(gameId, achievementId);
+  }
 }
