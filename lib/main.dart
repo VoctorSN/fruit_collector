@@ -1,11 +1,10 @@
 import 'dart:io';
 
-import 'package:flame/flame.dart';
-import 'package:flame/game.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:fruit_collector/fruit_collector.dart';
 import 'package:window_size/window_size.dart';
+
+import 'fruit_collector_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,9 +15,6 @@ void main() async {
   }
 
   debugDefaultTargetPlatformOverride = TargetPlatform.android;
-  await Flame.device.fullScreen();
-  await Flame.device.setLandscape();
 
-  FruitCollector game = FruitCollector();
-  runApp(GameWidget(game: kDebugMode ? FruitCollector() : game));
+  runApp(const FruitCollectorApp());
 }
