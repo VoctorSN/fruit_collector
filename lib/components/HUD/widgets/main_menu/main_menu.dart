@@ -32,6 +32,7 @@ class _MainMenuState extends State<MainMenu> with SingleTickerProviderStateMixin
   late final ButtonStyle buttonStyle;
 
   bool _isSoundOn = true;
+  bool isLoading = true;
 
   late GameService service;
   late Game game;
@@ -46,6 +47,7 @@ class _MainMenuState extends State<MainMenu> with SingleTickerProviderStateMixin
   @override
   void initState() {
     super.initState();
+    loadLastGame();
 
     _logoController = AnimationController(
       vsync: this,
@@ -64,8 +66,6 @@ class _MainMenuState extends State<MainMenu> with SingleTickerProviderStateMixin
       ),
       elevation: 8,
     );
-
-    loadLastGame();
   }
 
   @override
@@ -188,12 +188,13 @@ class _MainMenuState extends State<MainMenu> with SingleTickerProviderStateMixin
     );
   }
 
-  void loadLastGame() async {
+  Future<void> loadLastGame() async {
     service = await GameService.getInstance();
     game = await service.getLastPlayedOrCreate();
     widget.game.isOnMenu = true;
     await widget.game.chargeSlot(game.space);
     setState(() {
+      isLoading = false;
       _isSoundOn = widget.game.settings.isMusicActive;
     });
     if (_isSoundOn) {
@@ -217,6 +218,7 @@ class _MainMenuState extends State<MainMenu> with SingleTickerProviderStateMixin
   }
 
   void _onContinuePressed() async {
+    if(isLoading) return;
     widget.game.isOnMenu = false;
     widget.game.overlays.remove(MainMenu.id);
     await widget.game.chargeSlot(game.space);
