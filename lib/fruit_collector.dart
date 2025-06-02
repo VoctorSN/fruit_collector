@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
@@ -44,6 +45,7 @@ import 'components/game/level/level.dart';
 import 'components/game/level/screens/change_level_screen.dart';
 import 'components/game/level/screens/credits_screen.dart';
 import 'components/game/level/screens/level_summary_overlay.dart';
+import 'components/game/util/player_camera_target.dart';
 
 class FruitCollector extends FlameGame
     with HasKeyboardHandlerComponents, DragCallbacks, HasCollisionDetection, TapCallbacks {
@@ -350,19 +352,44 @@ class FruitCollector extends FlameGame
   }
 
   void _loadActualLevel() async {
+    // Resume any paused sounds
     soundManager.resumeAll();
-    final service = await GameService.getInstance();
+
+    // Save game state
+    final GameService service = await GameService.getInstance();
     service.saveGameBySpace(game: gameData);
+
+    // Remove existing level components
     removeWhere((component) => component is Level);
+
+    // Restart background music
     soundManager.stopBGM();
     soundManager.startDefaultBGM(settings);
-    level = Level(levelName: levels[gameData?.currentLevel ?? 0]['level'].name, player: player);
 
-    cam = CameraComponent.withFixedResolution(world: level, width: 640, height: 368);
+    // Load the level
+    level = Level(
+      levelName: levels[gameData?.currentLevel ?? 0]['level'].name,
+      player: player,
+    );
+
+    // Create the camera with zoom effect
+    cam = CameraComponent.withFixedResolution(
+      world: level,
+      width: 320,
+      height: 184,
+    );
 
     cam.priority = 10;
-    cam.viewfinder.anchor = Anchor.topLeft;
-    addAll([cam, level]);
+    cam.viewfinder.anchor = Anchor.center;
+
+    // Create camera target component linked to player
+    final PlayerCameraTarget cameraTarget = PlayerCameraTarget(player: player);
+
+    // Add components to the game world
+    addAll([cam, level, cameraTarget]);
+
+    // Follow the dynamic camera target
+    cam.follow(cameraTarget);
   }
 
   void addJoystick() {
