@@ -139,7 +139,9 @@ class Chicken extends SpriteAnimationGroupComponent
 
   @override
   void collidedWithPlayer() async {
-    if (player.y + player.hitbox.height < position.y + 6) {
+    ///You have to check if the player faster than the frame rate, otherwise the player will not be able to stomp the
+    /// chicken, and the collidedWIthPlayer will be retarded.
+    if (player.y + player.hitbox.height < position.y + (player.velocity.y > 200 ? 10 : 6)) {
       if (game.settings.isSoundEnabled) SoundManager().playBounce(game.settings.gameVolume);
       gotStomped = true;
       current = ChickenState.hit;

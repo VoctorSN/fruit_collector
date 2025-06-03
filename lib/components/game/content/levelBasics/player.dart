@@ -5,7 +5,6 @@ import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
 import 'package:fruit_collector/components/game/content/blocks/loot_box.dart';
 import 'package:fruit_collector/components/game/content/enemies/player_collidable.dart';
-import 'package:fruit_collector/components/game/level/loading_banana.dart';
 import 'package:fruit_collector/components/game/level/sound_manager.dart';
 import 'package:fruit_collector/components/game/util/custom_hitbox.dart';
 import 'package:fruit_collector/fruit_collector.dart';
@@ -15,6 +14,7 @@ import '../../content/blocks/collision_block.dart';
 import '../../content/blocks/falling_block.dart';
 import '../../content/blocks/trampoline.dart';
 import '../../level/level.dart';
+import '../../level/loading_banana.dart';
 import '../../util/utils.dart';
 import '../traps/fan.dart';
 import '../traps/saw.dart';
@@ -83,7 +83,6 @@ class Player extends SpriteAnimationGroupComponent
   @override
   FutureOr<void> onLoad() {
     priority = -1;
-        debugMode = true;
 
     _loadAllAnimations();
     statringPosition = Vector2(position.x, position.y);
@@ -419,7 +418,7 @@ class Player extends SpriteAnimationGroupComponent
     const waitToChangeDuration = Duration(seconds: 3);
     Future.delayed(waitToChangeDuration, () => game.completeLevel());
     final banana = LoadingBanana(game);
-    await banana.show();
+    banana.show();
   }
 
   void collidedWithEnemy() {

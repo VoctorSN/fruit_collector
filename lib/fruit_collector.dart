@@ -322,7 +322,7 @@ class FruitCollector extends FlameGame
     levelDeaths[gameData!.currentLevel] = level.deathCount;
   }
 
-  void completeLevel() async {
+  Future<void> completeLevel() async {
     level.stopLevelTimer();
     updateGlobalStats();
 
