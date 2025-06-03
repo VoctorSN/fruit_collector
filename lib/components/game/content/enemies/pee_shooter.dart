@@ -60,6 +60,7 @@ class PeeShooter extends SpriteAnimationGroupComponent
 
   @override
   FutureOr<void> onLoad() {
+    debugMode = true;
     player = game.player;
     if (lookDirection == 1) {
       flipHorizontallyAroundCenter();
@@ -154,7 +155,7 @@ class PeeShooter extends SpriteAnimationGroupComponent
 
   @override
   void collidedWithPlayer() async {
-    if (player.velocity.y > 0 && player.y + player.height > position.y) {
+    if (player.y + player.hitbox.height < position.y + 2) {
       if (game.settings.isSoundEnabled) SoundManager().playBounce(game.settings.gameVolume);
       gotStomped = true;
       current = PeeShooterState.hit;

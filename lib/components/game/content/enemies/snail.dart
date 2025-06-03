@@ -281,7 +281,7 @@ class Snail extends SpriteAnimationGroupComponent
 
   @override
   void collidedWithPlayer() async {
-    if (player.velocity.y > 0 && player.y + player.height > position.y && isSnail()) {
+    if (player.y + player.hitbox.height < position.y + 6 && isSnail()) {
       if (game.settings.isSoundEnabled) SoundManager().playBounce(game.settings.gameVolume);
       current = SnailState.hit;
       player.velocity.y = -_bounceHeight;

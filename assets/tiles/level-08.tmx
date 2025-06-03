@@ -120,7 +120,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="2" name="Collisions">
+ <objectgroup id="2" name="Collisions" visible="0">
   <object id="10" x="624" y="16" width="16" height="352"/>
   <object id="11" x="0" y="0" width="640" height="16"/>
   <object id="12" x="0" y="16" width="16" height="352"/>

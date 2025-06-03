@@ -16,11 +16,11 @@ import '../../content/blocks/falling_block.dart';
 import '../../content/blocks/trampoline.dart';
 import '../../level/level.dart';
 import '../../util/utils.dart';
-import 'stars.dart';
 import '../traps/fan.dart';
 import '../traps/saw.dart';
 import 'checkpoint.dart';
 import 'fruit.dart';
+import 'stars.dart';
 
 enum PlayerState { idle, running, jumping, doubleJumping, falling, hit, appearing, disappearing, wallSlide }
 
@@ -83,6 +83,8 @@ class Player extends SpriteAnimationGroupComponent
   @override
   FutureOr<void> onLoad() {
     priority = -1;
+        debugMode = true;
+
     _loadAllAnimations();
     statringPosition = Vector2(position.x, position.y);
     add(RectangleHitbox(position: Vector2(hitbox.offsetX, hitbox.offsetY), size: Vector2(hitbox.width, hitbox.height)));

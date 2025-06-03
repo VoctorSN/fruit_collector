@@ -222,7 +222,7 @@ class Rock extends SpriteAnimationGroupComponent
 
   @override
   void collidedWithPlayer() async {
-    if (player.velocity.y > 0 && player.y + player.height > position.y) {
+    if (player.y + player.hitbox.height < position.y + 2) {
       if (game.settings.isSoundEnabled) SoundManager().playBounce(game.settings.gameVolume);
       gotStomped = true;
       player.velocity.y = -_bounceHeight;

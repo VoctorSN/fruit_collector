@@ -184,7 +184,7 @@ class Bee extends SpriteAnimationGroupComponent
 
   @override
   void collidedWithPlayer() async {
-    if (player.velocity.y > 0 && player.y + player.height > position.y) {
+    if (player.y + player.hitbox.height < position.y + 6) {
       if (game.settings.isSoundEnabled) SoundManager().playBounce(game.settings.gameVolume);
       gotStomped = true;
       current = BeeState.hit;
