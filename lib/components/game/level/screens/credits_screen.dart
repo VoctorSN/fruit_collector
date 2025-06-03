@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
-import 'package:fruit_collector/components/HUD/widgets/main_menu/main_menu.dart';
+import 'package:fruit_collector/components/HUD/widgets/main_menu/page/main_menu.dart';
 
 import '../../../../fruit_collector.dart';
 

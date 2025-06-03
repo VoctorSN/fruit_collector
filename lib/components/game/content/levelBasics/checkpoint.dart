@@ -37,9 +37,7 @@ class Checkpoint extends SpriteAnimationComponent with HasGameReference<FruitCol
     super.onCollisionStart(intersectionPoints, other);
   }
 
-  void _reachedCheckpoint() async {
-    game.level.stopLevelTimer();
-
+  Future<void> _reachedCheckpoint() async {
     animation = _flagOutAnimation;
 
     await animationTicker?.completed;

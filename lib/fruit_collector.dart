@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:fruit_collector/components/HUD/buttons_game/custom_joystick.dart';
 import 'package:fruit_collector/components/HUD/widgets/achievements/page/achievement_details.dart';
 import 'package:fruit_collector/components/HUD/widgets/characters/page/character_toast.dart';
-import 'package:fruit_collector/components/HUD/widgets/main_menu/main_menu.dart';
+import 'package:fruit_collector/components/HUD/widgets/main_menu/page/main_menu.dart';
 import 'package:fruit_collector/components/bbdd/models/game_achievement.dart';
 import 'package:fruit_collector/components/bbdd/models/game_level.dart';
 import 'package:fruit_collector/components/bbdd/services/achievement_service.dart';
@@ -30,8 +30,8 @@ import 'components/HUD/widgets/achievements/page/achievement_toast.dart';
 import 'components/HUD/widgets/achievements/page/achievements_menu.dart';
 import 'components/HUD/widgets/characters/page/character_selection.dart';
 import 'components/HUD/widgets/levels/page/level_selection_menu.dart';
-import 'components/HUD/widgets/main_menu/game_selector.dart';
-import 'components/HUD/widgets/pause_menu.dart';
+import 'components/HUD/widgets/main_menu/page/game_selector.dart';
+import 'components/HUD/widgets/pause/page/pause_menu.dart';
 import 'components/HUD/widgets/settings/settings_menu.dart';
 import 'components/bbdd/models/achievement.dart';
 import 'components/bbdd/models/character.dart';
@@ -203,7 +203,7 @@ class FruitCollector extends FlameGame
   }
 
   void addOverlays() {
-    overlays.addEntry(PauseMenu.id, (context, game) => PauseMenu(this));
+    overlays.addEntry(PauseMenu.id, (context, game) => PauseMenu(game: this,));
     overlays.addEntry(SettingsMenu.id, (context, game) => SettingsMenu(this));
     overlays.addEntry(CharacterSelection.id, (context, game) => CharacterSelection(this));
     overlays.addEntry(AchievementMenu.id, (context, game) => AchievementMenu(this, achievements));
@@ -225,8 +225,8 @@ class FruitCollector extends FlameGame
     );
     overlays.addEntry(CharacterSelection.id, (context, game) => CharacterSelection(this));
     overlays.addEntry(AchievementMenu.id, (context, game) => AchievementMenu(this, achievements));
-    overlays.addEntry(MainMenu.id, (context, game) => MainMenu(this));
-    overlays.addEntry(GameSelector.id, (context, game) => GameSelector(this));
+    overlays.addEntry(MainMenu.id, (context, game) => MainMenu(game: this));
+    overlays.addEntry(GameSelector.id, (context, game) => GameSelector(game: this));
     overlays.addEntry(AchievementToast.id, (context, game) {
       final pixelAdventure = game as FruitCollector;
       return pixelAdventure.currentShowedAchievement == null

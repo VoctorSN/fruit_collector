@@ -341,12 +341,12 @@ class Player extends SpriteAnimationGroupComponent
     }
   }
 
-  void _respawn() async {
+  Future<void> _respawn() async {
     if (isRespawning) return;
 
+    isRespawning = true;
     game.level.registerDeath();
     game.level.starsCollected = 0;
-    isRespawning = true;
 
     if (game.settings.isSoundEnabled) SoundManager().playHit(game.settings.gameVolume);
 
@@ -363,10 +363,6 @@ class Player extends SpriteAnimationGroupComponent
     moveSpeed = 100;
     isRespawning = false;
     gotHit = false;
-  }
-
-  removeBlackScreen() {
-    game.deathScreen.removeBlackScreen();
   }
 
   Future<void> _animationRespawn() async {
@@ -396,18 +392,14 @@ class Player extends SpriteAnimationGroupComponent
     animationTicker?.reset();
   }
 
-  void _reachedCheckpoint(Checkpoint other) async {
+  Future<void> _reachedCheckpoint(Checkpoint other) async {
     if (!other.isAble) {
       return;
     }
     if (game.settings.isSoundEnabled) SoundManager().playDisappear(game.settings.gameVolume);
 
     hasReached = true;
-    if (scale.x > 0) {
-      position = position - Vector2.all(32);
-    } else if (scale.x < 0) {
-      position = position + Vector2(32, -32);
-    }
+    position = position + Vector2(scale.x > 0 ? -32 : 32, -32);
     current = PlayerState.disappearing;
 
     await animationTicker?.completed;

@@ -132,7 +132,7 @@ class Radish extends SpriteAnimationGroupComponent
     }
   }
 
-  void _fly(double dt) async {
+  Future<void> _fly(double dt) async {
     const slowdownMargin = 48.0;
 
     final distanceToLeft = (position.x - rangePos).clamp(0.5, slowdownMargin);

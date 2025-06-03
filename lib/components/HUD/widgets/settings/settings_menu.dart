@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:fruit_collector/components/HUD/widgets/pause_menu.dart';
 import 'package:fruit_collector/components/HUD/widgets/settings/game_volume_controller_widget.dart';
 import 'package:fruit_collector/components/HUD/widgets/settings/music_controller_widget.dart';
 import 'package:fruit_collector/components/HUD/widgets/settings/resize_controls.dart';
@@ -9,6 +8,7 @@ import 'package:fruit_collector/components/HUD/widgets/settings/resize_hud.dart'
 
 import '../../../../fruit_collector.dart';
 import '../../style/text_style_singleton.dart';
+import '../pause/page/pause_menu.dart';
 
 class SettingsMenu extends StatelessWidget {
   static const String id = 'settings_menu';

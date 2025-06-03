@@ -4,7 +4,7 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 
 import '../../../fruit_collector.dart';
-import '../widgets/pause_menu.dart';
+import '../widgets/pause/page/pause_menu.dart';
 
 class OpenMenuButton extends SpriteComponent with HasGameReference<FruitCollector>, TapCallbacks {
   final double buttonSize;
