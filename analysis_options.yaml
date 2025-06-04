@@ -11,6 +11,7 @@ analyzer:
   errors:
     no_logic_in_create_state: ignore
     library_private_types_in_public_api: ignore
+    overridden_fields: ignore
 include: package:flutter_lints/flutter.yaml
 
 

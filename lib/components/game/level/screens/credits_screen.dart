@@ -45,6 +45,7 @@ class CreditsScreen extends Component {
       onUpdate: (double dt) {
         elapsed += dt;
         final double progress = (elapsed / durationInSeconds).clamp(0, 1);
+          // ignore: deprecated_member_use
         _fadeOverlay.paint.color = Colors.black.withOpacity(progress);
 
         if (progress >= 1) {
