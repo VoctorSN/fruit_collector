@@ -31,6 +31,7 @@ class JumpButton extends PositionComponent with HasGameReference<FruitCollector>
   }
 
   @override
+  // ignore: avoid_renaming_method_parameters
   void onGameResize(Vector2 gameSize) {
     super.onGameResize(gameSize);
 

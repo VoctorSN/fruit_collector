@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+
 void main() {
   final Directory libDir = Directory('lib');
   final File output = File('diagram_with_widgets.puml');
@@ -189,7 +191,9 @@ void main() {
   buffer.writeln('@enduml');
   output.writeAsStringSync(buffer.toString());
 
-  print('✅ Diagram updated and saved to diagram_with_widgets.puml');
+  if (kDebugMode) {
+    print('✅ Diagram updated and saved to diagram_with_widgets.puml');
+  }
 }
 
 void _processClass(
