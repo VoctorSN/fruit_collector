@@ -21,7 +21,7 @@ class NotificationService {
     tz.setLocalLocation(tz.getLocation(localTimeZone));
 
     final AndroidInitializationSettings androidSettings =
-    AndroidInitializationSettings('ic_notification');
+    const AndroidInitializationSettings('ic_notification');
 
     final DarwinInitializationSettings darwinSettings =
     const DarwinInitializationSettings(
@@ -63,7 +63,6 @@ class NotificationService {
     required String body,
     required DateTime scheduledDate,
   }) async {
-    print(1);
     await initialize();
 
     final AndroidNotificationDetails androidDetails =
