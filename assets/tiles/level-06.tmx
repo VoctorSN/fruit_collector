@@ -147,7 +147,7 @@
    </properties>
   </object>
   <object id="230" x="496" y="320" width="64" height="48"/>
-  <object id="231" x="560" y="352" width="32" height="16"/>
+  <object id="231" x="560" y="352" width="16" height="16"/>
   <object id="240" type="alterningBlock" x="464" y="112" width="16" height="16">
    <properties>
     <property name="isRed" type="bool" value="true"/>
@@ -161,7 +161,7 @@
   <object id="255" x="224" y="16" width="48" height="32"/>
   <object id="256" x="224" y="96" width="48" height="16"/>
  </objectgroup>
- <objectgroup id="3" name="SpawnPoints" visible="0">
+ <objectgroup id="3" name="SpawnPoints">
   <object id="22" name="Player" type="Player" x="168" y="254" width="30.3304" height="29.7471"/>
   <object id="74" type="deathZone" x="-48" y="-48" width="736" height="48"/>
   <object id="75" type="deathZone" x="-48" y="368" width="736" height="48"/>

@@ -1,41 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_collector/components/HUD/style/text_style_singleton.dart';
 
-import '../../../../fruit_collector.dart';
-import '../../style/text_style_singleton.dart';
+import '../../../../../fruit_collector.dart';
 import 'number_slider.dart';
 
-// Constants for layout
+// Constants to define size and position
 const double rowWidth = 475.0;
-const double textPositionX = 50.0;
-const double sliderPositionX = 23.0;
-const double buttonPositionX = .0;
+const double textPositionX = 45.0;
+const double sliderPositionX = 20.0;
+const double buttonPositionX = 0.0;
 const double sliderWidth = 250.0;
 
-class ToggleMusicVolumeWidget extends StatefulWidget {
+class ToggleGameVolumeWidget extends StatefulWidget {
   final FruitCollector game;
-  final Function updateMusicVolume;
+  final Function updateGameVolume;
 
-  const ToggleMusicVolumeWidget({super.key, required this.game, required this.updateMusicVolume});
+  const ToggleGameVolumeWidget({super.key, required this.game, required this.updateGameVolume});
 
   @override
-  State<ToggleMusicVolumeWidget> createState() {
-    return _ToggleMusicVolumeWidgetState(game: game, updateMusicVolume: updateMusicVolume);
+  State<ToggleGameVolumeWidget> createState() {
+    return _ToggleGameVolumeWidgetState(game: game, updateGameVolume: updateGameVolume);
   }
 }
 
-class _ToggleMusicVolumeWidgetState extends State<ToggleMusicVolumeWidget> {
+class _ToggleGameVolumeWidgetState extends State<ToggleGameVolumeWidget> {
   final FruitCollector game;
-  final Function updateMusicVolume;
+  final Function updateGameVolume;
 
-  _ToggleMusicVolumeWidgetState({required this.game, required this.updateMusicVolume})
-    : isSliderActive = game.settings.isMusicActive;
+  _ToggleGameVolumeWidgetState({required this.game, required this.updateGameVolume})
+    : isSliderActive = game.settings.isSoundEnabled;
 
   bool isMuted = false;
   late double value;
   bool isSliderActive;
 
   Image get volumeImage {
-    return game.settings.isMusicActive
+    return game.settings.isSoundEnabled
         ? Image.asset('assets/images/GUI/HUD/soundOnButton.png', fit: BoxFit.cover)
         : Image.asset('assets/images/GUI/HUD/soundOffButton.png', fit: BoxFit.cover);
   }
@@ -48,13 +48,13 @@ class _ToggleMusicVolumeWidgetState extends State<ToggleMusicVolumeWidget> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(width: textPositionX),
-          Text('Music', style: TextStyleSingleton().style),
+          Text('Volume', style: TextStyleSingleton().style),
           const SizedBox(width: sliderPositionX),
           SizedBox(
             width: sliderWidth,
             child: NumberSlider(
               game: game,
-              value: game.settings.musicVolume * 50,
+              value: game.settings.gameVolume * 50,
               onChanged: onChanged,
               isActive: isSliderActive,
             ),
@@ -67,17 +67,17 @@ class _ToggleMusicVolumeWidgetState extends State<ToggleMusicVolumeWidget> {
   }
 
   double? onChanged(dynamic value) {
-    if (!game.settings.isMusicActive) {
+    if (!game.settings.isSoundEnabled) {
       return null;
     }
 
-    updateMusicVolume(value / 50);
+    updateGameVolume(value / 50);
     return value;
   }
 
   void changeState() {
     setState(() {
-      game.settings.isMusicActive = !game.settings.isMusicActive;
+      game.settings.isSoundEnabled = !game.settings.isSoundEnabled;
       isSliderActive = !isSliderActive;
     });
   }

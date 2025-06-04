@@ -63,14 +63,14 @@
  </layer>
  <objectgroup id="2" name="Collisions">
   <object id="31" x="0" y="16" width="16" height="352"/>
-  <object id="32" x="128" y="112" width="240" height="32"/>
+  <object id="32" x="96" y="112" width="272" height="32"/>
   <object id="33" x="16" y="336" width="608" height="32.2224"/>
   <object id="34" x="623.6" y="16" width="16.8" height="352"/>
   <object id="35" x="0" y="0" width="640" height="16"/>
   <object id="36" x="368" y="256" width="208" height="16"/>
   <object id="38" x="256" y="144" width="48" height="16"/>
   <object id="39" x="96" y="144" width="16" height="32"/>
-  <object id="40" x="48" y="112" width="64" height="32"/>
+  <object id="40" x="112" y="144" width="16" height="16"/>
   <object id="41" x="336" y="144" width="32" height="128"/>
   <object id="42" type="Sand" x="304" y="144" width="32" height="64"/>
   <object id="60" x="512" y="16" width="16" height="128"/>
@@ -88,7 +88,7 @@
     <property name="isSideSensible" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="71" x="48" y="144" width="48" height="144"/>
+  <object id="71" x="48" y="112" width="48" height="176"/>
   <object id="72" x="288" y="176" width="16" height="16"/>
   <object id="73" x="272" y="160" width="32" height="16"/>
   <object id="74" type="Platform" x="592" y="256" width="32" height="16">
@@ -106,20 +106,6 @@
    </properties>
   </object>
   <object id="76" type="Platform" x="592" y="128" width="32" height="16">
-   <properties>
-    <property name="fallingDurationMillSec" type="int" value="0"/>
-    <property name="falls" type="bool" value="false"/>
-    <property name="isSideSensible" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="90" type="Platform" x="112" y="144" width="16" height="16">
-   <properties>
-    <property name="fallingDurationMillSec" type="int" value="0"/>
-    <property name="falls" type="bool" value="false"/>
-    <property name="isSideSensible" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="91" type="Platform" x="112" y="112" width="16" height="16">
    <properties>
     <property name="fallingDurationMillSec" type="int" value="0"/>
     <property name="falls" type="bool" value="false"/>

@@ -73,7 +73,7 @@
   <object id="169" name="deathzone" type="deathZone" x="73.7919" y="309.073" width="543.159" height="34.2927"/>
   <object id="199" type="Checkpoint" x="560" y="64" width="64" height="64">
    <properties>
-    <property name="isLastLevel" type="bool" value="true"/>
+    <property name="isLastLevel" type="bool" value="false"/>
    </properties>
   </object>
   <object id="200" name="KeyUnlocker" type="KeyUnlocker" x="568.486" y="231.181" width="16" height="16"/>

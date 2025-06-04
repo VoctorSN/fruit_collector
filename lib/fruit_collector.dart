@@ -32,7 +32,7 @@ import 'components/HUD/widgets/characters/page/character_selection.dart';
 import 'components/HUD/widgets/levels/page/level_selection_menu.dart';
 import 'components/HUD/widgets/main_menu/page/game_selector.dart';
 import 'components/HUD/widgets/pause/page/pause_menu.dart';
-import 'components/HUD/widgets/settings/settings_menu.dart';
+import 'components/HUD/widgets/settings/page/settings_menu.dart';
 import 'components/bbdd/models/achievement.dart';
 import 'components/bbdd/models/character.dart';
 import 'components/bbdd/models/game.dart' as models;
@@ -204,7 +204,7 @@ class FruitCollector extends FlameGame
 
   void addOverlays() {
     overlays.addEntry(PauseMenu.id, (context, game) => PauseMenu(game: this,));
-    overlays.addEntry(SettingsMenu.id, (context, game) => SettingsMenu(this));
+    overlays.addEntry(SettingsMenu.id, (context, game) => SettingsMenu(game: this));
     overlays.addEntry(CharacterSelection.id, (context, game) => CharacterSelection(this));
     overlays.addEntry(AchievementMenu.id, (context, game) => AchievementMenu(this, achievements));
     overlays.addEntry(

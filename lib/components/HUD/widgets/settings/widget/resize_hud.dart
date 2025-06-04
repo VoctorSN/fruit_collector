@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../../../../fruit_collector.dart';
-import '../../style/text_style_singleton.dart';
+import '../../../../../fruit_collector.dart';
+import '../../../style/text_style_singleton.dart';
 import 'number_slider.dart';
 
 const double rowWidth = 475.0;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="354">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="355">
  <tileset firstgid="1" source="Pixel Adventure.tsx"/>
  <layer id="1" name="Background" width="40" height="23">
   <properties>
@@ -445,7 +445,7 @@
   </object>
  </objectgroup>
  <objectgroup id="3" name="SpawnPoints">
-  <object id="32" name="Player" type="Player" x="112" y="224" width="30.3304" height="29.7471"/>
+  <object id="32" name="Player" type="Player" x="336" y="32" width="30.3304" height="29.7471"/>
   <object id="64" type="deathZone" x="-48" y="-48" width="736" height="48"/>
   <object id="65" type="deathZone" x="-48" y="368" width="736" height="48"/>
   <object id="66" type="deathZone" x="640" y="0" width="48" height="368"/>
@@ -629,5 +629,10 @@
   <object id="349" name="Apple" type="Fruit" x="288" y="112" width="32" height="32"/>
   <object id="350" name="Strawberry" type="Fruit" x="592" y="80" width="32" height="32"/>
   <object id="351" name="Bananas" type="Fruit" x="240" y="16" width="32" height="32"/>
+  <object id="354" name="SpkLeft" type="Spike" x="112" y="16" width="16" height="80">
+   <properties>
+    <property name="position" value="RightWall"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

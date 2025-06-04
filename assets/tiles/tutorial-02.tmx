@@ -95,7 +95,7 @@
   <object id="47" type="GameText" x="208" y="96" width="192" height="64">
    <text fontfamily="ArcadeClassic" wrap="1" color="#ffffff" halign="center">DODGE   THE   SAWS,   VOID   AND   ENEMIES   TO   SURVIVE   ☠️</text>
   </object>
-  <object id="48" type="deathZone" x="452.667" y="308.333" width="43.333" height="32"/>
+  <object id="48" type="deathZone" x="452.667" y="308.333" width="52.6663" height="32"/>
   <object id="49" type="Checkpoint" x="544" y="208" width="64" height="64">
    <properties>
     <property name="isLastLevel" type="bool" value="false"/>

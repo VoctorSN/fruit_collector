@@ -4,7 +4,7 @@ import 'package:fruit_collector/components/HUD/widgets/pause/page/pause_menu.dar
 import '../../../../../fruit_collector.dart';
 import '../../../style/text_style_singleton.dart';
 import '../../main_menu/page/main_menu.dart';
-import '../../settings/settings_menu.dart';
+import '../../settings/page/settings_menu.dart';
 
 /// ViewModel for PauseMenu. Handles all logic and state.
 class PauseMenuVM extends ChangeNotifier {
