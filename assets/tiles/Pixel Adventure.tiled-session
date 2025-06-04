@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "level-100.tmx",
+    "activeFile": "tutorial-02.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -161,8 +161,8 @@
             "scale": 1.5007031249999998,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 319.5168931230153,
-                "y": 179.9156645322505
+                "x": 319.8500702795565,
+                "y": 184.2469675672862
             }
         },
         "level-01.tmx": {
@@ -173,8 +173,8 @@
             "scale": 1.5,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 312.3333333333333,
-                "y": 152.66666666666663
+                "x": 320,
+                "y": 183.66666666666663
             }
         },
         "level-01.tmx#Pixel Adventure": {
@@ -224,8 +224,8 @@
             "scale": 1.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 320.3333333333333,
-                "y": 162.66666666666663
+                "x": 320,
+                "y": 183.66666666666663
             }
         },
         "level-06.tmx": {
@@ -236,8 +236,8 @@
             "scale": 1.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 319,
-                "y": 183.33333333333337
+                "x": 320,
+                "y": 183.66666666666663
             }
         },
         "level-07.tmx": {
@@ -248,8 +248,8 @@
             "scale": 1.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 319,
-                "y": 183.33333333333337
+                "x": 320,
+                "y": 183.66666666666663
             }
         },
         "level-08.tmx": {
@@ -259,8 +259,8 @@
             "scale": 1.53,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 320.5882352941177,
-                "y": 184.3137254901961
+                "x": 320.26143790849676,
+                "y": 183.98692810457516
             }
         },
         "level-08.tmx#Pixel Adventure": {
@@ -298,8 +298,8 @@
             "scale": 1,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 311.5,
-                "y": 176
+                "x": 320,
+                "y": 183.5
             }
         },
         "level-98.tmx": {
@@ -332,14 +332,14 @@
         },
         "tutorial-01.tmx": {
             "expandedObjectLayers": [
-                2,
-                4
+                4,
+                2
             ],
             "scale": 1.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 319.66666666666663,
-                "y": 183.33333333333337
+                "x": 320,
+                "y": 183.66666666666663
             }
         },
         "tutorial-01.tmx#Pixel Adventure": {
@@ -347,8 +347,8 @@
         },
         "tutorial-02.tmx": {
             "expandedObjectLayers": [
-                2,
-                4
+                4,
+                2
             ],
             "scale": 1.5,
             "selectedLayer": 2,
@@ -362,8 +362,8 @@
         },
         "tutorial-03.tmx": {
             "expandedObjectLayers": [
-                2,
-                4
+                4,
+                2
             ],
             "scale": 1.5,
             "selectedLayer": 1,
@@ -377,14 +377,14 @@
         },
         "tutorial-04.tmx": {
             "expandedObjectLayers": [
-                2,
-                4
+                4,
+                2
             ],
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 320.3333333333333,
-                "y": 172.66666666666663
+                "x": 320,
+                "y": 179.66666666666663
             }
         },
         "tutorial-04.tmx#Pixel Adventure": {
@@ -392,14 +392,14 @@
         },
         "tutorial-05.tmx": {
             "expandedObjectLayers": [
-                2,
-                4
+                4,
+                2
             ],
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 320.3333333333333,
-                "y": 185.33333333333337
+                "x": 320,
+                "y": 183.66666666666663
             }
         },
         "tutorial-05.tmx#Pixel Adventure": {
@@ -440,11 +440,11 @@
         "level-02.tmx",
         "level-03.tmx",
         "tutorial-03.tmx",
-        "tutorial-02.tmx",
-        "level-07.tmx",
-        "level-06.tmx",
-        "bluePrint.tmx",
-        "level-08.tmx",
+        "level-100.tmx",
+        "level-99.tmx",
+        "level-98.tmx",
+        "tutorial-05.tmx",
+        "tutorial-01.tmx",
         "level-09.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",

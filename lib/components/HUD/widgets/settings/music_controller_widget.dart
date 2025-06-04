@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../fruit_collector.dart';
 import '../../style/text_style_singleton.dart';
-import '../utils/number_slider.dart';
+import 'number_slider.dart';
 
 // Constants for layout
 const double rowWidth = 475.0;

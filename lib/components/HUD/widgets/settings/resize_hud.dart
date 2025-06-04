@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 
 import '../../../../fruit_collector.dart';
 import '../../style/text_style_singleton.dart';
-import '../utils/number_slider.dart';
+import 'number_slider.dart';
 
 const double rowWidth = 475.0;
 const double textPositionX = 37.5;

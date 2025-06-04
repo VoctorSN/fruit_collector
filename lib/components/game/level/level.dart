@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
@@ -33,6 +34,7 @@ import '../content/enemies/snail.dart';
 import '../content/levelBasics/stars.dart';
 import '../content/traps/fan.dart';
 import '../content/traps/spike.dart';
+import '../util/notification_service.dart';
 import 'background_tile.dart';
 
 class Level extends World with HasGameReference<FruitCollector> {
@@ -402,7 +404,27 @@ class Level extends World with HasGameReference<FruitCollector> {
         time: minorLevelTime,
         deaths: deathCount,
       );
+
+      // Cancel any pending notifications to avoid duplicates
+      await NotificationService.instance.cancelAllNotifications();
+
+      // Schedule a new notification for 3 days from now
+       if(Platform.isAndroid || Platform.isIOS)  {
+        await notifyUser();
+      }
     }
+  }
+
+  Future<void> notifyUser() async {
+    final DateTime scheduledDate =
+        DateTime.now().add(const Duration(seconds: 3));
+    await NotificationService.instance.scheduleNotification(
+      id: levelData!.levelId, // use level ID as notification ID
+      title: 'Come Back and Play!',
+      body:
+          'It’s been a while since you last played. Return collect more fruits!',
+      scheduledDate: scheduledDate,
+    );
   }
 
   void openDoor(int doorId) {
