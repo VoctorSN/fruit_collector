@@ -35,11 +35,11 @@
 </data>
  </layer>
  <objectgroup id="4" name="SpawnPoints">
-  <object id="1" type="deathZone" x="-48" y="-48" width="736" height="48"/>
+  <object id="1" type="deathZone" x="-48" y="-64" width="736" height="48"/>
   <object id="2" type="deathZone" x="0" y="368" width="640" height="48"/>
-  <object id="3" type="deathZone" x="-48" y="0" width="48" height="416"/>
+  <object id="3" type="deathZone" x="-48" y="-16" width="48" height="432"/>
   <object id="4" name="Player" type="Player" x="464" y="272" width="32" height="32"/>
-  <object id="44" type="deathZone" x="640" y="0" width="48" height="416"/>
+  <object id="44" type="deathZone" x="640" y="-16" width="48" height="432"/>
   <object id="45" name="Trampoline" type="Trampoline" x="592" y="256" width="32" height="32">
    <properties>
     <property name="powerBounce" type="float" value="350"/>
@@ -102,9 +102,9 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="2" name="Collisions" visible="0">
+ <objectgroup id="2" name="Collisions">
   <object id="10" x="624" y="16" width="16" height="352"/>
-  <object id="11" x="0" y="0" width="640" height="16"/>
+  <object id="11" x="0" y="-16" width="640" height="32"/>
   <object id="12" x="0" y="16" width="16" height="352"/>
   <object id="34" x="16" y="304" width="608" height="64"/>
   <object id="74" x="16" y="272" width="32" height="32"/>

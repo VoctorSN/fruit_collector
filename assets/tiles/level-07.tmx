@@ -445,7 +445,7 @@
   </object>
  </objectgroup>
  <objectgroup id="3" name="SpawnPoints">
-  <object id="32" name="Player" type="Player" x="336" y="32" width="30.3304" height="29.7471"/>
+  <object id="32" name="Player" type="Player" x="112" y="224" width="30.3304" height="29.7471"/>
   <object id="64" type="deathZone" x="-48" y="-48" width="736" height="48"/>
   <object id="65" type="deathZone" x="-48" y="368" width="736" height="48"/>
   <object id="66" type="deathZone" x="640" y="0" width="48" height="368"/>

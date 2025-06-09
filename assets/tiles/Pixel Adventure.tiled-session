@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "tutorial-02.tmx",
+    "activeFile": "level-98.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -222,9 +222,9 @@
                 2
             ],
             "scale": 1.5,
-            "selectedLayer": 1,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 319.33333333333326,
+                "x": 260,
                 "y": 183.66666666666669
             }
         },
@@ -304,7 +304,7 @@
         },
         "level-98.tmx": {
             "scale": 1.5318749999999999,
-            "selectedLayer": 1,
+            "selectedLayer": 2,
             "viewCenter": {
                 "x": 319.86944104447167,
                 "y": 183.76172990616078
@@ -392,13 +392,13 @@
         },
         "tutorial-05.tmx": {
             "expandedObjectLayers": [
-                2,
-                4
+                4,
+                2
             ],
             "scale": 1.5,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 320,
+                "x": 245.3333333333333,
                 "y": 183.66666666666669
             }
         },
@@ -413,39 +413,23 @@
     "map.tileWidth": 16,
     "map.width": 40,
     "openFiles": [
-        "tutorial-04.tmx",
-        "level-01.tmx",
-        "level-05.tmx",
-        "level-02.tmx",
-        "level-03.tmx",
-        "tutorial-03.tmx",
-        "tutorial-02.tmx",
-        "level-07.tmx",
-        "level-06.tmx",
-        "bluePrint.tmx",
-        "level-08.tmx",
-        "level-09.tmx",
-        "tutorial-01.tmx",
-        "tutorial-05.tmx",
-        "level-98.tmx",
-        "level-99.tmx",
-        "level-100.tmx"
+        "level-98.tmx"
     ],
     "project": "Pixel Adventure.tiled-project",
     "property.type": "int",
     "recentFiles": [
+        "level-98.tmx",
+        "level-06.tmx",
+        "level-07.tmx",
+        "tutorial-05.tmx",
+        "level-05.tmx",
         "level-04.tmx",
         "level-100.tmx",
         "level-09.tmx",
         "level-08.tmx",
-        "level-07.tmx",
         "level-99.tmx",
-        "level-05.tmx",
         "bluePrint.tmx",
-        "level-06.tmx",
-        "level-03.tmx",
-        "level-02.tmx",
-        "level-01.tmx"
+        "level-03.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

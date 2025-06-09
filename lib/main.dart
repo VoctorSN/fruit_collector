@@ -20,7 +20,7 @@ void main() async {
     setWindowTitle('Fruit Collector');
     setWindowMinSize(const Size(800, 600));
   } else {
-    await NotificationService.instance.initialize();
+    //await NotificationService.instance.initialize();
   }
 
   FruitCollector game = FruitCollector();
