@@ -101,7 +101,7 @@ class FruitCollector extends FlameGame
     position: Vector2(0, 0),
   )..priority = 1000;
 
-  late var changeLevelScreen = ChangeLevelScreen(
+  late ChangeLevelScreen changeLevelScreen = ChangeLevelScreen(
     onExpandEnd: () {
       gameData!.currentLevel++;
       _loadActualLevel();

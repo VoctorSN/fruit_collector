@@ -1,68 +1,63 @@
 @startuml
 skinparam classAttributeIconSize 0
 class GameRepository {
-  Database _db
-  return null
-  return null
-  return gameId
-  +Future<GameRepository> getInstance()
-  +Future<Game?> getGameBySpace()
-  +Future<void> updateGameBySpace()
-  +Future<int> insertGame()
-  +Future<void> deleteGameBySpace()
+  GameRepository? instance
+  final Database db
+  +Future<Game?> getGameBySpace({required int space})
+  +Future<void> updateGameBySpace({required Game game})
+  +Future<int> insertGame({required int space})
+  +Future<void> deleteGameBySpace({required int space})
 }
 class AchievementRepository {
-  Database _db
-  +Future<AchievementRepository> getInstance()
-  +Future<Achievement?> getAchievement()
-  +Future<GameAchievement?> getGameAchievement()
-  +Future<void> resetGameAchievements()
-  +Future<void> updateGameAchievement()
-  +Future<int> insertGameAchievement()
+  AchievementRepository? instance
+  final Database db
+  +Future<Achievement?> getAchievement(int achievementId)
+  +Future<GameAchievement?> getGameAchievement(int gameId, int achievementId)
+  +Future<void> resetGameAchievements(int gameId)
+  +Future<void> updateGameAchievement(GameAchievement gameAchievement)
+  +Future<int> insertGameAchievement(int gameId, int achievementId)
 }
 class LevelRepository {
-  Database _db
-  +Future<LevelRepository> getInstance()
-  +Future<Level?> getLevel()
-  +Future<GameLevel?> getGameLevel()
-  +Future<int> insertGameLevel()
-  +Future<void> updateGameLevel()
+  LevelRepository? instance
+  final Database db
+  +Future<Level?> getLevel(int levelId)
+  +Future<GameLevel?> getGameLevel(int gameId, int levelId)
+  +Future<int> insertGameLevel(GameLevel gameLevel)
+  +Future<void> updateGameLevel(GameLevel gameLevel)
 }
 class GameCharacterRepository {
-  Database _db
-  final character
-  +Future<GameCharacterRepository> getInstance()
-  +Future<void> insertCharactersForGame()
-  +Future<void> deleteGameCharactersByGameId()
+  GameCharacterRepository? instance
+  final Database db
+  +Future<void> insertCharactersForGame({required int gameId})
+  +Future<void> deleteGameCharactersByGameId({required int gameId})
 }
 class SettingsRepository {
-  Database _db
-  +Future<SettingsRepository> getInstance()
-  +Future<void> insertDefaultsForGame()
-  +Future<void> updateSettings()
-  +Future<Settings?> getSettings()
+  SettingsRepository? instance
+  final Database db
+  +Future<void> insertDefaultsForGame({required int gameId})
+  +Future<void> updateSettings(Settings settings)
+  +Future<Settings?> getSettings(int gameId)
 }
 class GameAchievementRepository {
-  Database _db
-  +Future<GameAchievementRepository> getInstance()
-  +Future<void> insertAchievementsForGame()
+  GameAchievementRepository? instance
+  final Database db
+  +Future<void> insertAchievementsForGame({required int gameId})
 }
 class CharacterRepository {
-  Database _db
-  +Future<CharacterRepository> getInstance()
-  +Future<Character?> getCharacter()
-  +Future<GameCharacter?> getGameCharacter()
-  +Future<void> resetGameCharacters()
-  +Future<void> updateGameCharacter()
-  +Future<int> insertGameCharacter()
+  CharacterRepository? instance
+  final Database db
+  +Future<Character?> getCharacter(int characterId)
+  +Future<GameCharacter?> getGameCharacter(int gameId, int characterId)
+  +Future<void> resetGameCharacters(int gameId)
+  +Future<void> updateGameCharacter(GameCharacter gameCharacter)
+  +Future<int> insertGameCharacter(int gameId, int characterId)
 }
 class GameLevelRepository {
-  Database _db
-  get defaultUnlockedLevels
-  final level
-  +Future<GameLevelRepository> getInstance()
-  +Future<void> insertLevelsForGame()
-  +Future<void> deleteGameLevelByGameId()
+  GameLevelRepository? instance
+  final Database db
+  num get defaultUnlockedLevels
+  +Future<void> insertLevelsForGame({required int gameId})
+  +Future<void> deleteGameLevelByGameId({required int gameId})
 }
 class GameLevel {
   int id
@@ -73,8 +68,8 @@ class GameLevel {
   int stars
   DateTime dateCompleted
   DateTime lastTimeCompleted
+  int? time
   int deaths
-  +GameLevel fromMap()
   +String toString()
 }
 class GameCharacter {
@@ -84,7 +79,6 @@ class GameCharacter {
   bool unlocked
   bool equipped
   DateTime dateUnlocked
-  +GameCharacter fromMap()
   +String toString()
 }
 class GameAchievement {
@@ -93,7 +87,6 @@ class GameAchievement {
   int achievementId
   DateTime dateAchieved
   bool achieved
-  +GameAchievement fromMap()
   +String toString()
 }
 class Level {
@@ -101,17 +94,15 @@ class Level {
   String levelName
   TiledComponent level
   List<CollisionBlock> collisionBlocks
-  Stopwatch _levelTimer
+  final Stopwatch levelTimer
   int lastMinDeaths
   int lastMinTime
   int deathCount
   int starsCollected
-  return lastMinTime
-  return lastMinTime
-  return lastMinDeaths
-  return lastMinDeaths
-  return starsCollected
-  +Future<void> chargeLevel()
+  int get levelTime
+  Duration deathDuration
+  GameLevel? levelData
+  +Future<void> chargeLevel(GameLevel? level)
   +void _startLevel()
   +void registerDeath()
   +void stopLevelTimer()
@@ -120,12 +111,12 @@ class Level {
   +void respawnObjects()
   +void _spawningObjects()
   +Future<void> saveLevel()
-  +void openDoor()
+  +void openDoor(int doorId)
   +void starCollected()
   +void _addCollisions()
-  +void addSpawnPoint()
-  +void addCollisionBlock()
-  +void removeCollisionBlock()
+  +void addSpawnPoint(var spawnPoint)
+  +void addCollisionBlock(CollisionBlock collisionBlock)
+  +void removeCollisionBlock(CollisionBlock collisionBlock)
   +bool checkpointEnabled()
   +bool _hasFruits()
   +void _scrollingBackground()
@@ -138,7 +129,6 @@ class Game {
   int currentLevel
   int totalDeaths
   int totalTime
-  +Game fromMap()
   +String toString()
 }
 class Character {
@@ -147,7 +137,6 @@ class Character {
   String description
   int requiredStars
   +Character copy()
-  +Character fromMap()
   +String toString()
 }
 class Achievement {
@@ -155,7 +144,6 @@ class Achievement {
   String title
   String description
   int difficulty
-  +Achievement fromMap()
   +String toString()
 }
 class Settings {
@@ -169,83 +157,74 @@ class Settings {
   bool isSoundEnabled
   double gameVolume
   double musicVolume
-  +Settings fromMap()
   +String toString()
 }
 class AchievementService {
-  AchievementRepository _achievementRepository
-  +Future<AchievementService> getInstance()
-  +Future<void> unlockAchievement()
-  +Future<void> resetAchievementsForGame()
-  +Future<GameAchievement?> getGameAchievementByIds()
+  AchievementService? instance
+  final AchievementRepository achievementRepository
+  +Future<void> unlockAchievement(int gameId, int achievementId)
+  +Future<void> resetAchievementsForGame(int gameId)
+  +Future<GameAchievement?> getGameAchievementByIds({required int gameId, required int achievementId})
 }
 class GameService {
-  GameRepository _gameRepository
-  SettingsRepository _settingsRepository
-  GameLevelRepository _gameLevelRepository
-  GameAchievementRepository _gameAchievementRepository
-  GameCharacterRepository _gameCharacterRepository
-  return newGame
-  +Future<GameService> getInstance()
-  +Future<void> saveGameBySpace()
+  GameService? instance
+  final GameRepository gameRepository
+  final SettingsRepository settingsRepository
+  final GameLevelRepository gameLevelRepository
+  final GameAchievementRepository gameAchievementRepository
+  final GameCharacterRepository gameCharacterRepository
+  +Future<void> saveGameBySpace({required Game? game})
   +Future<Game> getLastPlayedOrCreate()
-  +Future<void> unlockEverythingForGame()
-  +Future<Game> getOrCreateGameBySpace()
-  +Future<Game?> getGameBySpace()
-  +Future<void> deleteGameBySpace()
+  +Future<void> unlockEverythingForGame({required int space})
+  +Future<Game> getOrCreateGameBySpace({required int space})
+  +Future<Game?> getGameBySpace({required int space})
+  +Future<void> deleteGameBySpace({required int space})
 }
 class SettingsService {
-  SettingsRepository _settingsRepository
-  +Future<SettingsService> getInstance()
-  +Future<void> updateSettings()
-  +Future<Settings?> getSettingsForGame()
+  SettingsService? instance
+  final SettingsRepository settingsRepository
+  +Future<void> updateSettings(Settings settings)
+  +Future<Settings?> getSettingsForGame(int gameId)
 }
 class LevelService {
-  LevelRepository _levelRepository
-  final nextLevelId
-  +Future<LevelService> getInstance()
-  +next level()
-  +else if()
-  +Future<GameLevel?> getGameLevelByGameAndLevelName()
-  +throw Exception()
+  LevelService? instance
+  final LevelRepository levelRepository
+  +Future<GameLevel?> getGameLevelByGameAndLevelName({required int gameId, required String levelName})
 }
 class CharacterService {
-  CharacterRepository _characterRepository
-  GameCharacter selected
-  bool isTarget
-  bool isTarget
-  +Future<CharacterService> getInstance()
-  +Future<void> unlockCharacter()
-  +Future<void> equipCharacter()
-  +Future<void> resetCharactersForGame()
-  +Future<String> getEquippedCharacterName()
-  +Future<Character> getEquippedCharacter()
+  CharacterService? instance
+  final CharacterRepository characterRepository
+  +Future<void> unlockCharacter(int gameId, int characterId)
+  +Future<void> equipCharacter(int gameId, int characterId)
+  +Future<void> resetCharactersForGame(int gameId)
+  +Future<String> getEquippedCharacterName(int gameId)
+  +Future<Character> getEquippedCharacter(int gameId)
 }
 class DatabaseManager {
-  Database _database
-  get database
-  +Future<DatabaseManager> getInstance()
+  DatabaseManager? instance
+  final Database database
+  Database get database
   +Future<void> resetDatabase()
   +Future<void> _initDatabase()
-  +Future<void> initializeDB()
-  +FOREIGN KEY()
-  +FOREIGN KEY()
-  +FOREIGN KEY()
-  +FOREIGN KEY()
-  +FOREIGN KEY()
-  +FOREIGN KEY()
-  +FOREIGN KEY()
+  +Future<void> initializeDB(Database db)
 }
 class AchievementManager {
   FruitCollector game
-  dynamic>> allAchievements
-  Achievement achievement
-  GameAchievement gameAchievement
-  final condition
+  List<Map<String, dynamic>> allAchievements
   +Future<void> evaluate()
-  +void _showAchievementUnlocked()
+  +void _showAchievementUnlocked(Achievement achievement)
   +void tryShowNextToast()
-  +const Duration()
+}
+class CollisionableWithHitbox <<Mixin>> {
+  RectangleHitbox hitbox
+  +bool checkCollision(CollisionBlock block, {Vector2? hitboxOffset})
+}
+class NotificationService {
+  final NotificationService instance
+  bool initialized
+  +Future<void> initialize()
+  +Future<void> _requestAndroidNotificationPermission()
+  +Future<void> cancelAllNotifications()
 }
 class CustomHitbox {
   double offsetX
@@ -255,14 +234,18 @@ class CustomHitbox {
 }
 class Door {
   int id
+  Function(CollisionBlock) addCollisionBlock
+  Function(CollisionBlock) removeCollisionBlock
   const stepTime
-  SpriteAnimation _closeAnimation
-  SpriteAnimation _openAnimation
+  final textureSize
+  final SpriteAnimation closeAnimation
+  final SpriteAnimation openAnimation
+  CollisionBlock? collisionBlock
   +void _loadAllAnimations()
   +void openDoor()
-  +SpriteAnimation _spriteAnimation()
+  +SpriteAnimation _spriteAnimation(String state, int amount)
 }
-class CollisionBlock <<Widget>> {
+class CollisionBlock {
   bool isPlatform
   bool isSand
   +Future<void> onLoad()
@@ -273,30 +256,33 @@ class AlternatingBlock {
   Sprite blockActive
   Sprite blockInactive
   bool isRedActive
-  bool _timerStarted
-  List<AlternatingBlock> _instances
+  bool timerStarted
+  final List<AlternatingBlock> instances
   RectangleHitbox hitbox
   bool isActive
   +Future<void> onLoad()
   +void _loadSprites()
-  +Sprite _getTile()
+  +Sprite _getTile(int col, int row)
   +void _startPeriodicToggle()
-  +const Duration()
   +void _updateSprite()
-  +void onCollision()
+  +void onCollision(Set<Vector2> intersectionPoints, PositionComponent other)
 }
 class LootBox {
+  Function(CollisionBlock) addCollisionBlock
+  Function(CollisionBlock) removeCollisionBlock
+  Function(dynamic) addSpawnPoint
   String objectInside
-  const _bounceHeight
+  const bounceHeight
   int hp
-  Player player
+  final Player player
   CollisionBlock collisionBlock
-  SpriteAnimation _idleAnimation
-  SpriteAnimation _hitAnimation
+  final SpriteAnimation idleAnimation
+  final SpriteAnimation hitAnimation
   const stepTime
   const tileSize
+  final textureSize
   +void _loadAllAnimations()
-  +SpriteAnimation _spriteAnimation()
+  +SpriteAnimation _spriteAnimation(String state, int amount)
   +void collidedWithPlayer()
   +void dropObject()
 }
@@ -304,130 +290,120 @@ class FallingBlock {
   int fallingDuration
   Vector2 initialPosition
   bool isSideSensible
+  SpriteAnimationComponent sprite
   bool isFalling
   double fixedDeltaTime
   double accumulatedTime
+  Vector2 fallingVelocity
   bool isOnGround
   bool hasCollided
   bool isPlayerOnPlatform
   Player player
   List<CollisionBlock> collisionBlocks
-  final delta
-  bool isWithinX
-  final playerBottom
-  final futureBottom
-  final blockTop
-  final intersectsVertically
-  return true
-  return false
   +Future<void> onLoad()
-  +void update()
+  +void update(double dt)
   +void _startFalling()
   +void _stopFalling()
   +void _comeBack()
-  +the platform()
   +bool _checkPlayerOnPlatform()
-  +bool _checkBlockCollisionBelow()
+  +bool _checkBlockCollisionBelow(Vector2 delta)
 }
 class Trampoline {
   double powerBounce
+  Function(CollisionBlock) addCollisionBlock
   const stepTime
   const tileSize
-  SpriteAnimation _idleAnimation
-  SpriteAnimation _jumpAnimation
+  final textureSize
+  final SpriteAnimation idleAnimation
+  final SpriteAnimation jumpAnimation
   CollisionBlock collisionBlock
-  Player player
+  final Player player
   +void _loadAllAnimations()
-  +SpriteAnimation _spriteAnimation()
+  +SpriteAnimation _spriteAnimation(String state, int amount)
   +void collidedWithPlayer()
 }
 class Saw {
   bool isVertical
   double offNeg
   double offPos
-  double sawSpeed
+  const double sawSpeed
   const moveSpeed
   const tileSize
   double moveDirection
   double rangeNeg
   double rangePos
-  +void update()
-  +void _moveVertically()
-  +void _moveHorizontally()
+  +void update(double dt)
+  +void _moveVertically(double dt)
+  +void _moveHorizontally(double dt)
 }
-class AirEffect <<Widget>> {
+class AirEffect {
+  Paint airPaint
   double offsetX
-  double lineSpacing
-  double lineLength
-  double lineHeight
-  double speed
-  List<double> _horizontalOffsets
-  int row
-  final deviation
-  +void render()
-  +void update()
+  const double lineSpacing
+  const double lineLength
+  const double lineHeight
+  const double speed
+  List<double> horizontalOffsets
+  +void render(Canvas canvas)
+  +void update(double dt)
 }
-class Spike <<Widget>> {
+class Spike {
   String wallPosition
-  int cols
-  int rows
-  double spikeSize
+  final int cols
+  final int rows
+  const double spikeSize
   RectangleHitbox hitbox
-  double halfRotation
-  SpriteComponent spike
-  double angleS
+  const double halfRotation
   +Future<void> _loadRepeatedSpikes()
-  +void onCollisionStart()
+  +void onCollisionStart(Set<Vector2> intersectionPoints, PositionComponent other)
 }
-class FireBlock <<Widget>> {
+class FireBlock {
   int startIn
   String fireDirection
-  SpriteAnimation onAnimation
-  SpriteAnimation offAnimation
-  SpriteAnimationGroupComponent<FireBlockState> fireSprite
+  Function(CollisionBlock) addCollisionBlock
+  final SpriteAnimation onAnimation
+  final SpriteAnimation offAnimation
+  final SpriteAnimationGroupComponent<FireBlockState> fireSprite
   const stepTime
-  double tileSize
+  const double tileSize
   bool isOn
-  int> _fireBlockCounters
+  final Map<int, int> fireBlockCounters
   CollisionBlock collisionBlock
   RectangleHitbox attackHitbox
-  Timer timer
-  double halfRotation
-  Vector2 collisionPosition
-  double spriteAngle
-  final isFirstInstance
+  const double halfRotation
   +Future<void> onLoad()
   +void onRemove()
   +void rotate()
   +void _loadAnimations()
-  +SpriteAnimation _spriteAnimation()
+  +SpriteAnimation _spriteAnimation(String state, int amount)
   +void _startPeriodicToggle()
-  +const Duration()
-  +void onCollision()
+  +void onCollision(Set<Vector2> intersectionPoints, PositionComponent other)
   +void removeSound()
 }
 class Fan {
   bool directionRight
   double fanDistance
+  Function(CollisionBlock) addCollisionBlock
   const stepTime
   const tileSize
+  final textureSize
   CollisionBlock collisionBlock
-  SpriteAnimation _offAnimation
-  SpriteAnimation _onAnimation
-  Player player
+  final SpriteAnimation offAnimation
+  final SpriteAnimation onAnimation
+  final Player player
   final fanDirection
+  final Vector2 windVelocity
   +void createHitbox()
   +void _loadAllAnimations()
-  +SpriteAnimation _spriteAnimation()
+  +SpriteAnimation _spriteAnimation(String state, int amount)
   +void collidedWithPlayer()
-  +void onCollisionEnd()
+  +void onCollisionEnd(PositionComponent other)
 }
 class GameText {
   +void onMount()
-  +void render()
-  +const TextStyle()
+  +void render(Canvas canvas)
 }
-class ConfettiEmitterComponent <<Widget>> {
+class ConfettiEmitterComponent {
   Vector2 origin
   int count
   double lifespan
@@ -437,12 +413,12 @@ class Stars {
   String name
   double stepTime
   bool collected
-  int maxStarsPerLevel
+  const int maxStarsPerLevel
   +void collidedWithPlayer()
 }
-class DeathZone <<Widget>> {
+class DeathZone {
   +Future<void> onLoad()
-  +void onCollision()
+  +void onCollision(Set<Vector2> intersectionPoints, PositionComponent other)
 }
 class Player {
   String character
@@ -456,13 +432,16 @@ class Player {
   SpriteAnimation doubleJumpingAnimation
   SpriteAnimation wallSlideAnimation
   const stepTime
-  double _gravity
-  double _jumpForce
-  double _maximunVelocity
-  double _terminalVelocity
+  double gravity
+  double jumpForce
+  double maximunVelocity
+  double terminalVelocity
   double moveSpeed
   bool hasReached
   double horizontalMovement
+  Vector2 statringPosition
+  Vector2 velocity
+  Vector2 windVelocity
   bool isOnGround
   bool isOnWall
   bool isOnSand
@@ -479,28 +458,23 @@ class Player {
   bool isRightKeyPressed
   bool isDownPressed
   List<CollisionBlock> collisionBlocks
-  PlayerState playerState
-  final isOnRightWall
-  final currentWall
-  +void update()
-  +bool onKeyEvent()
-  +void onCollisionStart()
-  +void onCollision()
+  CustomHitbox hitbox
+  +void update(double dt)
+  +bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed)
+  +void onCollisionStart(Set<Vector2> intersectionPoints, PositionComponent other)
+  +void onCollision(Set<Vector2> intersectionPoints, PositionComponent other)
   +void _loadAllAnimations()
-  +SpriteAnimation _spriteAnimation()
-  +SpriteAnimation _specialSpriteAnimation()
-  +void _updatePlayerMovement()
-  +void _playerJump()
+  +SpriteAnimation _spriteAnimation(String state, int amount, {double stepTime = stepTime})
+  +SpriteAnimation _specialSpriteAnimation(String state, int amount)
+  +void _updatePlayerMovement(double dt)
+  +void _playerJump(double dt)
   +void _updatePlayerState()
-  +else if()
   +void _checkHorizontalCollisions()
-  +void _applyGravity()
+  +void _applyGravity(double dt)
   +void _checkVerticalCollisions()
-  +else if()
-  +void _respawn()
+  +Future<void> _respawn()
   +Future<void> _animationRespawn()
-  +void _reachedCheckpoint()
-  +else if()
+  +Future<void> _reachedCheckpoint(Checkpoint other)
   +void collidedWithEnemy()
   +void updateCharacter()
   +void loadNewCharacterAnimations()
@@ -509,46 +483,49 @@ class Fruit {
   String fruit
   AudioPool collectFruit
   double stepTime
+  final hitbox
   bool collected
   +void collidedWithPlayer()
 }
 class Checkpoint {
   bool isLastLevel
-  SpriteAnimation _idleAnimation
-  SpriteAnimation _flagOutAnimation
-  SpriteAnimation _noFlagAnimation
-  String route
-  +void onCollisionStart()
-  +void _reachedCheckpoint()
+  final SpriteAnimation idleAnimation
+  final SpriteAnimation flagOutAnimation
+  final SpriteAnimation noFlagAnimation
+  +void onCollisionStart(Set<Vector2> intersectionPoints, PositionComponent other)
+  +Future<void> _reachedCheckpoint()
   +void _loadAllAnimations()
 }
 class PeeShooter {
   double range
   int lookDirection
   List<CollisionBlock> collisionBlocks
+  Function(dynamic) addSpawnPoint
   const stepTime
   const tileSize
-  const _bounceHeight
+  const bounceHeight
+  final textureSize
   double rangeNeg
   double rangePos
   bool gotStomped
-  Player player
+  final Player player
   double fixedDeltaTime
   double accumulatedTime
   bool isAtacking
   bool isDuringCoolDown
   const attackCouldDown
-  SpriteAnimation _idleAnimation
-  SpriteAnimation _attackAnimation
-  SpriteAnimation _hitAnimation
-  final playerOffset
-  final playerX
-  +void update()
+  final projectileSize
+  Vector2 projectileVelocity
+  RectangleHitbox hitbox
+  final SpriteAnimation idleAnimation
+  final SpriteAnimation attackAnimation
+  final SpriteAnimation hitAnimation
+  Vector2 velocity
+  +void update(double dt)
   +void _loadAllAnimations()
-  +SpriteAnimation _spriteAnimation()
+  +SpriteAnimation _spriteAnimation(String state, int amount)
   +void _calculateRange()
   +Future<void> attack()
-  +const Duration()
   +void shootProjectile()
   +bool checkPlayerInRange()
   +void collidedWithPlayer()
@@ -556,68 +533,70 @@ class PeeShooter {
 class Ghost {
   int spawnIn
   Vector2 initialPosition
-  SpriteAnimation _appearingAnimation
-  SpriteAnimation _movingAnimation
-  SpriteAnimation _disappearingAnimation
-  double stepTime
-  List<Sprite> trailSprites
-  double _timeSinceLastParticle
-  double _particleInterval
-  Player player
+  final SpriteAnimation appearingAnimation
+  final SpriteAnimation movingAnimation
+  final SpriteAnimation disappearingAnimation
+  final Vector2 spriteSize
+  const double stepTime
+  final List<Sprite> trailSprites
+  double timeSinceLastParticle
+  const double particleInterval
+  final Player player
   double speed
   bool isLookingRight
   double fixedDeltaTime
   double accumulatedTime
-  bool _isActive
-  final threshold
-  double playerCenter
-  +SpriteAnimation _spriteAnimation()
+  bool isActive
+  +SpriteAnimation _spriteAnimation(String state, int amount)
   +void onRemove()
   +Future<void> _loadTrailSprites()
   +void _spawn()
   +void respawn()
-  +const Duration()
   +void _loadAllAnimations()
-  +void update()
-  +void _emitTrailParticle()
-  +void _move()
-  +else if()
+  +void update(double dt)
+  +void _emitTrailParticle(double dt)
+  +void _move(double dt)
   +void lookLeft()
   +void lookRight()
-  +void onCollision()
+  +void onCollision(Set<Vector2> intersectionPoints, PositionComponent other)
 }
 class Rock {
   List<CollisionBlock> collisionBlocks
   double offNeg
   double offPos
   RockType type
+  Function(dynamic) addSpawnPoint
   Vector2 spawnPosition
-  SpriteAnimation _idleAnimation
-  SpriteAnimation _runAnimation
-  SpriteAnimation _hitAnimation
+  Vector2 spriteSizeRock1
+  Vector2 spriteSizeRock2
+  Vector2 spriteSizeRock3
+  final SpriteAnimation idleAnimation
+  final SpriteAnimation runAnimation
+  final SpriteAnimation hitAnimation
   const tileSize
   final rangeNeg
   final rangePos
   bool isTurningBack
+  Vector2 velocity
   const runSpeed
   const stepTime
   double moveDirection
-  double _gravity
-  double _maximunVelocity
-  double _terminalVelocity
-  Player player
-  const _bounceHeight
+  double gravity
+  double maximunVelocity
+  double terminalVelocity
+  RectangleHitbox hitbox
+  final Player player
+  const bounceHeight
   bool gotStomped
   double fixedDeltaTime
   double accumulatedTime
-  +void update()
+  +void update(double dt)
   +void _loadAllAnimations()
-  +SpriteAnimation _spriteAnimation()
-  +void _movement()
-  +else if()
-  +void _applyGravity()
+  +SpriteAnimation _spriteAnimation(String state, int amount, Vector2 size)
+  +void _movement(double dt)
+  +void _applyGravity(double dt)
   +void _checkVerticalCollisions()
-  +void turnBack()
+  +void turnBack(double direction)
   +void splitRock()
   +void collidedWithPlayer()
 }
@@ -625,33 +604,36 @@ class Bee {
   double offNeg
   double offPos
   List<CollisionBlock> collisionBlocks
+  Function(dynamic) addSpawnPoint
   const stepTime
   const tileSize
   const runSpeed
-  const _bounceHeight
+  const bounceHeight
+  final textureSize
   double rangeNeg
   double rangePos
   double moveDirection
   double targetDirection
   bool gotStomped
-  Player player
+  final Player player
   double fixedDeltaTime
   double accumulatedTime
   bool isAtacking
   bool isDuringCoolDown
   const attackCouldDown
-  SpriteAnimation _idleAnimation
-  SpriteAnimation _attackAnimation
-  SpriteAnimation _hitAnimation
-  double midBeeX
-  +void update()
+  final projectileSize
+  Vector2 projectileVelocity
+  final SpriteAnimation idleAnimation
+  final SpriteAnimation attackAnimation
+  final SpriteAnimation hitAnimation
+  Vector2 velocity
+  +void update(double dt)
   +void _loadAllAnimations()
   +void _checkHorizontalCollisions()
-  +SpriteAnimation _spriteAnimation()
+  +SpriteAnimation _spriteAnimation(String state, int amount)
   +void _calculateRange()
-  +void _movement()
+  +void _movement(double dt)
   +Future<void> attack()
-  +const Duration()
   +void shootProjectile()
   +bool playerInRange()
   +bool playerBelow()
@@ -662,11 +644,13 @@ class Radish {
   double offPos
   List<CollisionBlock> collisionBlocks
   Vector2 spawnPosition
-  SpriteAnimation _idleAnimation
-  SpriteAnimation _flyingAnimation
-  SpriteAnimation _runAnimation
-  SpriteAnimation _hitAnimation
+  final SpriteAnimation idleAnimation
+  final SpriteAnimation flyingAnimation
+  final SpriteAnimation runAnimation
+  final SpriteAnimation hitAnimation
   const stepTime
+  final textureSize
+  RectangleHitbox hitbox
   const tileSize
   final rangePos
   final rangeNeg
@@ -674,42 +658,37 @@ class Radish {
   const flySpeed
   double sineTime
   bool isFlying
-  double _gravity
-  double _maximunVelocity
-  double _terminalVelocity
+  Vector2 velocity
+  double gravity
+  double maximunVelocity
+  double terminalVelocity
   double groundSpeed
-  const _bounceHeight
-  Player player
+  const bounceHeight
+  final Player player
   bool gotStomped
   double fixedDeltaTime
   double accumulatedTime
-  final radishBottom
-  final blockTop
-  const slowdownMargin
-  const amplitude
-  const frequency
-  +Movement logic()
-  +Movement logic()
   +void _loadAllAnimations()
-  +SpriteAnimation _spriteAnimation()
-  +void update()
+  +SpriteAnimation _spriteAnimation(String state, int amount)
+  +void update(double dt)
   +void _checkVerticalCollisions()
-  +void _fly()
-  +else if()
+  +Future<void> _fly(double dt)
   +void _checkHorizontalCollisions()
-  +else if()
-  +void _movement()
-  +void turnBack()
-  +void _applyGravity()
+  +void _movement(double dt)
+  +void turnBack(double direction)
+  +void _applyGravity(double dt)
   +void collidedWithPlayer()
 }
 class SpikeHead {
   bool isReversed
-  SpriteAnimation _idleAnimation
-  SpriteAnimation _atackDownAnimation
-  SpriteAnimation _atackAnimation
-  SpriteAnimation _atackTopAnimation
+  final SpriteAnimation idleAnimation
+  final SpriteAnimation atackDownAnimation
+  final SpriteAnimation atackAnimation
+  final SpriteAnimation atackTopAnimation
   double stepTime
+  final textureSize
+  CustomHitbox hitbox
+  const Duration inmobileDuration
   bool isAtacking
   bool isComingBack
   const attackVelocity
@@ -717,40 +696,42 @@ class SpikeHead {
   const detectDistance
   Player player
   Vector2 initialPosition
+  Vector2 velocity
   double fixedDeltaTime
   double accumulatedTime
-  final rockheadVisionLeft
-  final rockheadVisionRight
-  final playerY
-  final rockheadY
-  final isAligned
-  final isAbove
   +void _loadAllStates()
-  +SpriteAnimation _spriteAnimation()
-  +void onCollisionStart()
-  +void _updateMovement()
-  +void update()
+  +SpriteAnimation _spriteAnimation(String state, int amount)
+  +void onCollisionStart(Set<Vector2> intersectionPoints, PositionComponent other)
+  +void _updateMovement(double dt)
+  +void update(double dt)
   +void checkPlayerPosition()
-  +else if()
-  +void attack()
+  +void attack(int direction)
   +void comeBack()
 }
-class PeeProjectile <<Widget>> {
+class PlayerCollidable <<Mixin>> {
+  final Player player
+  +void collidedWithPlayer()
+}
+class PeeProjectile {
   Vector2 velocity
-  Player player
-  double lifeSpan
+  Function(dynamic) addSpawnPoint
+  final Player player
+  final double lifeSpan
+  final Vector2 particleSize
   +Future<void> onLoad()
-  +void update()
-  +void onCollision()
+  +void update(double dt)
+  +void onCollision(Set<Vector2> intersectionPoints, PositionComponent other)
   +void destroyWithParticles()
 }
-class BeeProjectile <<Widget>> {
+class BeeProjectile {
   Vector2 velocity
-  Player player
-  double lifeSpan
+  Function(dynamic) addSpawnPoint
+  final Player player
+  final double lifeSpan
+  final Vector2 particleSize
   +Future<void> onLoad()
-  +void update()
-  +void onCollision()
+  +void update(double dt)
+  +void onCollision(Set<Vector2> intersectionPoints, PositionComponent other)
   +void destroyWithParticles()
 }
 class Snail {
@@ -761,39 +742,41 @@ class Snail {
   const stepTime
   const tileSize
   double runSpeed
-  const _bounceHeight
+  const bounceHeight
+  final textureSize
+  Random random
   bool isOnGround
   double rangeNeg
   double rangePos
   double moveDirection
   double targetDirection
   bool gotStomped
-  Player player
+  final Player player
   double fixedDeltaTime
   double accumulatedTime
   int hp
-  double _gravity
-  double _jumpForce
-  double _maximunVelocity
-  double _terminalVelocity
+  double gravity
+  double jumpForce
+  double maximunVelocity
+  double terminalVelocity
   int timeToJump
   int timeToTransformShell
   int timeToTransformSnail
-  double _noFlipDifference
-  Timer transformShellTimer
-  Timer jumpTimer
-  SpriteAnimation _idleAnimation
-  SpriteAnimation _walkAnimation
-  SpriteAnimation _hitAnimation
-  SpriteAnimation _shellWallHitAnimation
-  SpriteAnimation _shellIdleAnimation
+  double noFlipDifference
+  RectangleHitbox hitbox
+  final SpriteAnimation idleAnimation
+  final SpriteAnimation walkAnimation
+  final SpriteAnimation hitAnimation
+  final SpriteAnimation shellWallHitAnimation
+  final SpriteAnimation shellIdleAnimation
+  Vector2 velocity
   +void onRemove()
-  +void update()
+  +void update(double dt)
   +void _loadAllAnimations()
   +void _checkVerticalCollisions()
-  +void _applyGravity()
+  +void _applyGravity(double dt)
   +void _checkHorizontalCollisions()
-  +SpriteAnimation _spriteAnimation()
+  +SpriteAnimation _spriteAnimation(String state, int amount)
   +void _startJumpTimer()
   +void _startTransformShellTimer()
   +void _startTransformSnailTimer()
@@ -801,12 +784,11 @@ class Snail {
   +void _transformShell()
   +void _jump()
   +void _calculateRange()
-  +void _movement()
-  +else if()
+  +void _movement(double dt)
   +bool playerInRange()
   +void collidedWithPlayer()
   +bool isSnail()
-  +Future<void> spawnConfetti()
+  +Future<void> spawnConfetti(Vector2 atPosition)
 }
 class Chicken {
   double offNeg
@@ -815,151 +797,135 @@ class Chicken {
   const stepTime
   const tileSize
   const runSpeed
-  const _bounceHeight
+  const bounceHeight
+  final textureSize
   double rangeNeg
   double rangePos
   double moveDirection
   double targetDirection
   bool gotStomped
-  Player player
+  final Player player
   double fixedDeltaTime
   double accumulatedTime
-  SpriteAnimation _idleAnimation
-  SpriteAnimation _runAnimation
-  SpriteAnimation _hitAnimation
-  +void update()
+  final SpriteAnimation idleAnimation
+  final SpriteAnimation runAnimation
+  final SpriteAnimation hitAnimation
+  Vector2 velocity
+  +void update(double dt)
   +void _loadAllAnimations()
   +void _checkHorizontalCollisions()
-  +SpriteAnimation _spriteAnimation()
+  +SpriteAnimation _spriteAnimation(String state, int amount)
   +void _calculateRange()
-  +void _movement()
+  +void _movement(double dt)
   +bool playerInRange()
   +void _updateState()
   +void collidedWithPlayer()
 }
 class SoundManager {
-  AudioPlayer> _players
-  bool _initialized
+  final SoundManager instance
+  Map<String, AudioPlayer> players
+  Duration jumpCooldown
+  DateTime? lastJump
+  Timer? rockheadLoopTimer
+  bool initialized
   int mutedVolume
-  final player
+  +factory SoundManager()
   +Future<void> init()
-  +Future<void> _load()
-  +void play()
-  +void playJump()
-  +void startRockheadAttackingLoop()
+  +Future<void> _load(String key, String assetPath)
+  +void play(String key, double volume)
+  +void playCollectFruit(double volume)
+  +void playHit(double volume)
+  +void playBounce(double volume)
+  +void playDisappear(double volume)
+  +void playSmash(double volume)
+  +void playRockheadAttacking(double volume)
+  +void playAppearGhost(double volume)
+  +void playDisappearGhost(double volume)
+  +void playFire(double volume)
+  +void playGlitch(double volume)
+  +void playJump(double volume)
+  +void startRockheadAttackingLoop(double volume, {Duration interval = const Duration(milliseconds: 500)
   +void stopRockheadAttackingLoop()
   +Future<void> dispose()
-  +void startDefaultBGM()
-  +void startBossBGM()
-  +void startCreditsBGM()
-  +void startMenuBGM()
+  +void startDefaultBGM(Settings settings)
+  +void startBossBGM(Settings settings)
+  +void startCreditsBGM(Settings settings)
+  +void startMenuBGM(Settings settings)
   +void stopBGM()
   +void pauseAll()
   +void resumeAll()
 }
-class CreditsScreen <<Widget>> {
+class CreditsScreen {
   Function gameAdd
   Function gameRemove
   FruitCollector game
   List<_ScrollingCreditLine> creditLines
   Vector2 screenSize
-  RectangleComponent _fadeOverlay
-  _FadeUpdateComponent _fadeUpdateComponent
-  bool _hasFinished
-  double durationInSeconds
-  double elapsed
-  double spacing
-  double startY
-  double titleFontSize
-  String rawText
-  bool isLast
-  double yOffset
-  String char
-  final color
-  double yOffset
+  RectangleComponent fadeOverlay
+  _FadeUpdateComponent fadeUpdateComponent
+  bool hasFinished
   +Future<void> show()
   +void _startFadeOverlay()
   +void _spawnCreditLines()
-  +Pixel Adventure()
-  +Sound Engineers()
-  +on calculators()
-  +THE END()
   +void _onCreditsFinished()
 }
 class _ScrollingCreditLine {
   double screenHeight
   double speed
-  +void update()
+  VoidCallback? onRemoved
+  +void update(double dt)
 }
-class _FadeUpdateComponent <<Widget>> {
-  +void update()
+class _FadeUpdateComponent {
+  +void update(double dt)
 }
 class DeathScreen {
   Function gameAdd
   Function gameRemove
   FruitCollector game
+  final random
   RectangleComponent blackScreen
-}
-class variable {
+  TextComponent? defeatedTextComponent
+  TextComponent? defeatedTextShadow
   List<TextComponent> xComponents
-  final xCount
-  final t
-  final t
-  +Future<void> addBlackScreen()
-  +const Color()
+  +Future<void> addBlackScreen(int deaths)
   +Future<void> removeBlackScreen()
 }
-class ChangeLevelScreen <<Widget>> {
+class ChangeLevelScreen {
   double durationMs
   VoidCallback onExpandEnd
   double radius
-  double _elapsed
-  TransitionPhase _phase
-  double maxRadius
-  Vector2 center
+  double elapsed
+  TransitionPhase phase
+  final double maxRadius
+  final Vector2 center
   bool endFunctionExecuted
   bool showLevelSummary
-  get isHud
+  bool get isHud
   +Future<void> onLoad()
-  +void render()
-  +void update()
-  +else if()
+  +void render(Canvas canvas)
+  +void update(double dt)
   +void startContract()
   +void startExpand()
 }
-class LevelSummaryOverlay <<Widget>> {
+class LevelSummaryOverlay {
   VoidCallback onContinue
   FruitCollector game
-  get levelName
-  get difficulty
-  get deaths
-  get stars
-  get time
-  double minWidth
-  double maxWidth
-  double minHeight
-  double maxHeight
-  int totalStars
-  List<Widget> stars
-  int minutes
-  int remainingSeconds
-  +Widget build()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
-  +Widget _iconValue()
-  +const SizedBox()
-  +Widget _starsRow()
-  +String _formatTime()
-  +String _difficultyText()
+  String get levelName
+  int get difficulty
+  int get deaths
+  int get stars
+  int get time
+  +Widget build(BuildContext context)
+  +Widget _iconValue({required IconData icon, required String value, required TextStyle style})
+  +Widget _starsRow(int count)
+  +String _formatTime(int seconds)
+  +String _difficultyText(int value)
 }
 class LoadingBanana {
   FruitCollector game
   final buttonSize
   +Future<void> show()
-  +void onGameResize()
+  +void onGameResize(Vector2 size)
 }
 class BackgroundTile {
   String color
@@ -967,110 +933,113 @@ class BackgroundTile {
 }
 class CharacterManager {
   FruitCollector game
-  dynamic>> allCharacters
-  Character character
-  GameCharacter gameCharacter
-  final alreadyUnlocked
+  List<Map<String, dynamic>> allCharacters
   +Future<void> evaluate()
-  +void _showCharacterUnlocked()
+  +void _showCharacterUnlocked(Character character)
   +void tryShowNextToast()
-  +const Duration()
 }
 class TextStyleSingleton {
-  return _instance
+  final TextStyleSingleton instance
   +factory TextStyleSingleton()
 }
-class LevelSelection <<Widget>> {
+class LevelSelection {
   double buttonSize
   bool isAvaliable
-  +void onTapDown()
+  +void onTapDown(TapDownEvent event)
 }
-class AchievementsButton <<Widget>> {
+class AchievementsButton {
   double buttonSize
   bool isAvaliable
-  +void onTapDown()
+  +void onTapDown(TapDownEvent event)
 }
-class CustomJoystick <<Widget>> {
+class CustomJoystick {
   double controlSize
   double leftMargin
   JoystickComponent joystick
   Player player
   bool wasIdle
-  Vector2 tapPosition
-  double screenWidth
-  double screenHeight
-  bool isLeftSideTap
-  bool isBottomHalf
   +Future<void> onLoad()
   +void _addJoystick()
-  +void update()
-  +else if()
-  +void onGameResize()
+  +void update(double dt)
+  +void onGameResize(Vector2 size)
   +void _updateJoystick()
-  +void onTapDown()
-  +void onTapUp()
+  +void onTapDown(TapDownEvent event)
+  +void onTapUp(TapUpEvent event)
 }
-class JumpButton <<Widget>> {
+class JumpButton {
   double buttonSize
   SpriteComponent buttonSprite
-  +? Vector2()
-  +void onGameResize()
-  +void _setSizeAndPosition()
-  +? Vector2()
-  +void onTapDown()
-  +void onTapUp()
+  +void onGameResize(Vector2 gameSize)
+  +void _setSizeAndPosition(Vector2 gameSize)
+  +void onTapDown(TapDownEvent event)
+  +void onTapUp(TapUpEvent event)
 }
-class OpenMenuButton <<Widget>> {
+class OpenMenuButton {
   double buttonSize
   bool isAvaliable
-  +void onGameResize()
-  +void onTapDown()
+  +void onGameResize(Vector2 size)
+  +void onTapDown(TapDownEvent event)
 }
-class ChangePlayerSkinButton <<Widget>> {
+class ChangePlayerSkinButton {
   double buttonSize
   bool isAvaliable
-  +void onTapDown()
+  +void onTapDown(TapDownEvent event)
 }
-class ToggleMusicVolumeWidget <<Widget>> {
+class PauseMenu {
+  const String id
+  FruitCollector game
+  +Widget build(BuildContext context)
+}
+class PauseMenuVM {
+  FruitCollector game
+  final TextStyle textStyle
+  String get pauseTitle
+  String get resumeLabel
+  String get settingsLabel
+  String get mainMenuLabel
+  bool get canResume
+  +void initialize()
+  +void resumeGame()
+  +void openSettings()
+  +void goToMainMenu()
+}
+class SettingsMenu {
+  const String id
+  FruitCollector game
+  +Widget build(BuildContext context)
+}
+class ToggleMusicVolumeWidget {
   FruitCollector game
   Function updateMusicVolume
 }
-class _ToggleMusicVolumeWidgetState <<Widget>> {
+class _ToggleMusicVolumeWidgetState {
   FruitCollector game
   Function updateMusicVolume
   bool isMuted
   double value
   bool isSliderActive
-  return null
-  return value
-  +Widget build()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
-  +double? onChanged()
+  +Widget build(BuildContext context)
+  +double? onChanged(dynamic value)
   +void changeState()
 }
-class ResizeHUD <<Widget>> {
+class ResizeHUD {
   FruitCollector game
   Function updateSizeHUD
 }
-class _ResizeHUDState <<Widget>> {
+class _ResizeHUDState {
   FruitCollector game
   Function updateSizeHUD
   double value
-  return value
-  +Widget build()
-  +const SizedBox()
-  +const SizedBox()
-  +double? onChanged()
+  +Widget build(BuildContext context)
+  +double? onChanged(dynamic value)
 }
-class ResizeControls <<Widget>> {
+class ResizeControls {
   FruitCollector game
   Function updateSizeControls
   Function updateIsLeftHanded
   Function updateShowControls
 }
-class _ResizeControlsState <<Widget>> {
+class _ResizeControlsState {
   FruitCollector game
   Function updateSizeControls
   Function updateIsLeftHanded
@@ -1078,256 +1047,218 @@ class _ResizeControlsState <<Widget>> {
   double value
   bool isLeftHanded
   bool showControls
-  return value
-  +Widget build()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
-  +double? onChanged()
+  bool get isDesktop
+  +Widget build(BuildContext context)
+  +double? onChanged(dynamic value)
 }
-class SettingsMenu <<Widget>> {
-  String id
+class NumberSlider {
   FruitCollector game
-  double sizeHUD
-  double sizeControls
+  double value
+  double minValue
+  Function(dynamic) onChanged
+  bool isActive
+  +_NumberSliderState createState()
+}
+class _NumberSliderState {
+  FruitCollector game
+  double value
+  Function(dynamic) onChanged
+  bool isActive
+  +set setValue(double newValue)
+  +void didUpdateWidget(covariant NumberSlider oldWidget)
+  +Widget build(BuildContext context)
+}
+class ToggleGameVolumeWidget {
+  FruitCollector game
+  Function updateGameVolume
+}
+class _ToggleGameVolumeWidgetState {
+  FruitCollector game
+  Function updateGameVolume
+  bool isMuted
+  double value
+  bool isSliderActive
+  +Widget build(BuildContext context)
+  +double? onChanged(dynamic value)
+  +void changeState()
+}
+class SettingsMenuViewModel {
+  double hudSize
+  double controlSize
   double gameVolume
   double musicVolume
   bool isLeftHanded
   bool showControls
-  +Widget build()
-  +const Size()
-  +const SizedBox()
-  +const Icon()
-  +const SizedBox()
-  +const Icon()
-}
-class ToggleGameVolumeWidget <<Widget>> {
   FruitCollector game
-  Function updateGameVolume
+  +void init({required FruitCollector game})
+  +void updateHudSize(double value)
+  +void updateControlSize(double value)
+  +void updateGameVolume(double value)
+  +void updateMusicVolume(double value)
+  +void updateIsLeftHanded(bool value)
+  +void updateShowControls(bool value)
+  +void applySettings()
+  +void backToPauseMenu()
+  +void confirmAndBackToPauseMenu()
 }
-class _ToggleGameVolumeWidgetState <<Widget>> {
+class MainMenu {
+  const String id
   FruitCollector game
-  Function updateGameVolume
-  bool isMuted
-  double value
-  bool isSliderActive
-  return null
-  return value
-  +Widget build()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
-  +double? onChanged()
-  +void changeState()
+  +Widget build(BuildContext context)
 }
-class BackgroundWidget <<Widget>> {
+class GameSelector {
+  const String id
+  FruitCollector game
+  +Widget build(BuildContext context)
 }
-class _BackgroundWidgetState <<Widget>> {
-  int _currentGif
-  Timer _gifTimer
+class BackgroundWidget {
+}
+class _BackgroundWidgetState {
+  List<String> gifPaths
+  int currentGif
+  Timer gifTimer
+  Color baseColor
   +void initState()
-  +const Duration()
   +void dispose()
-  +Widget build()
+  +Widget build(BuildContext context)
 }
-class MainMenu <<Widget>> {
-  String id
+class SlotButton {
+  Game? gameSlot
+  int slotNumber
+  Color textColor
+  ButtonStyle style
+  VoidCallback onPressed
+  VoidCallback onDelete
+  +Widget build(BuildContext context)
+}
+class DeleteSlotModal {
+  int slotNumber
+  Color textColor
+  Color baseColor
+  Color borderColor
+  VoidCallback onCancel
+  VoidCallback onConfirm
+  +Widget build(BuildContext context)
+}
+class MenuButton {
+  String label
+  IconData icon
+  ButtonStyle style
+  VoidCallback onPressed
+  bool enabled
+  +Widget build(BuildContext context)
+}
+class TickerProviderStub {
+  +Ticker createTicker(TickerCallback onTick)
+}
+class MainMenuVM {
   FruitCollector game
-}
-class _MainMenuState <<Widget>> {
-  AnimationController _logoController
-  ButtonStyle buttonStyle
-  bool _isSoundOn
-  bool isLoading
+  TickerProvider vsync
+  final AnimationController logoController
+  final Animation<double> logoAnimation
   GameService service
-  Game game
-  +void initState()
-  +const Duration()
-  +const Size()
+  Game lastGame
+  bool isSoundOn
+  bool isLoading
+  bool get isSoundOn
+  bool get isLoading
+  String get titleText
+  String get continueLabel
+  String get loadGameLabel
+  String get quitLabel
+  +Future<void> initialize(BuildContext context)
+  +bool isMobile(BuildContext context)
+  +Future<void> _loadLastGame()
+  +void _applyInitialMusic()
+  +void toggleVolume()
+  +Future<void> onContinuePressed()
+  +void onLoadGamePressed()
+  +void onQuitPressed()
   +void dispose()
-  +Widget _menuButton()
-  +Widget build()
-  +const BackgroundWidget()
-  +const CircleBorder()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
-  +Future<void> loadLastGame()
-  +void _onVolumeToggle()
-  +void _onContinuePressed()
-  +void _onLoadGamePressed()
 }
-class GameSelector <<Widget>> {
-  String id
+class GameSelectorVM {
   FruitCollector game
+  Game? slot1
+  Game? slot2
+  Game? slot3
+  GameService? gameService
+  int? slotToDelete
+  Game? get slot1
+  Game? get slot2
+  Game? get slot3
+  int? get slotToDelete
+  String get titleText
+  String get backLabel
+  +Future<void> _ensureGameService()
+  +Future<void> loadSlots()
+  +Future<void> selectSlot(int slotNumber)
+  +void confirmDelete(int slotNumber)
+  +void cancelDelete()
+  +Future<void> deleteSlot(int slotNumber)
+  +void goBackToMainMenu()
 }
-class _GameSelectorState <<Widget>> {
-  final isEmpty
-  final label
-  final icon
-  +void initState()
-  +Future<void> _loadSlots()
-  +Widget build()
-  +const Size()
-  +const Size()
-  +const Size()
-  +const BackgroundWidget()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
-  +const Icon()
-  +const SizedBox()
-  +Widget _buildSlot()
-  +const SizedBox()
-  +Widget _buildDeleteIcon()
-  +void _confirmDelete()
-  +Widget _buildCustomModal()
-  +const SizedBox()
-  +const SizedBox()
-  +const Icon()
-  +const Icon()
-  +void _loadSlot()
-  +Future<void> getGameService()
-}
-class PauseMenu <<Widget>> {
-  String id
+class AchievementMenu {
   FruitCollector game
-  +Widget build()
-  +const Size()
-  +const Shadow()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
+  List<Map<String, dynamic>> achievements
+  const String id
 }
-class AchievementMenu <<Widget>> {
-  FruitCollector game
-  dynamic>> achievements
-  String id
-}
-class _AchievementMenuState <<Widget>> {
-  double _rowHeight
-  double _rowSpacing
-  double currentOffset
-  dynamic> achievementData
-  Achievement achievement
-  GameAchievement gameAchievement
-  +void _scrollByRow()
+class _AchievementMenuState {
+  ScrollController scrollController
+  const double rowHeight
+  const double rowSpacing
+  +void _scrollByRow({required bool forward})
   +void _onBack()
-  +Widget build()
-  +const BorderSide()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
-  +const TextStyle()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
-  +const Icon()
-  +const SizedBox()
-  +const Icon()
-  +const SizedBox()
-  +const Icon()
-  +const CircleBorder()
-  +const BoxConstraints()
+  +Widget build(BuildContext context)
   +void dispose()
 }
-class AchievementDetails <<Widget>> {
+class AchievementDetails {
   FruitCollector game
   Achievement achievement
   GameAchievement gameAchievement
-  String id
-  double imageSize
-  +Widget build()
-  +const BorderSide()
-  +const Icon()
+  const String id
+  +Widget build(BuildContext context)
   +void _onBack()
 }
-class AchievementToast <<Widget>> {
-  String id
+class AchievementToast {
+  const String id
   Achievement achievement
   VoidCallback onDismiss
   FruitCollector game
-  +Widget build()
-  +void onTap()
-  +const Offset()
-  +const Icon()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
-  +const Icon()
+  +Widget build(BuildContext context)
 }
 class AchievementMenuVM {
-  dynamic>> achievements
-  double rowHeight
-  double rowSpacing
-  double currentOffset
-  +void scrollByRow()
+  ScrollController scrollController
+  List<Map<String, dynamic>> achievements
+  const double rowHeight
+  const double rowSpacing
+  +void scrollByRow({required bool forward})
   +void dispose()
-}
-class NumberSlider <<Widget>> {
-  FruitCollector game
-  double value
-  double minValue
-  bool isActive
-  +_NumberSliderState createState()
-}
-class _NumberSliderState <<Widget>> {
-  FruitCollector game
-  double value
-  bool isActive
-  +set setValue()
-  +void didUpdateWidget()
-  +Widget build()
 }
 class BaseModel {
   bool disposed
-  bool _busy
-  get busy
+  String? errorTitle
+  String? errorDescription
+  String? emptyTitle
+  String? emptyDescription
+  bool busy
+  bool get busy
   bool isEmpty
   bool hasErrors
   +void dispose()
   +void notifyListeners()
-  +void setBusy()
-  +void setEmpty()
-  +void setError()
+  +void setBusy(bool value)
+  +void setEmpty({bool empty = true})
+  +void setError({String? errorTitle, String? errorDescription})
 }
-class LevelSelectionMenu <<Widget>> {
-  String id
+class LevelSelectionMenu {
+  const String id
   int totalLevels
   FruitCollector game
-  double cardSpacing
-  double minCardSize
-  double minCardsPerRow
-  double availableWidth
-  double rowHeight
-  double currentOffset
-  double targetOffset
-  int level
-  +Widget build()
-  +void onBack()
-  +const BorderSide()
-  +void scrollByRow()
-  +const Duration()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
-  +const Icon()
-  +const SizedBox()
-  +const Icon()
-  +const SizedBox()
-  +const Icon()
-  +const CircleBorder()
-  +const BoxConstraints()
+  +Widget build(BuildContext context)
 }
-class LevelCard <<Widget>> {
+class LevelCard {
   int levelNumber
+  VoidCallback? onTap
   Color cardColor
   Color textColor
   int difficulty
@@ -1337,81 +1268,50 @@ class LevelCard <<Widget>> {
   int stars
   int duration
   int deaths
-  double t
-  String timeText
-  String deathsText
   +Color _calculateBorderColor()
-  +Color _lighten()
-  +Widget build()
-  +? _lighten()
-  +const SizedBox()
-  +const Icon()
-  +const SizedBox()
-  +const Icon()
-  +? _calculateBorderColor()
+  +Color _lighten(Color color, double amount)
+  +Widget build(BuildContext context)
 }
 class LevelSelectionMenuVM {
-  double cardSpacing
-  double rowHeight
-  double currentOffset
-  double targetOffset
-  +void scrollByRow()
+  ScrollController scrollController
+  const double cardSpacing
+  +void scrollByRow({required bool forward, required double rowSize})
   +void dispose()
 }
-class CharacterToast <<Widget>> {
-  String id
+class CharacterToast {
+  const String id
   Character character
   VoidCallback onDismiss
   FruitCollector game
-  +Widget build()
-  +void onTap()
-  +const Offset()
-  +const SizedBox()
-  +const SizedBox()
-  +const SizedBox()
-  +const Icon()
+  +Widget build(BuildContext context)
 }
-class CharacterSelection <<Widget>> {
-  String id
+class CharacterSelection {
+  const String id
   FruitCollector game
-  +Widget build()
-  +const Icon()
-  +const Icon()
-  +const SizedBox()
-  +const Icon()
-  +const SizedBox()
-  +const SizedBox()
-  +const Icon()
+  +Widget build(BuildContext context)
 }
-class TickerProviderStub {
-}
-class CharacterCardFlip <<Widget>> {
+class CharacterCardFlip {
   double angle
   bool isFrontVisible
   bool isUnlocked
   Character character
   double size
   VoidCallback onTap
-  +Widget build()
-  +? _buildFront()
+  +Widget build(BuildContext context)
   +Widget _buildFront()
-  +const Color()
-  +const Color()
   +Widget _buildBack()
-  +const Color()
-  +const Color()
 }
 class CharacterSelectionVM {
-  AnimationController animationController
-  Animation<double> rotation
+  final AnimationController animationController
+  final Animation<double> rotation
   bool isFront
   FruitCollector game
   int selectedCharacterIndex
   int numCharacters
-  int userStars
-  get currentCharacter
-  get currentGameCharacter
-  get angle
+  final int userStars
+  Character get currentCharacter
+  GameCharacter get currentGameCharacter
+  double get angle
   +void _notifyListeners()
   +void refreshFromGame()
   +void _initializeData()
@@ -1423,39 +1323,56 @@ class CharacterSelectionVM {
   +void dispose()
 }
 class BaseWidget {
+  T? model
+  Widget? child
+  +final Function(T)
+  +final Function(T)
 }
-class _BaseWidgetState <<Widget>> {
+class _BaseWidgetState {
+  T? model
   +void initState()
-  +Widget build()
+  +Widget build(BuildContext context)
 }
-class FruitCollector <<Widget>> {
+class FruitCollector {
   CameraComponent cam
+  GameService? gameService
+  LevelService? levelService
+  SettingsService? settingsService
+  AchievementService? achievementService
+  CharacterService? characterService
   Player player
   Level level
   Character character
   Settings settings
   bool isOnMenu
-  dynamic>> levels
-  dynamic>> achievements
-  dynamic>> characters
+  List<Map<String, dynamic>> levels
+  List<Map<String, dynamic>> achievements
+  List<Map<String, dynamic>> characters
   bool duringBlackScreen
   bool duringRemovingBlackScreen
   CustomJoystick customJoystick
+  ChangePlayerSkinButton? changeSkinButton
+  OpenMenuButton? menuButton
+  LevelSelection? levelSelectionButton
+  AchievementsButton? achievementsButton
+  JumpButton? jumpButton
   bool isJoystickAdded
+  final Vector2 leftControlPosition
+  final AchievementManager achievementManager
+  final CharacterManager characterManager
   bool isShowingAchievementToast
   bool isShowingCharacterToast
-  List<dynamic>> pendingToasts
-  int> levelTimes
-  int> levelDeaths
-  final pixelAdventure
-  final pixelAdventure
-  int currentLevel
-  GameLevel currentGameLevel
-  GameLevel nextGameLevel
-  final gameDeaths
-  double width
-  double height
-  +Future<void> chargeSlot()
+  Map<String, List<dynamic>> pendingToasts
+  Achievement? currentShowedAchievement
+  int? currentMenuIndexShowedCharacter
+  Character? currentToastShowedCharacter
+  Achievement? currentAchievement
+  GameAchievement? currentGameAchievement
+  Map<int, int> levelTimes
+  Map<int, int> levelDeaths
+  final soundManager
+  +Color backgroundColor()
+  +Future<void> chargeSlot(int space)
   +void loadButtonsAndHud()
   +void initializateButtons()
   +void addOverlays()
@@ -1463,7 +1380,7 @@ class FruitCollector <<Widget>> {
   +void removeControls()
   +void addAllButtons()
   +void updateGlobalStats()
-  +void completeLevel()
+  +Future<void> completeLevel()
   +void _loadActualLevel()
   +void addJoystick()
   +Future<void> getGameService()
@@ -1471,104 +1388,95 @@ class FruitCollector <<Widget>> {
   +Future<void> getAchievementService()
   +Future<void> getCharacterService()
   +Future<void> getSettingsService()
-  +void toggleBlockButtons()
-  +void toggleBlockWindowResize()
-  +else if()
+  +void toggleBlockButtons(bool isLocked)
+  +void toggleBlockWindowResize(bool isLocked)
   +void updateCharacter()
   +void pauseEngine()
   +void resumeEngine()
 }
-class CollisionableWithHitbox <<Mixin>> {
-}
-class PlayerCollidable <<Mixin>> {
-}
+GameRepository --> GameRepository
+AchievementRepository --> AchievementRepository
+LevelRepository --> LevelRepository
+GameCharacterRepository --> GameCharacterRepository
+SettingsRepository --> SettingsRepository
+GameAchievementRepository --> GameAchievementRepository
+CharacterRepository --> CharacterRepository
+GameLevelRepository --> GameLevelRepository
 Level --> Player
-AchievementService --> AchievementRepository
-GameService --> GameRepository
-GameService --> SettingsRepository
-GameService --> GameLevelRepository
-GameService --> GameAchievementRepository
-GameService --> GameCharacterRepository
-SettingsService --> SettingsRepository
-LevelService --> LevelRepository
-CharacterService --> CharacterRepository
-CharacterService --> GameCharacter
+Level --> GameLevel
+AchievementService --> AchievementService
+GameService --> GameService
+SettingsService --> SettingsService
+LevelService --> LevelService
+CharacterService --> CharacterService
+DatabaseManager --> DatabaseManager
 AchievementManager --> FruitCollector
-AchievementManager --> Achievement
-AchievementManager --> GameAchievement
-AlternatingBlock --> CollisionBlock
-LootBox --> Player
+Door --> CollisionBlock
 LootBox --> CollisionBlock
-FallingBlock --> CollisionBlock
 FallingBlock --> Player
 Trampoline --> CollisionBlock
-Trampoline --> Player
 FireBlock --> CollisionBlock
 Fan --> CollisionBlock
-Fan --> Player
-PeeShooter --> Player
-Ghost --> Player
-Rock --> Player
-Bee --> Player
-Radish --> Player
+Player --> CustomHitbox
+SpikeHead --> CustomHitbox
 SpikeHead --> Player
-PeeProjectile --> Player
-BeeProjectile --> Player
-Snail --> Player
-Chicken --> Player
 CreditsScreen --> FruitCollector
 CreditsScreen --> _FadeUpdateComponent
 DeathScreen --> FruitCollector
 LevelSummaryOverlay --> FruitCollector
 LoadingBanana --> FruitCollector
 CharacterManager --> FruitCollector
-CharacterManager --> Character
-CharacterManager --> GameCharacter
 CustomJoystick --> Player
-_ToggleMusicVolumeWidgetState --> ToggleMusicVolumeWidget
-_ToggleMusicVolumeWidgetState --> FruitCollector
-ToggleMusicVolumeWidget --> FruitCollector
-_ResizeHUDState --> ResizeHUD
-_ResizeHUDState --> FruitCollector
-ResizeHUD --> FruitCollector
-_ResizeControlsState --> ResizeControls
-_ResizeControlsState --> FruitCollector
-ResizeControls --> FruitCollector
-SettingsMenu --> FruitCollector
-_ToggleGameVolumeWidgetState --> ToggleGameVolumeWidget
-_ToggleGameVolumeWidgetState --> FruitCollector
-ToggleGameVolumeWidget --> FruitCollector
-_BackgroundWidgetState --> BackgroundWidget
-_MainMenuState --> MainMenu
-_MainMenuState --> GameService
-_MainMenuState --> Game
-MainMenu --> FruitCollector
-_GameSelectorState --> GameSelector
-GameSelector --> FruitCollector
 PauseMenu --> FruitCollector
-_AchievementMenuState --> AchievementMenu
-_AchievementMenuState --> Achievement
-_AchievementMenuState --> GameAchievement
+PauseMenuVM --> FruitCollector
+SettingsMenu --> FruitCollector
+ToggleMusicVolumeWidget --> FruitCollector
+_ToggleMusicVolumeWidgetState --> FruitCollector
+ResizeHUD --> FruitCollector
+_ResizeHUDState --> FruitCollector
+ResizeControls --> FruitCollector
+_ResizeControlsState --> FruitCollector
+NumberSlider --> FruitCollector
+_NumberSliderState --> FruitCollector
+ToggleGameVolumeWidget --> FruitCollector
+_ToggleGameVolumeWidgetState --> FruitCollector
+SettingsMenuViewModel --> FruitCollector
+MainMenu --> FruitCollector
+GameSelector --> FruitCollector
+SlotButton --> Game
+MainMenuVM --> FruitCollector
+MainMenuVM --> GameService
+MainMenuVM --> Game
+GameSelectorVM --> FruitCollector
+GameSelectorVM --> Game
+GameSelectorVM --> GameService
 AchievementMenu --> FruitCollector
 AchievementDetails --> FruitCollector
 AchievementDetails --> Achievement
 AchievementDetails --> GameAchievement
 AchievementToast --> Achievement
 AchievementToast --> FruitCollector
-_NumberSliderState --> NumberSlider
-_NumberSliderState --> FruitCollector
-NumberSlider --> FruitCollector
 LevelSelectionMenu --> FruitCollector
 CharacterToast --> Character
 CharacterToast --> FruitCollector
 CharacterSelection --> FruitCollector
 CharacterCardFlip --> Character
-CharacterSelectionVM --> BaseModel
 CharacterSelectionVM --> FruitCollector
+FruitCollector --> GameService
+FruitCollector --> LevelService
+FruitCollector --> SettingsService
+FruitCollector --> AchievementService
+FruitCollector --> CharacterService
 FruitCollector --> Player
 FruitCollector --> Level
 FruitCollector --> Character
 FruitCollector --> Settings
 FruitCollector --> CustomJoystick
-FruitCollector --> GameLevel
+FruitCollector --> ChangePlayerSkinButton
+FruitCollector --> OpenMenuButton
+FruitCollector --> LevelSelection
+FruitCollector --> AchievementsButton
+FruitCollector --> JumpButton
+FruitCollector --> Achievement
+FruitCollector --> GameAchievement
 @enduml
