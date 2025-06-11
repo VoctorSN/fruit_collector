@@ -1,6 +1,10 @@
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
+// Import Flutter foundation when running under Flutter (UI available);
+// otherwise pull in our lightweight CLI stub.
+import 'foundation_stub.dart'
+    if (dart.library.ui) 'package:flutter/foundation.dart';
+
 
 void main() {
   final Directory libDir = Directory('lib');
@@ -205,40 +209,84 @@ void _processClass(
   Set<String> allClasses,
   Set<String> allMixins,
 ) {
-  final fields = <String>[];
-  final methods = <String>[];
-  final related = <String>{};
+  final List<String> fields = <String>[];
+  final List<String> methods = <String>[];
+  final Set<String> related = <String>{};
+  bool inBlockComment = false;
+  bool inStringLiteral = false; // track multiline strings
 
-  for (final line in lines) {
-    final fieldMatch = RegExp(r'(?:final|late|static|const)?\s*([\w<>]+)\s+_?\w+\s*(=.*)?;').firstMatch(line);
-    if (fieldMatch != null && !line.contains('(')) {
-      final type = fieldMatch.group(1);
-      final nameMatch = RegExp(r'(\w+)\s*(=.*)?;').firstMatch(line);
-      final name = nameMatch?.group(1);
-      if (type != null && name != null) {
-        fields.add('$type $name');
-        final cleanType = type.replaceAll(RegExp(r'[<>]'), '');
-        if (allClasses.contains(cleanType) || allMixins.contains(cleanType)) {
-          related.add(cleanType);
-        }
+  for (final String rawLine in lines) {
+    // Toggle multiline string state on triple quotes
+    if (rawLine.contains("'''") || rawLine.contains('"""')) {
+      inStringLiteral = !inStringLiteral;
+      continue;
+    }
+    if (inStringLiteral) {
+      continue; // skip any content inside a string literal
+    }
+
+    final String line = rawLine.trim();
+
+    // Toggle block-comment state
+    if (line.startsWith('/*')) {
+      inBlockComment = true;
+    }
+    if (inBlockComment) {
+      if (line.endsWith('*/')) {
+        inBlockComment = false;
       }
       continue;
     }
 
-    final methodMatch = RegExp(r'(Future<[\w?]+>|Future|[\w?]+)\s+(\w+)\s*\(([^)]*)\)').firstMatch(line);
-    if (methodMatch != null &&
-        !line.contains(';') &&
-        !line.startsWith('if') &&
-        !line.startsWith('for')) {
-      final returnType = methodMatch.group(1);
-      final methodName = methodMatch.group(2);
-      if (returnType != null && methodName != null) {
-        methods.add('$returnType $methodName()');
+    // Skip comments, imports, else-if, returns, consts, awaits, and throws
+    if (line.startsWith('//') ||
+        line.startsWith('import ') ||
+        line.contains(RegExp(r'\belse if\b')) ||
+        line.startsWith('return ') ||
+        line.contains(RegExp(r'\bconst\b')) ||
+        line.startsWith("'") ||
+        line.startsWith('"') ||
+        line.startsWith('await ') ||
+        line.startsWith('throw ')) {
+      continue;
+    }
+
+    // Field detection
+    final RegExp fieldRegExp = RegExp(
+      r'^(?:final|late|static)?\s*' +              // optional modifier
+      r'((?:Function(?:\([^)]*\))?|[\w<>\?\s,]+))' +// Function(...) or any type
+      r'\s+_?(\w+)\s*(?:=.*)?;'
+    );
+    final RegExpMatch? fieldMatch = fieldRegExp.firstMatch(line);
+    if (fieldMatch != null) {
+      final String typePart = fieldMatch.group(1)!.trim();
+      final String name = fieldMatch.group(2)!;
+      fields.add('$typePart $name');
+      final String cleanType = typePart.replaceAll(RegExp(r'[<>\?\s,]'), '');
+      if (allClasses.contains(cleanType) || allMixins.contains(cleanType)) {
+        related.add(cleanType);
       }
+      continue;
+    }
+
+    // Method detection including parameters
+    final RegExp methodRegExp = RegExp(
+      r'^(Future<[\w?]+>|Future|[\w?]+)\s+' +   // return type
+      r'(\w+)\s*\(([^)]*)\)'                    // name + params
+    );
+    final RegExpMatch? methodMatch = methodRegExp.firstMatch(line);
+    if (methodMatch != null) {
+      final String returnType = methodMatch.group(1)!;
+      final String methodName = methodMatch.group(2)!;
+      final String params = methodMatch.group(3)!.trim();
+      final String signature = params.isEmpty
+          ? '$returnType $methodName()'
+          : '$returnType $methodName($params)';
+      methods.add(signature);
     }
   }
 
   classFields[className] = fields;
   classMethods[className] = methods;
-  relations.putIfAbsent(className, () => {}).addAll(related);
+  relations.putIfAbsent(className, () => <String>{}).addAll(related);
 }
