@@ -6,7 +6,7 @@ import 'foundation_stub.dart' if (dart.library.ui) 'package:flutter/foundation.d
 
 void main() {
   final Directory libDir = Directory('lib');
-  final File output = File('class_diagram.puml');
+  final File output = File('diagram_with_widgets.puml');
   final StringBuffer buffer = StringBuffer();
 
   buffer.writeln('@startuml');
