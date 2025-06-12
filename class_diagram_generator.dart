@@ -6,7 +6,7 @@ import 'foundation_stub.dart' if (dart.library.ui) 'package:flutter/foundation.d
 
 void main() {
   final Directory libDir = Directory('lib');
-  final File output = File('diagram_with_widgets.puml');
+  final File output = File('class_diagram.puml');
   final StringBuffer buffer = StringBuffer();
 
   buffer.writeln('@startuml');
@@ -87,7 +87,7 @@ void main() {
             : '';
     buffer.writeln('class $cn$stereo {');
     for (var f in classFields[cn] ?? []) buffer.writeln('  $f');
-    for (var m in classMethods[cn] ?? []) buffer.writeln('  +$m');
+    for (var m in classMethods[cn] ?? []) buffer.writeln('  $m');
     buffer.writeln('}');
   }
 
@@ -180,7 +180,8 @@ void _processClass(
         final String returnType = methodMatch.group(1)!;
         final String methodName = methodMatch.group(2)!;
         final String params = methodMatch.group(3)!.trim();
-        final String signature = params.isEmpty ? '$returnType $methodName()' : '$returnType $methodName($params)';
+        final String modificator = methodName.startsWith('_') ? '-' : '+';
+        final String signature = params.isEmpty ? '$modificator$returnType $methodName()' : '$modificator$returnType $methodName($params)';
         methods.add(signature);
       }
     }

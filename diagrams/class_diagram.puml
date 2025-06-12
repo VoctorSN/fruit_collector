@@ -103,23 +103,23 @@ class Level {
   Duration deathDuration
   GameLevel? levelData
   +Future<void> chargeLevel(GameLevel? level)
-  +void _startLevel()
+  -void _startLevel()
   +void registerDeath()
   +void stopLevelTimer()
   +void resumeLevelTimer()
-  +void _addGameText()
+  -void _addGameText()
   +void respawnObjects()
-  +void _spawningObjects()
+  -void _spawningObjects()
   +Future<void> saveLevel()
   +void openDoor(int doorId)
   +void starCollected()
-  +void _addCollisions()
+  -void _addCollisions()
   +void addSpawnPoint(var spawnPoint)
   +void addCollisionBlock(CollisionBlock collisionBlock)
   +void removeCollisionBlock(CollisionBlock collisionBlock)
   +bool checkpointEnabled()
-  +bool _hasFruits()
-  +void _scrollingBackground()
+  -bool _hasFruits()
+  -void _scrollingBackground()
 }
 class Game {
   int id
@@ -205,14 +205,14 @@ class DatabaseManager {
   final Database database
   Database get database
   +Future<void> resetDatabase()
-  +Future<void> _initDatabase()
+  -Future<void> _initDatabase()
   +Future<void> initializeDB(Database db)
 }
 class AchievementManager {
   FruitCollector game
   List<Map<String, dynamic>> allAchievements
   +Future<void> evaluate()
-  +void _showAchievementUnlocked(Achievement achievement)
+  -void _showAchievementUnlocked(Achievement achievement)
   +void tryShowNextToast()
 }
 class CollisionableWithHitbox <<Mixin>> {
@@ -223,7 +223,7 @@ class NotificationService {
   final NotificationService instance
   bool initialized
   +Future<void> initialize()
-  +Future<void> _requestAndroidNotificationPermission()
+  -Future<void> _requestAndroidNotificationPermission()
   +Future<void> cancelAllNotifications()
 }
 class CustomHitbox {
@@ -241,9 +241,9 @@ class Door {
   final SpriteAnimation closeAnimation
   final SpriteAnimation openAnimation
   CollisionBlock? collisionBlock
-  +void _loadAllAnimations()
+  -void _loadAllAnimations()
   +void openDoor()
-  +SpriteAnimation _spriteAnimation(String state, int amount)
+  -SpriteAnimation _spriteAnimation(String state, int amount)
 }
 class CollisionBlock {
   bool isPlatform
@@ -261,10 +261,10 @@ class AlternatingBlock {
   RectangleHitbox hitbox
   bool isActive
   +Future<void> onLoad()
-  +void _loadSprites()
-  +Sprite _getTile(int col, int row)
-  +void _startPeriodicToggle()
-  +void _updateSprite()
+  -void _loadSprites()
+  -Sprite _getTile(int col, int row)
+  -void _startPeriodicToggle()
+  -void _updateSprite()
   +void onCollision(Set<Vector2> intersectionPoints, PositionComponent other)
 }
 class LootBox {
@@ -281,8 +281,8 @@ class LootBox {
   const stepTime
   const tileSize
   final textureSize
-  +void _loadAllAnimations()
-  +SpriteAnimation _spriteAnimation(String state, int amount)
+  -void _loadAllAnimations()
+  -SpriteAnimation _spriteAnimation(String state, int amount)
   +void collidedWithPlayer()
   +void dropObject()
 }
@@ -302,11 +302,11 @@ class FallingBlock {
   List<CollisionBlock> collisionBlocks
   +Future<void> onLoad()
   +void update(double dt)
-  +void _startFalling()
-  +void _stopFalling()
-  +void _comeBack()
-  +bool _checkPlayerOnPlatform()
-  +bool _checkBlockCollisionBelow(Vector2 delta)
+  -void _startFalling()
+  -void _stopFalling()
+  -void _comeBack()
+  -bool _checkPlayerOnPlatform()
+  -bool _checkBlockCollisionBelow(Vector2 delta)
 }
 class Trampoline {
   double powerBounce
@@ -318,8 +318,8 @@ class Trampoline {
   final SpriteAnimation jumpAnimation
   CollisionBlock collisionBlock
   final Player player
-  +void _loadAllAnimations()
-  +SpriteAnimation _spriteAnimation(String state, int amount)
+  -void _loadAllAnimations()
+  -SpriteAnimation _spriteAnimation(String state, int amount)
   +void collidedWithPlayer()
 }
 class Saw {
@@ -333,8 +333,8 @@ class Saw {
   double rangeNeg
   double rangePos
   +void update(double dt)
-  +void _moveVertically(double dt)
-  +void _moveHorizontally(double dt)
+  -void _moveVertically(double dt)
+  -void _moveHorizontally(double dt)
 }
 class AirEffect {
   Paint airPaint
@@ -354,7 +354,7 @@ class Spike {
   const double spikeSize
   RectangleHitbox hitbox
   const double halfRotation
-  +Future<void> _loadRepeatedSpikes()
+  -Future<void> _loadRepeatedSpikes()
   +void onCollisionStart(Set<Vector2> intersectionPoints, PositionComponent other)
 }
 class FireBlock {
@@ -374,9 +374,9 @@ class FireBlock {
   +Future<void> onLoad()
   +void onRemove()
   +void rotate()
-  +void _loadAnimations()
-  +SpriteAnimation _spriteAnimation(String state, int amount)
-  +void _startPeriodicToggle()
+  -void _loadAnimations()
+  -SpriteAnimation _spriteAnimation(String state, int amount)
+  -void _startPeriodicToggle()
   +void onCollision(Set<Vector2> intersectionPoints, PositionComponent other)
   +void removeSound()
 }
@@ -394,8 +394,8 @@ class Fan {
   final fanDirection
   final Vector2 windVelocity
   +void createHitbox()
-  +void _loadAllAnimations()
-  +SpriteAnimation _spriteAnimation(String state, int amount)
+  -void _loadAllAnimations()
+  -SpriteAnimation _spriteAnimation(String state, int amount)
   +void collidedWithPlayer()
   +void onCollisionEnd(PositionComponent other)
 }
@@ -463,18 +463,18 @@ class Player {
   +bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed)
   +void onCollisionStart(Set<Vector2> intersectionPoints, PositionComponent other)
   +void onCollision(Set<Vector2> intersectionPoints, PositionComponent other)
-  +void _loadAllAnimations()
-  +SpriteAnimation _spriteAnimation(String state, int amount, {double stepTime = stepTime})
-  +SpriteAnimation _specialSpriteAnimation(String state, int amount)
-  +void _updatePlayerMovement(double dt)
-  +void _playerJump(double dt)
-  +void _updatePlayerState()
-  +void _checkHorizontalCollisions()
-  +void _applyGravity(double dt)
-  +void _checkVerticalCollisions()
-  +Future<void> _respawn()
-  +Future<void> _animationRespawn()
-  +Future<void> _reachedCheckpoint(Checkpoint other)
+  -void _loadAllAnimations()
+  -SpriteAnimation _spriteAnimation(String state, int amount, {double stepTime = stepTime})
+  -SpriteAnimation _specialSpriteAnimation(String state, int amount)
+  -void _updatePlayerMovement(double dt)
+  -void _playerJump(double dt)
+  -void _updatePlayerState()
+  -void _checkHorizontalCollisions()
+  -void _applyGravity(double dt)
+  -void _checkVerticalCollisions()
+  -Future<void> _respawn()
+  -Future<void> _animationRespawn()
+  -Future<void> _reachedCheckpoint(Checkpoint other)
   +void collidedWithEnemy()
   +void updateCharacter()
   +void loadNewCharacterAnimations()
@@ -493,8 +493,8 @@ class Checkpoint {
   final SpriteAnimation flagOutAnimation
   final SpriteAnimation noFlagAnimation
   +void onCollisionStart(Set<Vector2> intersectionPoints, PositionComponent other)
-  +Future<void> _reachedCheckpoint()
-  +void _loadAllAnimations()
+  -Future<void> _reachedCheckpoint()
+  -void _loadAllAnimations()
 }
 class PeeShooter {
   double range
@@ -522,9 +522,9 @@ class PeeShooter {
   final SpriteAnimation hitAnimation
   Vector2 velocity
   +void update(double dt)
-  +void _loadAllAnimations()
-  +SpriteAnimation _spriteAnimation(String state, int amount)
-  +void _calculateRange()
+  -void _loadAllAnimations()
+  -SpriteAnimation _spriteAnimation(String state, int amount)
+  -void _calculateRange()
   +Future<void> attack()
   +void shootProjectile()
   +bool checkPlayerInRange()
@@ -547,15 +547,15 @@ class Ghost {
   double fixedDeltaTime
   double accumulatedTime
   bool isActive
-  +SpriteAnimation _spriteAnimation(String state, int amount)
+  -SpriteAnimation _spriteAnimation(String state, int amount)
   +void onRemove()
-  +Future<void> _loadTrailSprites()
-  +void _spawn()
+  -Future<void> _loadTrailSprites()
+  -void _spawn()
   +void respawn()
-  +void _loadAllAnimations()
+  -void _loadAllAnimations()
   +void update(double dt)
-  +void _emitTrailParticle(double dt)
-  +void _move(double dt)
+  -void _emitTrailParticle(double dt)
+  -void _move(double dt)
   +void lookLeft()
   +void lookRight()
   +void onCollision(Set<Vector2> intersectionPoints, PositionComponent other)
@@ -591,11 +591,11 @@ class Rock {
   double fixedDeltaTime
   double accumulatedTime
   +void update(double dt)
-  +void _loadAllAnimations()
-  +SpriteAnimation _spriteAnimation(String state, int amount, Vector2 size)
-  +void _movement(double dt)
-  +void _applyGravity(double dt)
-  +void _checkVerticalCollisions()
+  -void _loadAllAnimations()
+  -SpriteAnimation _spriteAnimation(String state, int amount, Vector2 size)
+  -void _movement(double dt)
+  -void _applyGravity(double dt)
+  -void _checkVerticalCollisions()
   +void turnBack(double direction)
   +void splitRock()
   +void collidedWithPlayer()
@@ -628,11 +628,11 @@ class Bee {
   final SpriteAnimation hitAnimation
   Vector2 velocity
   +void update(double dt)
-  +void _loadAllAnimations()
-  +void _checkHorizontalCollisions()
-  +SpriteAnimation _spriteAnimation(String state, int amount)
-  +void _calculateRange()
-  +void _movement(double dt)
+  -void _loadAllAnimations()
+  -void _checkHorizontalCollisions()
+  -SpriteAnimation _spriteAnimation(String state, int amount)
+  -void _calculateRange()
+  -void _movement(double dt)
   +Future<void> attack()
   +void shootProjectile()
   +bool playerInRange()
@@ -668,15 +668,15 @@ class Radish {
   bool gotStomped
   double fixedDeltaTime
   double accumulatedTime
-  +void _loadAllAnimations()
-  +SpriteAnimation _spriteAnimation(String state, int amount)
+  -void _loadAllAnimations()
+  -SpriteAnimation _spriteAnimation(String state, int amount)
   +void update(double dt)
-  +void _checkVerticalCollisions()
-  +Future<void> _fly(double dt)
-  +void _checkHorizontalCollisions()
-  +void _movement(double dt)
+  -void _checkVerticalCollisions()
+  -Future<void> _fly(double dt)
+  -void _checkHorizontalCollisions()
+  -void _movement(double dt)
   +void turnBack(double direction)
-  +void _applyGravity(double dt)
+  -void _applyGravity(double dt)
   +void collidedWithPlayer()
 }
 class SpikeHead {
@@ -699,10 +699,10 @@ class SpikeHead {
   Vector2 velocity
   double fixedDeltaTime
   double accumulatedTime
-  +void _loadAllStates()
-  +SpriteAnimation _spriteAnimation(String state, int amount)
+  -void _loadAllStates()
+  -SpriteAnimation _spriteAnimation(String state, int amount)
   +void onCollisionStart(Set<Vector2> intersectionPoints, PositionComponent other)
-  +void _updateMovement(double dt)
+  -void _updateMovement(double dt)
   +void update(double dt)
   +void checkPlayerPosition()
   +void attack(int direction)
@@ -772,19 +772,19 @@ class Snail {
   Vector2 velocity
   +void onRemove()
   +void update(double dt)
-  +void _loadAllAnimations()
-  +void _checkVerticalCollisions()
-  +void _applyGravity(double dt)
-  +void _checkHorizontalCollisions()
-  +SpriteAnimation _spriteAnimation(String state, int amount)
-  +void _startJumpTimer()
-  +void _startTransformShellTimer()
-  +void _startTransformSnailTimer()
-  +void _transformSnail()
-  +void _transformShell()
-  +void _jump()
-  +void _calculateRange()
-  +void _movement(double dt)
+  -void _loadAllAnimations()
+  -void _checkVerticalCollisions()
+  -void _applyGravity(double dt)
+  -void _checkHorizontalCollisions()
+  -SpriteAnimation _spriteAnimation(String state, int amount)
+  -void _startJumpTimer()
+  -void _startTransformShellTimer()
+  -void _startTransformSnailTimer()
+  -void _transformSnail()
+  -void _transformShell()
+  -void _jump()
+  -void _calculateRange()
+  -void _movement(double dt)
   +bool playerInRange()
   +void collidedWithPlayer()
   +bool isSnail()
@@ -812,13 +812,13 @@ class Chicken {
   final SpriteAnimation hitAnimation
   Vector2 velocity
   +void update(double dt)
-  +void _loadAllAnimations()
-  +void _checkHorizontalCollisions()
-  +SpriteAnimation _spriteAnimation(String state, int amount)
-  +void _calculateRange()
-  +void _movement(double dt)
+  -void _loadAllAnimations()
+  -void _checkHorizontalCollisions()
+  -SpriteAnimation _spriteAnimation(String state, int amount)
+  -void _calculateRange()
+  -void _movement(double dt)
   +bool playerInRange()
-  +void _updateState()
+  -void _updateState()
   +void collidedWithPlayer()
 }
 class SoundManager {
@@ -831,7 +831,7 @@ class SoundManager {
   int mutedVolume
   +factory SoundManager()
   +Future<void> init()
-  +Future<void> _load(String key, String assetPath)
+  -Future<void> _load(String key, String assetPath)
   +void play(String key, double volume)
   +void playCollectFruit(double volume)
   +void playHit(double volume)
@@ -865,9 +865,9 @@ class CreditsScreen {
   _FadeUpdateComponent fadeUpdateComponent
   bool hasFinished
   +Future<void> show()
-  +void _startFadeOverlay()
-  +void _spawnCreditLines()
-  +void _onCreditsFinished()
+  -void _startFadeOverlay()
+  -void _spawnCreditLines()
+  -void _onCreditsFinished()
 }
 class _ScrollingCreditLine {
   double screenHeight
@@ -916,10 +916,10 @@ class LevelSummaryOverlay {
   int get stars
   int get time
   +Widget build(BuildContext context)
-  +Widget _iconValue({required IconData icon, required String value, required TextStyle style})
-  +Widget _starsRow(int count)
-  +String _formatTime(int seconds)
-  +String _difficultyText(int value)
+  -Widget _iconValue({required IconData icon, required String value, required TextStyle style})
+  -Widget _starsRow(int count)
+  -String _formatTime(int seconds)
+  -String _difficultyText(int value)
 }
 class LoadingBanana {
   FruitCollector game
@@ -935,7 +935,7 @@ class CharacterManager {
   FruitCollector game
   List<Map<String, dynamic>> allCharacters
   +Future<void> evaluate()
-  +void _showCharacterUnlocked(Character character)
+  -void _showCharacterUnlocked(Character character)
   +void tryShowNextToast()
 }
 class TextStyleSingleton {
@@ -959,10 +959,10 @@ class CustomJoystick {
   Player player
   bool wasIdle
   +Future<void> onLoad()
-  +void _addJoystick()
+  -void _addJoystick()
   +void update(double dt)
   +void onGameResize(Vector2 size)
-  +void _updateJoystick()
+  -void _updateJoystick()
   +void onTapDown(TapDownEvent event)
   +void onTapUp(TapUpEvent event)
 }
@@ -970,7 +970,7 @@ class JumpButton {
   double buttonSize
   SpriteComponent buttonSprite
   +void onGameResize(Vector2 gameSize)
-  +void _setSizeAndPosition(Vector2 gameSize)
+  -void _setSizeAndPosition(Vector2 gameSize)
   +void onTapDown(TapDownEvent event)
   +void onTapUp(TapUpEvent event)
 }
@@ -1168,8 +1168,8 @@ class MainMenuVM {
   String get quitLabel
   +Future<void> initialize(BuildContext context)
   +bool isMobile(BuildContext context)
-  +Future<void> _loadLastGame()
-  +void _applyInitialMusic()
+  -Future<void> _loadLastGame()
+  -void _applyInitialMusic()
   +void toggleVolume()
   +Future<void> onContinuePressed()
   +void onLoadGamePressed()
@@ -1189,7 +1189,7 @@ class GameSelectorVM {
   int? get slotToDelete
   String get titleText
   String get backLabel
-  +Future<void> _ensureGameService()
+  -Future<void> _ensureGameService()
   +Future<void> loadSlots()
   +Future<void> selectSlot(int slotNumber)
   +void confirmDelete(int slotNumber)
@@ -1206,8 +1206,8 @@ class _AchievementMenuState {
   ScrollController scrollController
   const double rowHeight
   const double rowSpacing
-  +void _scrollByRow({required bool forward})
-  +void _onBack()
+  -void _scrollByRow({required bool forward})
+  -void _onBack()
   +Widget build(BuildContext context)
   +void dispose()
 }
@@ -1217,7 +1217,7 @@ class AchievementDetails {
   GameAchievement gameAchievement
   const String id
   +Widget build(BuildContext context)
-  +void _onBack()
+  -void _onBack()
 }
 class AchievementToast {
   const String id
@@ -1268,8 +1268,8 @@ class LevelCard {
   int stars
   int duration
   int deaths
-  +Color _calculateBorderColor()
-  +Color _lighten(Color color, double amount)
+  -Color _calculateBorderColor()
+  -Color _lighten(Color color, double amount)
   +Widget build(BuildContext context)
 }
 class LevelSelectionMenuVM {
@@ -1298,8 +1298,8 @@ class CharacterCardFlip {
   double size
   VoidCallback onTap
   +Widget build(BuildContext context)
-  +Widget _buildFront()
-  +Widget _buildBack()
+  -Widget _buildFront()
+  -Widget _buildBack()
 }
 class CharacterSelectionVM {
   final AnimationController animationController
@@ -1312,9 +1312,9 @@ class CharacterSelectionVM {
   Character get currentCharacter
   GameCharacter get currentGameCharacter
   double get angle
-  +void _notifyListeners()
+  -void _notifyListeners()
   +void refreshFromGame()
-  +void _initializeData()
+  -void _initializeData()
   +void nextCharacter()
   +void previousCharacter()
   +void selectCharacter()
@@ -1381,7 +1381,7 @@ class FruitCollector {
   +void addAllButtons()
   +void updateGlobalStats()
   +Future<void> completeLevel()
-  +void _loadActualLevel()
+  -void _loadActualLevel()
   +void addJoystick()
   +Future<void> getGameService()
   +Future<void> getLevelService()
