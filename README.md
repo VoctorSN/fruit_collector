@@ -24,6 +24,10 @@ Descárgalo gratis en Android con este enlace:
 
 ### 👉 [**DESCARGAR APK**](./downloads/fruit_collector.apk)
 
+o en Windows con el siguiente enlace:
+
+### 👉 [**DESCARGAR ZIP**](./downloads/fruit_collector.zip)
+
 - Sin anuncios
 - Sin registros
 - Solo diversión arcade en estado puro
