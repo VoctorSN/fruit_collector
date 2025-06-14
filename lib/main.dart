@@ -11,8 +11,7 @@ import 'components/game/util/notification_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  debugDefaultTargetPlatformOverride = TargetPlatform.android;
+flutt
   await Flame.device.fullScreen();
   await Flame.device.setLandscape();
 
